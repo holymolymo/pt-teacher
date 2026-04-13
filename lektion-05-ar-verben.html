@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 5 - Regelmäßige -ar Verben</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; transition: border-color 0.2s, background 0.2s; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; } .next-lesson-btn:hover { background: #256b29; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; } .reset-btn:hover { background: #fff8f2; }
+  .dashboard-link { display: none; font-size: 13px; color: #6b6560; text-decoration: none; margin-top: 8px; }
+  .dashboard-link.show { display: block; } .dashboard-link:hover { color: #e8721d; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 5</div>
+    <h1>Regelm&auml;&szlig;ige -ar Verben</h1>
+    <p>Das gr&ouml;&szlig;te Verbmuster im Portugiesischen</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>-ar Verben &mdash; Ein Muster f&uuml;r viele Verben</h3>
+      <p>Die meisten portugiesischen Verben enden auf <strong>-ar</strong>. Sie alle folgen dem gleichen Muster: Du nimmst den <span class="highlight">Stamm</span> (alles vor dem -ar) und h&auml;ngst die Endung an.</p>
+
+      <table>
+        <tr><th>Person</th><th>Endung</th><th>morar</th><th>trabalhar</th><th>estudar</th></tr>
+        <tr><td>Eu</td><td><span class="v">-o</span></td><td>mor<span class="v">o</span></td><td>trabalh<span class="v">o</span></td><td>estud<span class="v">o</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">-as</span></td><td>mor<span class="v">as</span></td><td>trabalh<span class="v">as</span></td><td>estud<span class="v">as</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">-a</span></td><td>mor<span class="v">a</span></td><td>trabalh<span class="v">a</span></td><td>estud<span class="v">a</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">-amos</span></td><td>mor<span class="v">amos</span></td><td>trabalh<span class="v">amos</span></td><td>estud<span class="v">amos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">-am</span></td><td>mor<span class="v">am</span></td><td>trabalh<span class="v">am</span></td><td>estud<span class="v">am</span></td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Zusammenhang zu chamar-se (Lektion 1):</strong>
+        Erinnerst du dich? chamar-se folgt genau das gleiche Muster: cham<strong>o</strong>, cham<strong>as</strong>, cham<strong>a</strong>, chamam<strong>os</strong>, cham<strong>am</strong>. Du kanntest dieses Muster also schon!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Wichtige -ar Verben</h3>
+      <table>
+        <tr><th>Verb</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td><span class="v">morar</span></td><td>wohnen</td><td>Eu moro em Berlim.</td></tr>
+        <tr><td><span class="v">trabalhar</span></td><td>arbeiten</td><td>Ela trabalha em Lisboa.</td></tr>
+        <tr><td><span class="v">estudar</span></td><td>studieren/lernen</td><td>N&oacute;s estudamos portugu&ecirc;s.</td></tr>
+        <tr><td><span class="v">comprar</span></td><td>kaufen</td><td>Ele compra um livro.</td></tr>
+        <tr><td><span class="v">falar</span></td><td>sprechen</td><td>Tu falas ingl&ecirc;s?</td></tr>
+        <tr><td><span class="v">almo&ccedil;ar</span></td><td>zu Mittag essen</td><td>Eles almo&ccedil;am na cantina.</td></tr>
+        <tr><td><span class="v">tomar</span></td><td>nehmen/trinken</td><td>Eu tomo caf&eacute;.</td></tr>
+        <tr><td><span class="v">jantar</span></td><td>zu Abend essen</td><td>N&oacute;s jantamos em casa.</td></tr>
+      </table>
+
+      <div class="recall-box">
+        <strong>Erinnerung Lektion 2 &amp; 4:</strong>
+        <strong>ser</strong> (sou, &eacute;s, &eacute;...) und <strong>ter</strong> (tenho, tens, tem...) sind <em>unregelm&auml;&szlig;ig</em>. Die -ar Verben hier sind <em>regelm&auml;&szlig;ig</em> &mdash; ein Muster, alle Verben!
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Konjugieren -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Konjugiere das Verb in Klammern</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Eu ______ (morar) em Berlim.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="moro" placeholder="...">
+        <span>em Berlim.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Tu ______ (falar) portugu&ecirc;s?</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="falas" placeholder="...">
+        <span>portugu&ecirc;s?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">A Teresa ______ (trabalhar) em Lisboa.</div>
+      <div class="input-row">
+        <span>A Teresa</span>
+        <input type="text" class="answer-input" data-answers="trabalha" placeholder="...">
+        <span>em Lisboa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">N&oacute;s ______ (estudar) portugu&ecirc;s.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="estudamos" placeholder="...">
+        <span>portugu&ecirc;s.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Eles ______ (comprar) um carro novo.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="compram" placeholder="...">
+        <span>um carro novo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">Voc&ecirc; ______ (tomar) caf&eacute;?</div>
+      <div class="input-row">
+        <span>Voc&ecirc;</span>
+        <input type="text" class="answer-input" data-answers="toma" placeholder="...">
+        <span>caf&eacute;?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Welches Verb passt? -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Welches Verb passt? (konjugiert!)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 10</div>
+      <div class="exercise-hint">Ich wohne in Berlin. Eu ______ em Berlim.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="moro" placeholder="...">
+        <span>em Berlim.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 10</div>
+      <div class="exercise-hint">Wir essen in der Kantine zu Mittag.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="almoçamos,almocamos" placeholder="...">
+        <span>na cantina.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 10</div>
+      <div class="exercise-hint">Sie (ela) kauft ein Buch.</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="compra" placeholder="...">
+        <span>um livro.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 10</div>
+      <div class="exercise-hint">Sprichst du Englisch?</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="falas" placeholder="...">
+        <span>ingl&ecirc;s?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: S&auml;tze &uuml;bersetzen -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; &Uuml;bersetze auf Portugiesisch</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 15</div>
+      <div class="translation-prompt">Ich wohne in Lissabon und ich arbeite in Cascais.</div>
+      <input type="text" class="translation-input" data-answers="eu moro em lisboa e trabalho em cascais,moro em lisboa e trabalho em cascais" placeholder="Schreib den Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 15</div>
+      <div class="translation-prompt">Wir lernen Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="nós estudamos português,nos estudamos portugues,estudamos português,estudamos portugues" placeholder="Schreib den Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 15</div>
+      <div class="translation-prompt">Sie (eles) essen zu Mittag in der Kantine und essen zu Abend zu Hause.</div>
+      <input type="text" class="translation-input" data-answers="eles almoçam na cantina e jantam em casa,eles almocam na cantina e jantam em casa" placeholder="Schreib den Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 15</div>
+      <div class="translation-prompt">Sprichst du Portugiesisch? Ja, ich spreche Portugiesisch und Englisch.</div>
+      <input type="text" class="translation-input" data-answers="tu falas português? sim, eu falo português e inglês.,falas portugues? sim falo portugues e ingles,tu falas portugues? sim eu falo portugues e ingles" placeholder="Schreib den Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 15</div>
+      <div class="translation-prompt">Ich hei&szlig;e Moritz. Ich bin Deutscher. Ich bin 30 Jahre alt. Ich wohne in Berlin und ich arbeite als Ingenieur.</div>
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão. tenho 30 anos. moro em berlim e trabalho como engenheiro.,eu chamo-me moritz. sou alemao. tenho trinta anos. moro em berlim e trabalho como engenheiro." placeholder="Alles zusammen!">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="lektion-06-kontraktionen.html">N&auml;chste Lektion &rarr;</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+    <a class="dashboard-link" id="dashLink" href="index.html">&larr; Zur&uuml;ck zum Dashboard</a>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:2;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split(',').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split(',')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split(',')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split(',')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Weiter zur n\u00e4chsten Lektion!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Fast alles richtig.';
+  else if(pct>=0.4)msg.textContent='Bom come\u00e7o! Schau dir die Fehler an.';
+  else msg.textContent='Noch \u00fcben! Scroll hoch zur Grammatik.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');document.getElementById('dashLink').classList.add('show');
+  localStorage.setItem('pt-lektion-05','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');document.getElementById('dashLink').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
