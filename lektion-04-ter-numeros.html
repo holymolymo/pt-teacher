@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 4 - Ter + Números</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; transition: border-color 0.2s, background 0.2s; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; transition: border-color 0.2s, background 0.2s; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+  .check-btn:hover { background: #d4650f; } .check-btn:active { transform: scale(0.98); }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; transition: background 0.2s; }
+  .next-lesson-btn.show { display: block; }
+  .next-lesson-btn:hover { background: #256b29; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  .reset-btn:hover { background: #fff8f2; }
+  .dashboard-link { display: none; font-size: 13px; color: #6b6560; text-decoration: none; margin-top: 8px; }
+  .dashboard-link.show { display: block; }
+  .dashboard-link:hover { color: #e8721d; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 4</div>
+    <h1>Ter + N&uacute;meros</h1>
+    <p>Haben, Alter ausdr&uuml;cken und Zahlen</p>
+  </div>
+
+  <!-- Grammatik -->
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Das Verb ter (haben)</h3>
+      <p><strong>ter</strong> ist ein unregelm&auml;&szlig;iges Verb und wird st&auml;ndig gebraucht &mdash; f&uuml;r Besitz, Alter und viele Ausdr&uuml;cke.</p>
+
+      <table>
+        <tr><th>Person</th><th>ter</th><th>Beispiel</th></tr>
+        <tr><td>Eu</td><td><span class="v">tenho</span></td><td>Eu tenho um carro.</td></tr>
+        <tr><td>Tu</td><td><span class="v">tens</span></td><td>Tu tens dois irm&atilde;os.</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">tem</span></td><td>Ela tem 25 anos.</td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">temos</span></td><td>N&oacute;s temos uma casa.</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">t&ecirc;m</span></td><td>Eles t&ecirc;m tr&ecirc;s filhos.</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Achtung &mdash; Alter = ter, nicht ser!</strong>
+        Im Deutschen: "Ich <em>bin</em> 30 Jahre alt." Im Portugiesischen: "Eu <strong>tenho</strong> 30 anos." (Ich <em>habe</em> 30 Jahre.) Das ist ein wichtiger Unterschied!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>N&uacute;meros cardinais (Zahlen 0&ndash;30)</h3>
+
+      <table>
+        <tr><th>0&ndash;10</th><th>11&ndash;20</th><th>21&ndash;30</th></tr>
+        <tr><td>0 &ndash; <span class="v">zero</span></td><td>11 &ndash; <span class="v">onze</span></td><td>21 &ndash; vinte e um</td></tr>
+        <tr><td>1 &ndash; <span class="v">um / uma</span></td><td>12 &ndash; <span class="v">doze</span></td><td>22 &ndash; vinte e dois</td></tr>
+        <tr><td>2 &ndash; <span class="v">dois / duas</span></td><td>13 &ndash; <span class="v">treze</span></td><td>23 &ndash; vinte e tr&ecirc;s</td></tr>
+        <tr><td>3 &ndash; <span class="v">tr&ecirc;s</span></td><td>14 &ndash; <span class="v">catorze</span></td><td>24 &ndash; vinte e quatro</td></tr>
+        <tr><td>4 &ndash; <span class="v">quatro</span></td><td>15 &ndash; <span class="v">quinze</span></td><td>25 &ndash; vinte e cinco</td></tr>
+        <tr><td>5 &ndash; <span class="v">cinco</span></td><td>16 &ndash; <span class="v">dezasseis</span></td><td>26 &ndash; vinte e seis</td></tr>
+        <tr><td>6 &ndash; <span class="v">seis</span></td><td>17 &ndash; <span class="v">dezassete</span></td><td>27 &ndash; vinte e sete</td></tr>
+        <tr><td>7 &ndash; <span class="v">sete</span></td><td>18 &ndash; <span class="v">dezoito</span></td><td>28 &ndash; vinte e oito</td></tr>
+        <tr><td>8 &ndash; <span class="v">oito</span></td><td>19 &ndash; <span class="v">dezanove</span></td><td>29 &ndash; vinte e nove</td></tr>
+        <tr><td>9 &ndash; <span class="v">nove</span></td><td>20 &ndash; <span class="v">vinte</span></td><td>30 &ndash; <span class="v">trinta</span></td></tr>
+        <tr><td>10 &ndash; <span class="v">dez</span></td><td></td><td></td></tr>
+      </table>
+
+      <div class="grammar-box" style="background: #faf8f5; margin: 16px 0; padding: 20px;">
+        <h3>Zehner (30&ndash;100)</h3>
+        <p>30 &ndash; <span class="v">trinta</span> &bull; 40 &ndash; <span class="v">quarenta</span> &bull; 50 &ndash; <span class="v">cinquenta</span> &bull; 60 &ndash; <span class="v">sessenta</span></p>
+        <p>70 &ndash; <span class="v">setenta</span> &bull; 80 &ndash; <span class="v">oitenta</span> &bull; 90 &ndash; <span class="v">noventa</span> &bull; 100 &ndash; <span class="v">cem</span></p>
+      </div>
+
+      <div class="insight">
+        <strong>Zusammengesetzte Zahlen:</strong>
+        Immer mit <strong>"e"</strong> verbinden: vinte <strong>e</strong> um, trinta <strong>e</strong> cinco, quarenta <strong>e</strong> dois.
+      </div>
+
+      <div class="recall-box">
+        <strong>PT-PT (europäisch) Achtung:</strong>
+        In Portugal sagt man dez<strong>a</strong>sseis, dez<strong>a</strong>ssete, dez<strong>a</strong>nove (mit "a"!). In Brasilien w&auml;re es dezesseis etc. Wir lernen PT-PT!
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: ter konjugieren -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Erg&auml;nze die richtige Form von "ter"</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 5</div>
+      <div class="exercise-hint">Ich bin 30 Jahre alt.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="tenho" placeholder="...">
+        <span>30 anos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 5</div>
+      <div class="exercise-hint">Du hast zwei Br&uuml;der.</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="tens" placeholder="...">
+        <span>dois irm&atilde;os.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 5</div>
+      <div class="exercise-hint">Sie (ela) ist 22 Jahre alt.</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="tem" placeholder="...">
+        <span>22 anos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 5</div>
+      <div class="exercise-hint">Wir haben ein Haus.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="temos" placeholder="...">
+        <span>uma casa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 5</div>
+      <div class="exercise-hint">Sie (eles) haben drei Kinder.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="têm,tem" placeholder="...">
+        <span>tr&ecirc;s filhos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Zahlen schreiben -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Schreibe die Zahl als Wort</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 10</div>
+      <div class="exercise-hint">15</div>
+      <input type="text" class="answer-input" data-answers="quinze" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 10</div>
+      <div class="exercise-hint">17</div>
+      <input type="text" class="answer-input" data-answers="dezassete" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 10</div>
+      <div class="exercise-hint">23</div>
+      <input type="text" class="answer-input" data-answers="vinte e três,vinte e tres" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 10</div>
+      <div class="exercise-hint">46</div>
+      <input type="text" class="answer-input" data-answers="quarenta e seis" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 10</div>
+      <div class="exercise-hint">81</div>
+      <input type="text" class="answer-input" data-answers="oitenta e um" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Alter fragen und antworten -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Alter: Fragen und Antworten</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 15</div>
+      <div class="exercise-hint">Wie alt bist du? (informell)</div>
+      <input type="text" class="translation-input" data-answers="quantos anos tens?,quantos anos tens,quantos anos é que tu tens?" placeholder="Schreib die Frage...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 15</div>
+      <div class="exercise-hint">Wie alt ist der Herr Silva? (formell)</div>
+      <input type="text" class="translation-input" data-answers="quantos anos tem o senhor silva?,quantos anos tem o sr. silva?,quantos anos é que o senhor silva tem?" placeholder="Schreib die Frage...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 15</div>
+      <div class="exercise-hint">Ich bin 28 Jahre alt.</div>
+      <input type="text" class="translation-input" data-answers="eu tenho vinte e oito anos,tenho vinte e oito anos,eu tenho 28 anos,tenho 28 anos" placeholder="Schreib den Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 15</div>
+      <div class="exercise-hint">Sie (ela) ist 19 Jahre alt.</div>
+      <input type="text" class="translation-input" data-answers="ela tem dezanove anos,ela tem 19 anos" placeholder="Schreib den Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 15</div>
+      <div class="translation-prompt">Ich hei&szlig;e Moritz. Ich bin Deutscher. Ich bin 30 Jahre alt und ich bin Ingenieur.</div>
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão. tenho 30 anos e sou engenheiro.,eu chamo-me moritz. eu sou alemão. eu tenho 30 anos e sou engenheiro.,chamo-me moritz. sou alemao. tenho 30 anos e sou engenheiro.,eu chamo-me moritz. sou alemao. tenho trinta anos e sou engenheiro." placeholder="Alles zusammen!">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="lektion-05-ar-verben.html">N&auml;chste Lektion &rarr;</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+    <a class="dashboard-link" id="dashLink" href="index.html">&larr; Zur&uuml;ck zum Dashboard</a>
+  </div>
+
+</div>
+
+<script>
+function normalize(str) {
+  return str.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').replace(/[.!?,;:'"]/g, '');
+}
+function levenshtein(a, b) {
+  const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));
+  for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));
+  return dp[m][n];
+}
+function isCloseEnough(u,accepted){
+  if(accepted.includes(u))return'exact';
+  for(const a of accepted){const d=a.length<=8?1:2;if(levenshtein(u,a)<=d)return'close';}
+  return'wrong';
+}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split(',').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split(',')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split(',')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split(',')[0];}
+  });
+  document.getElementById('results').classList.add('show');
+  document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Alles richtig \u2014 weiter zur n\u00e4chsten Lektion!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Fast alles richtig.';
+  else if(pct>=0.4)msg.textContent='Bom come\u00e7o! Schau dir die Fehler nochmal an.';
+  else msg.textContent='Noch \u00fcben! Scroll hoch und probier es erneut.';
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('resetBtn').classList.add('show');
+  document.getElementById('dashLink').classList.add('show');
+  document.querySelector('.check-btn').style.display='none';
+  // Save completion to localStorage
+  localStorage.setItem('pt-lektion-04','done');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.getElementById('dashLink').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});
+});
+</script>
+</body>
+</html>

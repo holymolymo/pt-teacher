@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugiesisch Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f5f0eb;
+    color: #2d2a26;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .header-tag {
+    display: inline-block;
+    background: #2d2a26;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a1715;
+  }
+
+  .header p {
+    font-size: 16px;
+    color: #6b6560;
+  }
+
+  /* Navigation */
+  .toc {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .toc h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #e8721d;
+    margin-bottom: 12px;
+  }
+
+  .toc ul {
+    list-style: none;
+    columns: 2;
+    gap: 24px;
+  }
+
+  .toc li {
+    margin-bottom: 8px;
+  }
+
+  .toc a {
+    color: #2d2a26;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+
+  .toc a:hover { color: #e8721d; }
+  .toc a .num { color: #e8721d; font-weight: 600; margin-right: 6px; }
+
+  /* Sections */
+  .topic {
+    margin-bottom: 48px;
+    scroll-margin-top: 24px;
+  }
+
+  .topic-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #e8721d;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8d5c4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .topic-title .lesson-ref {
+    background: #f5f0eb;
+    color: #6b6560;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #4a4540;
+    margin-bottom: 8px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  th {
+    background: #2d2a26;
+    color: white;
+    padding: 8px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+
+  td {
+    padding: 8px 14px;
+    border-bottom: 1px solid #ede6df;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #faf8f5; }
+
+  .v { color: #e8721d; font-weight: 600; }
+  .r { color: #2e7d32; font-weight: 600; }
+  .neg { color: #c62828; font-weight: 600; }
+
+  /* Rule boxes */
+  .rule {
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #1b5e20;
+  }
+
+  .rule strong { display: block; margin-bottom: 2px; }
+
+  .example {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #795600;
+  }
+
+  .example strong { display: block; margin-bottom: 2px; }
+
+  /* Back to top */
+  .back-top {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #9e9892;
+    text-decoration: none;
+  }
+
+  .back-top:hover { color: #e8721d; }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .page { padding: 0; max-width: 100%; }
+    .toc { break-after: page; }
+    .topic { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 24px 16px 60px; }
+    .header h1 { font-size: 26px; }
+    .toc ul { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <div class="header-tag">Referenz</div>
+    <h1>Portugiesisch Cheat Sheet</h1>
+    <p>Alle Grammatik-Tabellen und Regeln auf einen Blick</p>
+  </div>
+
+  <!-- Inhaltsverzeichnis -->
+  <div class="toc">
+    <h2>Inhalt</h2>
+    <ul>
+      <li><a href="#chamar-se"><span class="num">1</span> Chamar-se (sich vorstellen)</a></li>
+      <li><a href="#ser"><span class="num">2</span> Verb ser (sein)</a></li>
+      <li><a href="#artigos"><span class="num">3</span> Artigos definidos (Artikel)</a></li>
+      <li><a href="#nacionalidades"><span class="num">4</span> Nacionalidades</a></li>
+      <li><a href="#profissoes"><span class="num">5</span> Profiss&otilde;es</a></li>
+      <li><a href="#ter"><span class="num">6</span> Verb ter (haben)</a></li>
+      <li><a href="#numeros"><span class="num">7</span> N&uacute;meros (Zahlen)</a></li>
+      <li><a href="#ar-verben"><span class="num">8</span> Regelm&auml;&szlig;ige -ar Verben</a></li>
+      <li><a href="#kontraktionen"><span class="num">9</span> Kontraktionen (em/de + Artikel)</a></li>
+      <li><a href="#interrogativos"><span class="num">10</span> Fragew&ouml;rter</a></li>
+      <li><a href="#estar"><span class="num">11</span> Verb estar</a></li>
+      <li><a href="#ser-vs-estar"><span class="num">12</span> Ser vs. Estar</a></li>
+    </ul>
+  </div>
+
+  <!-- 1. Chamar-se -->
+  <div class="topic" id="chamar-se">
+    <div class="topic-title">
+      1. Chamar-se (sich vorstellen)
+      <span class="lesson-ref">Lektion 1</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th>Person</th><th>Verb</th><th>Beispiel</th></tr>
+        <tr><td>Eu</td><td><span class="v">chamo</span>-<span class="r">me</span></td><td>Eu chamo-me Moritz.</td></tr>
+        <tr><td>Tu</td><td><span class="v">chamas</span>-<span class="r">te</span></td><td>Tu chamas-te Pedro.</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">chama</span>-<span class="r">se</span></td><td>Ela chama-se Ana.</td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">chamamo</span>-<span class="r">nos</span></td><td>N&oacute;s chamamo-nos "Os Amigos".</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">chamam</span>-<span class="r">se</span></td><td>Eles chamam-se Jo&atilde;o e Rita.</td></tr>
+      </table>
+      <div class="rule">
+        <strong>Regel: Pronomen-Stellung bei Fragen</strong>
+        Bei Fragen wandert das Reflexivpronomen VOR das Verb:<br>
+        "Como <span class="r">te</span> chamas?" (nicht: "chamas-te")
+      </div>
+      <div class="example">
+        <strong>Fragen nach dem Namen:</strong>
+        Informell: Como te chamas? / Como &eacute; que tu te chamas?<br>
+        Formell: Como se chama? / Como &eacute; que voc&ecirc; se chama?<br>
+        &Uuml;ber andere: Como &eacute; que ele/ela se chama?
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 2. Ser -->
+  <div class="topic" id="ser">
+    <div class="topic-title">
+      2. Verb ser (sein)
+      <span class="lesson-ref">Lektion 2</span>
+    </div>
+    <div class="card">
+      <p>Verwendet f&uuml;r <strong>dauerhafte</strong> Eigenschaften: Name, Nationalit&auml;t, Beruf, Herkunft, feste Eigenschaften.</p>
+      <table>
+        <tr><th>Person</th><th>ser</th><th>Verneinung</th></tr>
+        <tr><td>Eu</td><td><span class="v">sou</span></td><td><span class="neg">n&atilde;o sou</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">&eacute;s</span></td><td><span class="neg">n&atilde;o &eacute;s</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">&eacute;</span></td><td><span class="neg">n&atilde;o &eacute;</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">somos</span></td><td><span class="neg">n&atilde;o somos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">s&atilde;o</span></td><td><span class="neg">n&atilde;o s&atilde;o</span></td></tr>
+      </table>
+      <div class="rule">
+        <strong>Kein Artikel vor Berufen &amp; Nationalit&auml;ten!</strong>
+        Eu sou m&eacute;dico. (NICHT: "Eu sou <em>um</em> m&eacute;dico.")<br>
+        Ela &eacute; portuguesa. (NICHT: "Ela &eacute; <em>uma</em> portuguesa.")
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 3. Artigos -->
+  <div class="topic" id="artigos">
+    <div class="topic-title">
+      3. Artigos definidos (bestimmte Artikel)
+      <span class="lesson-ref">Lektion 2</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th></th><th>Singular</th><th>Plural</th></tr>
+        <tr><td><strong>Maskulin</strong></td><td><span class="v">o</span></td><td><span class="v">os</span></td></tr>
+        <tr><td><strong>Feminin</strong></td><td><span class="v">a</span></td><td><span class="v">as</span></td></tr>
+      </table>
+      <div class="rule">
+        <strong>Faustregel Geschlecht:</strong>
+        W&ouml;rter auf <strong>-o</strong> &rarr; meist maskulin &bull; W&ouml;rter auf <strong>-a</strong> &rarr; meist feminin
+      </div>
+      <div class="rule">
+        <strong>Artikel vor Namen!</strong>
+        Im Portugiesischen: <span class="v">o</span> Pedro, <span class="v">a</span> Maria (anders als im Deutschen)
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 4. Nacionalidades -->
+  <div class="topic" id="nacionalidades">
+    <div class="topic-title">
+      4. Nacionalidades
+      <span class="lesson-ref">Lektion 3</span>
+    </div>
+    <div class="card">
+      <h3>Endungen nach Muster</h3>
+      <table>
+        <tr><th>Pa&iacute;s</th><th>Maskulin</th><th>Feminin</th><th>Muster</th></tr>
+        <tr><td>Portugal</td><td>portugu<span class="v">&ecirc;s</span></td><td>portugu<span class="v">esa</span></td><td>-&ecirc;s / -esa</td></tr>
+        <tr><td>Fran&ccedil;a</td><td>franc<span class="v">&ecirc;s</span></td><td>franc<span class="v">esa</span></td><td>-&ecirc;s / -esa</td></tr>
+        <tr><td>Alemanha</td><td>alem<span class="v">&atilde;o</span></td><td>alem<span class="v">&atilde;</span></td><td>-&atilde;o / -&atilde;</td></tr>
+        <tr><td>Espanha</td><td>espanh<span class="v">ol</span></td><td>espanh<span class="v">ola</span></td><td>-ol / -ola</td></tr>
+        <tr><td>Brasil</td><td>brasileir<span class="v">o</span></td><td>brasileir<span class="v">a</span></td><td>-o / -a</td></tr>
+        <tr><td>Angola</td><td>angolan<span class="v">o</span></td><td>angolan<span class="v">a</span></td><td>-o / -a</td></tr>
+        <tr><td>Guin&eacute;</td><td>guineen<span class="v">se</span></td><td>guineen<span class="v">se</span></td><td>-ense (gleich!)</td></tr>
+      </table>
+      <div class="rule">
+        <strong>Drei Muster merken:</strong>
+        1. <strong>-&ecirc;s / -esa</strong> (portugu&ecirc;s/portuguesa) &bull;
+        2. <strong>-o / -a</strong> (brasileiro/brasileira) &bull;
+        3. <strong>-ense</strong> (gleich f&uuml;r beide: guineense)
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 5. Profiss&otilde;es -->
+  <div class="topic" id="profissoes">
+    <div class="topic-title">
+      5. Profiss&otilde;es (Berufe)
+      <span class="lesson-ref">Lektion 3</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th>Maskulin (o)</th><th>Feminin (a)</th><th>Plural (os/as)</th></tr>
+        <tr><td>professor</td><td>professor<span class="v">a</span></td><td>professores / professoras</td></tr>
+        <tr><td>m&eacute;dico</td><td>m&eacute;dic<span class="v">a</span></td><td>m&eacute;dicos / m&eacute;dicas</td></tr>
+        <tr><td>advogado</td><td>advogad<span class="v">a</span></td><td>advogados / advogadas</td></tr>
+        <tr><td>engenheiro</td><td>engenheir<span class="v">a</span></td><td>engenheiros / engenheiras</td></tr>
+        <tr><td colspan="3" style="background:#fff8e1; color:#795600; font-size:13px; padding:10px 14px;"><strong>Gleiche Form f&uuml;r beide:</strong> jornalista, dentista, estudante, motorista</td></tr>
+      </table>
+      <div class="rule">
+        <strong>Muster:</strong>
+        -o &rarr; -a (m&eacute;dico/m&eacute;dica) &bull; -or &rarr; -ora (professor/professora) &bull; -ista/-ente = gleich (jornalista, estudante)
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 6. Ter -->
+  <div class="topic" id="ter">
+    <div class="topic-title">
+      6. Verb ter (haben)
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <p>Verwendet f&uuml;r Besitz und <strong>Alter</strong>: "Eu <strong>tenho</strong> 30 anos." (Ich bin 30 Jahre alt.)</p>
+      <table>
+        <tr><th>Person</th><th>ter</th></tr>
+        <tr><td>Eu</td><td><span class="v">tenho</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">tens</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">tem</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">temos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">t&ecirc;m</span></td></tr>
+      </table>
+      <div class="rule">
+        <strong>Achtung &ndash; anders als Deutsch!</strong>
+        Alter = ter (haben), NICHT ser (sein): "Eu <strong>tenho</strong> 25 anos." (Ich <em>habe</em> 25 Jahre.)
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 7. N&uacute;meros -->
+  <div class="topic" id="numeros">
+    <div class="topic-title">
+      7. N&uacute;meros cardinais (0&ndash;100)
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th>0&ndash;10</th><th>11&ndash;20</th><th>Zehner</th></tr>
+        <tr><td>0 &ndash; zero</td><td>11 &ndash; onze</td><td>21 &ndash; vinte e um/uma</td></tr>
+        <tr><td>1 &ndash; um/uma</td><td>12 &ndash; doze</td><td>30 &ndash; trinta</td></tr>
+        <tr><td>2 &ndash; dois/duas</td><td>13 &ndash; treze</td><td>40 &ndash; quarenta</td></tr>
+        <tr><td>3 &ndash; tr&ecirc;s</td><td>14 &ndash; catorze</td><td>50 &ndash; cinquenta</td></tr>
+        <tr><td>4 &ndash; quatro</td><td>15 &ndash; quinze</td><td>60 &ndash; sessenta</td></tr>
+        <tr><td>5 &ndash; cinco</td><td>16 &ndash; dezasseis</td><td>70 &ndash; setenta</td></tr>
+        <tr><td>6 &ndash; seis</td><td>17 &ndash; dezassete</td><td>80 &ndash; oitenta</td></tr>
+        <tr><td>7 &ndash; sete</td><td>18 &ndash; dezoito</td><td>90 &ndash; noventa</td></tr>
+        <tr><td>8 &ndash; oito</td><td>19 &ndash; dezanove</td><td>100 &ndash; cem</td></tr>
+        <tr><td>9 &ndash; nove</td><td>20 &ndash; vinte</td><td></td></tr>
+        <tr><td>10 &ndash; dez</td><td></td><td></td></tr>
+      </table>
+      <div class="rule">
+        <strong>PT-PT vs. PT-BR:</strong>
+        In Portugal: dez<strong>a</strong>sseis, dez<strong>a</strong>ssete, dez<strong>a</strong>nove (mit "a"!)<br>
+        Zusammengesetzte Zahlen: vinte <strong>e</strong> um, trinta <strong>e</strong> dois (immer mit "e")
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 8. -ar Verben -->
+  <div class="topic" id="ar-verben">
+    <div class="topic-title">
+      8. Regelm&auml;&szlig;ige -ar Verben
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <p>Das gr&ouml;&szlig;te Verbmuster! Stamm + Endung:</p>
+      <table>
+        <tr><th>Person</th><th>Endung</th><th>morar</th><th>trabalhar</th></tr>
+        <tr><td>Eu</td><td><span class="v">-o</span></td><td>mor<span class="v">o</span></td><td>trabalh<span class="v">o</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">-as</span></td><td>mor<span class="v">as</span></td><td>trabalh<span class="v">as</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">-a</span></td><td>mor<span class="v">a</span></td><td>trabalh<span class="v">a</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">-amos</span></td><td>mor<span class="v">amos</span></td><td>trabalh<span class="v">amos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">-am</span></td><td>mor<span class="v">am</span></td><td>trabalh<span class="v">am</span></td></tr>
+      </table>
+      <div class="example">
+        <strong>Wichtige -ar Verben:</strong>
+        morar (wohnen) &bull; trabalhar (arbeiten) &bull; estudar (studieren) &bull; comprar (kaufen) &bull; almo&ccedil;ar (zu Mittag essen) &bull; falar (sprechen) &bull; tomar (nehmen)
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 9. Kontraktionen -->
+  <div class="topic" id="kontraktionen">
+    <div class="topic-title">
+      9. Kontraktionen (em/de + Artikel)
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th></th><th>+ o</th><th>+ a</th><th>+ os</th><th>+ as</th></tr>
+        <tr><td><strong>em</strong> (in)</td><td><span class="v">no</span></td><td><span class="v">na</span></td><td><span class="v">nos</span></td><td><span class="v">nas</span></td></tr>
+        <tr><td><strong>de</strong> (von)</td><td><span class="v">do</span></td><td><span class="v">da</span></td><td><span class="v">dos</span></td><td><span class="v">das</span></td></tr>
+      </table>
+      <div class="example">
+        <strong>Beispiele:</strong>
+        Eu moro <span class="v">no</span> Porto. (em + o) &bull; Ela &eacute; <span class="v">da</span> Alemanha. (de + a)<br>
+        N&oacute;s estudamos <span class="v">na</span> Faculdade. (em + a) &bull; Eles moram <span class="v">nos</span> Restauradores. (em + os)
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 10. Interrogativos -->
+  <div class="topic" id="interrogativos">
+    <div class="topic-title">
+      10. Pronomes interrogativos (Fragew&ouml;rter)
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th>Portugiesisch</th><th>Deutsch</th><th>Beispiel</th></tr>
+        <tr><td><span class="v">Quem</span></td><td>Wer</td><td>Quem &eacute; ela? &ndash; Sie ist die Maria.</td></tr>
+        <tr><td><span class="v">Como</span></td><td>Wie</td><td>Como se chama? &ndash; Er hei&szlig;t Pedro.</td></tr>
+        <tr><td><span class="v">Qual</span></td><td>Welche/r</td><td>Qual &eacute; a profiss&atilde;o? &ndash; M&eacute;dico.</td></tr>
+        <tr><td><span class="v">Que / O que</span></td><td>Was</td><td>O que &eacute; que ela toca? &ndash; Violoncelo.</td></tr>
+        <tr><td><span class="v">Onde</span></td><td>Wo</td><td>Onde mora? &ndash; Em Lisboa.</td></tr>
+        <tr><td><span class="v">Quando</span></td><td>Wann</td><td>Quando trabalha? &ndash; Todos os dias.</td></tr>
+        <tr><td><span class="v">Quantos/as</span></td><td>Wie viele</td><td>Quantos anos tem? &ndash; 22 anos.</td></tr>
+      </table>
+      <div class="rule">
+        <strong>Quem</strong> = nur f&uuml;r Personen &bull; <strong>Qual/Quais</strong> = hat Plural &bull; <strong>Quanto/a/os/as</strong> = passt sich an Geschlecht + Zahl an
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 11. Estar -->
+  <div class="topic" id="estar">
+    <div class="topic-title">
+      11. Verb estar
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <p>Verwendet f&uuml;r <strong>tempor&auml;re</strong> Zust&auml;nde und <strong>aktuelle Orte</strong>.</p>
+      <table>
+        <tr><th>Person</th><th>estar</th></tr>
+        <tr><td>Eu</td><td><span class="v">estou</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">est&aacute;s</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">est&aacute;</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">estamos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">est&atilde;o</span></td></tr>
+      </table>
+      <div class="example">
+        <strong>Verwendung:</strong>
+        estar + em (Ort): O Pedro <strong>est&aacute; no</strong> cinema.<br>
+        estar + Adjektiv (Zustand): A Filipa <strong>est&aacute;</strong> triste.<br>
+        estar + com (= ter): Eu <strong>estou com</strong> fome. = Eu <strong>tenho</strong> fome.
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+  <!-- 12. Ser vs. Estar -->
+  <div class="topic" id="ser-vs-estar">
+    <div class="topic-title">
+      12. Ser vs. Estar &mdash; Der gro&szlig;e Unterschied
+      <span class="lesson-ref">bald</span>
+    </div>
+    <div class="card">
+      <table>
+        <tr><th></th><th>SER (permanent)</th><th>ESTAR (tempor&auml;r)</th></tr>
+        <tr><td><strong>Eigenschaft</strong></td><td>A Ana <span class="v">&eacute;</span> inteligente.<br><small>(Sie ist generell intelligent)</small></td><td>A Ana <span class="v">est&aacute;</span> cansada.<br><small>(Sie ist gerade m&uuml;de)</small></td></tr>
+        <tr><td><strong>Ort</strong></td><td>Lisboa <span class="v">&eacute;</span> em Portugal.<br><small>(permanent &ndash; Geografie)</small></td><td>O Pedro <span class="v">est&aacute;</span> no cinema.<br><small>(gerade jetzt dort)</small></td></tr>
+        <tr><td><strong>Beruf</strong></td><td>Ela <span class="v">&eacute;</span> m&eacute;dica.<br><small>(Das ist ihr Beruf)</small></td><td>&ndash;</td></tr>
+        <tr><td><strong>Nationalit&auml;t</strong></td><td>Eu <span class="v">sou</span> alem&atilde;o.<br><small>(&auml;ndert sich nicht)</small></td><td>&ndash;</td></tr>
+      </table>
+      <div class="rule">
+        <strong>Einfache Faustregel:</strong>
+        Kann sich das &auml;ndern? &rarr; <span class="v">estar</span><br>
+        Ist es dauerhaft / definiert die Person? &rarr; <span class="v">ser</span>
+      </div>
+      <div class="rule">
+        <strong>ser + em</strong> = permanenter Ort (Geografie): Lisboa <strong>&eacute; em</strong> Portugal.<br>
+        <strong>estar + em</strong> = aktueller Aufenthaltsort: O livro <strong>est&aacute; na</strong> mesa.
+      </div>
+    </div>
+    <a href="#" class="back-top">&uarr; nach oben</a>
+  </div>
+
+</div>
+
+</body>
+</html>

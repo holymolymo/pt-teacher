@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 3 - Nacionalidades + Profissões</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f5f0eb;
+    color: #2d2a26;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #6b6560;
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+
+  .back-link:hover { color: #e8721d; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .lesson-tag {
+    display: inline-block;
+    background: #e8721d;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a1715;
+  }
+
+  .header p {
+    font-size: 16px;
+    color: #6b6560;
+  }
+
+  .section { margin-bottom: 40px; }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #e8721d;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8d5c4;
+  }
+
+  .grammar-box {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .grammar-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .grammar-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #4a4540;
+    margin-bottom: 12px;
+  }
+
+  .grammar-box p:last-child { margin-bottom: 0; }
+
+  .highlight {
+    background: #fff3e0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  th {
+    background: #2d2a26;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #ede6df;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #faf8f5; }
+
+  .v { color: #e8721d; font-weight: 600; }
+
+  .insight {
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1b5e20;
+  }
+
+  .insight strong { display: block; margin-bottom: 4px; }
+
+  .recall-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #795600;
+  }
+
+  .recall-box strong { display: block; margin-bottom: 4px; }
+
+  .exercise-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+  }
+
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+  .exercise-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b6560;
+    margin-bottom: 12px;
+  }
+
+  .exercise-prompt {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color: #2d2a26;
+  }
+
+  .exercise-hint {
+    font-size: 13px;
+    color: #9e9892;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .input-row span { font-size: 16px; }
+
+  .answer-input {
+    border: 2px solid #e8d5c4;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #faf8f5;
+    color: #2d2a26;
+    width: 200px;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+
+  .feedback {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+  }
+
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+
+  .translation-prompt {
+    background: #f5f0eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #6b6560;
+  }
+
+  .translation-input {
+    width: 100%;
+    border: 2px solid #e8d5c4;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #faf8f5;
+    color: #2d2a26;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+
+  .check-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 40px auto 0;
+    background: #e8721d;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .check-btn:hover { background: #d4650f; }
+  .check-btn:active { transform: scale(0.98); }
+
+  .results {
+    display: none;
+    text-align: center;
+    margin-top: 32px;
+    padding: 32px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .results.show { display: block; }
+
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+
+  .reset-btn {
+    display: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 16px auto 0;
+    background: white;
+    color: #e8721d;
+    border: 2px solid #e8721d;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .reset-btn:hover { background: #fff8f2; }
+  .reset-btn.show { display: block; }
+
+  .next-btn {
+    display: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 12px auto 0;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .next-btn.show { display: block; }
+  .next-btn:hover { background: #256b29; }
+
+  @media (max-width: 600px) {
+    .page { padding: 24px 16px 60px; }
+    .header h1 { font-size: 26px; }
+    .answer-input { width: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 3</div>
+    <h1>Nacionalidades + Profiss&otilde;es</h1>
+    <p>L&auml;nder, Nationalit&auml;ten und Berufe</p>
+  </div>
+
+  <!-- Grammatik -->
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Nacionalidades &mdash; Drei Muster</h3>
+      <p>Nationalit&auml;ten &auml;ndern sich je nach Geschlecht. Es gibt <strong>drei Hauptmuster</strong>:</p>
+
+      <table>
+        <tr><th>Muster</th><th>Maskulin</th><th>Feminin</th><th>L&auml;nder</th></tr>
+        <tr>
+          <td><strong>1. -&ecirc;s / -esa</strong></td>
+          <td>portugu<span class="v">&ecirc;s</span></td>
+          <td>portugu<span class="v">esa</span></td>
+          <td>Portugal, Fran&ccedil;a, Inglaterra, China, Jap&atilde;o</td>
+        </tr>
+        <tr>
+          <td><strong>2. -o / -a</strong></td>
+          <td>brasileir<span class="v">o</span></td>
+          <td>brasileir<span class="v">a</span></td>
+          <td>Brasil, R&uacute;ssia, Angola, Cuba, Marrocos, Eg&iacute;pto</td>
+        </tr>
+        <tr>
+          <td><strong>3. -ense</strong></td>
+          <td>guineen<span class="v">se</span></td>
+          <td>guineen<span class="v">se</span></td>
+          <td>Guin&eacute;, S&atilde;o Tom&eacute;</td>
+        </tr>
+      </table>
+
+      <p><strong>Sonderf&auml;lle:</strong></p>
+      <table>
+        <tr><th>Pa&iacute;s</th><th>Maskulin</th><th>Feminin</th></tr>
+        <tr><td>Alemanha</td><td>alem<span class="v">&atilde;o</span></td><td>alem<span class="v">&atilde;</span></td></tr>
+        <tr><td>Espanha</td><td>espanh<span class="v">ol</span></td><td>espanh<span class="v">ola</span></td></tr>
+        <tr><td>B&eacute;lgica</td><td>belg<span class="v">a</span></td><td>belg<span class="v">a</span></td></tr>
+        <tr><td>Su&eacute;cia</td><td>suec<span class="v">o</span></td><td>suec<span class="v">a</span></td></tr>
+        <tr><td>Noruega</td><td>noruegu<span class="v">&ecirc;s</span></td><td>noruegu<span class="v">esa</span></td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Zusammenhang zu Lektion 2:</strong>
+        Nationalit&auml;ten werden mit <strong>ser</strong> verwendet &mdash; OHNE Artikel!<br>
+        "Eu <strong>sou</strong> alem&atilde;o." &bull; "Ela <strong>&eacute;</strong> francesa." &bull; "Eles <strong>s&atilde;o</strong> ingleses."
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Profiss&otilde;es &mdash; Berufe</h3>
+      <p>Auch Berufe &auml;ndern sich nach Geschlecht. Drei Muster:</p>
+
+      <table>
+        <tr><th>Muster</th><th>Maskulin (o)</th><th>Feminin (a)</th></tr>
+        <tr>
+          <td><strong>-o &rarr; -a</strong></td>
+          <td>m&eacute;dic<span class="v">o</span>, advogad<span class="v">o</span>, engenheir<span class="v">o</span></td>
+          <td>m&eacute;dic<span class="v">a</span>, advogad<span class="v">a</span>, engenheir<span class="v">a</span></td>
+        </tr>
+        <tr>
+          <td><strong>-or &rarr; -ora</strong></td>
+          <td>profess<span class="v">or</span>, tradut<span class="v">or</span>, cant<span class="v">or</span></td>
+          <td>profess<span class="v">ora</span>, tradut<span class="v">ora</span>, cant<span class="v">ora</span></td>
+        </tr>
+        <tr>
+          <td><strong>gleich!</strong></td>
+          <td colspan="2">jornalist<span class="v">a</span>, dentist<span class="v">a</span>, estudant<span class="v">e</span>, motorist<span class="v">a</span>, economist<span class="v">a</span></td>
+        </tr>
+      </table>
+
+      <div class="insight">
+        <strong>Merkhilfe f&uuml;r gleiche Formen:</strong>
+        Berufe auf <strong>-ista</strong> und <strong>-ente</strong> &auml;ndern sich NICHT. Nur der Artikel zeigt das Geschlecht:<br>
+        <strong>o</strong> jornalista (der Journalist) / <strong>a</strong> jornalista (die Journalistin)
+      </div>
+
+      <div class="recall-box">
+        <strong>Wiederholung Lektion 2:</strong>
+        Berufe stehen mit <strong>ser</strong> und OHNE Artikel:<br>
+        "Eu sou m&eacute;dico." (NICHT: "Eu sou <em>um</em> m&eacute;dico.")
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Nacionalidades -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Welche Nationalit&auml;t? (maskuline Form)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 5</div>
+      <div class="exercise-hint">Portugal &rarr; ?</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="português,portugues,portuges" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 5</div>
+      <div class="exercise-hint">Alemanha &rarr; ?</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="alemão,alemao" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 5</div>
+      <div class="exercise-hint">Fran&ccedil;a &rarr; ?</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="francês,frances" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 5</div>
+      <div class="exercise-hint">Brasil &rarr; ?</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="brasileiro" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 5</div>
+      <div class="exercise-hint">Espanha &rarr; ?</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="espanhol" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Feminin-Form -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Jetzt die feminine Form!</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 10</div>
+      <div class="exercise-hint">portugu&ecirc;s &rarr; ?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="portuguesa" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 10</div>
+      <div class="exercise-hint">alem&atilde;o &rarr; ?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="alemã,alema" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 10</div>
+      <div class="exercise-hint">franc&ecirc;s &rarr; ?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="francesa" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 10</div>
+      <div class="exercise-hint">brasileiro &rarr; ?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="brasileira" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 10</div>
+      <div class="exercise-hint">espanhol &rarr; ?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="espanhola" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Profiss&otilde;es -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Profiss&otilde;es: Maskulin &rarr; Feminin</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 14</div>
+      <div class="exercise-hint">o professor &rarr; ?</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="professora" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 14</div>
+      <div class="exercise-hint">o m&eacute;dico &rarr; ?</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="médica,medica" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 14</div>
+      <div class="exercise-hint">o advogado &rarr; ?</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="advogada" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 14</div>
+      <div class="exercise-hint">o jornalista &rarr; ? (Achtung!)</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="jornalista" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 4: Ganze S&auml;tze -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 4 &mdash; &Uuml;bersetze auf Portugiesisch</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="translation-prompt">Er ist Franzose und sie ist Deutsche.</div>
+      <input type="text" class="translation-input" data-answers="ele é francês e ela é alemã,ele e frances e ela e alema,ele é frances e ela é alema" placeholder="Schreib den ganzen Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="translation-prompt">Die Maria ist Lehrerin. Sie ist Portugiesin.</div>
+      <input type="text" class="translation-input" data-answers="a maria é professora. ela é portuguesa.,a maria e professora. ela e portuguesa.,a maria é professora ela é portuguesa" placeholder="Schreib den ganzen Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="translation-prompt">Ich bin Deutscher und ich bin Ingenieur.</div>
+      <input type="text" class="translation-input" data-answers="eu sou alemão e sou engenheiro,eu sou alemao e sou engenheiro,sou alemão e sou engenheiro,eu sou alemão e eu sou engenheiro" placeholder="Schreib den ganzen Satz...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 18</div>
+      <div class="translation-prompt">Sie (eles) sind keine Brasilianer. Sie sind Portugiesen.</div>
+      <input type="text" class="translation-input" data-answers="eles não são brasileiros. são portugueses.,eles nao sao brasileiros. sao portugueses.,eles não são brasileiros são portugueses,eles nao sao brasileiros sao portugueses" placeholder="Schreib den ganzen Satz...">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  <a class="next-btn" id="nextBtn" href="lektion-04-ter-numeros.html">N&auml;chste Lektion &rarr;</a>
+  <a class="dashboard-link" id="dashLink" href="index.html" style="display:none;font-size:13px;color:#6b6560;text-decoration:none;text-align:center;margin-top:8px;">Zur&uuml;ck zum Dashboard</a>
+
+</div>
+
+<script>
+function normalize(str) {
+  return str.trim().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/[.!?,;:'"]/g, '');
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({length: m + 1}, () => Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++)
+    for (let j = 1; j <= n; j++)
+      dp[i][j] = Math.min(
+        dp[i-1][j] + 1,
+        dp[i][j-1] + 1,
+        dp[i-1][j-1] + (a[i-1] !== b[j-1] ? 1 : 0)
+      );
+  return dp[m][n];
+}
+
+function isCloseEnough(userAnswer, accepted) {
+  if (accepted.includes(userAnswer)) return 'exact';
+  for (const ans of accepted) {
+    const maxDist = ans.length <= 8 ? 1 : 2;
+    if (levenshtein(userAnswer, ans) <= maxDist) return 'close';
+  }
+  return 'wrong';
+}
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll('.answer-input, .translation-input');
+  let correct = 0;
+  let total = inputs.length;
+
+  inputs.forEach(input => {
+    const acceptedRaw = input.getAttribute('data-answers');
+    const accepted = acceptedRaw.split(',').map(a => normalize(a));
+    const userAnswer = normalize(input.value);
+    const feedback = input.closest('.exercise-card').querySelector('.feedback');
+    const match = isCloseEnough(userAnswer, accepted);
+
+    if (userAnswer === '') {
+      input.classList.remove('correct');
+      input.classList.add('incorrect');
+      feedback.className = 'feedback show incorrect';
+      feedback.textContent = 'Nicht ausgef\u00fcllt. L\u00f6sung: ' + acceptedRaw.split(',')[0];
+    } else if (match === 'exact') {
+      input.classList.remove('incorrect');
+      input.classList.add('correct');
+      feedback.className = 'feedback show correct';
+      feedback.textContent = 'Richtig! \u2705';
+      correct++;
+    } else if (match === 'close') {
+      input.classList.remove('incorrect');
+      input.classList.add('correct');
+      feedback.className = 'feedback show correct';
+      feedback.textContent = 'Passt! \u2705 (Perfekte Schreibweise: ' + acceptedRaw.split(',')[0] + ')';
+      correct++;
+    } else {
+      input.classList.remove('correct');
+      input.classList.add('incorrect');
+      feedback.className = 'feedback show incorrect';
+      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split(',')[0];
+    }
+  });
+
+  const results = document.getElementById('results');
+  results.classList.add('show');
+  document.getElementById('score').textContent = correct + ' / ' + total;
+
+  const msg = document.getElementById('scoreMessage');
+  if (correct === total) {
+    msg.textContent = 'Perfeito! Alles richtig \u2014 weiter gehts!';
+  } else if (correct >= total * 0.7) {
+    msg.textContent = 'Muito bem! Fast alles. Schau dir die Fehler nochmal an.';
+  } else if (correct >= total * 0.4) {
+    msg.textContent = 'Bom come\u00e7o! Scroll hoch zur Grammatik und versuch es erneut.';
+  } else {
+    msg.textContent = 'Noch \u00fcben! Kein Stress \u2014 schau dir die Tabellen oben nochmal in Ruhe an.';
+  }
+
+  document.getElementById('resetBtn').classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('dashLink').classList.add('show');
+  localStorage.setItem('pt-lektion-03','done');
+  document.querySelector('.check-btn').style.display = 'none';
+  results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetAll() {
+  document.querySelectorAll('.answer-input, .translation-input').forEach(input => {
+    input.value = '';
+    input.classList.remove('correct', 'incorrect');
+  });
+  document.querySelectorAll('.feedback').forEach(f => { f.className = 'feedback'; f.textContent = ''; });
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.answer-input, .translation-input').forEach((input, i, arr) => {
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (i < arr.length - 1) arr[i + 1].focus();
+      else checkAnswers();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
