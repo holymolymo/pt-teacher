@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiederholung 2 - Lektion 1-5</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #5c6bc0; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .topics-covered { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .topic-chip { background: white; border: 1px solid #e8d5c4; border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 500; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #5c6bc0; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #c5cae9; display: flex; align-items: center; gap: 8px; }
+  .section-title .from { background: #e8eaf6; color: #3949ab; font-size: 11px; padding: 3px 8px; border-radius: 10px; letter-spacing: 0.5px; margin-left: auto; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; display: flex; justify-content: space-between; }
+  .exercise-label .source { font-weight: 500; color: #9e9892; font-size: 11px; background: #f5f0eb; padding: 2px 8px; border-radius: 8px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 220px; outline: none; }
+  .answer-input:focus { border-color: #5c6bc0; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #5c6bc0; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #5c6bc0; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #3f51b5; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #5c6bc0; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .topic-scores { text-align: left; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ede6df; }
+  .topic-scores h4 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #6b6560; margin-bottom: 12px; }
+  .topic-score-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f5f0eb; font-size: 14px; }
+  .topic-score-row:last-child { border-bottom: none; }
+  .topic-score-bar { width: 120px; height: 8px; background: #ede6df; border-radius: 4px; overflow: hidden; }
+  .topic-score-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+  .topic-score-fill.good { background: #2e7d32; }
+  .topic-score-fill.ok { background: #f9a825; }
+  .topic-score-fill.bad { background: #c62828; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #5c6bc0; border: 2px solid #5c6bc0; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; } .reset-btn:hover { background: #e8eaf6; }
+  .next-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-btn.show { display: block; } .next-btn:hover { background: #256b29; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 180px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Wiederholung 2</div>
+    <h1>Alles auf dem Pr&uuml;fstand</h1>
+    <p>Gemischte &Uuml;bungen aus Lektion 1&ndash;5</p>
+    <div class="topics-covered">
+      <span class="topic-chip">Chamar-se</span>
+      <span class="topic-chip">Ser</span>
+      <span class="topic-chip">Artigos</span>
+      <span class="topic-chip">Nacionalidades</span>
+      <span class="topic-chip">Profiss&otilde;es</span>
+      <span class="topic-chip">Ter</span>
+      <span class="topic-chip">N&uacute;meros</span>
+      <span class="topic-chip">-ar Verben</span>
+    </div>
+  </div>
+
+  <!-- Bloco A: Chamar-se + Ser -->
+  <div class="section">
+    <div class="section-title">Bloco A &mdash; Sich vorstellen <span class="from">L1+L2</span></div>
+
+    <div class="exercise-card" data-topic="chamar-se">
+      <div class="exercise-label">1 von 22 <span class="source">chamar-se</span></div>
+      <div class="exercise-hint">Wir hei&szlig;en "Os Amigos".</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="chamamo-nos" placeholder="...">
+        <span>"Os Amigos".</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser">
+      <div class="exercise-label">2 von 22 <span class="source">ser</span></div>
+      <div class="exercise-hint">Ihr (vocês) seid Studenten.</div>
+      <div class="input-row">
+        <span>Voc&ecirc;s</span>
+        <input type="text" class="answer-input" data-answers="são,sao" placeholder="...">
+        <span>estudantes.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser">
+      <div class="exercise-label">3 von 22 <span class="source">ser</span></div>
+      <div class="exercise-hint">Du bist nicht Spanierin.</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="não és,nao es" placeholder="..." style="width: 160px;">
+        <span>espanhola.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- Bloco B: Nacionalidades + Profiss&otilde;es -->
+  <div class="section">
+    <div class="section-title">Bloco B &mdash; Nationalit&auml;t &amp; Beruf <span class="from">L3</span></div>
+
+    <div class="exercise-card" data-topic="nacionalidades">
+      <div class="exercise-label">4 von 22 <span class="source">nacionalidades</span></div>
+      <div class="exercise-hint">Russland &rarr; feminin?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="russa" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="nacionalidades">
+      <div class="exercise-label">5 von 22 <span class="source">nacionalidades</span></div>
+      <div class="exercise-hint">Belgien &rarr; maskulin (Achtung!)</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="belga" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="profissoes">
+      <div class="exercise-label">6 von 22 <span class="source">profiss&otilde;es</span></div>
+      <div class="exercise-hint">o cantor &rarr; feminin?</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="cantora" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="profissoes">
+      <div class="exercise-label">7 von 22 <span class="source">profiss&otilde;es</span></div>
+      <div class="exercise-hint">o motorista &rarr; feminin? (Achtung!)</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="motorista" placeholder="...">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- Bloco C: Ter + N&uacute;meros -->
+  <div class="section">
+    <div class="section-title">Bloco C &mdash; Haben &amp; Zahlen <span class="from">L4</span></div>
+
+    <div class="exercise-card" data-topic="ter">
+      <div class="exercise-label">8 von 22 <span class="source">ter</span></div>
+      <div class="exercise-hint">Wir haben zwei Kinder.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="temos" placeholder="...">
+        <span>dois filhos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ter">
+      <div class="exercise-label">9 von 22 <span class="source">ter</span></div>
+      <div class="exercise-hint">Sie (eles) haben ein Haus.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="têm,tem" placeholder="...">
+        <span>uma casa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="numeros">
+      <div class="exercise-label">10 von 22 <span class="source">n&uacute;meros</span></div>
+      <div class="exercise-hint">Schreibe als Wort: 19</div>
+      <input type="text" class="answer-input" data-answers="dezanove" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="numeros">
+      <div class="exercise-label">11 von 22 <span class="source">n&uacute;meros</span></div>
+      <div class="exercise-hint">Schreibe als Wort: 56</div>
+      <input type="text" class="answer-input" data-answers="cinquenta e seis" placeholder="..." style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ter">
+      <div class="exercise-label">12 von 22 <span class="source">ter</span></div>
+      <div class="exercise-hint">Wie alt bist du?</div>
+      <input type="text" class="translation-input" data-answers="quantos anos tens?,quantos anos tens" placeholder="...">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- Bloco D: -ar Verben -->
+  <div class="section">
+    <div class="section-title">Bloco D &mdash; -ar Verben <span class="from">L5</span></div>
+
+    <div class="exercise-card" data-topic="ar-verben">
+      <div class="exercise-label">13 von 22 <span class="source">-ar Verben</span></div>
+      <div class="exercise-hint">Eu ______ (falar) portugu&ecirc;s.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="falo" placeholder="...">
+        <span>portugu&ecirc;s.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ar-verben">
+      <div class="exercise-label">14 von 22 <span class="source">-ar Verben</span></div>
+      <div class="exercise-hint">N&oacute;s ______ (almo&ccedil;ar) na cantina.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="almoçamos,almocamos" placeholder="...">
+        <span>na cantina.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ar-verben">
+      <div class="exercise-label">15 von 22 <span class="source">-ar Verben</span></div>
+      <div class="exercise-hint">Eles ______ (estudar) ingl&ecirc;s.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="estudam" placeholder="...">
+        <span>ingl&ecirc;s.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ar-verben">
+      <div class="exercise-label">16 von 22 <span class="source">-ar Verben</span></div>
+      <div class="exercise-hint">Tu ______ (trabalhar) em Lisboa?</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="trabalhas" placeholder="...">
+        <span>em Lisboa?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- Bloco E: Alles zusammen -->
+  <div class="section">
+    <div class="section-title">Bloco E &mdash; Komplette S&auml;tze <span class="from">Mix</span></div>
+
+    <div class="exercise-card" data-topic="mix">
+      <div class="exercise-label">17 von 22 <span class="source">mix</span></div>
+      <div class="translation-prompt">Wie hei&szlig;t du? Ich hei&szlig;e Pedro.</div>
+      <input type="text" class="translation-input" data-answers="como é que tu te chamas? chamo-me pedro.,como te chamas? chamo-me pedro.,como é que te chamas? eu chamo-me pedro." placeholder="...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mix">
+      <div class="exercise-label">18 von 22 <span class="source">mix</span></div>
+      <div class="translation-prompt">Sie ist 28 Jahre alt und sie ist Lehrerin.</div>
+      <input type="text" class="translation-input" data-answers="ela tem 28 anos e é professora,ela tem vinte e oito anos e é professora,ela tem 28 anos e ela é professora" placeholder="...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mix">
+      <div class="exercise-label">19 von 22 <span class="source">mix</span></div>
+      <div class="translation-prompt">Wir wohnen in Berlin und arbeiten in Lissabon.</div>
+      <input type="text" class="translation-input" data-answers="nós moramos em berlim e trabalhamos em lisboa,moramos em berlim e trabalhamos em lisboa" placeholder="...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mix">
+      <div class="exercise-label">20 von 22 <span class="source">mix</span></div>
+      <div class="translation-prompt">Sie (eles) sind Franzosen, sind 30 Jahre alt und sprechen Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="eles são franceses, têm 30 anos e falam português.,eles são franceses tem 30 anos e falam português,eles sao franceses tem trinta anos e falam portugues" placeholder="...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mix">
+      <div class="exercise-label">21 von 22 <span class="source">mix</span></div>
+      <div class="translation-prompt">Ich bin Deutscher, ich bin Ingenieur und ich studiere Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="eu sou alemão, sou engenheiro e estudo português.,sou alemão sou engenheiro e estudo português,sou alemao sou engenheiro e estudo portugues" placeholder="...">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mix">
+      <div class="exercise-label">22 von 22 <span class="source">mix</span></div>
+      <div class="translation-prompt">Der Pedro hei&szlig;t Pedro Silva. Er ist 35 Jahre alt. Er ist Portugiese und er ist Arzt. Er wohnt in Porto und arbeitet im Krankenhaus.</div>
+      <input type="text" class="translation-input" data-answers="o pedro chama-se pedro silva. tem 35 anos. é português e é médico. mora no porto e trabalha no hospital.,o pedro chama-se pedro silva. ele tem trinta e cinco anos. é portugues e é medico. mora no porto e trabalha no hospital." placeholder="Großer Mix-Satz!">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+    <div class="topic-scores" id="topicScores"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:2;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  const topicStats={};
+  inputs.forEach(input=>{
+    const card=input.closest('.exercise-card'),topic=card.getAttribute('data-topic')||'mix';
+    if(!topicStats[topic])topicStats[topic]={correct:0,total:0};
+    topicStats[topic].total++;
+    const raw=input.getAttribute('data-answers'),accepted=raw.split(',').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=card.querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split(',')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;topicStats[topic].correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split(',')[0]+')';correct++;topicStats[topic].correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split(',')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Alles sitzt!';
+  else if(pct>=0.85)msg.textContent='Excelente! Fast perfekt.';
+  else if(pct>=0.7)msg.textContent='Muito bem! Gutes Ergebnis.';
+  else if(pct>=0.5)msg.textContent='Bom! Einige Themen brauchen Wiederholung.';
+  else msg.textContent='Noch \u00fcben! Schau dir die Lektionen nochmal an.';
+  const topicNames={'chamar-se':'Chamar-se','ser':'Verb ser','artigos':'Artikel','nacionalidades':'Nacionalidades','profissoes':'Profiss\u00f5es','ter':'Verb ter','numeros':'N\u00fameros','ar-verben':'-ar Verben','mix':'Gemischt'};
+  let html='<h4>Ergebnis pro Thema</h4>';
+  for(const[topic,stats]of Object.entries(topicStats)){
+    const tp=Math.round((stats.correct/stats.total)*100),cls=tp>=80?'good':tp>=50?'ok':'bad';
+    html+='<div class="topic-score-row"><span>'+(topicNames[topic]||topic)+'</span><span>'+stats.correct+'/'+stats.total+'</span><div class="topic-score-bar"><div class="topic-score-fill '+cls+'" style="width:'+tp+'%"></div></div></div>';
+  }
+  document.getElementById('topicScores').innerHTML=html;
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-wiederholung-02','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
