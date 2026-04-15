@@ -211,7 +211,7 @@
       <div class="exercise-hint">Wir essen in der Kantine zu Mittag.</div>
       <div class="input-row">
         <span>N&oacute;s</span>
-        <input type="text" class="answer-input" data-answers="almoçamos,almocamos" placeholder="...">
+        <input type="text" class="answer-input" data-answers="almoçamos|almocamos" placeholder="...">
         <span>na cantina.</span>
       </div>
       <div class="feedback"></div>
@@ -247,35 +247,35 @@
     <div class="exercise-card">
       <div class="exercise-label">11 von 15</div>
       <div class="translation-prompt">Ich wohne in Lissabon und ich arbeite in Cascais.</div>
-      <input type="text" class="translation-input" data-answers="eu moro em lisboa e trabalho em cascais,moro em lisboa e trabalho em cascais" placeholder="Schreib den Satz...">
+      <input type="text" class="translation-input" data-answers="eu moro em lisboa e trabalho em cascais|moro em lisboa e trabalho em cascais" placeholder="Schreib den Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">12 von 15</div>
       <div class="translation-prompt">Wir lernen Portugiesisch.</div>
-      <input type="text" class="translation-input" data-answers="nós estudamos português,nos estudamos portugues,estudamos português,estudamos portugues" placeholder="Schreib den Satz...">
+      <input type="text" class="translation-input" data-answers="nós estudamos português|nos estudamos portugues|estudamos português|estudamos portugues" placeholder="Schreib den Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">13 von 15</div>
       <div class="translation-prompt">Sie (eles) essen zu Mittag in der Kantine und essen zu Abend zu Hause.</div>
-      <input type="text" class="translation-input" data-answers="eles almoçam na cantina e jantam em casa,eles almocam na cantina e jantam em casa" placeholder="Schreib den Satz...">
+      <input type="text" class="translation-input" data-answers="eles almoçam na cantina e jantam em casa|eles almocam na cantina e jantam em casa" placeholder="Schreib den Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">14 von 15</div>
       <div class="translation-prompt">Sprichst du Portugiesisch? Ja, ich spreche Portugiesisch und Englisch.</div>
-      <input type="text" class="translation-input" data-answers="tu falas português? sim, eu falo português e inglês.,falas portugues? sim falo portugues e ingles,tu falas portugues? sim eu falo portugues e ingles" placeholder="Schreib den Satz...">
+      <input type="text" class="translation-input" data-answers="tu falas português sim eu falo português e inglês|falas portugues sim falo portugues e ingles|tu falas portugues sim eu falo portugues e ingles" placeholder="Schreib den Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">15 von 15</div>
       <div class="translation-prompt">Ich hei&szlig;e Moritz. Ich bin Deutscher. Ich bin 30 Jahre alt. Ich wohne in Berlin und ich arbeite als Ingenieur.</div>
-      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão. tenho 30 anos. moro em berlim e trabalho como engenheiro.,eu chamo-me moritz. sou alemao. tenho trinta anos. moro em berlim e trabalho como engenheiro." placeholder="Alles zusammen!">
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão. tenho 30 anos. moro em berlim e trabalho como engenheiro.|eu chamo-me moritz. sou alemao. tenho trinta anos. moro em berlim e trabalho como engenheiro." placeholder="Alles zusammen!">
       <div class="feedback"></div>
     </div>
   </div>
@@ -303,12 +303,12 @@ function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(con
 function checkAnswers(){
   const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
   inputs.forEach(input=>{
-    const raw=input.getAttribute('data-answers'),accepted=raw.split(',').map(a=>normalize(a)),user=normalize(input.value);
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
     const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
-    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split(',')[0];}
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split('|')[0];}
     else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
-    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split(',')[0]+')';correct++;}
-    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split(',')[0];}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
   });
   document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
   const pct=correct/total,msg=document.getElementById('scoreMessage');

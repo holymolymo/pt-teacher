@@ -416,7 +416,7 @@
       <div class="exercise-hint">Du bist Studentin.</div>
       <div class="input-row">
         <span>Tu</span>
-        <input type="text" class="answer-input" data-answers="és,es" placeholder="...">
+        <input type="text" class="answer-input" data-answers="és|es" placeholder="...">
         <span>estudante.</span>
       </div>
       <div class="feedback"></div>
@@ -427,7 +427,7 @@
       <div class="exercise-hint">Wir sind keine Italiener.</div>
       <div class="input-row">
         <span>N&oacute;s</span>
-        <input type="text" class="answer-input" data-answers="não somos,nao somos" placeholder="..." style="width: 180px;">
+        <input type="text" class="answer-input" data-answers="não somos|nao somos" placeholder="..." style="width: 180px;">
         <span>italianos.</span>
       </div>
       <div class="feedback"></div>
@@ -438,7 +438,7 @@
       <div class="exercise-hint">Sie (vocês) sind Ingenieure.</div>
       <div class="input-row">
         <span>Voc&ecirc;s</span>
-        <input type="text" class="answer-input" data-answers="são,sao" placeholder="...">
+        <input type="text" class="answer-input" data-answers="são|sao" placeholder="...">
         <span>engenheiros.</span>
       </div>
       <div class="feedback"></div>
@@ -492,7 +492,7 @@
       <div class="exercise-hint">Inglaterra &rarr; maskulin?</div>
       <div class="input-row">
         <span>Ele &eacute;</span>
-        <input type="text" class="answer-input" data-answers="inglês,ingles" placeholder="...">
+        <input type="text" class="answer-input" data-answers="inglês|ingles" placeholder="...">
       </div>
       <div class="feedback"></div>
     </div>
@@ -512,7 +512,7 @@
       <div class="exercise-hint">Jap&atilde;o &rarr; maskulin?</div>
       <div class="input-row">
         <span>Ele &eacute;</span>
-        <input type="text" class="answer-input" data-answers="japonês,japones" placeholder="...">
+        <input type="text" class="answer-input" data-answers="japonês|japones" placeholder="...">
       </div>
       <div class="feedback"></div>
     </div>
@@ -576,28 +576,28 @@
     <div class="exercise-card" data-topic="mix">
       <div class="exercise-label">17 von 20 <span class="source">mix</span></div>
       <div class="translation-prompt">Ich hei&szlig;e Moritz. Ich bin Deutscher und ich bin Ingenieur.</div>
-      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão e sou engenheiro.,eu chamo-me moritz. eu sou alemão e sou engenheiro.,eu chamo-me moritz. sou alemao e sou engenheiro.,chamo-me moritz. sou alemao e sou engenheiro" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão e sou engenheiro.|eu chamo-me moritz. eu sou alemão e sou engenheiro.|eu chamo-me moritz. sou alemao e sou engenheiro.|chamo-me moritz. sou alemao e sou engenheiro" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card" data-topic="mix">
       <div class="exercise-label">18 von 20 <span class="source">mix</span></div>
       <div class="translation-prompt">Wie hei&szlig;t sie? Sie hei&szlig;t Maria. Sie ist Portugiesin.</div>
-      <input type="text" class="translation-input" data-answers="como é que ela se chama? ela chama-se maria. ela é portuguesa.,como e que ela se chama? ela chama-se maria. ela e portuguesa." placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="como é que ela se chama? ela chama-se maria. ela é portuguesa.|como e que ela se chama? ela chama-se maria. ela e portuguesa." placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card" data-topic="mix">
       <div class="exercise-label">19 von 20 <span class="source">mix</span></div>
       <div class="translation-prompt">Der Pedro ist kein Arzt. Er ist Lehrer.</div>
-      <input type="text" class="translation-input" data-answers="o pedro não é médico. ele é professor.,o pedro nao e medico. ele e professor.,o pedro não é médico. é professor." placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="o pedro não é médico. ele é professor.|o pedro nao e medico. ele e professor.|o pedro não é médico. é professor." placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card" data-topic="mix">
       <div class="exercise-label">20 von 20 <span class="source">mix</span></div>
       <div class="translation-prompt">Sie (elas) hei&szlig;en Ana und Teresa. Sie sind Spanierinnen und sie sind &Auml;rztinnen.</div>
-      <input type="text" class="translation-input" data-answers="elas chamam-se ana e teresa. são espanholas e são médicas.,elas chamam-se ana e teresa. sao espanholas e sao medicas.,elas chamam-se ana e teresa. elas são espanholas e são médicas." placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="elas chamam-se ana e teresa. são espanholas e são médicas.|elas chamam-se ana e teresa. sao espanholas e sao medicas.|elas chamam-se ana e teresa. elas são espanholas e são médicas." placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
   </div>
@@ -663,7 +663,7 @@ function checkAnswers() {
     topicStats[topic].total++;
 
     const acceptedRaw = input.getAttribute('data-answers');
-    const accepted = acceptedRaw.split(',').map(a => normalize(a));
+    const accepted = acceptedRaw.split('|').map(a => normalize(a));
     const userAnswer = normalize(input.value);
     const feedback = card.querySelector('.feedback');
     const match = isCloseEnough(userAnswer, accepted);
@@ -672,7 +672,7 @@ function checkAnswers() {
       input.classList.remove('correct');
       input.classList.add('incorrect');
       feedback.className = 'feedback show incorrect';
-      feedback.textContent = 'Nicht ausgef\u00fcllt. L\u00f6sung: ' + acceptedRaw.split(',')[0];
+      feedback.textContent = 'Nicht ausgef\u00fcllt. L\u00f6sung: ' + acceptedRaw.split('|')[0];
     } else if (match === 'exact') {
       input.classList.remove('incorrect');
       input.classList.add('correct');
@@ -684,14 +684,14 @@ function checkAnswers() {
       input.classList.remove('incorrect');
       input.classList.add('correct');
       feedback.className = 'feedback show correct';
-      feedback.textContent = 'Passt! \u2705 (Perfekt: ' + acceptedRaw.split(',')[0] + ')';
+      feedback.textContent = 'Passt! \u2705 (Perfekt: ' + acceptedRaw.split('|')[0] + ')';
       correct++;
       topicStats[topic].correct++;
     } else {
       input.classList.remove('correct');
       input.classList.add('incorrect');
       feedback.className = 'feedback show incorrect';
-      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split(',')[0];
+      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split('|')[0];
     }
   });
 

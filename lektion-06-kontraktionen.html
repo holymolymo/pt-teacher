@@ -275,28 +275,28 @@
     <div class="exercise-card">
       <div class="exercise-label">15 von 18</div>
       <div class="translation-prompt">Ich wohne in Berlin und arbeite in Lissabon.</div>
-      <input type="text" class="translation-input" data-answers="eu moro em berlim e trabalho em lisboa,moro em berlim e trabalho em lisboa" placeholder="...">
+      <input type="text" class="translation-input" data-answers="eu moro em berlim e trabalho em lisboa|moro em berlim e trabalho em lisboa" placeholder="...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">16 von 18</div>
       <div class="translation-prompt">Sie ist aus Frankreich und wohnt in Cascais.</div>
-      <input type="text" class="translation-input" data-answers="ela é da frança e mora em cascais,ela e da franca e mora em cascais" placeholder="...">
+      <input type="text" class="translation-input" data-answers="ela é da frança e mora em cascais|ela e da franca e mora em cascais" placeholder="...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">17 von 18</div>
       <div class="translation-prompt">Wir studieren an der Universit&auml;t und wohnen im Porto.</div>
-      <input type="text" class="translation-input" data-answers="nós estudamos na universidade e moramos no porto,estudamos na universidade e moramos no porto" placeholder="...">
+      <input type="text" class="translation-input" data-answers="nós estudamos na universidade e moramos no porto|estudamos na universidade e moramos no porto" placeholder="...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">18 von 18</div>
       <div class="translation-prompt">Ich hei&szlig;e Moritz. Ich bin Deutscher, aus Berlin. Ich wohne in Lissabon und arbeite an der Universit&auml;t.</div>
-      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão, de berlim. moro em lisboa e trabalho na universidade.,eu chamo-me moritz. sou alemao de berlim. moro em lisboa e trabalho na universidade." placeholder="Alles zusammen!">
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão, de berlim. moro em lisboa e trabalho na universidade.|eu chamo-me moritz. sou alemao de berlim. moro em lisboa e trabalho na universidade." placeholder="Alles zusammen!">
       <div class="feedback"></div>
     </div>
   </div>
@@ -324,12 +324,12 @@ function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(con
 function checkAnswers(){
   const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
   inputs.forEach(input=>{
-    const raw=input.getAttribute('data-answers'),accepted=raw.split(',').map(a=>normalize(a)),user=normalize(input.value);
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
     const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
-    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split(',')[0];}
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split('|')[0];}
     else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
-    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split(',')[0]+')';correct++;}
-    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split(',')[0];}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
   });
   document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
   const pct=correct/total,msg=document.getElementById('scoreMessage');

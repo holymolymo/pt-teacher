@@ -519,21 +519,21 @@
     <div class="exercise-card" data-exercise="translate">
       <div class="exercise-label">6 von 8</div>
       <div class="translation-prompt">Ich hei&szlig;e Moritz.</div>
-      <input type="text" class="translation-input" data-answers="eu chamo-me moritz,chamo-me moritz" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="eu chamo-me moritz|chamo-me moritz" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card" data-exercise="translate">
       <div class="exercise-label">7 von 8</div>
       <div class="translation-prompt">Wie hei&szlig;t sie?</div>
-      <input type="text" class="translation-input" data-answers="como é que ela se chama?,como se chama ela?,como é que ela se chama" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="como é que ela se chama?|como se chama ela?|como é que ela se chama" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card" data-exercise="translate">
       <div class="exercise-label">8 von 8</div>
       <div class="translation-prompt">Er hei&szlig;t Jo&atilde;o.</div>
-      <input type="text" class="translation-input" data-answers="ele chama-se joão,ele chama-se joao" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="ele chama-se joão|ele chama-se joao" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
   </div>
@@ -598,7 +598,7 @@ function checkAnswers() {
 
   inputs.forEach(input => {
     const acceptedRaw = input.getAttribute('data-answers');
-    const accepted = acceptedRaw.split(',').map(a => normalize(a));
+    const accepted = acceptedRaw.split('|').map(a => normalize(a));
     const userAnswer = normalize(input.value);
     const feedback = input.closest('.exercise-card').querySelector('.feedback');
     const match = isCloseEnough(userAnswer, accepted);
@@ -607,7 +607,7 @@ function checkAnswers() {
       input.classList.remove('correct');
       input.classList.add('incorrect');
       feedback.className = 'feedback show incorrect';
-      feedback.textContent = 'Nicht ausgefuellt. Loesung: ' + acceptedRaw.split(',')[0];
+      feedback.textContent = 'Nicht ausgefuellt. Loesung: ' + acceptedRaw.split('|')[0];
     } else if (match === 'exact') {
       input.classList.remove('incorrect');
       input.classList.add('correct');
@@ -618,13 +618,13 @@ function checkAnswers() {
       input.classList.remove('incorrect');
       input.classList.add('correct');
       feedback.className = 'feedback show correct';
-      feedback.textContent = 'Passt! \u2705 (Perfekte Schreibweise: ' + acceptedRaw.split(',')[0] + ')';
+      feedback.textContent = 'Passt! \u2705 (Perfekte Schreibweise: ' + acceptedRaw.split('|')[0] + ')';
       correct++;
     } else {
       input.classList.remove('correct');
       input.classList.add('incorrect');
       feedback.className = 'feedback show incorrect';
-      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split(',')[0];
+      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split('|')[0];
     }
   });
 

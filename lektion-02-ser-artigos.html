@@ -466,7 +466,7 @@
       <div class="exercise-hint">Du bist Studentin.</div>
       <div class="input-row">
         <span>Tu</span>
-        <input type="text" class="answer-input" data-answers="és,es" placeholder="...">
+        <input type="text" class="answer-input" data-answers="és|es" placeholder="...">
         <span>estudante.</span>
       </div>
       <div class="feedback"></div>
@@ -477,7 +477,7 @@
       <div class="exercise-hint">Sie (ela) ist &Auml;rztin.</div>
       <div class="input-row">
         <span>Ela</span>
-        <input type="text" class="answer-input" data-answers="é,e" placeholder="...">
+        <input type="text" class="answer-input" data-answers="é|e" placeholder="...">
         <span>m&eacute;dica.</span>
       </div>
       <div class="feedback"></div>
@@ -499,7 +499,7 @@
       <div class="exercise-hint">Sie (eles) sind keine Lehrer.</div>
       <div class="input-row">
         <span>Eles</span>
-        <input type="text" class="answer-input" data-answers="não são,nao sao" placeholder="..." style="width: 180px;">
+        <input type="text" class="answer-input" data-answers="não são|nao sao" placeholder="..." style="width: 180px;">
         <span>professores.</span>
       </div>
       <div class="feedback"></div>
@@ -563,21 +563,21 @@
     <div class="exercise-card">
       <div class="exercise-label">11 von 13</div>
       <div class="translation-prompt">Ich bin Deutscher.</div>
-      <input type="text" class="translation-input" data-answers="eu sou alemão,eu sou alemao,sou alemão,sou alemao" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="eu sou alemão|eu sou alemao|sou alemão|sou alemao" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">12 von 13</div>
       <div class="translation-prompt">Sie (ela) ist Journalistin.</div>
-      <input type="text" class="translation-input" data-answers="ela é jornalista,ela e jornalista" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="ela é jornalista|ela e jornalista" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">13 von 13</div>
       <div class="translation-prompt">Wir sind keine Franzosen.</div>
-      <input type="text" class="translation-input" data-answers="nós não somos franceses,nos nao somos franceses,não somos franceses,nao somos franceses" placeholder="Schreib den ganzen Satz...">
+      <input type="text" class="translation-input" data-answers="nós não somos franceses|nos nao somos franceses|não somos franceses|nao somos franceses" placeholder="Schreib den ganzen Satz...">
       <div class="feedback"></div>
     </div>
   </div>
@@ -634,7 +634,7 @@ function checkAnswers() {
 
   inputs.forEach(input => {
     const acceptedRaw = input.getAttribute('data-answers');
-    const accepted = acceptedRaw.split(',').map(a => normalize(a));
+    const accepted = acceptedRaw.split('|').map(a => normalize(a));
     const userAnswer = normalize(input.value);
     const feedback = input.closest('.exercise-card').querySelector('.feedback');
     const match = isCloseEnough(userAnswer, accepted);
@@ -643,7 +643,7 @@ function checkAnswers() {
       input.classList.remove('correct');
       input.classList.add('incorrect');
       feedback.className = 'feedback show incorrect';
-      feedback.textContent = 'Nicht ausgef\u00fcllt. L\u00f6sung: ' + acceptedRaw.split(',')[0];
+      feedback.textContent = 'Nicht ausgef\u00fcllt. L\u00f6sung: ' + acceptedRaw.split('|')[0];
     } else if (match === 'exact') {
       input.classList.remove('incorrect');
       input.classList.add('correct');
@@ -654,13 +654,13 @@ function checkAnswers() {
       input.classList.remove('incorrect');
       input.classList.add('correct');
       feedback.className = 'feedback show correct';
-      feedback.textContent = 'Passt! \u2705 (Perfekte Schreibweise: ' + acceptedRaw.split(',')[0] + ')';
+      feedback.textContent = 'Passt! \u2705 (Perfekte Schreibweise: ' + acceptedRaw.split('|')[0] + ')';
       correct++;
     } else {
       input.classList.remove('correct');
       input.classList.add('incorrect');
       feedback.className = 'feedback show incorrect';
-      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split(',')[0];
+      feedback.textContent = 'Nicht ganz. Richtige Antwort: ' + acceptedRaw.split('|')[0];
     }
   });
 

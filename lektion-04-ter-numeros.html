@@ -194,7 +194,7 @@
       <div class="exercise-hint">Sie (eles) haben drei Kinder.</div>
       <div class="input-row">
         <span>Eles</span>
-        <input type="text" class="answer-input" data-answers="têm,tem" placeholder="...">
+        <input type="text" class="answer-input" data-answers="têm|tem" placeholder="...">
         <span>tr&ecirc;s filhos.</span>
       </div>
       <div class="feedback"></div>
@@ -222,7 +222,7 @@
     <div class="exercise-card">
       <div class="exercise-label">8 von 10</div>
       <div class="exercise-hint">23</div>
-      <input type="text" class="answer-input" data-answers="vinte e três,vinte e tres" placeholder="..." style="width: 100%;">
+      <input type="text" class="answer-input" data-answers="vinte e três|vinte e tres" placeholder="..." style="width: 100%;">
       <div class="feedback"></div>
     </div>
 
@@ -248,35 +248,35 @@
     <div class="exercise-card">
       <div class="exercise-label">11 von 15</div>
       <div class="exercise-hint">Wie alt bist du? (informell)</div>
-      <input type="text" class="translation-input" data-answers="quantos anos tens?,quantos anos tens,quantos anos é que tu tens?" placeholder="Schreib die Frage...">
+      <input type="text" class="translation-input" data-answers="quantos anos tens?|quantos anos tens|quantos anos é que tu tens?" placeholder="Schreib die Frage...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">12 von 15</div>
       <div class="exercise-hint">Wie alt ist der Herr Silva? (formell)</div>
-      <input type="text" class="translation-input" data-answers="quantos anos tem o senhor silva?,quantos anos tem o sr. silva?,quantos anos é que o senhor silva tem?" placeholder="Schreib die Frage...">
+      <input type="text" class="translation-input" data-answers="quantos anos tem o senhor silva?|quantos anos tem o sr. silva?|quantos anos é que o senhor silva tem?" placeholder="Schreib die Frage...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">13 von 15</div>
       <div class="exercise-hint">Ich bin 28 Jahre alt.</div>
-      <input type="text" class="translation-input" data-answers="eu tenho vinte e oito anos,tenho vinte e oito anos,eu tenho 28 anos,tenho 28 anos" placeholder="Schreib den Satz...">
+      <input type="text" class="translation-input" data-answers="eu tenho vinte e oito anos|tenho vinte e oito anos|eu tenho 28 anos|tenho 28 anos" placeholder="Schreib den Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">14 von 15</div>
       <div class="exercise-hint">Sie (ela) ist 19 Jahre alt.</div>
-      <input type="text" class="translation-input" data-answers="ela tem dezanove anos,ela tem 19 anos" placeholder="Schreib den Satz...">
+      <input type="text" class="translation-input" data-answers="ela tem dezanove anos|ela tem 19 anos" placeholder="Schreib den Satz...">
       <div class="feedback"></div>
     </div>
 
     <div class="exercise-card">
       <div class="exercise-label">15 von 15</div>
       <div class="translation-prompt">Ich hei&szlig;e Moritz. Ich bin Deutscher. Ich bin 30 Jahre alt und ich bin Ingenieur.</div>
-      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão. tenho 30 anos e sou engenheiro.,eu chamo-me moritz. eu sou alemão. eu tenho 30 anos e sou engenheiro.,chamo-me moritz. sou alemao. tenho 30 anos e sou engenheiro.,eu chamo-me moritz. sou alemao. tenho trinta anos e sou engenheiro." placeholder="Alles zusammen!">
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão. tenho 30 anos e sou engenheiro.|eu chamo-me moritz. eu sou alemão. eu tenho 30 anos e sou engenheiro.|chamo-me moritz. sou alemao. tenho 30 anos e sou engenheiro.|eu chamo-me moritz. sou alemao. tenho trinta anos e sou engenheiro." placeholder="Alles zusammen!">
       <div class="feedback"></div>
     </div>
   </div>
@@ -315,12 +315,12 @@ function isCloseEnough(u,accepted){
 function checkAnswers(){
   const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
   inputs.forEach(input=>{
-    const raw=input.getAttribute('data-answers'),accepted=raw.split(',').map(a=>normalize(a)),user=normalize(input.value);
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
     const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
-    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split(',')[0];}
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split('|')[0];}
     else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
-    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split(',')[0]+')';correct++;}
-    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split(',')[0];}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
   });
   document.getElementById('results').classList.add('show');
   document.getElementById('score').textContent=correct+' / '+total;
