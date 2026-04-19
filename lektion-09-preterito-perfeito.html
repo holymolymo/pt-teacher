@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 9 - Pretérito Perfeito</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #2e7d32; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; } .next-lesson-btn:hover { background: #256b29; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; } .reset-btn:hover { background: #fff8f2; }
+  .dashboard-link { display: none; font-size: 13px; color: #6b6560; text-decoration: none; margin-top: 8px; }
+  .dashboard-link.show { display: block; } .dashboard-link:hover { color: #e8721d; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 9</div>
+    <h1>Pret&eacute;rito Perfeito <span class="level-tag">A2/B1</span></h1>
+    <p>Die Vergangenheit &mdash; was du gestern gemacht hast</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Was ist Pret&eacute;rito Perfeito?</h3>
+      <p>Das ist die <strong>abgeschlossene Vergangenheit</strong> &mdash; was du <span class="highlight">gestern gemacht hast</span>, am Wochenende warst, vor einer Stunde getan hast. Wird im Portugiesischen st&auml;ndig benutzt.</p>
+      <p><strong>Auf Deutsch:</strong> "Ich war im Kino" / "Ich habe gegessen" / "Wir sind nach Lissabon gefahren"<br>
+      <strong>Auf Portugiesisch:</strong> Eu <span class="v">fui</span> ao cinema / Eu <span class="v">comi</span> / N&oacute;s <span class="v">fomos</span> a Lisboa</p>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Regelm&auml;&szlig;ige -ar Verben: Endungen</h3>
+      <p>Stamm + Endung:</p>
+      <table>
+        <tr><th>Person</th><th>Endung</th><th>morar &rarr; wohnen</th><th>falar &rarr; sprechen</th></tr>
+        <tr><td>Eu</td><td><span class="v">-ei</span></td><td>mor<span class="v">ei</span></td><td>fal<span class="v">ei</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">-aste</span></td><td>mor<span class="v">aste</span></td><td>fal<span class="v">aste</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">-ou</span></td><td>mor<span class="v">ou</span></td><td>fal<span class="v">ou</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">-&aacute;mos</span></td><td>mor<span class="v">&aacute;mos</span></td><td>fal<span class="v">&aacute;mos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">-aram</span></td><td>mor<span class="v">aram</span></td><td>fal<span class="v">aram</span></td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Wichtig PT-PT:</strong>
+        "N&oacute;s mor&aacute;mos" (mit Akzent!) &ndash; im Pr&auml;sens "moramos" ohne Akzent. Der Akzent zeigt: Das ist Vergangenheit!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Regelm&auml;&szlig;ige -er und -ir Verben</h3>
+      <table>
+        <tr><th>Person</th><th>-er (comer)</th><th>-ir (partir)</th></tr>
+        <tr><td>Eu</td><td>com<span class="v">i</span></td><td>part<span class="v">i</span></td></tr>
+        <tr><td>Tu</td><td>com<span class="v">este</span></td><td>part<span class="v">iste</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td>com<span class="v">eu</span></td><td>part<span class="v">iu</span></td></tr>
+        <tr><td>N&oacute;s</td><td>com<span class="v">emos</span></td><td>part<span class="v">imos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td>com<span class="v">eram</span></td><td>part<span class="v">iram</span></td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Die wichtigsten unregelm&auml;&szlig;igen Verben</h3>
+      <p>Diese musst du einfach auswendig k&ouml;nnen &mdash; du brauchst sie st&auml;ndig!</p>
+
+      <table>
+        <tr><th>Person</th><th>ser/ir (sein/gehen)</th><th>ter (haben)</th><th>fazer (machen)</th><th>estar (sein)</th></tr>
+        <tr><td>Eu</td><td><span class="v">fui</span></td><td><span class="v">tive</span></td><td><span class="v">fiz</span></td><td><span class="v">estive</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">foste</span></td><td><span class="v">tiveste</span></td><td><span class="v">fizeste</span></td><td><span class="v">estiveste</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">foi</span></td><td><span class="v">teve</span></td><td><span class="v">fez</span></td><td><span class="v">esteve</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">fomos</span></td><td><span class="v">tivemos</span></td><td><span class="v">fizemos</span></td><td><span class="v">estivemos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">foram</span></td><td><span class="v">tiveram</span></td><td><span class="v">fizeram</span></td><td><span class="v">estiveram</span></td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Achtung: ser und ir haben die GLEICHE Form in der Vergangenheit!</strong>
+        "Eu fui professor" = Ich war Lehrer (ser)<br>
+        "Eu fui ao cinema" = Ich ging ins Kino (ir)<br>
+        Man erkennt den Unterschied nur am Kontext und der Pr&auml;position (<em>a/ao</em> bei ir).
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Weitere wichtige unregelm&auml;&szlig;ige Verben</h3>
+      <table>
+        <tr><th>Infinitiv</th><th>Eu</th><th>Ele/Ela</th><th>N&oacute;s</th><th>Eles</th></tr>
+        <tr><td>dizer (sagen)</td><td>disse</td><td>disse</td><td>dissemos</td><td>disseram</td></tr>
+        <tr><td>ver (sehen)</td><td>vi</td><td>viu</td><td>vimos</td><td>viram</td></tr>
+        <tr><td>poder (k&ouml;nnen)</td><td>pude</td><td>p&ocirc;de</td><td>pudemos</td><td>puderam</td></tr>
+        <tr><td>saber (wissen)</td><td>soube</td><td>soube</td><td>soubemos</td><td>souberam</td></tr>
+        <tr><td>querer (wollen)</td><td>quis</td><td>quis</td><td>quisemos</td><td>quiseram</td></tr>
+        <tr><td>vir (kommen)</td><td>vim</td><td>veio</td><td>viemos</td><td>vieram</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Typische Zeit-Adverbien f&uuml;r Vergangenheit</h3>
+      <table>
+        <tr><td><strong>ontem</strong></td><td>gestern</td></tr>
+        <tr><td><strong>anteontem</strong></td><td>vorgestern</td></tr>
+        <tr><td><strong>na semana passada</strong></td><td>letzte Woche</td></tr>
+        <tr><td><strong>no fim de semana</strong></td><td>am Wochenende</td></tr>
+        <tr><td><strong>no s&aacute;bado passado</strong></td><td>letzten Samstag</td></tr>
+        <tr><td><strong>h&aacute; dois dias</strong></td><td>vor zwei Tagen</td></tr>
+        <tr><td><strong>j&aacute;</strong></td><td>schon</td></tr>
+        <tr><td><strong>ainda n&atilde;o</strong></td><td>noch nicht</td></tr>
+      </table>
+
+      <div class="recall-box">
+        <strong>Aus deinen Live-Klassen:</strong>
+        "N&oacute;s <strong>fomos</strong> l&aacute; e <strong>ficamos</strong> 3/4 horas" &bull; "Eu s&oacute; <strong>fiquei</strong> em casa, n&atilde;o <strong>sa&iacute;</strong>" &bull; "Meu fim de semana <strong>foi</strong> tranquilo"
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Regelm&auml;&szlig;ige Verben -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Regelm&auml;&szlig;ige Verben konjugieren</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Eu ______ (falar) com a Maria ontem.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="falei">
+        <span>com a Maria ontem.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">N&oacute;s ______ (trabalhar) muito no s&aacute;bado.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="trabalhámos|trabalhamos">
+        <span>muito no s&aacute;bado.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Eles ______ (comer) pizza ontem &agrave; noite.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="comeram">
+        <span>pizza ontem &agrave; noite.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">Tu ______ (partir) cedo esta manh&atilde;?</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="partiste">
+        <span>cedo?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Eu ______ (escrever) uma mensagem para ela.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="escrevi">
+        <span>uma mensagem para ela.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">A Ana ______ (estudar) muito para o exame.</div>
+      <div class="input-row">
+        <span>A Ana</span>
+        <input type="text" class="answer-input" data-answers="estudou">
+        <span>muito para o exame.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Unregelm&auml;&szlig;ige -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Unregelm&auml;&szlig;ige Verben</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 12</div>
+      <div class="exercise-hint">Ich ging ins Kino. (ir)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="fui">
+        <span>ao cinema.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 12</div>
+      <div class="exercise-hint">Was hast du gemacht? (fazer)</div>
+      <div class="input-row">
+        <span>O que</span>
+        <input type="text" class="answer-input" data-answers="fizeste">
+        <span>?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 12</div>
+      <div class="exercise-hint">Wir hatten eine Party. (ter)</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="tivemos">
+        <span>uma festa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 12</div>
+      <div class="exercise-hint">Sie (ela) war bei mir zu Hause. (estar)</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="esteve">
+        <span>em minha casa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 12</div>
+      <div class="exercise-hint">Ich sah einen Film. (ver)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="vi">
+        <span>um filme.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 12</div>
+      <div class="exercise-hint">Er sagte die Wahrheit. (dizer)</div>
+      <div class="input-row">
+        <span>Ele</span>
+        <input type="text" class="answer-input" data-answers="disse">
+        <span>a verdade.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Wochenend-Konversation -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Konversation: Wie war dein Wochenende?</div>
+    <p style="font-size: 13px; color: #6b6560; margin-bottom: 16px;">(Vokabeln &amp; S&auml;tze aus deinen Live-Klassen!)</p>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 18</div>
+      <div class="translation-prompt">Wie war dein Wochenende?</div>
+      <input type="text" class="translation-input" data-answers="como foi o teu fim de semana?|como foi o seu fim de semana?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 18</div>
+      <div class="translation-prompt">Mein Wochenende war ruhig.</div>
+      <input type="text" class="translation-input" data-answers="o meu fim de semana foi tranquilo.|meu fim de semana foi tranquilo.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="translation-prompt">Ich blieb nur zu Hause, ich ging nicht aus.</div>
+      <input type="text" class="translation-input" data-answers="só fiquei em casa, não saí.|eu só fiquei em casa não saí.|eu fiquei só em casa não saí.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="translation-prompt">Ich ging raus, um spazieren zu gehen.</div>
+      <input type="text" class="translation-input" data-answers="saí para caminhar.|eu saí para caminhar.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="translation-prompt">Wir gingen dorthin und blieben 3-4 Stunden.</div>
+      <input type="text" class="translation-input" data-answers="nós fomos lá e ficámos 3 a 4 horas.|fomos lá e ficamos três a quatro horas.|nós fomos lá e ficamos 3/4 horas.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 18</div>
+      <div class="translation-prompt">Ich ging zum Arzt, weil ich trockene Haut hatte. Danach traf ich meinen Bruder und wir aßen zusammen in einem deutschen Restaurant.</div>
+      <input type="text" class="translation-input" data-answers="fui ao médico porque tinha secura na pele. depois encontrei o meu irmão e comemos juntos num restaurante alemão.|eu fui ao médico porque tinha secura na pele. depois encontrei o meu irmão e almoçamos juntos num restaurante alemão.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Du kannst jetzt Vergangenheit!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Pretérito Perfeito sitzt.';
+  else if(pct>=0.4)msg.textContent='Bom! Die unregelmäßigen musst du noch etwas üben.';
+  else msg.textContent='Die Tabellen oben in Ruhe anschauen und nochmal versuchen.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-09','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
