@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komplett-Wiederholung - Alles auf einmal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #5c6bc0; }
+
+  .header { text-align: center; margin-bottom: 32px; }
+  .lesson-tag { display: inline-block; background: linear-gradient(135deg, #5c6bc0, #3f51b5); color: white; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 34px; font-weight: 800; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .header .meta { margin-top: 12px; font-size: 13px; color: #9e9892; }
+
+  /* Progress */
+  .progress-header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(245,240,235,0.95); backdrop-filter: blur(10px);
+    padding: 12px 0; margin: 0 -24px 28px;
+    border-bottom: 1px solid #c5cae9;
+  }
+  .progress-inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: #6b6560; }
+  .progress-bar { flex: 1; height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #5c6bc0, #3f51b5); width: 0%; transition: width 0.3s; }
+
+  /* TOC */
+  .toc { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .toc h2 { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5c6bc0; margin-bottom: 12px; }
+  .toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 16px; }
+  .toc li { counter-increment: toc; margin-bottom: 6px; font-size: 13px; }
+  .toc li::before { content: counter(toc) ". "; color: #5c6bc0; font-weight: 600; }
+  .toc a { color: #2d2a26; text-decoration: none; }
+  .toc a:hover { color: #5c6bc0; }
+
+  /* Section */
+  .mega-section { margin-bottom: 40px; scroll-margin-top: 60px; }
+  .mega-section-header { display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 2px solid #c5cae9; margin-bottom: 16px; }
+  .mega-number { background: linear-gradient(135deg, #5c6bc0, #3f51b5); color: white; min-width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  .mega-title { font-size: 15px; font-weight: 700; color: #3f51b5; }
+  .mega-subtitle { font-size: 12px; color: #9e9892; margin-left: auto; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Grammar box - kompakt */
+  .grammar-box { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #2d2a26; }
+  .grammar-box p { font-size: 13px; line-height: 1.6; color: #4a4540; margin-bottom: 8px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0; font-size: 13px; }
+  th { background: #2d2a26; color: white; padding: 7px 10px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 6px 10px; border-bottom: 1px solid #ede6df; font-size: 13px; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+
+  .rule { background: #e8f5e9; border-left: 3px solid #2e7d32; border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 10px 0; font-size: 12px; line-height: 1.5; color: #1b5e20; }
+  .rule strong { display: block; margin-bottom: 2px; }
+  .warning { background: #ffebee; border-left: 3px solid #c62828; border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 10px 0; font-size: 12px; line-height: 1.5; color: #b71c1c; }
+  .warning strong { display: block; margin-bottom: 2px; }
+
+  /* Exercise */
+  .exercise-card { background: white; border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 10px; font-weight: 700; color: #5c6bc0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .exercise-hint { font-size: 13px; color: #4a4540; margin-bottom: 10px; line-height: 1.4; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+  .answer-input { border: 2px solid #c5cae9; border-radius: 6px; padding: 7px 10px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #5c6bc0; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .translation-input { width: 100%; border: 2px solid #c5cae9; border-radius: 6px; padding: 8px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #5c6bc0; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 8px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+
+  /* Multi choice */
+  .mc-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .mc-option { padding: 8px 12px; border: 2px solid #c5cae9; background: #faf8f5; border-radius: 6px; cursor: pointer; font-size: 13px; text-align: center; transition: all 0.2s; }
+  .mc-option:hover { border-color: #5c6bc0; }
+  .mc-option.selected { border-color: #5c6bc0; background: #e8eaf6; }
+  .mc-option.correct-answer { border-color: #2e7d32; background: #e8f5e9; color: #1b5e20; font-weight: 600; }
+  .mc-option.wrong-answer { border-color: #c62828; background: #ffebee; color: #b71c1c; }
+
+  /* Check btn */
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 40px auto 0; background: linear-gradient(135deg, #5c6bc0, #3f51b5); color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; letter-spacing: 0.3px; }
+  .check-btn:hover { opacity: 0.9; }
+
+  /* Results */
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .results.show { display: block; }
+  .score { font-size: 52px; font-weight: 800; color: #5c6bc0; margin-bottom: 4px; }
+  .score-label { font-size: 14px; color: #6b6560; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+
+  .topic-scores { text-align: left; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ede6df; }
+  .topic-scores h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6b6560; margin-bottom: 10px; }
+  .topic-score-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 12px; gap: 8px; }
+  .topic-score-bar { width: 80px; height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+  .topic-score-fill { height: 100%; border-radius: 3px; }
+  .topic-score-fill.good { background: #2e7d32; }
+  .topic-score-fill.ok { background: #f9a825; }
+  .topic-score-fill.bad { background: #c62828; }
+
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 24px; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #5c6bc0; border: 2px solid #5c6bc0; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  .dash-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .dash-btn.show { display: block; }
+
+  @media (max-width: 600px) {
+    .page { padding: 20px 14px 60px; }
+    .progress-header { margin: 0 -14px 20px; }
+    .progress-inner { padding: 0 14px; }
+    .header h1 { font-size: 26px; }
+    .answer-input { width: 140px; font-size: 13px; }
+    .mc-options { grid-template-columns: 1fr; }
+    .toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Komplett-Wiederholung</div>
+    <h1>Alles noch mal durch</h1>
+    <p>Jeder Block mit Grammatik + &Uuml;bungen</p>
+    <div class="meta">17 Themen &bull; ~70 &Uuml;bungen &bull; ca. 45&ndash;60 Minuten</div>
+  </div>
+
+  <div class="progress-header">
+    <div class="progress-inner">
+      <span id="progressCount">0 / 70</span>
+      <div class="progress-bar"><div class="progress-bar-fill" id="progressBar"></div></div>
+      <span id="progressPct">0%</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>Was kommt alles dran</h2>
+    <ol>
+      <li><a href="#s1">Chamar-se (sich vorstellen)</a></li>
+      <li><a href="#s2">Verb ser</a></li>
+      <li><a href="#s3">Artigos definidos</a></li>
+      <li><a href="#s4">Nacionalidades</a></li>
+      <li><a href="#s5">Profiss&otilde;es</a></li>
+      <li><a href="#s6">Cedilha-Regel</a></li>
+      <li><a href="#s7">Verb ter + Alter</a></li>
+      <li><a href="#s8">N&uacute;meros</a></li>
+      <li><a href="#s9">Regelm&auml;&szlig;ige -ar / -er Verben</a></li>
+      <li><a href="#s10">Unregelm&auml;&szlig;ige Verben</a></li>
+      <li><a href="#s11">Saber + Infinitiv</a></li>
+      <li><a href="#s12">Reflexive Verben</a></li>
+      <li><a href="#s13">Kontraktionen</a></li>
+      <li><a href="#s14">Fragew&ouml;rter</a></li>
+      <li><a href="#s15">Estar &amp; Ser vs. Estar</a></li>
+      <li><a href="#s16">Pret&eacute;rito Perfeito</a></li>
+      <li><a href="#s17">Mega-S&auml;tze</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. CHAMAR-SE -->
+  <div class="mega-section" id="s1">
+    <div class="mega-section-header">
+      <div class="mega-number">1</div>
+      <div class="mega-title">Chamar-se</div>
+      <div class="mega-subtitle">Lektion 1</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Reflexives Verb: chamar-se</h3>
+      <p><strong>chamar-se</strong> = sich nennen. Reflexivpronomen &auml;ndert sich je nach Person:</p>
+      <table>
+        <tr><th>Person</th><th>Form</th></tr>
+        <tr><td>Eu</td><td><span class="v">chamo-me</span></td></tr>
+        <tr><td>Tu</td><td><span class="v">chamas-te</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">chama-se</span></td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">chamamo-nos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">chamam-se</span></td></tr>
+      </table>
+      <div class="rule"><strong>Bei Fragen:</strong> Pronomen wandert vor das Verb: "Como <span class="v">te</span> chamas?" (nicht: "chamas-te?")</div>
+    </div>
+
+    <div class="exercise-card" data-topic="chamar-se">
+      <div class="exercise-label">1 &mdash; Chamar-se</div>
+      <div class="exercise-hint">Wie hei&szlig;t du? (informell)</div>
+      <input type="text" class="translation-input" data-answers="como te chamas?|como é que te chamas?|como é que tu te chamas?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="chamar-se">
+      <div class="exercise-label">2 &mdash; Chamar-se</div>
+      <div class="exercise-hint">Sie (eles) hei&szlig;en Pedro und Miguel.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="chamam-se">
+        <span>Pedro e Miguel.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="chamar-se">
+      <div class="exercise-label">3 &mdash; Chamar-se</div>
+      <div class="exercise-hint">Wie hei&szlig;t er?</div>
+      <input type="text" class="translation-input" data-answers="como é que ele se chama?|como se chama ele?|como é que se chama ele?">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 2. SER -->
+  <div class="mega-section" id="s2">
+    <div class="mega-section-header">
+      <div class="mega-number">2</div>
+      <div class="mega-title">Verb ser</div>
+      <div class="mega-subtitle">Lektion 2</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Ser = dauerhaft sein</h3>
+      <p>F&uuml;r <span class="highlight">permanente Eigenschaften</span>: Name, Nationalit&auml;t, Beruf, Herkunft.</p>
+      <table>
+        <tr><th>Person</th><th>Bejaht</th><th>Verneint</th></tr>
+        <tr><td>Eu</td><td class="v">sou</td><td>n&atilde;o sou</td></tr>
+        <tr><td>Tu</td><td class="v">&eacute;s</td><td>n&atilde;o &eacute;s</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">&eacute;</td><td>n&atilde;o &eacute;</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">somos</td><td>n&atilde;o somos</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">s&atilde;o</td><td>n&atilde;o s&atilde;o</td></tr>
+      </table>
+      <div class="rule"><strong>Kein Artikel vor Berufen!</strong> "Eu sou m&eacute;dico" (nicht "um m&eacute;dico")</div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser">
+      <div class="exercise-label">4 &mdash; Ser</div>
+      <div class="exercise-hint">Wir sind keine Italiener.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="não somos|nao somos" style="width: 160px;">
+        <span>italianos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser">
+      <div class="exercise-label">5 &mdash; Ser</div>
+      <div class="exercise-hint">Sie (ela) ist Lehrerin.</div>
+      <input type="text" class="translation-input" data-answers="ela é professora.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser">
+      <div class="exercise-label">6 &mdash; Ser</div>
+      <div class="exercise-hint">Ich bin Deutscher und ich bin Ingenieur.</div>
+      <input type="text" class="translation-input" data-answers="sou alemão e sou engenheiro.|eu sou alemão e sou engenheiro.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 3. ARTIGOS -->
+  <div class="mega-section" id="s3">
+    <div class="mega-section-header">
+      <div class="mega-number">3</div>
+      <div class="mega-title">Artigos definidos</div>
+      <div class="mega-subtitle">Lektion 2</div>
+    </div>
+    <div class="grammar-box">
+      <h3>o, a, os, as</h3>
+      <table>
+        <tr><th></th><th>Singular</th><th>Plural</th></tr>
+        <tr><td>Maskulin</td><td class="v">o</td><td class="v">os</td></tr>
+        <tr><td>Feminin</td><td class="v">a</td><td class="v">as</td></tr>
+      </table>
+      <div class="rule"><strong>Vor Namen!</strong> "o Pedro", "a Maria" (im Portugiesischen immer Artikel bei Namen)</div>
+    </div>
+
+    <div class="exercise-card" data-topic="artigos">
+      <div class="exercise-label">7 &mdash; Artigos</div>
+      <div class="exercise-hint">_____ engenheiros</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="os" style="width: 80px;">
+        <span>engenheiros</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="artigos">
+      <div class="exercise-label">8 &mdash; Artigos</div>
+      <div class="exercise-hint">_____ Maria</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="a" style="width: 80px;">
+        <span>Maria</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="artigos">
+      <div class="exercise-label">9 &mdash; Artigos</div>
+      <div class="exercise-hint">_____ m&eacute;dicas (weiblich, Plural)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="as" style="width: 80px;">
+        <span>m&eacute;dicas</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 4. NACIONALIDADES -->
+  <div class="mega-section" id="s4">
+    <div class="mega-section-header">
+      <div class="mega-number">4</div>
+      <div class="mega-title">Nacionalidades</div>
+      <div class="mega-subtitle">Lektion 3</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Drei Muster</h3>
+      <table>
+        <tr><th>Muster</th><th>Maskulin</th><th>Feminin</th></tr>
+        <tr><td>-&ecirc;s / -esa</td><td>portugu<span class="v">&ecirc;s</span>, franc<span class="v">&ecirc;s</span>, ingl<span class="v">&ecirc;s</span>, japon<span class="v">&ecirc;s</span></td><td>portugu<span class="v">esa</span>, franc<span class="v">esa</span></td></tr>
+        <tr><td>-o / -a</td><td>brasileir<span class="v">o</span>, angolan<span class="v">o</span>, cuban<span class="v">o</span></td><td>brasileir<span class="v">a</span></td></tr>
+        <tr><td>-ense (gleich!)</td><td>guineen<span class="v">se</span></td><td>guineen<span class="v">se</span></td></tr>
+      </table>
+      <div class="rule"><strong>Sonderf&auml;lle:</strong> alem&atilde;o/alem&atilde; &bull; espanhol/espanhola &bull; belga/belga (gleich)</div>
+    </div>
+
+    <div class="exercise-card" data-topic="nacionalidades">
+      <div class="exercise-label">10 &mdash; Nacionalidades</div>
+      <div class="exercise-hint">Alemanha &rarr; feminin?</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="alemã|alema">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="nacionalidades">
+      <div class="exercise-label">11 &mdash; Nacionalidades</div>
+      <div class="exercise-hint">Inglaterra &rarr; maskulin?</div>
+      <div class="input-row">
+        <span>Ele &eacute;</span>
+        <input type="text" class="answer-input" data-answers="inglês|ingles">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="nacionalidades">
+      <div class="exercise-label">12 &mdash; Nacionalidades</div>
+      <div class="exercise-hint">B&eacute;lgica &rarr; feminin? (Achtung!)</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="belga">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 5. PROFISSOES -->
+  <div class="mega-section" id="s5">
+    <div class="mega-section-header">
+      <div class="mega-number">5</div>
+      <div class="mega-title">Profiss&otilde;es</div>
+      <div class="mega-subtitle">Lektion 3</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Muster</h3>
+      <table>
+        <tr><th>Maskulin</th><th>Feminin</th></tr>
+        <tr><td>m&eacute;dico, advogado, engenheiro</td><td>m&eacute;dica, advogada, engenheira <span class="v">(-o &rarr; -a)</span></td></tr>
+        <tr><td>professor, tradutor</td><td>professora, tradutora <span class="v">(-or &rarr; -ora)</span></td></tr>
+        <tr><td colspan="2"><strong>gleich:</strong> jornalista, dentista, estudante, motorista, economista</td></tr>
+      </table>
+    </div>
+
+    <div class="exercise-card" data-topic="profissoes">
+      <div class="exercise-label">13 &mdash; Profiss&otilde;es</div>
+      <div class="exercise-hint">o cantor &rarr; feminin?</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="cantora">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="profissoes">
+      <div class="exercise-label">14 &mdash; Profiss&otilde;es</div>
+      <div class="exercise-hint">o estudante &rarr; feminin? (Achtung!)</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="estudante">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 6. CEDILHA -->
+  <div class="mega-section" id="s6">
+    <div class="mega-section-header">
+      <div class="mega-number">6</div>
+      <div class="mega-title">Cedilha-Regel (-cer &rarr; -&ccedil;o)</div>
+      <div class="mega-subtitle">Neu &bull; aus Hausaufgaben</div>
+    </div>
+    <div class="grammar-box">
+      <h3>c &rarr; &ccedil; vor o</h3>
+      <p>Bei -cer Verben in der <strong>eu-Form</strong>:</p>
+      <table>
+        <tr><th>Infinitiv</th><th>eu</th></tr>
+        <tr><td>conhecer</td><td class="v">conhe&ccedil;o</td></tr>
+        <tr><td>esquecer</td><td class="v">esque&ccedil;o</td></tr>
+        <tr><td>aquecer</td><td class="v">aque&ccedil;o</td></tr>
+        <tr><td>descer</td><td class="v">des&ccedil;o</td></tr>
+        <tr><td>fazer</td><td class="v">fa&ccedil;o</td></tr>
+      </table>
+      <div class="warning"><strong>Typische Fehler:</strong> "conheco", "esqueco", "fazo" &ndash; alle falsch ohne &ccedil;!</div>
+    </div>
+
+    <div class="exercise-card" data-topic="cedilha">
+      <div class="exercise-label">15 &mdash; Cedilha</div>
+      <div class="exercise-hint">Ich kenne die Professorin.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="conheço|conheco">
+        <span>a professora.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="cedilha">
+      <div class="exercise-label">16 &mdash; Cedilha</div>
+      <div class="exercise-hint">Ich gehe diese Stra&szlig;e hinunter.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="desço|desco">
+        <span>esta rua.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="cedilha">
+      <div class="exercise-label">17 &mdash; Cedilha</div>
+      <div class="exercise-hint">Ich mache Sport jeden Tag.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="faço|faco">
+        <span>desporto todos os dias.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="cedilha">
+      <div class="exercise-label">18 &mdash; Cedilha</div>
+      <div class="exercise-hint">Ich vergesse oft den Geburtstag.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="esqueço|esqueco">
+        <span>muitas vezes o anivers&aacute;rio.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 7. TER -->
+  <div class="mega-section" id="s7">
+    <div class="mega-section-header">
+      <div class="mega-number">7</div>
+      <div class="mega-title">Verb ter + Alter</div>
+      <div class="mega-subtitle">Lektion 4</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Ter (haben) &mdash; f&uuml;r Besitz und Alter</h3>
+      <table>
+        <tr><th>Person</th><th>Form</th></tr>
+        <tr><td>Eu</td><td class="v">tenho</td></tr>
+        <tr><td>Tu</td><td class="v">tens</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">tem</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">temos</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">t&ecirc;m</td></tr>
+      </table>
+      <div class="warning"><strong>Alter = ter, NICHT ser!</strong> "Eu tenho 30 anos" (Ich habe 30 Jahre) &ne; "Ich bin 30 Jahre alt"</div>
+    </div>
+
+    <div class="exercise-card" data-topic="ter">
+      <div class="exercise-label">19 &mdash; Ter</div>
+      <div class="exercise-hint">Wie alt bist du?</div>
+      <input type="text" class="translation-input" data-answers="quantos anos tens?|quantos anos é que tens?|quantos anos é que tu tens?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ter">
+      <div class="exercise-label">20 &mdash; Ter</div>
+      <div class="exercise-hint">Ich bin 30 Jahre alt.</div>
+      <input type="text" class="translation-input" data-answers="tenho 30 anos.|eu tenho 30 anos.|eu tenho trinta anos.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 8. NUMEROS -->
+  <div class="mega-section" id="s8">
+    <div class="mega-section-header">
+      <div class="mega-number">8</div>
+      <div class="mega-title">N&uacute;meros</div>
+      <div class="mega-subtitle">Lektion 4</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Zusammengesetzte Zahlen &mdash; mit "e" verbinden</h3>
+      <p>Zehner + Einer: <strong>vinte e um</strong>, <strong>trinta e cinco</strong>, <strong>setenta e quatro</strong>...</p>
+      <p><strong>PT-PT:</strong> dez<strong>a</strong>sseis, dez<strong>a</strong>ssete, dez<strong>a</strong>nove (mit "a"!)</p>
+    </div>
+
+    <div class="exercise-card" data-topic="numeros">
+      <div class="exercise-label">21 &mdash; Zahlen</div>
+      <div class="exercise-hint">Schreibe als Wort: 19</div>
+      <input type="text" class="answer-input" data-answers="dezanove" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="numeros">
+      <div class="exercise-label">22 &mdash; Zahlen</div>
+      <div class="exercise-hint">Schreibe als Wort: 56</div>
+      <input type="text" class="answer-input" data-answers="cinquenta e seis" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="numeros">
+      <div class="exercise-label">23 &mdash; Zahlen</div>
+      <div class="exercise-hint">Schreibe als Wort: 83</div>
+      <input type="text" class="answer-input" data-answers="oitenta e três|oitenta e tres" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 9. REGULAR -->
+  <div class="mega-section" id="s9">
+    <div class="mega-section-header">
+      <div class="mega-number">9</div>
+      <div class="mega-title">Regelm&auml;&szlig;ige Verben</div>
+      <div class="mega-subtitle">Lektion 5 + -er</div>
+    </div>
+    <div class="grammar-box">
+      <h3>-ar vs -er Endungen</h3>
+      <table>
+        <tr><th>Person</th><th>-ar (tomar)</th><th>-er (comer)</th></tr>
+        <tr><td>Eu</td><td>tom<span class="v">o</span></td><td>com<span class="v">o</span></td></tr>
+        <tr><td>Tu</td><td>tom<span class="v">as</span></td><td>com<span class="v">es</span></td></tr>
+        <tr><td>Ele</td><td>tom<span class="v">a</span></td><td>com<span class="v">e</span></td></tr>
+        <tr><td>N&oacute;s</td><td>tom<span class="v">amos</span></td><td>com<span class="v">emos</span></td></tr>
+        <tr><td>Eles</td><td>tom<span class="v">am</span></td><td>com<span class="v">em</span></td></tr>
+      </table>
+      <div class="warning"><strong>Fehlerquelle:</strong> "tomos" &ne; tomar ist -ar &rarr; <strong>tomamos</strong>!</div>
+    </div>
+
+    <div class="exercise-card" data-topic="regular">
+      <div class="exercise-label">24 &mdash; Regelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Wir trinken Kaffee und essen Brot.</div>
+      <input type="text" class="translation-invisible translation-input" data-answers="tomamos café e comemos pão.|nós tomamos café e comemos pão.|tomamos cafe e comemos pao.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="regular">
+      <div class="exercise-label">25 &mdash; Regelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Sprichst du Portugiesisch?</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="falas">
+        <span>portugu&ecirc;s?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="regular">
+      <div class="exercise-label">26 &mdash; Regelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Sie (eles) essen in der Kantine.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="almoçam|almocam">
+        <span>na cantina.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="regular">
+      <div class="exercise-label">27 &mdash; Regelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Wir lernen Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="nós aprendemos português.|aprendemos português.|estudamos portugues.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 10. UNREGELMASSIG -->
+  <div class="mega-section" id="s10">
+    <div class="mega-section-header">
+      <div class="mega-number">10</div>
+      <div class="mega-title">Unregelm&auml;&szlig;ige Verben Presente</div>
+      <div class="mega-subtitle">Dringend &bull; eu-Formen!</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Die 10 wichtigsten</h3>
+      <table>
+        <tr><th>Verb</th><th>eu</th><th>ele/ela</th><th>n&oacute;s</th><th>eles</th></tr>
+        <tr><td>saber</td><td class="v">sei</td><td>sabe</td><td>sabemos</td><td>sabem</td></tr>
+        <tr><td>trazer</td><td class="v">trago</td><td>traz</td><td>trazemos</td><td>trazem</td></tr>
+        <tr><td>ver</td><td class="v">vejo</td><td>v&ecirc;</td><td>vemos</td><td>veem</td></tr>
+        <tr><td>dizer</td><td class="v">digo</td><td>diz</td><td>dizemos</td><td>dizem</td></tr>
+        <tr><td>fazer</td><td class="v">fa&ccedil;o</td><td>faz</td><td>fazemos</td><td>fazem</td></tr>
+        <tr><td>ler</td><td class="v">leio</td><td>l&ecirc;</td><td>lemos</td><td>leem</td></tr>
+        <tr><td>p&ocirc;r</td><td class="v">ponho</td><td>p&otilde;e</td><td>pomos</td><td>p&otilde;em</td></tr>
+        <tr><td>perder</td><td class="v">perco</td><td>perde</td><td>perdemos</td><td>perdem</td></tr>
+        <tr><td>querer</td><td class="v">quero</td><td>quer</td><td>queremos</td><td>querem</td></tr>
+        <tr><td>poder</td><td class="v">posso</td><td>pode</td><td>podemos</td><td>podem</td></tr>
+      </table>
+      <div class="warning"><strong>Auswendig lernen:</strong> sei &bull; trago &bull; vejo &bull; digo &bull; fa&ccedil;o &bull; leio &bull; ponho &bull; perco &bull; quero &bull; posso</div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">28 &mdash; eu-Form</div>
+      <div class="exercise-hint">Was ist die eu-Form von <strong>saber</strong>?</div>
+      <div class="mc-options">
+        <div class="mc-option" data-correct="false">sabo</div>
+        <div class="mc-option" data-correct="true">sei</div>
+        <div class="mc-option" data-correct="false">sabe</div>
+        <div class="mc-option" data-correct="false">soube</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">29 &mdash; eu-Form</div>
+      <div class="exercise-hint">Was ist die eu-Form von <strong>p&ocirc;r</strong>?</div>
+      <div class="mc-options">
+        <div class="mc-option" data-correct="false">po</div>
+        <div class="mc-option" data-correct="false">p&otilde;e</div>
+        <div class="mc-option" data-correct="true">ponho</div>
+        <div class="mc-option" data-correct="false">pomos</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">30 &mdash; eu-Form</div>
+      <div class="exercise-hint">Was ist die eu-Form von <strong>trazer</strong>?</div>
+      <div class="mc-options">
+        <div class="mc-option" data-correct="false">trazo</div>
+        <div class="mc-option" data-correct="true">trago</div>
+        <div class="mc-option" data-correct="false">traze</div>
+        <div class="mc-option" data-correct="false">traz</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">31 &mdash; Unregelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Ich lese die Zeitung jeden Tag.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="leio">
+        <span>o jornal todos os dias.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">32 &mdash; Unregelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Ich bringe ein Geschenk.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="trago">
+        <span>um presente.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">33 &mdash; Unregelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Sie (eles) lesen alle Bücher.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="leem">
+        <span>todos os livros.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">34 &mdash; Unregelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Die Angestellte bringt das Brot.</div>
+      <div class="input-row">
+        <span>A empregada</span>
+        <input type="text" class="answer-input" data-answers="traz">
+        <span>o p&atilde;o.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="irregular">
+      <div class="exercise-label">35 &mdash; Unregelm&auml;&szlig;ig</div>
+      <div class="exercise-hint">Ich verliere nie den Regenschirm.</div>
+      <div class="input-row">
+        <span>Eu nunca</span>
+        <input type="text" class="answer-input" data-answers="perco">
+        <span>o guarda-chuva.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 11. SABER + INF -->
+  <div class="mega-section" id="s11">
+    <div class="mega-section-header">
+      <div class="mega-number">11</div>
+      <div class="mega-title">Saber + Infinitiv</div>
+      <div class="mega-subtitle">Neu</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Fähigkeit vs. Möglichkeit</h3>
+      <table>
+        <tr><th>Konstruktion</th><th>Bedeutung</th></tr>
+        <tr><td><span class="v">saber + Inf.</span></td><td>gelernte F&auml;higkeit: "Ich habe gelernt, wie man..."</td></tr>
+        <tr><td><span class="v">poder + Inf.</span></td><td>d&uuml;rfen / M&ouml;glichkeit haben</td></tr>
+      </table>
+      <div class="rule">
+        <strong>Beispiele:</strong>
+        "Sei nadar" = Ich kann schwimmen (habe gelernt)<br>
+        "Posso nadar hoje" = Ich kann/darf heute schwimmen
+      </div>
+    </div>
+
+    <div class="exercise-card" data-topic="saber-inf">
+      <div class="exercise-label">36 &mdash; Saber+Inf</div>
+      <div class="exercise-hint">Sie kann viele Sprachen sprechen.</div>
+      <input type="text" class="translation-input" data-answers="ela sabe falar muitas línguas.|ela sabe falar muitas linguas.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="saber-inf">
+      <div class="exercise-label">37 &mdash; Saber+Inf</div>
+      <div class="exercise-hint">Ich kann schwimmen.</div>
+      <input type="text" class="translation-input" data-answers="sei nadar.|eu sei nadar.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 12. REFLEXIVE -->
+  <div class="mega-section" id="s12">
+    <div class="mega-section-header">
+      <div class="mega-number">12</div>
+      <div class="mega-title">Reflexive Verben</div>
+      <div class="mega-subtitle">Pronomen anpassen!</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Pronomen je nach Person: me, te, se, nos, se</h3>
+      <p>Reflexiv-Verben wie <strong>chamar-se</strong>, <strong>esquecer-se</strong>, <strong>parecer-se</strong>, <strong>levantar-se</strong>:</p>
+      <table>
+        <tr><th>Person</th><th>Pronomen</th><th>Beispiel (esquecer-se)</th></tr>
+        <tr><td>Eu</td><td class="v">-me</td><td>esque&ccedil;o-me</td></tr>
+        <tr><td>Tu</td><td class="v">-te</td><td>esqueces-te</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">-se</td><td>esquece-se</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">-nos</td><td>esquecemo-nos</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">-se</td><td>esquecem-se</td></tr>
+      </table>
+      <div class="warning"><strong>NIE im Infinitiv lassen!</strong> "Voc&ecirc; esquecer-se" &ne; richtig ist "Voc&ecirc; esquece-se" oder "Voc&ecirc; se esquece"</div>
+    </div>
+
+    <div class="exercise-card" data-topic="reflexive">
+      <div class="exercise-label">38 &mdash; Reflexiv</div>
+      <div class="exercise-hint">Du vergisst immer den Geburtstag. (tu + esquecer-se)</div>
+      <div class="input-row">
+        <span>Tu sempre</span>
+        <input type="text" class="answer-input" data-answers="te esqueces|esqueces-te" style="width: 180px;">
+        <span>do anivers&aacute;rio.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="reflexive">
+      <div class="exercise-label">39 &mdash; Reflexiv</div>
+      <div class="exercise-hint">Sie sieht aus wie ihr Vater. (ela + parecer-se com)</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="parece-se|se parece" style="width: 180px;">
+        <span>com o pai.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 13. KONTRAKTIONEN -->
+  <div class="mega-section" id="s13">
+    <div class="mega-section-header">
+      <div class="mega-number">13</div>
+      <div class="mega-title">Kontraktionen</div>
+      <div class="mega-subtitle">Lektion 6</div>
+    </div>
+    <div class="grammar-box">
+      <h3>em/de + Artikel</h3>
+      <table>
+        <tr><th></th><th>+o</th><th>+a</th><th>+os</th><th>+as</th></tr>
+        <tr><td>em</td><td class="v">no</td><td class="v">na</td><td class="v">nos</td><td class="v">nas</td></tr>
+        <tr><td>de</td><td class="v">do</td><td class="v">da</td><td class="v">dos</td><td class="v">das</td></tr>
+      </table>
+      <div class="rule"><strong>Pflicht!</strong> "em + o" wird immer zu "no". Nicht optional.</div>
+    </div>
+
+    <div class="exercise-card" data-topic="kontraktionen">
+      <div class="exercise-label">40 &mdash; Kontraktion</div>
+      <div class="exercise-hint">Ich wohne im Porto.</div>
+      <div class="input-row">
+        <span>Moro</span>
+        <input type="text" class="answer-input" data-answers="no" style="width: 80px;">
+        <span>Porto.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="kontraktionen">
+      <div class="exercise-label">41 &mdash; Kontraktion</div>
+      <div class="exercise-hint">Sie ist aus Deutschland.</div>
+      <div class="input-row">
+        <span>Ela &eacute;</span>
+        <input type="text" class="answer-input" data-answers="da" style="width: 80px;">
+        <span>Alemanha.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="kontraktionen">
+      <div class="exercise-label">42 &mdash; Kontraktion</div>
+      <div class="exercise-hint">Das Auto meiner Eltern.</div>
+      <div class="input-row">
+        <span>O carro</span>
+        <input type="text" class="answer-input" data-answers="dos" style="width: 80px;">
+        <span>meus pais.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 14. FRAGEWOERTER -->
+  <div class="mega-section" id="s14">
+    <div class="mega-section-header">
+      <div class="mega-number">14</div>
+      <div class="mega-title">Fragew&ouml;rter</div>
+      <div class="mega-subtitle">Lektion 7</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Die wichtigsten W-Fragen</h3>
+      <table>
+        <tr><th>Wort</th><th>Deutsch</th><th>Wof&uuml;r</th></tr>
+        <tr><td class="v">Quem</td><td>Wer</td><td>nur Personen</td></tr>
+        <tr><td class="v">Como</td><td>Wie</td><td>Art und Weise</td></tr>
+        <tr><td class="v">Qual</td><td>Welche/r</td><td>Auswahl</td></tr>
+        <tr><td class="v">O que</td><td>Was</td><td>Dinge</td></tr>
+        <tr><td class="v">Onde</td><td>Wo</td><td>Ort</td></tr>
+        <tr><td class="v">Quando</td><td>Wann</td><td>Zeit</td></tr>
+        <tr><td class="v">Quantos/as</td><td>Wie viele</td><td>Menge</td></tr>
+      </table>
+      <div class="rule"><strong>"&eacute; que"</strong> wird oft eingef&uuml;gt: "Como <strong>&eacute; que</strong> te chamas?" &mdash; klingt nat&uuml;rlicher.</div>
+    </div>
+
+    <div class="exercise-card" data-topic="fragewoerter">
+      <div class="exercise-label">43 &mdash; Fragew&ouml;rter</div>
+      <div class="exercise-hint">Antwort: "Sou m&eacute;dico."</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="qual" style="width: 100px;">
+        <span>&eacute; a tua profiss&atilde;o?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="fragewoerter">
+      <div class="exercise-label">44 &mdash; Fragew&ouml;rter</div>
+      <div class="exercise-hint">Antwort: "Moro em Lisboa."</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="onde" style="width: 100px;">
+        <span>&eacute; que moras?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="fragewoerter">
+      <div class="exercise-label">45 &mdash; Fragew&ouml;rter</div>
+      <div class="exercise-hint">Wie alt ist er?</div>
+      <input type="text" class="translation-input" data-answers="quantos anos tem ele?|quantos anos é que ele tem?|quantos anos é que tem ele?">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 15. SER vs ESTAR -->
+  <div class="mega-section" id="s15">
+    <div class="mega-section-header">
+      <div class="mega-number">15</div>
+      <div class="mega-title">Estar &amp; Ser vs. Estar</div>
+      <div class="mega-subtitle">Lektion 8</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Estar &mdash; tempor&auml;r</h3>
+      <table>
+        <tr><th>Person</th><th>Form</th></tr>
+        <tr><td>Eu</td><td class="v">estou</td></tr>
+        <tr><td>Tu</td><td class="v">est&aacute;s</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">est&aacute;</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">estamos</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">est&atilde;o</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Ser (permanent) vs. Estar (tempor&auml;r)</h3>
+      <table>
+        <tr><th>Kategorie</th><th>SER</th><th>ESTAR</th></tr>
+        <tr><td>Eigenschaft</td><td>A Ana <strong>&eacute;</strong> inteligente</td><td>A Ana <strong>est&aacute;</strong> cansada</td></tr>
+        <tr><td>Ort</td><td>Lisboa <strong>&eacute;</strong> em Portugal</td><td>O Pedro <strong>est&aacute;</strong> no cinema</td></tr>
+        <tr><td>Beruf</td><td>Ela <strong>&eacute;</strong> m&eacute;dica</td><td>&mdash;</td></tr>
+      </table>
+      <div class="rule"><strong>Faustregel:</strong> Kann sich das &auml;ndern? &rarr; estar. Dauerhaft? &rarr; ser.</div>
+      <div class="warning">
+        <strong>estar + Adjektiv</strong> (m&uuml;de): "est&aacute; cansada"<br>
+        <strong>estar com + Substantiv</strong> (Hunger/Durst): "est&aacute; com fome/sede/sono"
+      </div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser-estar">
+      <div class="exercise-label">46 &mdash; Ser/Estar</div>
+      <div class="exercise-hint">Ich bin Deutscher. (Nationalit&auml;t)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="sou">
+        <span>alem&atilde;o.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser-estar">
+      <div class="exercise-label">47 &mdash; Ser/Estar</div>
+      <div class="exercise-hint">Ich bin heute m&uuml;de. (tempor&auml;r)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="estou">
+        <span>cansado hoje.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser-estar">
+      <div class="exercise-label">48 &mdash; Ser/Estar</div>
+      <div class="exercise-hint">Das Buch liegt auf dem Tisch.</div>
+      <div class="input-row">
+        <span>O livro</span>
+        <input type="text" class="answer-input" data-answers="está|esta">
+        <span>na mesa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="ser-estar">
+      <div class="exercise-label">49 &mdash; Ser/Estar</div>
+      <div class="exercise-hint">Ich habe Hunger. (mit "estar com")</div>
+      <input type="text" class="translation-input" data-answers="estou com fome.|eu estou com fome.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 16. PRETERITO PERFEITO -->
+  <div class="mega-section" id="s16">
+    <div class="mega-section-header">
+      <div class="mega-number">16</div>
+      <div class="mega-title">Pret&eacute;rito Perfeito</div>
+      <div class="mega-subtitle">Lektion 9 &bull; Vergangenheit</div>
+    </div>
+    <div class="grammar-box">
+      <h3>Regelm&auml;&szlig;ige Endungen</h3>
+      <table>
+        <tr><th>Person</th><th>-ar (falar)</th><th>-er (comer)</th><th>-ir (partir)</th></tr>
+        <tr><td>Eu</td><td>fal<span class="v">ei</span></td><td>com<span class="v">i</span></td><td>part<span class="v">i</span></td></tr>
+        <tr><td>Tu</td><td>fal<span class="v">aste</span></td><td>com<span class="v">este</span></td><td>part<span class="v">iste</span></td></tr>
+        <tr><td>Ele</td><td>fal<span class="v">ou</span></td><td>com<span class="v">eu</span></td><td>part<span class="v">iu</span></td></tr>
+        <tr><td>N&oacute;s</td><td>fal<span class="v">&aacute;mos</span></td><td>com<span class="v">emos</span></td><td>part<span class="v">imos</span></td></tr>
+        <tr><td>Eles</td><td>fal<span class="v">aram</span></td><td>com<span class="v">eram</span></td><td>part<span class="v">iram</span></td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Unregelm&auml;&szlig;ige Verben (Pret&eacute;rito)</h3>
+      <table>
+        <tr><th>Verb</th><th>eu</th><th>ele/ela</th><th>n&oacute;s</th><th>eles</th></tr>
+        <tr><td>ser / ir</td><td class="v">fui</td><td>foi</td><td>fomos</td><td>foram</td></tr>
+        <tr><td>ter</td><td class="v">tive</td><td>teve</td><td>tivemos</td><td>tiveram</td></tr>
+        <tr><td>fazer</td><td class="v">fiz</td><td>fez</td><td>fizemos</td><td>fizeram</td></tr>
+        <tr><td>estar</td><td class="v">estive</td><td>esteve</td><td>estivemos</td><td>estiveram</td></tr>
+      </table>
+      <div class="rule"><strong>Achtung:</strong> ser und ir haben die gleiche Form: "Fui m&eacute;dico" (war Arzt) / "Fui ao cinema" (ging ins Kino)</div>
+    </div>
+
+    <div class="exercise-card" data-topic="preterito">
+      <div class="exercise-label">50 &mdash; Pret&eacute;rito</div>
+      <div class="exercise-hint">Was hast du gemacht?</div>
+      <div class="input-row">
+        <span>O que</span>
+        <input type="text" class="answer-input" data-answers="fizeste">
+        <span>?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="preterito">
+      <div class="exercise-label">51 &mdash; Pret&eacute;rito</div>
+      <div class="exercise-hint">Ich ging zum Arzt.</div>
+      <input type="text" class="translation-input" data-answers="fui ao médico.|eu fui ao médico.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="preterito">
+      <div class="exercise-label">52 &mdash; Pret&eacute;rito</div>
+      <div class="exercise-hint">Wir aßen zusammen zu Mittag.</div>
+      <input type="text" class="translation-input" data-answers="almoçámos juntos.|nós almoçámos juntos.|almoçamos juntos.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="preterito">
+      <div class="exercise-label">53 &mdash; Pret&eacute;rito</div>
+      <div class="exercise-hint">Ich blieb zu Hause, ich ging nicht aus.</div>
+      <input type="text" class="translation-input" data-answers="fiquei em casa, não saí.|eu fiquei em casa não saí.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="preterito">
+      <div class="exercise-label">54 &mdash; Pret&eacute;rito</div>
+      <div class="exercise-hint">Wie war dein Wochenende?</div>
+      <input type="text" class="translation-input" data-answers="como foi o teu fim de semana?|como foi o seu fim de semana?">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 17. MEGA-SÄTZE -->
+  <div class="mega-section" id="s17">
+    <div class="mega-section-header">
+      <div class="mega-number">17</div>
+      <div class="mega-title">Mega-S&auml;tze &mdash; Alles kombiniert</div>
+      <div class="mega-subtitle">Finale</div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">55 &mdash; Mega</div>
+      <div class="exercise-hint">Ich heiße Moritz. Ich bin Deutscher, bin 30 Jahre alt und wohne in Berlin.</div>
+      <input type="text" class="translation-input" data-answers="chamo-me moritz. sou alemão, tenho 30 anos e moro em berlim.|eu chamo-me moritz. sou alemao tenho trinta anos e moro em berlim.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">56 &mdash; Mega</div>
+      <div class="exercise-hint">Ich arbeite an der Universit&auml;t und lerne Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="trabalho na universidade e estudo português.|eu trabalho na universidade e estudo portugues.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">57 &mdash; Mega</div>
+      <div class="exercise-hint">Wo wohnst du? Ich wohne in Cascais mit meiner Frau.</div>
+      <input type="text" class="translation-input" data-answers="onde moras? moro em cascais com a minha mulher.|onde é que moras? moro em cascais com a minha esposa.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">58 &mdash; Mega</div>
+      <div class="exercise-hint">Am Wochenende ging ich zum Arzt und traf meinen Bruder im Restaurant.</div>
+      <input type="text" class="translation-input" data-answers="no fim de semana fui ao médico e encontrei o meu irmão no restaurante.|no fim de semana eu fui ao medico e encontrei o meu irmao no restaurante.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">59 &mdash; Mega</div>
+      <div class="exercise-hint">Ich lese die Zeitung jeden Tag und ich bringe das Brot morgens mit.</div>
+      <input type="text" class="translation-input" data-answers="leio o jornal todos os dias e trago o pão de manhã.|eu leio o jornal todos os dias e trago o pao de manha.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">60 &mdash; Mega</div>
+      <div class="exercise-hint">Sie kann viele Sprachen sprechen und kennt viele Leute.</div>
+      <input type="text" class="translation-input" data-answers="ela sabe falar muitas línguas e conhece muitas pessoas.|sabe falar muitas linguas e conhece muitas pessoas.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">61 &mdash; Mega</div>
+      <div class="exercise-hint">Wie war dein Wochenende? Mein Wochenende war ruhig.</div>
+      <input type="text" class="translation-input" data-answers="como foi o teu fim de semana? o meu fim de semana foi tranquilo.|como foi o seu fim de semana? meu fim de semana foi tranquilo.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">62 &mdash; Mega</div>
+      <div class="exercise-hint">Die Pedro und die Ana sind Franzosen und sprechen Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="o pedro e a ana são franceses e falam português.|o pedro e a ana sao franceses e falam portugues.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">63 &mdash; Mega</div>
+      <div class="exercise-hint">Wer kennt die Lehrerin? Ich kenne sie. Sie wohnt in Lissabon.</div>
+      <input type="text" class="translation-input" data-answers="quem conhece a professora? conheço-a. ela mora em lisboa.|quem é que conhece a professora? eu conheço. ela mora em lisboa.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">64 &mdash; Mega</div>
+      <div class="exercise-hint">Ich denke, dass deutsches Essen unterschätzt ist, weil es sehr deftig ist.</div>
+      <input type="text" class="translation-input" data-answers="acho que a comida alemã é subestimada porque é muito pesada.|eu acho que a comida alemã é subestimada porque é muito pesada.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">65 &mdash; Mega</div>
+      <div class="exercise-hint">Wer kocht heute Abend? — Ich koche.</div>
+      <input type="text" class="translation-input" data-answers="quem cozinha hoje à noite? eu cozinho.|quem é que cozinha hoje à noite? eu cozinho.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">66 &mdash; Mega</div>
+      <div class="exercise-hint">Ich komme aus Deutschland und sie kommt aus Portugal.</div>
+      <input type="text" class="translation-input" data-answers="sou da alemanha e ela é de portugal.|eu sou da alemanha e ela é de portugal.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">67 &mdash; Mega</div>
+      <div class="exercise-hint">Ich habe Hunger und Durst. Wir gehen in ein Restaurant.</div>
+      <input type="text" class="translation-input" data-answers="estou com fome e sede. vamos a um restaurante.|estou com fome e com sede. vamos ao restaurante.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">68 &mdash; Mega</div>
+      <div class="exercise-hint">Was machst du heute? Ich weiß es noch nicht.</div>
+      <input type="text" class="translation-input" data-answers="o que fazes hoje? ainda não sei.|o que é que fazes hoje? ainda não sei.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">69 &mdash; Mega</div>
+      <div class="exercise-hint">Sie (ela) vergisst immer den Geburtstag ihrer Mutter.</div>
+      <input type="text" class="translation-input" data-answers="ela esquece-se sempre do aniversário da mãe.|ela se esquece sempre do aniversário da mãe.|ela sempre se esquece do aniversário da mãe.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card" data-topic="mega">
+      <div class="exercise-label">70 &mdash; Finale!</div>
+      <div class="exercise-hint">Am Samstagabend ging ich in die Stadt. Wir aßen serbisches Essen und blieben 3 Stunden. Danach ging ich nach Hause, weil ich müde war.</div>
+      <input type="text" class="translation-input" data-answers="no sábado à noite fui à cidade. comemos comida sérvia e ficámos 3 horas. depois fui para casa porque estava cansado.|no sabado à noite eu fui à cidade. comemos comida da sérvia e ficamos três horas. depois fui para casa porque estava cansado.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Alle Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+    <div class="topic-scores" id="topicScores"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="dash-btn" id="dashBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.mc-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    opt.parentElement.querySelectorAll('.mc-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  const inputs = document.querySelectorAll('.answer-input, .translation-input');
+  let filled = 0;
+  inputs.forEach(i => { if (i.value.trim() !== '') filled++; });
+  const mcSelected = document.querySelectorAll('.mc-option.selected').length;
+  const totalMC = document.querySelectorAll('.exercise-card .mc-options').length;
+  const total = inputs.length + totalMC;
+  const done = filled + mcSelected;
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('progressCount').textContent = done + ' / ' + total;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+document.querySelectorAll('.answer-input, .translation-input').forEach(input => {
+  input.addEventListener('input', updateProgress);
+});
+
+function normalize(str) {
+  return str.trim().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/[.!?,;:'"\/]/g, '');
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({length: m + 1}, () => Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++)
+    for (let j = 1; j <= n; j++)
+      dp[i][j] = Math.min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + (a[i-1] !== b[j-1] ? 1 : 0));
+  return dp[m][n];
+}
+
+function isCloseEnough(u, accepted) {
+  if (accepted.includes(u)) return 'exact';
+  for (const a of accepted) {
+    const d = a.length <= 8 ? 1 : a.length <= 20 ? 2 : 3;
+    if (levenshtein(u, a) <= d) return 'close';
+  }
+  return 'wrong';
+}
+
+function checkAnswers() {
+  const topicStats = {};
+  let correct = 0, total = 0;
+
+  document.querySelectorAll('.answer-input, .translation-input').forEach(input => {
+    const card = input.closest('.exercise-card');
+    if (!card) return;
+    const topic = card.getAttribute('data-topic') || 'mix';
+    if (!topicStats[topic]) topicStats[topic] = { correct: 0, total: 0 };
+    topicStats[topic].total++;
+    total++;
+
+    const raw = input.getAttribute('data-answers');
+    const accepted = raw.split('|').map(a => normalize(a));
+    const user = normalize(input.value);
+    const fb = card.querySelector('.feedback');
+    const match = isCloseEnough(user, accepted);
+
+    if (user === '') {
+      input.classList.add('incorrect');
+      fb.className = 'feedback show incorrect';
+      fb.textContent = 'L\u00f6sung: ' + raw.split('|')[0];
+    } else if (match === 'exact' || match === 'close') {
+      input.classList.add('correct');
+      fb.className = 'feedback show correct';
+      fb.textContent = match === 'exact' ? 'Richtig! \u2705' : 'Passt! \u2705 (Perfekt: ' + raw.split('|')[0] + ')';
+      correct++;
+      topicStats[topic].correct++;
+    } else {
+      input.classList.add('incorrect');
+      fb.className = 'feedback show incorrect';
+      fb.textContent = 'Richtige Antwort: ' + raw.split('|')[0];
+    }
+  });
+
+  document.querySelectorAll('.exercise-card').forEach(card => {
+    const mcContainer = card.querySelector('.mc-options');
+    if (!mcContainer) return;
+    const topic = card.getAttribute('data-topic') || 'mix';
+    if (!topicStats[topic]) topicStats[topic] = { correct: 0, total: 0 };
+    topicStats[topic].total++;
+    total++;
+
+    const options = card.querySelectorAll('.mc-option');
+    const selected = card.querySelector('.mc-option.selected');
+    const fb = card.querySelector('.feedback');
+
+    options.forEach(o => {
+      if (o.getAttribute('data-correct') === 'true') o.classList.add('correct-answer');
+      else if (o === selected) o.classList.add('wrong-answer');
+    });
+
+    if (selected && selected.getAttribute('data-correct') === 'true') {
+      fb.className = 'feedback show correct';
+      fb.textContent = 'Richtig! \u2705';
+      correct++;
+      topicStats[topic].correct++;
+    } else {
+      fb.className = 'feedback show incorrect';
+      fb.textContent = selected ? 'Leider falsch.' : 'Nicht ausgew\u00e4hlt.';
+    }
+  });
+
+  const results = document.getElementById('results');
+  results.classList.add('show');
+  document.getElementById('score').textContent = correct + ' / ' + total;
+
+  const pct = correct / total;
+  const msg = document.getElementById('scoreMessage');
+  if (pct === 1) msg.textContent = 'Excelente! Alles sitzt.';
+  else if (pct >= 0.85) msg.textContent = 'Muito bem! Fast perfekt — ein paar kleine L\u00fccken.';
+  else if (pct >= 0.7) msg.textContent = 'Bom trabalho! Solide Basis. Fokussier dich auf die roten Themen.';
+  else if (pct >= 0.5) msg.textContent = 'Guter Start! Einiges braucht Wiederholung.';
+  else msg.textContent = 'Das war viel! Geh die Grammatikboxen in Ruhe nochmal durch.';
+
+  const topicNames = {
+    'chamar-se': 'Chamar-se','ser': 'Verb ser','artigos': 'Artikel','nacionalidades': 'Nacionalidades','profissoes': 'Profissões',
+    'cedilha': 'Cedilha (-ço)','ter': 'Verb ter','numeros': 'Números','regular': 'Regelm. Verben','irregular': 'Unregelm. Verben',
+    'saber-inf': 'Saber+Inf','reflexive': 'Reflexive','kontraktionen': 'Kontraktionen','fragewoerter': 'Fragewörter',
+    'ser-estar': 'Ser vs. Estar','preterito': 'Pretérito','mega': 'Mega-Sätze'
+  };
+
+  let html = '<h4>Ergebnis pro Thema</h4>';
+  for (const [topic, stats] of Object.entries(topicStats)) {
+    const tp = Math.round((stats.correct / stats.total) * 100);
+    const cls = tp >= 80 ? 'good' : tp >= 50 ? 'ok' : 'bad';
+    html += '<div class="topic-score-row">' +
+      '<span>' + (topicNames[topic] || topic) + '</span>' +
+      '<span>' + stats.correct + '/' + stats.total + '</span>' +
+      '<div class="topic-score-bar"><div class="topic-score-fill ' + cls + '" style="width:' + tp + '%"></div></div>' +
+      '</div>';
+  }
+  document.getElementById('topicScores').innerHTML = html;
+
+  document.getElementById('dashBtn').classList.add('show');
+  document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-wiederholung-komplett', 'done');
+  document.querySelector('.check-btn').style.display = 'none';
+  results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetAll() {
+  document.querySelectorAll('.answer-input, .translation-input').forEach(i => { i.value = ''; i.classList.remove('correct', 'incorrect'); });
+  document.querySelectorAll('.feedback').forEach(f => { f.className = 'feedback'; });
+  document.querySelectorAll('.mc-option').forEach(o => { o.classList.remove('selected', 'correct-answer', 'wrong-answer'); });
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('dashBtn').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display = 'block';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.answer-input, .translation-input').forEach((input, i, arr) => {
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (i < arr.length - 1) arr[i + 1].focus();
+      else checkAnswers();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
