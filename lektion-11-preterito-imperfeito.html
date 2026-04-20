@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 11 - Pretérito Imperfeito</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #2e7d32; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .compare-col { padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+  .compare-col.perfeito { background: #fff3e0; border: 1px solid #ffcc80; }
+  .compare-col.imperfeito { background: #e8eaf6; border: 1px solid #c5cae9; }
+  .compare-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase; }
+  .compare-col.perfeito h4 { color: #e8721d; }
+  .compare-col.imperfeito h4 { color: #3f51b5; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; } .next-lesson-btn:hover { background: #256b29; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; } .reset-btn:hover { background: #fff8f2; }
+  .dashboard-link { display: none; font-size: 13px; color: #6b6560; text-decoration: none; margin-top: 8px; }
+  .dashboard-link.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } .compare { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 11</div>
+    <h1>Pret&eacute;rito Imperfeito <span class="level-tag">A2/B1</span></h1>
+    <p>Die zweite Vergangenheit &mdash; was war, was du gerade machtest</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Was ist Pret&eacute;rito Imperfeito?</h3>
+      <p>Das ist die <strong>andauernde/beschreibende Vergangenheit</strong> &mdash; du beschreibst <span class="highlight">wie etwas war</span>, <span class="highlight">was du gerade machtest</span>, oder <span class="highlight">wiederholte Handlungen</span> fr&uuml;her.</p>
+      <p><strong>Auf Deutsch:</strong> "Ich war m&uuml;de" / "Ich hatte eine Katze" / "Wir gingen jeden Tag spazieren"</p>
+
+      <div class="recall-box">
+        <strong>Aus deinen Live-Klassen:</strong>
+        "Eu <strong>estava</strong> muito cheio" (Ich war sehr voll) &bull; "Onde <strong>estavas</strong>?" (Wo warst du?) &bull; "Porque <strong>tinha</strong> secura na pele" (Weil ich trockene Haut hatte)
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Regelm&auml;&szlig;ige Endungen</h3>
+      <p>Stamm + Endung:</p>
+      <table>
+        <tr><th>Person</th><th>-ar (falar)</th><th>-er (comer)</th><th>-ir (partir)</th></tr>
+        <tr><td>Eu</td><td>fal<span class="v">ava</span></td><td>com<span class="v">ia</span></td><td>part<span class="v">ia</span></td></tr>
+        <tr><td>Tu</td><td>fal<span class="v">avas</span></td><td>com<span class="v">ias</span></td><td>part<span class="v">ias</span></td></tr>
+        <tr><td>Ele/Ela</td><td>fal<span class="v">ava</span></td><td>com<span class="v">ia</span></td><td>part<span class="v">ia</span></td></tr>
+        <tr><td>N&oacute;s</td><td>fal<span class="v">&aacute;vamos</span></td><td>com<span class="v">&iacute;amos</span></td><td>part<span class="v">&iacute;amos</span></td></tr>
+        <tr><td>Eles/Elas</td><td>fal<span class="v">avam</span></td><td>com<span class="v">iam</span></td><td>part<span class="v">iam</span></td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Gute Nachricht:</strong>
+        -er und -ir Verben haben <em>identische</em> Endungen im Imperfeito! Nur -ar Verben unterscheiden sich. Das macht es einfacher als das Pret&eacute;rito Perfeito.
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Die 4 unregelm&auml;&szlig;igen Verben</h3>
+      <p>Nur 4 Verben sind unregelm&auml;&szlig;ig im Imperfeito:</p>
+      <table>
+        <tr><th>Person</th><th>ser</th><th>ter</th><th>vir</th><th>p&ocirc;r</th></tr>
+        <tr><td>Eu</td><td class="v">era</td><td class="v">tinha</td><td class="v">vinha</td><td class="v">punha</td></tr>
+        <tr><td>Tu</td><td>eras</td><td>tinhas</td><td>vinhas</td><td>punhas</td></tr>
+        <tr><td>Ele/Ela</td><td class="v">era</td><td class="v">tinha</td><td class="v">vinha</td><td class="v">punha</td></tr>
+        <tr><td>N&oacute;s</td><td>&eacute;ramos</td><td>t&iacute;nhamos</td><td>v&iacute;nhamos</td><td>p&uacute;nhamos</td></tr>
+        <tr><td>Eles/Elas</td><td>eram</td><td>tinham</td><td>vinham</td><td>punham</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Achtung &mdash; estar ist REGELM&Auml;&SZlig;IG hier!</strong>
+        Das ist eine schöne Überraschung: obwohl estar im Presente unregelmäßig ist, ist es im Imperfeito ganz regulär:<br>
+        <strong>estava, estavas, estava, est&aacute;vamos, estavam</strong> (wie falar!)
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Perfeito vs. Imperfeito &mdash; Der Unterschied</h3>
+      <p>Beide sind Vergangenheit, aber sie haben verschiedene Jobs:</p>
+
+      <div class="compare">
+        <div class="compare-col perfeito">
+          <h4>&bull; Perfeito</h4>
+          <strong>Abgeschlossen, einmalig</strong><br>
+          "Ich ging gestern ins Kino"<br>
+          &rarr; <em>Fui ao cinema ontem.</em><br><br>
+          "Ich aß eine Pizza"<br>
+          &rarr; <em>Comi uma pizza.</em>
+        </div>
+        <div class="compare-col imperfeito">
+          <h4>&bull; Imperfeito</h4>
+          <strong>Andauernd, beschreibend, gew&ouml;hnlich</strong><br>
+          "Als Kind ging ich oft ins Kino"<br>
+          &rarr; <em>Quando era crian&ccedil;a, ia ao cinema.</em><br><br>
+          "Ich a&szlig; gerade eine Pizza, als..."<br>
+          &rarr; <em>Estava a comer uma pizza quando...</em>
+        </div>
+      </div>
+
+      <div class="insight">
+        <strong>Typische Trigger-W&ouml;rter:</strong>
+        <strong>Imperfeito:</strong> sempre, todos os dias, antigamente, quando era pequeno, enquanto<br>
+        <strong>Perfeito:</strong> ontem, na semana passada, h&aacute; dois dias, de repente
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Typische Verwendungen</h3>
+      <table>
+        <tr><th>Verwendung</th><th>Beispiel</th></tr>
+        <tr><td><strong>Beschreibung</strong> in Vergangenheit</td><td>A casa <strong>era</strong> grande e <strong>tinha</strong> jardim.</td></tr>
+        <tr><td><strong>Wiederholte Handlung</strong></td><td>Quando <strong>era</strong> crian&ccedil;a, <strong>ia</strong> &agrave; praia.</td></tr>
+        <tr><td><strong>Andauernd im Moment</strong></td><td><strong>Estava</strong> a ler quando tu ligaste.</td></tr>
+        <tr><td><strong>Alter in Vergangenheit</strong></td><td>Ela <strong>tinha</strong> 20 anos em 2020.</td></tr>
+        <tr><td><strong>Uhrzeit / Wetter</strong></td><td><strong>Eram</strong> 10 horas. <strong>Chovia</strong>.</td></tr>
+        <tr><td><strong>H&ouml;fliche Bitten</strong></td><td><strong>Queria</strong> um caf&eacute;, por favor.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Regelm&auml;&szlig;ige -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Regelm&auml;&szlig;ige Verben konjugieren</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Fr&uuml;her wohnte ich in Berlin. (morar)</div>
+      <div class="input-row">
+        <span>Antigamente eu</span>
+        <input type="text" class="answer-input" data-answers="morava">
+        <span>em Berlim.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Wir gingen jeden Tag ins Café. (ir)</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="íamos|iamos">
+        <span>todos os dias ao caf&eacute;.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Als Kind spielte ich im Garten. (brincar)</div>
+      <div class="input-row">
+        <span>Quando era crian&ccedil;a, eu</span>
+        <input type="text" class="answer-input" data-answers="brincava">
+        <span>no jardim.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">Sie (ela) aß immer zu Hause. (comer)</div>
+      <div class="input-row">
+        <span>Ela sempre</span>
+        <input type="text" class="answer-input" data-answers="comia">
+        <span>em casa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Sie (eles) studierten damals in Lissabon. (estudar)</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="estudavam">
+        <span>em Lisboa na altura.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">Du schriebst mir immer Briefe. (escrever)</div>
+      <div class="input-row">
+        <span>Tu sempre me</span>
+        <input type="text" class="answer-input" data-answers="escrevias">
+        <span>cartas.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Unregelm&auml;&szlig;ige -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Unregelm&auml;&szlig;ige Verben (ser, ter, vir, pôr)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 12</div>
+      <div class="exercise-hint">Ich war 10 Jahre alt. (ter)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="tinha">
+        <span>10 anos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 12</div>
+      <div class="exercise-hint">Das Haus war groß. (ser)</div>
+      <div class="input-row">
+        <span>A casa</span>
+        <input type="text" class="answer-input" data-answers="era">
+        <span>grande.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 12</div>
+      <div class="exercise-hint">Wir waren Freunde. (ser)</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="éramos|eramos">
+        <span>amigos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 12</div>
+      <div class="exercise-hint">Sie (eles) kamen oft zu Besuch. (vir)</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="vinham">
+        <span>muitas vezes visitar-nos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 12</div>
+      <div class="exercise-hint">Wo warst du? (estar — regelmäßig!)</div>
+      <input type="text" class="translation-input" data-answers="onde estavas?|onde é que estavas?|onde é que tu estavas?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 12</div>
+      <div class="exercise-hint">Ich war sehr voll / satt. (estar)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="estava">
+        <span>muito cheio.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Perfeito vs Imperfeito -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Perfeito oder Imperfeito?</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 18</div>
+      <div class="exercise-hint">Gestern aß ich Pizza. (einmalig, abgeschlossen — comer)</div>
+      <div class="input-row">
+        <span>Ontem eu</span>
+        <input type="text" class="answer-input" data-answers="comi">
+        <span>pizza.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 18</div>
+      <div class="exercise-hint">Als Kind aß ich immer Pizza. (wiederholt — comer)</div>
+      <div class="input-row">
+        <span>Quando era crian&ccedil;a, eu</span>
+        <input type="text" class="answer-input" data-answers="comia">
+        <span>pizza.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="exercise-hint">Wir gingen gestern ins Kino. (einmalig — ir)</div>
+      <div class="input-row">
+        <span>Ontem n&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="fomos">
+        <span>ao cinema.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="exercise-hint">Wir gingen früher immer ins Kino. (wiederholt — ir)</div>
+      <div class="input-row">
+        <span>Antigamente n&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="íamos|iamos">
+        <span>sempre ao cinema.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="exercise-hint">Ich war gerade beim Lesen, als das Telefon klingelte. (beide!)</div>
+      <input type="text" class="translation-input" data-answers="eu estava a ler quando o telefone tocou.|estava a ler quando o telefone tocou.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 18</div>
+      <div class="exercise-hint">Es war 10 Uhr und es regnete. (beide Imperfeito)</div>
+      <input type="text" class="translation-input" data-answers="eram 10 horas e chovia.|eram dez horas e chovia.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 4: Konversation -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 4 &mdash; Konversation: Beschreibungen in der Vergangenheit</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">19 von 23</div>
+      <div class="translation-prompt">Als ich in Berlin wohnte, ging ich jeden Tag zu Fuß zur Arbeit.</div>
+      <input type="text" class="translation-input" data-answers="quando morava em berlim, ia todos os dias a pé para o trabalho.|quando eu morava em berlim ia todos os dias a pé para o trabalho.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">20 von 23</div>
+      <div class="translation-prompt">Meine Großmutter hatte eine Katze, die schwarz war.</div>
+      <input type="text" class="translation-input" data-answers="a minha avó tinha um gato que era preto.|a minha avo tinha um gato que era preto.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">21 von 23</div>
+      <div class="translation-prompt">Früher rauchte ich, aber jetzt rauche ich nicht mehr.</div>
+      <input type="text" class="translation-input" data-answers="antigamente fumava, mas agora já não fumo.|antes eu fumava mas agora já não fumo.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">22 von 23</div>
+      <div class="translation-prompt">Ich hätte gerne einen Kaffee, bitte. (höfliche Bitte mit Imperfeito!)</div>
+      <input type="text" class="translation-input" data-answers="queria um café, por favor.|eu queria um café se faz favor.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">23 von 23</div>
+      <div class="translation-prompt">Als ich jung war, studierte ich an der Universität Lissabon. Ich hatte viele Freunde und wir gingen jedes Wochenende in die Stadt.</div>
+      <input type="text" class="translation-input" data-answers="quando era jovem, estudava na universidade de lisboa. tinha muitos amigos e íamos à cidade todos os fins de semana.|quando eu era jovem eu estudava na universidade de lisboa tinha muitos amigos e iamos à cidade todos os fins de semana.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Imperfeito sitzt!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Solide Basis.';
+  else if(pct>=0.4)msg.textContent='Bom! Die Endungen brauchen noch etwas Übung.';
+  else msg.textContent='Schau dir die Tabellen in Ruhe an.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-11','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
