@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 12 - Possessivpronomen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; } .next-lesson-btn:hover { background: #256b29; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; } .reset-btn:hover { background: #fff8f2; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 12</div>
+    <h1>Possessivpronomen</h1>
+    <p>mein, dein, sein, unser &mdash; wem geh&ouml;rt was?</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Possessivpronomen: Der Ueberblick</h3>
+      <p>Possessivpronomen zeigen <strong>Besitz oder Zugeh&ouml;rigkeit</strong>. Im Portugiesischen m&uuml;ssen sie sich <span class="highlight">nach dem Ding, das besessen wird</span> richten (Geschlecht + Zahl) &mdash; nicht nach dem Besitzer!</p>
+
+      <table>
+        <tr><th>Person</th><th>m. Sg.</th><th>f. Sg.</th><th>m. Pl.</th><th>f. Pl.</th></tr>
+        <tr><td><strong>eu</strong> (mein)</td><td class="v">meu</td><td class="v">minha</td><td class="v">meus</td><td class="v">minhas</td></tr>
+        <tr><td><strong>tu</strong> (dein)</td><td class="v">teu</td><td class="v">tua</td><td class="v">teus</td><td class="v">tuas</td></tr>
+        <tr><td><strong>ele/ela/voc&ecirc;</strong> (sein/ihr)</td><td class="v">seu</td><td class="v">sua</td><td class="v">seus</td><td class="v">suas</td></tr>
+        <tr><td><strong>n&oacute;s</strong> (unser)</td><td class="v">nosso</td><td class="v">nossa</td><td class="v">nossos</td><td class="v">nossas</td></tr>
+        <tr><td><strong>v&oacute;s</strong> (euer, selten)</td><td class="v">vosso</td><td class="v">vossa</td><td class="v">vossos</td><td class="v">vossas</td></tr>
+        <tr><td><strong>eles/elas/voc&ecirc;s</strong> (ihr/deren)</td><td class="v">seu</td><td class="v">sua</td><td class="v">seus</td><td class="v">suas</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Konkordanz: Passt zum BESITZ, nicht zum Besitzer!</strong>
+        Ich (Mann) sage "<strong>minha</strong> casa" (mein Haus) &mdash; weil "casa" weiblich ist, nicht weil ich m&auml;nnlich bin.<br>
+        Genauso: "<strong>meu</strong> carro" (mein Auto) &mdash; weil "carro" m&auml;nnlich ist.
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>WICHTIG im Portugiesischen: Mit Artikel!</h3>
+      <p>Anders als im Deutschen steht im europ&auml;ischen Portugiesisch <strong>fast immer ein Artikel</strong> vor dem Possessivpronomen:</p>
+      <table>
+        <tr><th>Deutsch</th><th>Portugiesisch (PT-PT)</th></tr>
+        <tr><td>mein Haus</td><td><span class="v">a</span> minha casa</td></tr>
+        <tr><td>mein Auto</td><td><span class="v">o</span> meu carro</td></tr>
+        <tr><td>meine Br&uuml;der</td><td><span class="v">os</span> meus irm&atilde;os</td></tr>
+        <tr><td>deine Mutter</td><td><span class="v">a</span> tua m&atilde;e</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <strong>Unterschied zum Brasilianischen Portugiesisch!</strong>
+        In Brasilien l&auml;sst man den Artikel oft weg: "minha casa". Du lernst aber PT-PT &mdash; da ist der Artikel <strong>Standard</strong>: "a minha casa".
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Sonderfall: Familie ohne Artikel</h3>
+      <p>Bei <strong>direkten Familienmitgliedern im Singular</strong> wird der Artikel oft weggelassen:</p>
+      <table>
+        <tr><th>Mit Artikel (normal)</th><th>Ohne Artikel (Familie)</th></tr>
+        <tr><td>a minha casa</td><td>minha m&atilde;e / meu pai</td></tr>
+        <tr><td>o meu carro</td><td>meu irm&atilde;o / minha irm&atilde;</td></tr>
+      </table>
+      <div class="recall-box">
+        <strong>Merke:</strong> Bei Familie kann man beides sagen, aber ohne Artikel klingt vertrauter/pers&ouml;nlicher. Im Plural gibt's wieder den Artikel: "<strong>os</strong> meus pais" (meine Eltern).
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>"Seu/sua" kann mehrdeutig sein!</h3>
+      <p><strong>seu / sua</strong> kann bedeuten:</p>
+      <ul style="padding-left: 20px; font-size: 14px; line-height: 1.8; color: #4a4540;">
+        <li>sein (ele)</li>
+        <li>ihr (ela)</li>
+        <li>Ihr (voc&ecirc;, formell)</li>
+      </ul>
+      <p>Wenn es unklar ist, pr&auml;zisiert man mit <strong>"dele" / "dela"</strong>:</p>
+      <table>
+        <tr><th>Mehrdeutig</th><th>Pr&auml;zise</th></tr>
+        <tr><td>o seu carro</td><td>o carro <span class="v">dele</span> (sein Auto)</td></tr>
+        <tr><td>a sua casa</td><td>a casa <span class="v">dela</span> (ihr Haus)</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Gut zu wissen:</strong>
+        "dele" = de + ele (von ihm) / "dela" = de + ela (von ihr)<br>
+        "deles/delas" im Plural: o carro <strong>deles</strong> = das Auto von ihnen (m&auml;nnl.)
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Praktische Beispiele aus deinen Live-Klassen</h3>
+      <table>
+        <tr><td>a <span class="v">minha</span> parceira de neg&oacute;cios</td><td>meine Gesch&auml;ftspartnerin</td></tr>
+        <tr><td><span class="v">meu</span> irm&atilde;o (oder: o meu irm&atilde;o)</td><td>mein Bruder</td></tr>
+        <tr><td><span class="v">minha</span> m&atilde;e</td><td>meine Mutter</td></tr>
+        <tr><td><span class="v">minha</span> av&oacute;</td><td>meine Gro&szlig;mutter</td></tr>
+        <tr><td>o <span class="v">meu</span> fim de semana foi tranquilo</td><td>mein Wochenende war ruhig</td></tr>
+        <tr><td><span class="v">minha</span> comida favorita</td><td>mein Lieblingsessen</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Richtige Form w&auml;hlen -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Welche Form passt? (meu/minha/meus/minhas)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">mein Haus (casa = feminin)</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="minha" style="width: 140px;">
+        <span>casa</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">mein Auto (carro = maskulin)</div>
+      <div class="input-row">
+        <span>o</span>
+        <input type="text" class="answer-input" data-answers="meu" style="width: 140px;">
+        <span>carro</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">meine Kinder (filhos = maskulin, Plural)</div>
+      <div class="input-row">
+        <span>os</span>
+        <input type="text" class="answer-input" data-answers="meus" style="width: 140px;">
+        <span>filhos</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">meine Schwestern (irm&atilde;s = feminin, Plural)</div>
+      <div class="input-row">
+        <span>as</span>
+        <input type="text" class="answer-input" data-answers="minhas" style="width: 140px;">
+        <span>irm&atilde;s</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">meine Mutter (m&atilde;e = feminin, Familie = ohne Artikel m&ouml;glich)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="minha" style="width: 140px;">
+        <span>m&atilde;e</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">mein Bruder (irm&atilde;o)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="meu" style="width: 140px;">
+        <span>irm&atilde;o</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Alle Personen -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Dein, sein, unser... (alle Personen)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 8</div>
+      <div class="exercise-hint">dein Buch (informell, tu)</div>
+      <div class="input-row">
+        <span>o</span>
+        <input type="text" class="answer-input" data-answers="teu" style="width: 140px;">
+        <span>livro</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 8</div>
+      <div class="exercise-hint">deine Freundin (amiga, informell, tu)</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="tua" style="width: 140px;">
+        <span>amiga</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 11</div>
+      <div class="exercise-hint">sein Hund (c&atilde;o = maskulin, ele)</div>
+      <div class="input-row">
+        <span>o</span>
+        <input type="text" class="answer-input" data-answers="seu" style="width: 140px;">
+        <span>c&atilde;o</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 11</div>
+      <div class="exercise-hint">unsere Freunde (amigos, n&oacute;s)</div>
+      <div class="input-row">
+        <span>os</span>
+        <input type="text" class="answer-input" data-answers="nossos" style="width: 140px;">
+        <span>amigos</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 11</div>
+      <div class="exercise-hint">unsere Wohnung (casa, n&oacute;s)</div>
+      <div class="input-row">
+        <span>a</span>
+        <input type="text" class="answer-input" data-answers="nossa" style="width: 140px;">
+        <span>casa</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: S&auml;tze &uuml;bersetzen -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; S&auml;tze &uuml;bersetzen</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 18</div>
+      <div class="translation-prompt">Meine Mutter ist Lehrerin.</div>
+      <input type="text" class="translation-input" data-answers="a minha mãe é professora.|minha mãe é professora.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 18</div>
+      <div class="translation-prompt">Mein Bruder hat 25 Jahre.</div>
+      <input type="text" class="translation-input" data-answers="o meu irmão tem 25 anos.|meu irmão tem 25 anos.|o meu irmão tem vinte e cinco anos.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 18</div>
+      <div class="translation-prompt">Wie heißt dein Vater?</div>
+      <input type="text" class="translation-input" data-answers="como se chama o teu pai?|como é que se chama o teu pai?|como se chama teu pai?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="translation-prompt">Sein Auto ist neu.</div>
+      <input type="text" class="translation-input" data-answers="o seu carro é novo.|o carro dele é novo.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="translation-prompt">Unsere Freunde sind portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="os nossos amigos são portugueses.|nossos amigos são portugueses.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="translation-prompt">Meine Geschäftspartnerin spricht Portugiesisch.</div>
+      <input type="text" class="translation-input" data-answers="a minha parceira de negócios fala português.|minha parceira de negócios fala português.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 20</div>
+      <div class="translation-prompt">Meine Familie ist groß: meine Eltern, meine zwei Brüder und meine Großmutter wohnen alle in Deutschland.</div>
+      <input type="text" class="translation-input" data-answers="a minha família é grande: os meus pais, os meus dois irmãos e a minha avó moram todos na alemanha.|minha família é grande meus pais meus dois irmãos e minha avó moram todos na alemanha.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">19 von 20 &mdash; Moritz' Realit&auml;t</div>
+      <div class="translation-prompt">Meine Agentur ist in Deutschland, aber meine zwei Unternehmen sind in Portugal.</div>
+      <input type="text" class="translation-input" data-answers="a minha agência é na alemanha, mas as minhas duas empresas são em portugal.|a minha agência fica na alemanha mas as minhas duas empresas ficam em portugal.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">20 von 20 &mdash; Moritz' Realit&auml;t</div>
+      <div class="translation-prompt">Mein Lieblingskaffee kommt aus Portugal und meine Lieblingsreise war nach Lissabon.</div>
+      <input type="text" class="translation-input" data-answers="o meu café favorito é de portugal e a minha viagem favorita foi a lisboa.|meu café favorito é de portugal e minha viagem favorita foi a lisboa.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='L\u00f6sung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! \u2705';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! \u2705 (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Possessivpronomen sitzen!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Schau dir die Fehler nochmal an.';
+  else if(pct>=0.4)msg.textContent='Bom! Die Konkordanz braucht noch etwas Übung.';
+  else msg.textContent='Schau dir die Tabelle in Ruhe an.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-12','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
