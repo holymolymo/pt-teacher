@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 15 - -ir Verben</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #f9a825; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .change { color: #c62828; font-weight: 700; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 8px 12px; font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 140px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 15</div>
+    <h1>-ir Verben <span class="level-tag">Hausaufgabe Buch S.20-23</span></h1>
+    <p>Regelm&auml;&szlig;ige &amp; unregelm&auml;&szlig;ige -ir Verben mit Spezialformen</p>
+  </div>
+
+  <!-- TEIL 1: REGELMÄSSIGE -IR -->
+  <div class="section">
+    <div class="section-title">Teil 1 &mdash; Regelm&auml;&szlig;ige -ir Verben</div>
+
+    <div class="grammar-box">
+      <h3>Standard-Endungen f&uuml;r -ir Verben</h3>
+      <p>Stamm + Endung. Sehr &auml;hnlich zu -er Verben &mdash; nur ein paar Unterschiede!</p>
+      <table>
+        <tr><th>Person</th><th>Endung</th><th>abrir (öffnen)</th><th>partir (abreisen)</th></tr>
+        <tr><td>Eu</td><td class="v">-o</td><td>abr<span class="v">o</span></td><td>part<span class="v">o</span></td></tr>
+        <tr><td>Tu</td><td class="v">-es</td><td>abr<span class="v">es</span></td><td>part<span class="v">es</span></td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">-e</td><td>abr<span class="v">e</span></td><td>part<span class="v">e</span></td></tr>
+        <tr><td>N&oacute;s</td><td class="v">-imos</td><td>abr<span class="v">imos</span></td><td>part<span class="v">imos</span></td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">-em</td><td>abr<span class="v">em</span></td><td>part<span class="v">em</span></td></tr>
+      </table>
+      <div class="insight">
+        <strong>Vergleich -er vs -ir:</strong>
+        Nur in der <strong>n&oacute;s-Form</strong> unterscheiden sie sich: -er hat <strong>-emos</strong> (comemos), -ir hat <strong>-imos</strong> (partimos). Sonst alles gleich!
+      </div>
+      <p><strong>Wichtige regelm&auml;&szlig;ige -ir Verben:</strong> abrir, partir, decidir, dividir, discutir, permitir, admitir, assistir, garantir</p>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 1 -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Regelm&auml;&szlig;ige -ir Verben (aus Hausaufgabe 8.1)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 8</div>
+      <div class="exercise-hint">abrir / eles → ?</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="abrem">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 8</div>
+      <div class="exercise-hint">decidir / elas → ?</div>
+      <div class="input-row">
+        <span>Elas</span>
+        <input type="text" class="answer-input" data-answers="decidem">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 8</div>
+      <div class="exercise-hint">dividir / nós → ?</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="dividimos">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 8</div>
+      <div class="exercise-hint">partir / ele → ?</div>
+      <div class="input-row">
+        <span>Ele</span>
+        <input type="text" class="answer-input" data-answers="parte">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 8</div>
+      <div class="exercise-hint">discutir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="discuto">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 8</div>
+      <div class="exercise-hint">permitir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="permito">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 8</div>
+      <div class="exercise-hint">"As lojas ... às 10h." (abrir)</div>
+      <div class="input-row">
+        <span>As lojas</span>
+        <input type="text" class="answer-input" data-answers="abrem">
+        <span>&agrave;s 10h.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 8</div>
+      <div class="exercise-hint">"Ela ... o bolo com os irmãos." (dividir)</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="divide">
+        <span>o bolo com os irm&atilde;os.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- TEIL 2: SPEZIALFÄLLE -->
+  <div class="section">
+    <div class="section-title">Teil 2 &mdash; Sonderformen in der eu-Form</div>
+
+    <div class="grammar-box">
+      <h3>Drei Gruppen mit besonderer eu-Form</h3>
+      <p>Bei manchen -ir Verben &auml;ndert sich der Stamm <strong>nur in der eu-Form</strong>. Drei Muster:</p>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Gruppe A: e &rarr; i</h3>
+      <p>Verben mit "e" im Stamm wechseln zu "i" in der eu-Form:</p>
+      <table>
+        <tr><th>Verb</th><th>eu</th><th>tu</th><th>ele/ela</th><th>n&oacute;s</th><th>eles</th></tr>
+        <tr><td>vestir</td><td>v<span class="change">i</span>sto</td><td>vestes</td><td>veste</td><td>vestimos</td><td>vestem</td></tr>
+        <tr><td>servir</td><td>s<span class="change">i</span>rvo</td><td>serves</td><td>serve</td><td>servimos</td><td>servem</td></tr>
+        <tr><td>sentir</td><td>s<span class="change">i</span>nto</td><td>sentes</td><td>sente</td><td>sentimos</td><td>sentem</td></tr>
+        <tr><td>preferir</td><td>pref<span class="change">i</span>ro</td><td>preferes</td><td>prefere</td><td>preferimos</td><td>preferem</td></tr>
+      </table>
+      <div class="recall-box">
+        <strong>Achtung &mdash; nur in eu!</strong>
+        "Eu visto" (Ich ziehe an), aber "tu vestes" und "ela veste" mit e!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Gruppe B: gu &rarr; g (vor o)</h3>
+      <p>Damit das "g" hart bleibt, f&auml;llt das "u" weg vor "o":</p>
+      <table>
+        <tr><th>Verb</th><th>eu</th><th>ele/ela</th></tr>
+        <tr><td>conseguir</td><td>conse<span class="change">g</span>o (eigentlich: consigo, mit i statt u!)</td><td>consegue</td></tr>
+        <tr><td>seguir</td><td>s<span class="change">i</span>go</td><td>segue</td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>Doppelte Sonder&auml;nderung!</strong>
+        Bei <strong>conseguir</strong> und <strong>seguir</strong> passieren zwei Dinge: das "u" f&auml;llt weg UND e &rarr; i. So wird's: <strong>conse<span class="change">g</span>o</strong> &rarr; <strong>consigo</strong>, <strong>seguir</strong> &rarr; <strong>sigo</strong>.
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Gruppe C: g &rarr; j (vor o)</h3>
+      <p>Das "g" wird zu "j", damit der weiche Laut bleibt:</p>
+      <table>
+        <tr><th>Verb</th><th>eu</th><th>ele/ela</th></tr>
+        <tr><td>corrigir</td><td>corri<span class="change">j</span>o</td><td>corrige</td></tr>
+        <tr><td>dirigir</td><td>diri<span class="change">j</span>o</td><td>dirige</td></tr>
+      </table>
+      <div class="recall-box">
+        <strong>Logik:</strong>
+        Ohne &Auml;nderung w&auml;re "corrigo" hart wie "ko-rri-go". Mit "j" bleibt's weich: "ko-rri-jo".
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Bonus: -uzir Verben</h3>
+      <p>Verben auf <strong>-uzir</strong> (traduzir, produzir, reduzir, conduzir) verlieren das "e" in der <strong>3. Person Singular</strong>:</p>
+      <table>
+        <tr><th>traduzir</th><th>Form</th></tr>
+        <tr><td>Eu</td><td>traduzo</td></tr>
+        <tr><td>Tu</td><td>traduzes</td></tr>
+        <tr><td>Ele/Ela</td><td>tradu<span class="v">z</span> (kein -e!)</td></tr>
+        <tr><td>N&oacute;s</td><td>traduzimos</td></tr>
+        <tr><td>Eles</td><td>traduzem</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 2 -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Sonderformen (eu-Formen aus Hausaufgabe 8.1)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 14</div>
+      <div class="exercise-hint">vestir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="visto">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 14</div>
+      <div class="exercise-hint">servir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="sirvo">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 14</div>
+      <div class="exercise-hint">sentir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="sinto">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 14</div>
+      <div class="exercise-hint">preferir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="prefiro">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 14</div>
+      <div class="exercise-hint">conseguir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="consigo">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 14</div>
+      <div class="exercise-hint">corrigir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="corrijo">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- TEIL 3: UNREGELMÄSSIG -->
+  <div class="section">
+    <div class="section-title">Teil 3 &mdash; Unregelm&auml;&szlig;ige -ir Verben (Unidade 9)</div>
+
+    <div class="grammar-box">
+      <h3>Die wichtigsten unregelm&auml;&szlig;igen -ir Verben</h3>
+      <table>
+        <tr><th>Verb</th><th>eu</th><th>tu</th><th>ele/ela</th><th>n&oacute;s</th><th>eles</th></tr>
+        <tr><td>ir (gehen)</td><td class="v">vou</td><td>vais</td><td>vai</td><td>vamos</td><td>v&atilde;o</td></tr>
+        <tr><td>vir (kommen)</td><td class="v">venho</td><td>vens</td><td>vem</td><td>vimos</td><td>v&ecirc;m</td></tr>
+        <tr><td>sair (rausgehen)</td><td class="v">saio</td><td>sais</td><td>sai</td><td>sa&iacute;mos</td><td>saem</td></tr>
+        <tr><td>cair (fallen)</td><td class="v">caio</td><td>cais</td><td>cai</td><td>ca&iacute;mos</td><td>caem</td></tr>
+        <tr><td>ouvir (h&ouml;ren)</td><td class="v">ou&ccedil;o</td><td>ouves</td><td>ouve</td><td>ouvimos</td><td>ouvem</td></tr>
+        <tr><td>pedir (bitten)</td><td class="v">pe&ccedil;o</td><td>pedes</td><td>pede</td><td>pedimos</td><td>pedem</td></tr>
+        <tr><td>subir (steigen)</td><td class="v">subo</td><td>sobes</td><td>sobe</td><td>subimos</td><td>sobem</td></tr>
+        <tr><td>dormir (schlafen)</td><td class="v">durmo</td><td>dormes</td><td>dorme</td><td>dormimos</td><td>dormem</td></tr>
+        <tr><td>fugir (fliehen)</td><td class="v">fujo</td><td>foges</td><td>foge</td><td>fugimos</td><td>fogem</td></tr>
+        <tr><td>rir (lachen)</td><td class="v">rio</td><td>ris</td><td>ri</td><td>rimos</td><td>riem</td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>Aufgepasst &mdash; ouvir und pedir:</strong>
+        eu Form: ou<span class="v">ç</span>o, pe<span class="v">ç</span>o. Mit Cedilha! Wie bei conhecer/conhe&ccedil;o.
+      </div>
+      <div class="warning-box">
+        <strong>subir, dormir, fugir &mdash; Vokalwechsel:</strong>
+        eu beh&auml;lt den Original-Vokal (u/o), aber tu/ele/eles wechselt zu o (subo, aber sobes/sobe/sobem).
+      </div>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 3 -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Unregelm&auml;&szlig;ige -ir Verben (aus Hausaufgabe 9.1)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 22</div>
+      <div class="exercise-hint">subir / eles → ?</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="sobem">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 22</div>
+      <div class="exercise-hint">pedir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="peço|peco">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 22</div>
+      <div class="exercise-hint">dormir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="durmo">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 22</div>
+      <div class="exercise-hint">sair / elas → ?</div>
+      <div class="input-row">
+        <span>Elas</span>
+        <input type="text" class="answer-input" data-answers="saem">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">19 von 22</div>
+      <div class="exercise-hint">ouvir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="ouço|ouco">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">20 von 22</div>
+      <div class="exercise-hint">vir / eles → ?</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="vêm|vem">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">21 von 22</div>
+      <div class="exercise-hint">cair / nós → ?</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="caímos|caimos">
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">22 von 22</div>
+      <div class="exercise-hint">fugir / eu → ?</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="fujo">
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 4 -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 4 &mdash; L&uuml;ckentexte (Hausaufgabe 9.2)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">23 von 28</div>
+      <div class="exercise-hint">"O cachorro ... logo para a rua." (fugir, ele)</div>
+      <div class="input-row">
+        <span>O cachorro</span>
+        <input type="text" class="answer-input" data-answers="foge">
+        <span>logo para a rua.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">24 von 28</div>
+      <div class="exercise-hint">"Aos sábados, eu ... sempre até mais tarde." (dormir)</div>
+      <div class="input-row">
+        <span>Aos s&aacute;bados, eu</span>
+        <input type="text" class="answer-input" data-answers="durmo">
+        <span>sempre at&eacute; mais tarde.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">25 von 28</div>
+      <div class="exercise-hint">"Eles ... connosco até em casa." (vir)</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="vêm|vem">
+        <span>connosco at&eacute; em casa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">26 von 28</div>
+      <div class="exercise-hint">"Eu ... ao concerto com a Rita." (ir)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="vou">
+        <span>ao concerto com a Rita.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">27 von 28</div>
+      <div class="exercise-hint">"Senhoras e senhores, ... a atenção de todos." (pedir, eu)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="peço|peco">
+        <span>a aten&ccedil;&atilde;o de todos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">28 von 28</div>
+      <div class="exercise-hint">"Fale mais alto. Não ... nada!" (ouvir, eu)</div>
+      <div class="input-row">
+        <span>N&atilde;o</span>
+        <input type="text" class="answer-input" data-answers="ouço|ouco">
+        <span>nada!</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! -ir Verben sitzen!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Solides Ergebnis.';
+  else if(pct>=0.4)msg.textContent='Bom! Schau dir die Sonderformen nochmal an.';
+  else msg.textContent='Geh die Tabellen in Ruhe durch.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-15','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
