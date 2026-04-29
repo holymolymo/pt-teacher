@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 14 - Estar a + Infinitiv & Uhrzeit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #2e7d32; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 14</div>
+    <h1>Estar a + Infinitiv &amp; Uhrzeit <span class="level-tag">aus Live-Klasse</span></h1>
+    <p>Was du gerade machst &mdash; und wie sp&auml;t es ist</p>
+  </div>
+
+  <!-- TEIL 1: ESTAR A + INFINITIV -->
+  <div class="section">
+    <div class="section-title">Teil 1 &mdash; Estar a + Infinitiv (Verlaufsform)</div>
+
+    <div class="grammar-box">
+      <h3>Was passiert <em>gerade</em>?</h3>
+      <p>Im Englischen w&uuml;rdest du sagen "I <strong>am working</strong>", im Deutschen "ich arbeite gerade". Auf Portugiesisch (PT-PT): <span class="highlight">estar + a + Infinitiv</span></p>
+
+      <p style="font-size: 17px; padding: 14px; background: #faf8f5; border-radius: 8px; margin-top: 16px;">
+        <strong>Eu <span class="v">estou a trabalhar</span></strong> = Ich arbeite gerade<br>
+        <strong>A app <span class="v">est&aacute; a funcionar</span> bem</strong> = Die App funktioniert gut (gerade)
+      </p>
+
+      <div class="recall-box">
+        <strong>Aus deiner Live-Klasse:</strong>
+        "Est&aacute; a funcionar bem?" &mdash; "Sim, est&aacute;." Das nutzt du schon!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Konjugation: estar + a + Infinitiv</h3>
+      <p>Du konjugierst nur <strong>estar</strong>, das Verb bleibt im Infinitiv:</p>
+      <table>
+        <tr><th>Person</th><th>Form</th><th>Beispiel</th></tr>
+        <tr><td>Eu</td><td><span class="v">estou a</span> + Inf.</td><td>Estou a comer.</td></tr>
+        <tr><td>Tu</td><td><span class="v">est&aacute;s a</span> + Inf.</td><td>Est&aacute;s a estudar?</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td><span class="v">est&aacute; a</span> + Inf.</td><td>Ela est&aacute; a dormir.</td></tr>
+        <tr><td>N&oacute;s</td><td><span class="v">estamos a</span> + Inf.</td><td>Estamos a aprender.</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td><span class="v">est&atilde;o a</span> + Inf.</td><td>Eles est&atilde;o a falar.</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>PT-PT vs. PT-BR &mdash; wichtiger Unterschied!</h3>
+      <table>
+        <tr><th>PT-PT (was du lernst)</th><th>PT-BR (Brasilien)</th></tr>
+        <tr><td>Estou <span class="v">a comer</span></td><td>Estou <span class="v">comendo</span></td></tr>
+        <tr><td>Est&aacute; <span class="v">a chover</span></td><td>Est&aacute; <span class="v">chovendo</span></td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>Achtung beim Vokabel-Lernen:</strong>
+        Wenn du portugiesisches Material findest, achte ob es PT-PT (mit "a + Inf.") oder PT-BR (mit "-ndo") ist. Du brauchst die "a + Inf."-Form!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Wann benutzt man das?</h3>
+      <table>
+        <tr><th>Verwendung</th><th>Beispiel</th></tr>
+        <tr><td>Was passiert genau jetzt</td><td>Estou a falar com a Maria.</td></tr>
+        <tr><td>Aktuell laufende Aktion</td><td>Estou a aprender portugu&ecirc;s este ano.</td></tr>
+        <tr><td>Wetter im Moment</td><td>Est&aacute; a chover.</td></tr>
+        <tr><td>App/Ger&auml;t-Status</td><td>A app est&aacute; a funcionar.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1 -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Estar a + Infinitiv</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Ich arbeite gerade. (trabalhar)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="estou a trabalhar">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Sie (ela) lernt gerade Portugiesisch.</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="está a aprender|esta a aprender">
+        <span>portugu&ecirc;s.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Es regnet gerade. (chover)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="está a chover|esta a chover">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">Wir reden gerade über das Wetter. (falar do clima)</div>
+      <input type="text" class="translation-input" data-answers="estamos a falar do clima.|nós estamos a falar do clima.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Was machst du gerade? (informell)</div>
+      <input type="text" class="translation-input" data-answers="o que estás a fazer?|o que é que estás a fazer?|o que tu estás a fazer?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6 &mdash; deine echte Situation</div>
+      <div class="exercise-hint">Ich baue gerade eine App, um Portugiesisch zu lernen.</div>
+      <input type="text" class="translation-input" data-answers="estou a construir uma aplicação para aprender português.|eu estou a construir uma app para aprender português.|estou a construir uma aplicação para estudar português.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- TEIL 2: UHRZEIT -->
+  <div class="section">
+    <div class="section-title">Teil 2 &mdash; Que horas s&atilde;o? (Uhrzeit)</div>
+
+    <div class="grammar-box">
+      <h3>Wie fragt man nach der Uhrzeit?</h3>
+      <p style="font-size: 17px; padding: 14px; background: #faf8f5; border-radius: 8px;">
+        <strong>Que horas s&atilde;o?</strong> = Wie sp&auml;t ist es?
+      </p>
+      <p>Die Antwort braucht <strong>ser</strong> &mdash; meistens Plural ("s&atilde;o").</p>
+
+      <table>
+        <tr><th>Form</th><th>Wann</th><th>Beispiel</th></tr>
+        <tr><td><span class="v">&Eacute;</span> + Singular</td><td>1 Uhr / 12 Uhr / Mittag / Mitternacht</td><td>&Eacute; uma hora.</td></tr>
+        <tr><td><span class="v">S&atilde;o</span> + Plural</td><td>alle anderen Zeiten</td><td>S&atilde;o duas horas.</td></tr>
+      </table>
+
+      <div class="recall-box">
+        <strong>Aus deiner Live-Klasse:</strong>
+        "S&atilde;o 12 horas e 27 minutos" &mdash; korrekt! "S&atilde;o" weil es Plural ist.
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Volle Stunden</h3>
+      <table>
+        <tr><th>Uhrzeit</th><th>Portugiesisch</th></tr>
+        <tr><td>1:00</td><td><span class="v">&Eacute;</span> uma hora.</td></tr>
+        <tr><td>2:00</td><td><span class="v">S&atilde;o</span> duas horas.</td></tr>
+        <tr><td>3:00</td><td>S&atilde;o tr&ecirc;s horas.</td></tr>
+        <tr><td>10:00</td><td>S&atilde;o dez horas.</td></tr>
+        <tr><td>12:00 (Mittag)</td><td>&Eacute; meio-dia.</td></tr>
+        <tr><td>00:00 (Mitternacht)</td><td>&Eacute; meia-noite.</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Mit Minuten</h3>
+      <p>Du verbindest mit <strong>"e"</strong>:</p>
+      <table>
+        <tr><th>Uhrzeit</th><th>Portugiesisch</th></tr>
+        <tr><td>3:15</td><td>S&atilde;o tr&ecirc;s <span class="v">e</span> um quarto. (oder: e quinze)</td></tr>
+        <tr><td>3:30</td><td>S&atilde;o tr&ecirc;s <span class="v">e</span> meia. (oder: e trinta)</td></tr>
+        <tr><td>3:45</td><td>S&atilde;o tr&ecirc;s <span class="v">e</span> quarenta e cinco.<br><em>oder besser:</em> S&atilde;o um quarto <span class="v">para</span> as quatro.</td></tr>
+        <tr><td>3:50</td><td>S&atilde;o dez <span class="v">para</span> as quatro. (10 vor 4)</td></tr>
+        <tr><td>12:27</td><td>S&atilde;o doze horas <span class="v">e</span> vinte e sete minutos. (oder: meio-dia e vinte e sete)</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Zwei Wege f&uuml;r "vor":</strong>
+        Bei 3:50 kannst du sagen: "S&atilde;o tr&ecirc;s e cinquenta" (3 und 50) oder eleganter "S&atilde;o dez para as quatro" (zehn vor vier).
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Tageszeit hinzuf&uuml;gen</h3>
+      <table>
+        <tr><td><strong>da manh&atilde;</strong></td><td>morgens (6&ndash;12)</td></tr>
+        <tr><td><strong>da tarde</strong></td><td>nachmittags (12&ndash;19)</td></tr>
+        <tr><td><strong>da noite</strong></td><td>abends/nachts</td></tr>
+      </table>
+      <p>Beispiel: "S&atilde;o 9 horas <strong>da manh&atilde;</strong>" / "S&atilde;o 8 horas <strong>da noite</strong>"</p>
+    </div>
+
+    <div class="grammar-box">
+      <h3>"Um wie viel Uhr?" &mdash; A que horas?</h3>
+      <table>
+        <tr><th>Frage</th><th>Antwort</th></tr>
+        <tr><td>A que horas come&ccedil;a?</td><td><span class="v">&Agrave;</span> uma hora. (NICHT "&agrave;s")</td></tr>
+        <tr><td>A que horas trabalhas?</td><td><span class="v">&Agrave;s</span> nove horas.</td></tr>
+        <tr><td>A que horas almo&ccedil;am?</td><td><span class="v">&Agrave;s</span> doze e meia.</td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>Achtung Pr&auml;position!</strong>
+        Bei UM-Zeit-Angaben: <strong>&agrave;</strong> (= a + a, vor 1 Uhr) oder <strong>&agrave;s</strong> (= a + as, vor allen anderen).
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2 -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Uhrzeit</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 14</div>
+      <div class="exercise-hint">Wie sp&auml;t ist es?</div>
+      <input type="text" class="translation-input" data-answers="que horas são?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 14</div>
+      <div class="exercise-hint">Es ist 1 Uhr.</div>
+      <input type="text" class="translation-input" data-answers="é uma hora.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 14</div>
+      <div class="exercise-hint">Es ist 8 Uhr.</div>
+      <input type="text" class="translation-input" data-answers="são oito horas.|são 8 horas.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 14</div>
+      <div class="exercise-hint">Es ist 3 Uhr und 30 Minuten / halb 4.</div>
+      <input type="text" class="translation-input" data-answers="são três e meia.|são três e trinta.|são 3 e meia.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 14</div>
+      <div class="exercise-hint">Es ist 12 Uhr und 27 Minuten.</div>
+      <input type="text" class="translation-input" data-answers="são doze horas e vinte e sete minutos.|são meio-dia e vinte e sete.|são 12 horas e 27 minutos.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 14</div>
+      <div class="exercise-hint">Es ist Mittag.</div>
+      <input type="text" class="translation-input" data-answers="é meio-dia.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 14</div>
+      <div class="exercise-hint">Um wie viel Uhr arbeitest du?</div>
+      <input type="text" class="translation-input" data-answers="a que horas trabalhas?|a que horas é que trabalhas?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 14</div>
+      <div class="exercise-hint">Um 9 Uhr morgens.</div>
+      <input type="text" class="translation-input" data-answers="às nove horas da manhã.|às 9 da manhã.|as nove horas da manha.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- TEIL 3: KOMBINIERT -->
+  <div class="section">
+    <div class="section-title">Teil 3 &mdash; Alles kombiniert (mit deinen Klassen-S&auml;tzen)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="translation-prompt">Es ist 7 Uhr morgens. Ich treibe gerade Sport.</div>
+      <input type="text" class="translation-input" data-answers="são sete horas da manhã. estou a fazer desporto.|são 7 da manhã. estou a fazer desporto.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="translation-prompt">Was machst du gerade? Ich packe meinen Koffer.</div>
+      <input type="text" class="translation-input" data-answers="o que estás a fazer? estou a fazer a minha mala.|o que é que estás a fazer? estou a fazer a minha mala.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="translation-prompt">Die App funktioniert gut, sie deckt meine Lernbedürfnisse ab.</div>
+      <input type="text" class="translation-input" data-answers="a aplicação está a funcionar bem, atende as minhas necessidades de aprendizagem.|a app está a funcionar bem atende as minhas necessidades de aprendizagem.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 18 &mdash; Finale</div>
+      <div class="translation-prompt">Es ist 12 Uhr 30. Ich beginne gerade zu kochen und danach werde ich meinen Koffer packen, weil ich morgen reise.</div>
+      <input type="text" class="translation-input" data-answers="são doze e meia. estou a começar a cozinhar e depois vou fazer a minha mala porque vou viajar amanhã.|são 12 e meia. estou a começar a cozinhar e depois vou fazer a minha mala porque vou viajar amanhã.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Verlaufsform und Uhrzeit sitzen!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Solides Ergebnis.';
+  else if(pct>=0.4)msg.textContent='Bom! Schau dir die Tabellen nochmal an.';
+  else msg.textContent='Geh die Grammatik in Ruhe durch.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-14','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
