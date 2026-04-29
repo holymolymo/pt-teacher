@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 13 - Ir + Infinitiv</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .exercise-label { font-size: 13px; font-weight: 600; color: #6b6560; margin-bottom: 12px; }
+  .exercise-hint { font-size: 13px; color: #9e9892; font-style: italic; margin-bottom: 12px; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 16px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 10px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+  .feedback.show { display: block; } .feedback.correct { background: #e8f5e9; color: #1b5e20; } .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 15px; color: #6b6560; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 13</div>
+    <h1>Ir + Infinitiv</h1>
+    <p>Die einfache Zukunft &mdash; was du gleich, sp&auml;ter oder morgen machst</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Die einfachste Zukunft im Portugiesischen</h3>
+      <p>Statt das Futuro mit komplizierten Endungen zu lernen, benutzen Portugiesen im Alltag fast immer <strong>ir + Infinitiv</strong> &mdash; genau wie das deutsche "ich werde..." oder "ich gehe..." (ich gehe einkaufen).</p>
+      <p>Die Konstruktion: <span class="highlight">ir (konjugiert) + Infinitiv</span></p>
+
+      <p style="font-size: 17px; padding: 14px; background: #faf8f5; border-radius: 8px; margin-top: 16px;">
+        <strong>Eu <span class="v">vou comer</span></strong> = Ich werde essen / Ich gehe essen<br>
+        <strong>Eu <span class="v">vou viajar</span></strong> = Ich werde reisen
+      </p>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Verb "ir" konjugieren (Presente)</h3>
+      <p>Das brauchst du auswendig &mdash; ir ist unregelm&auml;&szlig;ig:</p>
+      <table>
+        <tr><th>Person</th><th>ir</th><th>Beispiel</th></tr>
+        <tr><td>Eu</td><td class="v">vou</td><td>Eu <span class="v">vou</span> dormir.</td></tr>
+        <tr><td>Tu</td><td class="v">vais</td><td>Tu <span class="v">vais</span> trabalhar.</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">vai</td><td>Ela <span class="v">vai</span> viajar.</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">vamos</td><td>N&oacute;s <span class="v">vamos</span> comer.</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">v&atilde;o</td><td>Eles <span class="v">v&atilde;o</span> sair.</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Doppelnutzen!</strong>
+        "ir" hei&szlig;t auch einfach "gehen": "Eu vou ao caf&eacute;" (Ich gehe ins Caf&eacute;). Aus dem Kontext erkennst du, was gemeint ist:<br>
+        ir + <strong>Ort</strong> = gehen ("Vou ao caf&eacute;")<br>
+        ir + <strong>Verb (Infinitiv)</strong> = werden ("Vou comer")
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Typische Zeit-Adverbien für Zukunft</h3>
+      <table>
+        <tr><td><strong>amanh&atilde;</strong></td><td>morgen</td></tr>
+        <tr><td><strong>depois de amanh&atilde;</strong></td><td>&uuml;bermorgen</td></tr>
+        <tr><td><strong>logo</strong></td><td>gleich / sp&auml;ter</td></tr>
+        <tr><td><strong>mais tarde</strong></td><td>sp&auml;ter</td></tr>
+        <tr><td><strong>na pr&oacute;xima semana</strong></td><td>n&auml;chste Woche</td></tr>
+        <tr><td><strong>no pr&oacute;ximo m&ecirc;s</strong></td><td>n&auml;chsten Monat</td></tr>
+        <tr><td><strong>no fim de semana</strong></td><td>am Wochenende (oft Zukunft)</td></tr>
+        <tr><td><strong>esta noite</strong></td><td>heute Abend</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Verneinung: einfach mit "n&atilde;o" davor</h3>
+      <p>Die Verneinung kommt <strong>vor das konjugierte ir</strong>, nicht vor den Infinitiv:</p>
+      <table>
+        <tr><th>Bejaht</th><th>Verneint</th></tr>
+        <tr><td>Eu vou trabalhar amanh&atilde;.</td><td>Eu <span class="v">n&atilde;o</span> vou trabalhar amanh&atilde;.</td></tr>
+        <tr><td>Eles v&atilde;o viajar.</td><td>Eles <span class="v">n&atilde;o</span> v&atilde;o viajar.</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Praktische Beispiele aus dem Alltag</h3>
+      <table>
+        <tr><td>Vou tomar um caf&eacute;.</td><td>Ich werde einen Kaffee trinken.</td></tr>
+        <tr><td>Vais sair esta noite?</td><td>Gehst du heute Abend aus?</td></tr>
+        <tr><td>Vamos comer fora hoje.</td><td>Wir essen heute auswärts.</td></tr>
+        <tr><td>Ela vai viajar para Lisboa.</td><td>Sie wird nach Lissabon reisen.</td></tr>
+        <tr><td>O que vais fazer amanh&atilde;?</td><td>Was wirst du morgen machen?</td></tr>
+        <tr><td>Vou ficar em casa.</td><td>Ich werde zu Hause bleiben.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: ir konjugieren -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Konjugiere "ir" und ergänze</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Ich werde morgen reisen.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="vou" style="width: 100px;">
+        <span>viajar amanh&atilde;.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Sie (ela) wird heute Abend ausgehen.</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="vai" style="width: 100px;">
+        <span>sair esta noite.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Wir werden zu Mittag essen.</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="vamos" style="width: 100px;">
+        <span>almo&ccedil;ar.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">Wirst du arbeiten? (informell)</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="vais" style="width: 100px;">
+        <span>trabalhar?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Sie (eles) werden Englisch lernen.</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="vão|vao" style="width: 100px;">
+        <span>aprender ingl&ecirc;s.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">Ich werde nicht zur Arbeit gehen.</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="não vou|nao vou" style="width: 160px;">
+        <span>trabalhar.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Bilde ganze Sätze -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Bilde Zukunfts-Sätze</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 12</div>
+      <div class="translation-prompt">Was wirst du heute Abend machen?</div>
+      <input type="text" class="translation-input" data-answers="o que vais fazer esta noite?|o que é que vais fazer esta noite?|o que tu vais fazer esta noite?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 12</div>
+      <div class="translation-prompt">Wir werden ein Restaurant in Lissabon besuchen.</div>
+      <input type="text" class="translation-input" data-answers="vamos a um restaurante em lisboa.|nós vamos a um restaurante em lisboa.|vamos visitar um restaurante em lisboa.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 12</div>
+      <div class="translation-prompt">Sie (ela) wird in Portugal eine Firma gründen.</div>
+      <input type="text" class="translation-input" data-answers="ela vai fundar uma empresa em portugal.|vai fundar uma empresa em portugal.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 12</div>
+      <div class="translation-prompt">Ich werde einen guten Kaffee trinken.</div>
+      <input type="text" class="translation-input" data-answers="vou tomar um bom café.|eu vou tomar um bom café.|vou beber um bom café.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 12</div>
+      <div class="translation-prompt">Wirst du am Wochenende auswärts essen?</div>
+      <input type="text" class="translation-input" data-answers="vais comer fora no fim de semana?|tu vais comer fora no fim de semana?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 12</div>
+      <div class="translation-prompt">Sie (eles) werden nicht reisen, weil sie viel arbeiten.</div>
+      <input type="text" class="translation-input" data-answers="eles não vão viajar porque trabalham muito.|não vão viajar porque trabalham muito.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Moritz' Realität -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Mit deinen echten Plänen</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 16</div>
+      <div class="translation-prompt">Nächste Woche werde ich nach Portugal reisen.</div>
+      <input type="text" class="translation-input" data-answers="na próxima semana vou viajar para portugal.|na próxima semana eu vou viajar para portugal.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 16</div>
+      <div class="translation-prompt">Ich werde mit meiner Geschäftspartnerin in Lissabon arbeiten.</div>
+      <input type="text" class="translation-input" data-answers="vou trabalhar com a minha parceira de negócios em lisboa.|eu vou trabalhar com a minha parceira de negócios em lisboa.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 16</div>
+      <div class="translation-prompt">Heute Abend werden wir ein gutes Restaurant suchen und auswärts essen.</div>
+      <input type="text" class="translation-input" data-answers="esta noite vamos procurar um bom restaurante e comer fora.|esta noite nós vamos procurar um bom restaurante e comer fora.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 16 &mdash; Finale</div>
+      <div class="translation-prompt">Im nächsten Monat werde ich in Portugal arbeiten und am Wochenende werde ich Cascais besuchen.</div>
+      <input type="text" class="translation-input" data-answers="no próximo mês vou trabalhar em portugal e no fim de semana vou visitar cascais.|no próximo mês eu vou trabalhar em portugal e no fim de semana vou visitar cascais.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Du kannst jetzt über Zukunft reden!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Solides Ergebnis.';
+  else if(pct>=0.4)msg.textContent='Bom! Schau dir die ir-Konjugation nochmal an.';
+  else msg.textContent='Geh die Tabelle in Ruhe durch und probier es nochmal.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-13','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
