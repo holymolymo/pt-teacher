@@ -8,14 +8,15 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
-  .page { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
+  .page { max-width: 600px; margin: 0 auto; padding: 32px 20px 80px; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
-  .back-link:hover { color: #e8721d; }
+  .back-link:hover { color: #2e7d32; }
   .header { text-align: center; margin-bottom: 32px; }
   .lesson-tag { display: inline-block; background: #2e7d32; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
   .header h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; color: #1a1715; }
   .header p { font-size: 15px; color: #6b6560; line-height: 1.5; }
-  .stats-card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; justify-content: space-around; gap: 16px; flex-wrap: wrap; }
+
+  .stats-card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; justify-content: space-around; gap: 16px; flex-wrap: wrap; }
   .stat { text-align: center; flex: 1; min-width: 100px; }
   .stat-num { font-size: 28px; font-weight: 800; color: #2e7d32; }
   .stat-label { font-size: 12px; color: #6b6560; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
@@ -25,32 +26,33 @@
   .info-box ol { padding-left: 20px; margin-top: 6px; }
   .info-box li { margin-bottom: 4px; }
 
-  .section-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #2e7d32; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #c8e6c9; }
-
   .download-card {
-    background: white; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #2e7d32;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none; color: inherit;
     transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
   }
-  .download-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-1px); }
-  .download-card.master { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 4px solid #2e7d32; }
+  .download-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25); }
 
-  .dl-icon { width: 44px; height: 44px; border-radius: 10px; background: #e8f5e9; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
-  .download-card.master .dl-icon { background: white; color: #2e7d32; }
-
+  .dl-icon { width: 56px; height: 56px; border-radius: 14px; background: white; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
   .dl-info { flex: 1; min-width: 0; }
-  .dl-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-  .dl-desc { font-size: 12px; color: #6b6560; }
+  .dl-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #1b5e20; }
+  .dl-desc { font-size: 13px; color: #2e7d32; }
+  .dl-arrow { font-size: 24px; color: #2e7d32; flex-shrink: 0; }
 
-  .dl-arrow { font-size: 20px; color: #2e7d32; flex-shrink: 0; }
-  .dl-count { font-size: 11px; font-weight: 700; color: white; background: #2e7d32; padding: 3px 8px; border-radius: 10px; flex-shrink: 0; margin-right: 4px; }
+  .update-info { background: white; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); font-size: 13px; color: #6b6560; line-height: 1.6; }
+  .update-info strong { color: #2d2a26; display: block; margin-bottom: 4px; }
 
   .footer-note { font-size: 12px; color: #9e9892; text-align: center; margin-top: 24px; padding: 16px; background: white; border-radius: 12px; line-height: 1.5; }
 
   @media (max-width: 600px) {
     .header h1 { font-size: 24px; }
-    .stats-card { flex-direction: column; gap: 8px; }
+    .stats-card { flex-direction: row; }
   }
 </style>
 </head>
@@ -60,19 +62,19 @@
   <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
 
   <div class="header">
-    <div class="lesson-tag">Lengo CSV-Pakete</div>
-    <h1>Deine Vokabel-Sets</h1>
-    <p>Aus 9 Live-Klassen mit deinem PT-Lehrer</p>
+    <div class="lesson-tag">Lengo Vokabel-Pack</div>
+    <h1>Deine Vokabel-Liste</h1>
+    <p>Aus deinen Live-Klassen mit dem PT-Lehrer</p>
   </div>
 
   <div class="stats-card">
     <div class="stat">
-      <div class="stat-num">422</div>
-      <div class="stat-label">Karten gesamt</div>
+      <div class="stat-num">409</div>
+      <div class="stat-label">Karten</div>
     </div>
     <div class="stat">
       <div class="stat-num">9</div>
-      <div class="stat-label">Lessons</div>
+      <div class="stat-label">Klassen</div>
     </div>
     <div class="stat">
       <div class="stat-num">3</div>
@@ -80,126 +82,36 @@
     </div>
   </div>
 
+  <!-- Download -->
+  <a class="download-card" href="vokabeln/vokabeln-master.csv" download>
+    <div class="dl-icon">&#128221;</div>
+    <div class="dl-info">
+      <div class="dl-title">Vokabeln herunterladen</div>
+      <div class="dl-desc">vokabeln-master.csv &bull; 409 Karten &bull; UTF-8</div>
+    </div>
+    <div class="dl-arrow">&darr;</div>
+  </a>
+
   <div class="info-box">
-    <strong>So importierst du in Lengo:</strong>
+    <strong>Import in Lengo (auf dem Handy):</strong>
     <ol>
-      <li>Tippe unten auf das gew&uuml;nschte Pack &mdash; die CSV wird heruntergeladen</li>
+      <li>Tippe oben auf den gr&uuml;nen Button &mdash; CSV wird heruntergeladen</li>
       <li>&Ouml;ffne Lengo &rarr; "Eigene Pakete" / "Pack hinzuf&uuml;gen"</li>
-      <li>W&auml;hle "CSV importieren" und such die Datei</li>
-      <li>Format pr&uuml;fen: Trennzeichen <strong>Semikolon (;)</strong>, Spalten: PT &bull; DE &bull; Notiz</li>
+      <li>"CSV importieren" &rarr; w&auml;hle die Datei</li>
+      <li>Trennzeichen: <strong>Semikolon (;)</strong> &bull; Spalten: PT &bull; DE &bull; Notiz</li>
     </ol>
   </div>
 
-  <!-- MASTER -->
-  <div class="section-title">Komplett-Pack</div>
-  <a class="download-card master" href="vokabeln/alle-vokabeln.csv" download>
-    <div class="dl-icon">&#11088;</div>
-    <div class="dl-info">
-      <div class="dl-title">Alle Vokabeln zusammen</div>
-      <div class="dl-desc">Alle 9 Lessons in einem Pack &mdash; mit Lesson-Tag in der Notiz</div>
-    </div>
-    <div class="dl-count">422</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <!-- INDIVIDUAL -->
-  <div class="section-title">Einzelne Lessons</div>
-
-  <a class="download-card" href="vokabeln/lesson-01.csv" download>
-    <div class="dl-icon">L1</div>
-    <div class="dl-info">
-      <div class="dl-title">Vorstellung &amp; Pronomen</div>
-      <div class="dl-desc">05.03.2026 &mdash; ser, gostar, Berufe, Fragew&ouml;rter</div>
-    </div>
-    <div class="dl-count">59</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-02.csv" download>
-    <div class="dl-icon">L2</div>
-    <div class="dl-info">
-      <div class="dl-title">Estar, Estado civil, Zahlen</div>
-      <div class="dl-desc">12.03.2026 &mdash; cansado, casado/solteiro, Telefonnummer</div>
-    </div>
-    <div class="dl-count">17</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-03.csv" download>
-    <div class="dl-icon">L3</div>
-    <div class="dl-info">
-      <div class="dl-title">Wochenende &amp; Fragew&ouml;rter</div>
-      <div class="dl-desc">23.03.2026 &mdash; Pret&eacute;rito, fixe, Beschreibungen</div>
-    </div>
-    <div class="dl-count">35</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-04.csv" download>
-    <div class="dl-icon">L4</div>
-    <div class="dl-info">
-      <div class="dl-title">Tagesablauf &amp; ir/vir</div>
-      <div class="dl-desc">25.03.2026 &mdash; acordar, sozinho, Personenbeschreibung</div>
-    </div>
-    <div class="dl-count">66</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-05.csv" download>
-    <div class="dl-icon">L5</div>
-    <div class="dl-info">
-      <div class="dl-title">Routine &amp; estar com</div>
-      <div class="dl-desc">01.04.2026 &mdash; rotina, Wetter, estar com fome/sede</div>
-    </div>
-    <div class="dl-count">38</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-06.csv" download>
-    <div class="dl-icon">L6</div>
-    <div class="dl-info">
-      <div class="dl-title">Essen &amp; Vergangenheit</div>
-      <div class="dl-desc">10.04.2026 &mdash; cozinhar, Lebensmittel, viajei</div>
-    </div>
-    <div class="dl-count">43</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-07.csv" download>
-    <div class="dl-icon">L7</div>
-    <div class="dl-info">
-      <div class="dl-title">Wochenende &amp; H&auml;ufigkeit</div>
-      <div class="dl-desc">15.04.2026 &mdash; estavas, fizeste, com frequ&ecirc;ncia</div>
-    </div>
-    <div class="dl-count">51</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-08.csv" download>
-    <div class="dl-icon">L8</div>
-    <div class="dl-info">
-      <div class="dl-title">Sport, Business, Uhrzeit</div>
-      <div class="dl-desc">22.04.2026 &mdash; gin&aacute;sio, est&aacute; a funcionar, que horas s&atilde;o</div>
-    </div>
-    <div class="dl-count">52</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <a class="download-card" href="vokabeln/lesson-09.csv" download>
-    <div class="dl-icon">L9</div>
-    <div class="dl-info">
-      <div class="dl-title">Wetter, Obst, Fortschritt</div>
-      <div class="dl-desc">29.04.2026 &mdash; ensolarado, gravoila, contigo/comigo</div>
-    </div>
-    <div class="dl-count">61</div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
+  <div class="update-info">
+    <strong>Aktualisierungen:</strong>
+    Nach jeder neuen Live-Klasse kommen die neuen Vokabeln in die gleiche Liste &mdash; einfach nochmal hier runterladen und in Lengo aktualisieren. So h&auml;ltst du alles an einem Ort.
+  </div>
 
   <div class="footer-note">
-    Format: <strong>UTF-8 mit BOM</strong>, Trennzeichen <strong>Semikolon (;)</strong>, 3 Spalten:<br>
-    Portugiesisch &bull; Deutsch &bull; Notiz/Beispiel<br>
+    Format: <strong>UTF-8 mit BOM</strong>, Trennzeichen <strong>Semikolon (;)</strong><br>
+    Spalten: Portugiesisch &bull; Deutsch &bull; Notiz/Beispiel<br>
     <br>
-    Falls Lengo Probleme macht: oben rechts auf das gew&uuml;nschte Pack lange dr&uuml;cken &rarr; "In Notizen &ouml;ffnen" &rarr; Inhalt kopieren &rarr; in Lengo einf&uuml;gen.
+    Letzte Aktualisierung: 30.04.2026 (nach Klasse 9)
   </div>
 
 </div>
