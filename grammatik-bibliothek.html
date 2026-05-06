@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammatik-Bibliothek</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+
+  /* Layout */
+  .layout { display: flex; min-height: 100vh; }
+  .sidebar {
+    width: 260px; background: #2d2a26; color: #c9c4be;
+    padding: 24px 16px; position: sticky; top: 0; height: 100vh;
+    overflow-y: auto; flex-shrink: 0;
+  }
+  .sidebar h1 {
+    font-size: 16px; font-weight: 700; color: white; margin-bottom: 4px;
+  }
+  .sidebar .subtitle {
+    font-size: 11px; color: #9e9892; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px;
+  }
+  .sidebar-section {
+    font-size: 10px; font-weight: 700; color: #9e9892; text-transform: uppercase;
+    letter-spacing: 1.5px; margin-top: 18px; margin-bottom: 6px; padding-left: 8px;
+  }
+  .sidebar a {
+    display: block; padding: 7px 12px; color: #c9c4be; text-decoration: none;
+    font-size: 13px; border-radius: 6px; margin-bottom: 1px; transition: all 0.15s;
+  }
+  .sidebar a:hover, .sidebar a.active { background: #e8721d; color: white; }
+
+  .main {
+    flex: 1; padding: 32px 40px 80px; max-width: 760px;
+  }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 16px; }
+  .back-link:hover { color: #e8721d; }
+
+  .header { margin-bottom: 32px; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header .lead { font-size: 15px; color: #6b6560; line-height: 1.6; }
+
+  /* Topic cards */
+  .topic { margin-bottom: 56px; scroll-margin-top: 16px; }
+  .topic-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #e8d5c4; }
+  .topic-num { background: #e8721d; color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  .topic-title { font-size: 22px; font-weight: 700; color: #1a1715; }
+  .topic-tag { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: white; padding: 3px 8px; border-radius: 4px; }
+  .topic-tag.basic { background: #2e7d32; }
+  .topic-tag.intermediate { background: #f9a825; }
+  .topic-tag.advanced { background: #c62828; }
+
+  /* Subsections */
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; color: #2d2a26; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 14px; line-height: 1.7; color: #4a4540; margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin: 8px 0; font-size: 14px; line-height: 1.7; color: #4a4540; }
+  li { margin-bottom: 4px; }
+
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  strong { color: #2d2a26; }
+  .v { color: #e8721d; font-weight: 600; }
+  .r { color: #c62828; font-weight: 600; }
+  .g { color: #2e7d32; font-weight: 600; }
+
+  /* Tables */
+  .card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 8px 0; font-size: 13px; }
+  th { background: #2d2a26; color: white; padding: 8px 12px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 7px 12px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #faf8f5; }
+
+  /* Boxen */
+  .rule { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #1b5e20; }
+  .rule strong { display: block; margin-bottom: 3px; color: #1b5e20; }
+  .warning { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #b71c1c; }
+  .warning strong { display: block; margin-bottom: 3px; color: #b71c1c; }
+  .example { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.7; color: #795600; }
+  .example strong { display: block; margin-bottom: 3px; color: #795600; }
+  .deep { background: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #0d47a1; }
+  .deep strong { display: block; margin-bottom: 3px; color: #0d47a1; }
+
+  .practice-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+    background: #e8721d; color: white; border-radius: 6px; font-size: 12px;
+    font-weight: 600; text-decoration: none; margin-top: 8px;
+  }
+  .practice-link:hover { background: #d4650f; }
+
+  /* Mobile */
+  .mobile-toc-toggle { display: none; }
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; max-height: 280px; }
+    .main { padding: 24px 18px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h1>Grammatik</h1>
+    <div class="subtitle">Bibliothek</div>
+
+    <div class="sidebar-section">Verben &mdash; Presente</div>
+    <a href="#ser">1 &nbsp;Ser (sein)</a>
+    <a href="#estar">2 &nbsp;Estar (sein)</a>
+    <a href="#ser-vs-estar">3 &nbsp;Ser vs. Estar</a>
+    <a href="#ter">4 &nbsp;Ter (haben)</a>
+    <a href="#ar-verben">5 &nbsp;-ar Verben</a>
+    <a href="#er-verben">6 &nbsp;-er Verben</a>
+    <a href="#ir-verben">7 &nbsp;-ir Verben</a>
+    <a href="#unregelmaessige">8 &nbsp;Unregelm&auml;&szlig;ige</a>
+    <a href="#cedilha">9 &nbsp;Cedilha-Regel</a>
+    <a href="#reflexive">10 Reflexive Verben</a>
+
+    <div class="sidebar-section">Verben &mdash; Andere Zeiten</div>
+    <a href="#preterito-perfeito">11 Pret&eacute;rito Perfeito</a>
+    <a href="#preterito-imperfeito">12 Pret&eacute;rito Imperfeito</a>
+    <a href="#perfeito-vs-imperfeito">13 Perfeito vs. Imperfeito</a>
+    <a href="#estar-a-inf">14 Estar a + Inf</a>
+    <a href="#ir-inf">15 Ir + Inf (Zukunft)</a>
+
+    <div class="sidebar-section">Pronomen</div>
+    <a href="#pronomes-pessoais">16 Personalpronomen</a>
+    <a href="#possessiv">17 Possessiv</a>
+    <a href="#objekt">18 Objektpronomen</a>
+    <a href="#interrogativos">19 Fragew&ouml;rter</a>
+
+    <div class="sidebar-section">Sonstiges</div>
+    <a href="#artigos">20 Artikel</a>
+    <a href="#kontraktionen">21 Kontraktionen</a>
+    <a href="#adjektive">22 Adjektive</a>
+    <a href="#nacionalidades">23 Nacionalidades</a>
+    <a href="#profissoes">24 Profiss&otilde;es</a>
+    <a href="#numeros">25 Zahlen</a>
+    <a href="#uhrzeit">26 Uhrzeit</a>
+    <a href="#estar-com">27 Estar com (F&uuml;hlen)</a>
+    <a href="#saber-vs-poder">28 Saber vs. Poder</a>
+    <a href="#hauefigkeit">29 H&auml;ufigkeit</a>
+  </aside>
+
+  <main class="main">
+    <a href="index.html" class="back-link">&larr; Dashboard</a>
+
+    <div class="header">
+      <h1>Grammatik-Bibliothek</h1>
+      <p class="lead">Alle Themen in voller Tiefe &mdash; mit Tabellen, Beispielen, Eselsbr&uuml;cken und Verlinkung zu &Uuml;bungen.</p>
+    </div>
+
+    <!-- 1. SER -->
+    <div class="topic" id="ser">
+      <div class="topic-header">
+        <div class="topic-num">1</div>
+        <div class="topic-title">Ser &mdash; Identit&auml;t &amp; Permanentes</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Konjugation Presente</h3>
+        <table>
+          <tr><th>Person</th><th>Bejaht</th><th>Verneint</th></tr>
+          <tr><td>Eu</td><td class="v">sou</td><td>n&atilde;o sou</td></tr>
+          <tr><td>Tu</td><td class="v">&eacute;s</td><td>n&atilde;o &eacute;s</td></tr>
+          <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">&eacute;</td><td>n&atilde;o &eacute;</td></tr>
+          <tr><td>N&oacute;s</td><td class="v">somos</td><td>n&atilde;o somos</td></tr>
+          <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">s&atilde;o</td><td>n&atilde;o s&atilde;o</td></tr>
+        </table>
+
+        <h3>Wann SER benutzen?</h3>
+        <ul>
+          <li><strong>Identit&auml;t:</strong> Eu sou Moritz.</li>
+          <li><strong>Nationalit&auml;t:</strong> Sou alem&atilde;o. (kein Artikel!)</li>
+          <li><strong>Beruf:</strong> Sou empreendedor. (kein Artikel!)</li>
+          <li><strong>Charaktereigenschaften (dauerhaft):</strong> A Maria &eacute; inteligente.</li>
+          <li><strong>Zeit/Datum:</strong> Hoje &eacute; segunda-feira. S&atilde;o duas horas.</li>
+          <li><strong>Herkunft (mit "de"):</strong> Sou da Alemanha.</li>
+          <li><strong>Permanente Lokalisation:</strong> Lisboa &eacute; em Portugal.</li>
+          <li><strong>Material:</strong> A mesa &eacute; de madeira.</li>
+        </ul>
+
+        <div class="warning">
+          <strong>NIE Artikel vor Beruf/Nationalit&auml;t!</strong>
+          ❌ "Sou um m&eacute;dico." &nbsp; ✅ "Sou m&eacute;dico."<br>
+          ❌ "Ela &eacute; uma alem&atilde;." &nbsp; ✅ "Ela &eacute; alem&atilde;."
+        </div>
+
+        <a class="practice-link" href="lektion-02-ser-artigos.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 2. ESTAR -->
+    <div class="topic" id="estar">
+      <div class="topic-header">
+        <div class="topic-num">2</div>
+        <div class="topic-title">Estar &mdash; Tempor&auml;res &amp; Aktueller Zustand</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Konjugation Presente</h3>
+        <table>
+          <tr><th>Person</th><th>Form</th></tr>
+          <tr><td>Eu</td><td class="v">estou</td></tr>
+          <tr><td>Tu</td><td class="v">est&aacute;s</td></tr>
+          <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">est&aacute;</td></tr>
+          <tr><td>N&oacute;s</td><td class="v">estamos</td></tr>
+          <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">est&atilde;o</td></tr>
+        </table>
+
+        <h3>Wann ESTAR benutzen?</h3>
+        <ul>
+          <li><strong>Tempor&auml;rer Zustand:</strong> Estou cansado hoje.</li>
+          <li><strong>Aktueller Ort:</strong> O livro est&aacute; na mesa.</li>
+          <li><strong>Wetter (jetzt):</strong> Est&aacute; sol. Est&aacute; a chover.</li>
+          <li><strong>Verlaufsform:</strong> Estou a trabalhar (siehe #14).</li>
+          <li><strong>Mit "com" + Substantiv:</strong> Estou com fome (siehe #27).</li>
+        </ul>
+
+        <a class="practice-link" href="lektion-08-estar-vs-ser.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 3. SER VS ESTAR -->
+    <div class="topic" id="ser-vs-estar">
+      <div class="topic-header">
+        <div class="topic-num">3</div>
+        <div class="topic-title">Ser vs. Estar &mdash; Der gro&szlig;e Unterschied</div>
+        <span class="topic-tag intermediate">Wichtig</span>
+      </div>
+
+      <div class="card">
+        <h3>Faustregel</h3>
+        <p><strong>Kann sich das &auml;ndern?</strong> &rarr; <span class="v">estar</span><br>
+        <strong>Ist es dauerhaft / definiert die Person/Sache?</strong> &rarr; <span class="v">ser</span></p>
+
+        <h3>Direkter Vergleich</h3>
+        <table>
+          <tr><th>Kategorie</th><th>SER (permanent)</th><th>ESTAR (tempor&auml;r)</th></tr>
+          <tr>
+            <td>Eigenschaft</td>
+            <td>A Ana <span class="v">&eacute;</span> inteligente.<br><small>(generell intelligent)</small></td>
+            <td>A Ana <span class="v">est&aacute;</span> cansada.<br><small>(gerade m&uuml;de)</small></td>
+          </tr>
+          <tr>
+            <td>Ort</td>
+            <td>Lisboa <span class="v">&eacute;</span> em Portugal.<br><small>(geografisch)</small></td>
+            <td>O Pedro <span class="v">est&aacute;</span> no cinema.<br><small>(jetzt dort)</small></td>
+          </tr>
+          <tr>
+            <td>Beruf</td>
+            <td>Ela <span class="v">&eacute;</span> m&eacute;dica.<br><small>(ihr Beruf)</small></td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Nationalit&auml;t</td>
+            <td>Eu <span class="v">sou</span> alem&atilde;o.<br><small>(&auml;ndert sich nicht)</small></td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Wetter</td>
+            <td>&mdash;</td>
+            <td><span class="v">Est&aacute;</span> sol hoje.<br><small>(immer estar bei Wetter)</small></td>
+          </tr>
+        </table>
+
+        <div class="deep">
+          <strong>Bedeutungs&auml;nderung mit gleichem Adjektiv:</strong>
+          "&Eacute; bonito" = Er ist sch&ouml;n (allgemein) &bull; "Est&aacute; bonito" = Er sieht heute gut aus<br>
+          "&Eacute; aborrecido" = Er ist langweilig &bull; "Est&aacute; aborrecido" = Er ist gerade gelangweilt
+        </div>
+
+        <div class="warning">
+          <strong>Beruf NIE mit estar!</strong>
+          ❌ "Estou m&eacute;dico." &nbsp; ✅ "Sou m&eacute;dico."
+        </div>
+
+        <a class="practice-link" href="lektion-08-estar-vs-ser.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 4. TER -->
+    <div class="topic" id="ter">
+      <div class="topic-header">
+        <div class="topic-num">4</div>
+        <div class="topic-title">Ter &mdash; Haben &amp; Alter</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Konjugation Presente</h3>
+        <table>
+          <tr><th>Person</th><th>Form</th></tr>
+          <tr><td>Eu</td><td class="v">tenho</td></tr>
+          <tr><td>Tu</td><td class="v">tens</td></tr>
+          <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">tem</td></tr>
+          <tr><td>N&oacute;s</td><td class="v">temos</td></tr>
+          <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">t&ecirc;m</td><td><small>mit Akzent!</small></td></tr>
+        </table>
+
+        <h3>Verwendungen</h3>
+        <ul>
+          <li><strong>Besitz:</strong> Tenho um carro.</li>
+          <li><strong>Alter:</strong> Tenho 28 anos. <em>(im Deutschen: "ich bin 28")</em></li>
+          <li><strong>Familie:</strong> Tenho dois irm&atilde;os.</li>
+          <li><strong>Mit "que" + Inf:</strong> Tenho que estudar. (Ich muss lernen.)</li>
+          <li><strong>Pretérito Perfeito Composto:</strong> Tenho estudado. (Ich habe gelernt - andauernd)</li>
+        </ul>
+
+        <div class="warning">
+          <strong>Alter = ter, nicht ser!</strong>
+          ❌ "Sou 28 anos." &nbsp; ✅ "Tenho 28 anos."
+        </div>
+
+        <a class="practice-link" href="lektion-04-ter-numeros.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 5. -AR VERBEN -->
+    <div class="topic" id="ar-verben">
+      <div class="topic-header">
+        <div class="topic-num">5</div>
+        <div class="topic-title">Regelm&auml;&szlig;ige -ar Verben</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Endungen Presente</h3>
+        <table>
+          <tr><th>Person</th><th>Endung</th><th>falar</th><th>trabalhar</th><th>tomar</th></tr>
+          <tr><td>Eu</td><td class="v">-o</td><td>fal<span class="v">o</span></td><td>trabalh<span class="v">o</span></td><td>tom<span class="v">o</span></td></tr>
+          <tr><td>Tu</td><td class="v">-as</td><td>fal<span class="v">as</span></td><td>trabalh<span class="v">as</span></td><td>tom<span class="v">as</span></td></tr>
+          <tr><td>Ele/Ela</td><td class="v">-a</td><td>fal<span class="v">a</span></td><td>trabalh<span class="v">a</span></td><td>tom<span class="v">a</span></td></tr>
+          <tr><td>N&oacute;s</td><td class="v">-amos</td><td>fal<span class="v">amos</span></td><td>trabalh<span class="v">amos</span></td><td>tom<span class="v">amos</span></td></tr>
+          <tr><td>Eles/Elas</td><td class="v">-am</td><td>fal<span class="v">am</span></td><td>trabalh<span class="v">am</span></td><td>tom<span class="v">am</span></td></tr>
+        </table>
+
+        <h3>Wichtige -ar Verben</h3>
+        <p>falar, trabalhar, tomar, comprar, almo&ccedil;ar, jantar, morar, viajar, estudar, gostar, esperar, chamar (-se), levantar (-se), come&ccedil;ar, terminar, acordar, pagar, levar, deixar, cozinhar, ganhar, ajudar, andar, dan&ccedil;ar, encontrar</p>
+
+        <div class="warning">
+          <strong>Stammvokal-&Auml;nderung bei "almo&ccedil;ar":</strong>
+          Vor a/o bleibt das &ccedil;: almo<span class="v">&ccedil;</span>o, almo<span class="v">&ccedil;</span>amos. Vor e/i wird es zu c: almoces (Konjunktiv).
+        </div>
+
+        <a class="practice-link" href="lektion-05-ar-verben.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 6. -ER VERBEN -->
+    <div class="topic" id="er-verben">
+      <div class="topic-header">
+        <div class="topic-num">6</div>
+        <div class="topic-title">Regelm&auml;&szlig;ige -er Verben</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Endungen Presente</h3>
+        <table>
+          <tr><th>Person</th><th>Endung</th><th>comer</th><th>beber</th><th>aprender</th></tr>
+          <tr><td>Eu</td><td class="v">-o</td><td>com<span class="v">o</span></td><td>beb<span class="v">o</span></td><td>aprend<span class="v">o</span></td></tr>
+          <tr><td>Tu</td><td class="v">-es</td><td>com<span class="v">es</span></td><td>beb<span class="v">es</span></td><td>aprend<span class="v">es</span></td></tr>
+          <tr><td>Ele/Ela</td><td class="v">-e</td><td>com<span class="v">e</span></td><td>beb<span class="v">e</span></td><td>aprend<span class="v">e</span></td></tr>
+          <tr><td>N&oacute;s</td><td class="v">-emos</td><td>com<span class="v">emos</span></td><td>beb<span class="v">emos</span></td><td>aprend<span class="v">emos</span></td></tr>
+          <tr><td>Eles/Elas</td><td class="v">-em</td><td>com<span class="v">em</span></td><td>beb<span class="v">em</span></td><td>aprend<span class="v">em</span></td></tr>
+        </table>
+
+        <h3>Wichtige -er Verben</h3>
+        <p>comer, beber, aprender, escrever, viver, correr, vender, entender, compreender, conhecer, esquecer, conseguir, dever, receber, descer, parecer, atender, resolver</p>
+
+        <div class="rule">
+          <strong>Vergleich -ar vs -er:</strong>
+          Eu-Form gleich (-o). Tu: -as / -es. Ele: -a / -e. N&oacute;s: -amos / -emos. Eles: -am / -em.
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. -IR VERBEN -->
+    <div class="topic" id="ir-verben">
+      <div class="topic-header">
+        <div class="topic-num">7</div>
+        <div class="topic-title">Regelm&auml;&szlig;ige -ir Verben + Sonderformen</div>
+        <span class="topic-tag intermediate">Mittel</span>
+      </div>
+
+      <div class="card">
+        <h3>Standard-Endungen</h3>
+        <table>
+          <tr><th>Person</th><th>Endung</th><th>abrir</th><th>partir</th></tr>
+          <tr><td>Eu</td><td class="v">-o</td><td>abr<span class="v">o</span></td><td>part<span class="v">o</span></td></tr>
+          <tr><td>Tu</td><td class="v">-es</td><td>abr<span class="v">es</span></td><td>part<span class="v">es</span></td></tr>
+          <tr><td>Ele/Ela</td><td class="v">-e</td><td>abr<span class="v">e</span></td><td>part<span class="v">e</span></td></tr>
+          <tr><td>N&oacute;s</td><td class="v">-imos</td><td>abr<span class="v">imos</span></td><td>part<span class="v">imos</span></td></tr>
+          <tr><td>Eles/Elas</td><td class="v">-em</td><td>abr<span class="v">em</span></td><td>part<span class="v">em</span></td></tr>
+        </table>
+
+        <h3>Sonderformen in der eu-Form</h3>
+        <table>
+          <tr><th>Verb</th><th>eu-Form (Achtung!)</th><th>Andere</th></tr>
+          <tr><td>vestir (anziehen)</td><td class="r">visto</td><td>vestes, veste, vestimos, vestem</td></tr>
+          <tr><td>servir</td><td class="r">sirvo</td><td>serves, serve, servimos, servem</td></tr>
+          <tr><td>sentir</td><td class="r">sinto</td><td>sentes, sente, sentimos, sentem</td></tr>
+          <tr><td>preferir</td><td class="r">prefiro</td><td>preferes, prefere, preferimos, preferem</td></tr>
+          <tr><td>seguir</td><td class="r">sigo</td><td>segues, segue, seguimos, seguem</td></tr>
+          <tr><td>conseguir</td><td class="r">consigo</td><td>consegues, consegue...</td></tr>
+          <tr><td>corrigir</td><td class="r">corrijo</td><td>corriges, corrige... (g&rarr;j!)</td></tr>
+          <tr><td>dirigir</td><td class="r">dirijo</td><td>diriges, dirige...</td></tr>
+        </table>
+
+        <div class="warning">
+          <strong>3 Muster bei eu-Form:</strong><br>
+          (1) e&rarr;i: vestir/visto, servir/sirvo, sentir/sinto, preferir/prefiro<br>
+          (2) gu&rarr;g + e&rarr;i: seguir/sigo, conseguir/consigo<br>
+          (3) g&rarr;j: corrigir/corrijo, dirigir/dirijo
+        </div>
+
+        <h3>Unregelm&auml;&szlig;ige -ir Verben</h3>
+        <table>
+          <tr><th>Verb</th><th>eu</th><th>tu</th><th>ele/ela</th><th>n&oacute;s</th><th>eles</th></tr>
+          <tr><td>ir</td><td class="v">vou</td><td>vais</td><td>vai</td><td>vamos</td><td>v&atilde;o</td></tr>
+          <tr><td>vir</td><td class="v">venho</td><td>vens</td><td>vem</td><td>vimos</td><td>v&ecirc;m</td></tr>
+          <tr><td>sair</td><td class="v">saio</td><td>sais</td><td>sai</td><td>sa&iacute;mos</td><td>saem</td></tr>
+          <tr><td>cair</td><td class="v">caio</td><td>cais</td><td>cai</td><td>ca&iacute;mos</td><td>caem</td></tr>
+          <tr><td>ouvir</td><td class="v">ou&ccedil;o</td><td>ouves</td><td>ouve</td><td>ouvimos</td><td>ouvem</td></tr>
+          <tr><td>pedir</td><td class="v">pe&ccedil;o</td><td>pedes</td><td>pede</td><td>pedimos</td><td>pedem</td></tr>
+          <tr><td>subir</td><td class="v">subo</td><td>sobes</td><td>sobe</td><td>subimos</td><td>sobem</td></tr>
+          <tr><td>dormir</td><td class="v">durmo</td><td>dormes</td><td>dorme</td><td>dormimos</td><td>dormem</td></tr>
+        </table>
+
+        <a class="practice-link" href="lektion-15-ir-verben.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 8. UNREGELMÄSSIGE -->
+    <div class="topic" id="unregelmaessige">
+      <div class="topic-header">
+        <div class="topic-num">8</div>
+        <div class="topic-title">Die wichtigsten unregelm&auml;&szlig;igen Verben (Presente)</div>
+        <span class="topic-tag intermediate">Wichtig</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Verb</th><th>eu</th><th>tu</th><th>ele/ela</th><th>n&oacute;s</th><th>eles</th></tr>
+          <tr><td>saber</td><td class="r">sei</td><td>sabes</td><td>sabe</td><td>sabemos</td><td>sabem</td></tr>
+          <tr><td>trazer</td><td class="r">trago</td><td>trazes</td><td>traz</td><td>trazemos</td><td>trazem</td></tr>
+          <tr><td>ver</td><td class="r">vejo</td><td>v&ecirc;s</td><td>v&ecirc;</td><td>vemos</td><td>veem</td></tr>
+          <tr><td>dizer</td><td class="r">digo</td><td>dizes</td><td>diz</td><td>dizemos</td><td>dizem</td></tr>
+          <tr><td>fazer</td><td class="r">fa&ccedil;o</td><td>fazes</td><td>faz</td><td>fazemos</td><td>fazem</td></tr>
+          <tr><td>ler</td><td class="r">leio</td><td>l&ecirc;s</td><td>l&ecirc;</td><td>lemos</td><td>leem</td></tr>
+          <tr><td>p&ocirc;r</td><td class="r">ponho</td><td>p&otilde;es</td><td>p&otilde;e</td><td>pomos</td><td>p&otilde;em</td></tr>
+          <tr><td>perder</td><td class="r">perco</td><td>perdes</td><td>perde</td><td>perdemos</td><td>perdem</td></tr>
+          <tr><td>querer</td><td class="r">quero</td><td>queres</td><td>quer</td><td>queremos</td><td>querem</td></tr>
+          <tr><td>poder</td><td class="r">posso</td><td>podes</td><td>pode</td><td>podemos</td><td>podem</td></tr>
+          <tr><td>dar</td><td class="r">dou</td><td>d&aacute;s</td><td>d&aacute;</td><td>damos</td><td>d&atilde;o</td></tr>
+        </table>
+
+        <div class="warning">
+          <strong>Auswendig lernen!</strong>
+          Die eu-Formen folgen keiner Logik:<br>
+          <strong>sei &bull; trago &bull; vejo &bull; digo &bull; fa&ccedil;o &bull; leio &bull; ponho &bull; perco &bull; quero &bull; posso &bull; dou</strong>
+        </div>
+
+        <div class="example">
+          <strong>Eselsbr&uuml;cken:</strong>
+          <strong>fa&ccedil;o</strong> hat ein &ccedil; (wie conhe&ccedil;o, ou&ccedil;o)<br>
+          <strong>vejo</strong> klingt anders als ver &mdash; "ich sehe" sieht anders aus<br>
+          <strong>ponho</strong> hat ein "nh" wie viele eu-Formen (venho, ponho, tenho)
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. CEDILHA -->
+    <div class="topic" id="cedilha">
+      <div class="topic-header">
+        <div class="topic-num">9</div>
+        <div class="topic-title">Die Cedilha-Regel: c &rarr; &ccedil; vor o</div>
+        <span class="topic-tag intermediate">H&auml;ufige Falle</span>
+      </div>
+
+      <div class="card">
+        <h3>Wann brauchst du &ccedil;?</h3>
+        <p>Bei Verben, die auf <strong>-cer</strong>, <strong>-cir</strong>, <strong>-zer</strong> enden, wird in der <strong>eu-Form</strong> das "c"/"z" zu <span class="v">&ccedil;</span> vor dem "o", damit der weiche Laut bleibt.</p>
+
+        <table>
+          <tr><th>Infinitiv</th><th>eu-Form</th><th>Bedeutung</th></tr>
+          <tr><td>conhe<strong>c</strong>er</td><td class="r">conhe<span class="v">&ccedil;</span>o</td><td>kennen</td></tr>
+          <tr><td>esque<strong>c</strong>er</td><td class="r">esque<span class="v">&ccedil;</span>o</td><td>vergessen</td></tr>
+          <tr><td>aque<strong>c</strong>er</td><td class="r">aque<span class="v">&ccedil;</span>o</td><td>aufw&auml;rmen</td></tr>
+          <tr><td>des<strong>c</strong>er</td><td class="r">des<span class="v">&ccedil;</span>o</td><td>hinuntergehen</td></tr>
+          <tr><td>fa<strong>z</strong>er</td><td class="r">fa<span class="v">&ccedil;</span>o</td><td>machen</td></tr>
+          <tr><td>pare<strong>c</strong>er</td><td class="r">pare<span class="v">&ccedil;</span>o</td><td>scheinen</td></tr>
+          <tr><td>nas<strong>c</strong>er</td><td class="r">nas<span class="v">&ccedil;</span>o</td><td>geboren werden</td></tr>
+          <tr><td>ou<strong>v</strong>ir &rarr; ou<strong>&ccedil;</strong>o</td><td class="r">ou<span class="v">&ccedil;</span>o</td><td>h&ouml;ren (-ir!)</td></tr>
+          <tr><td>pe<strong>d</strong>ir &rarr; pe<strong>&ccedil;</strong>o</td><td class="r">pe<span class="v">&ccedil;</span>o</td><td>bitten (-ir!)</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>Logik:</strong>
+          Ohne &ccedil; w&uuml;rde "conheco" wie "kon-EH-ko" klingen (hartes k), mit &ccedil; bleibt es "kon-EH-so".
+        </div>
+
+        <div class="warning">
+          <strong>Typische Fehler:</strong>
+          ❌ conheco, esqueco, fazo, ouco, peco<br>
+          ✅ conhe<span class="v">&ccedil;</span>o, esque<span class="v">&ccedil;</span>o, fa<span class="v">&ccedil;</span>o, ou<span class="v">&ccedil;</span>o, pe<span class="v">&ccedil;</span>o
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. REFLEXIVE -->
+    <div class="topic" id="reflexive">
+      <div class="topic-header">
+        <div class="topic-num">10</div>
+        <div class="topic-title">Reflexive Verben</div>
+        <span class="topic-tag intermediate">Mittel</span>
+      </div>
+
+      <div class="card">
+        <h3>Reflexivpronomen</h3>
+        <table>
+          <tr><th>Person</th><th>Pronomen</th><th>Beispiel (chamar-se)</th></tr>
+          <tr><td>Eu</td><td class="v">-me</td><td>chamo-me</td></tr>
+          <tr><td>Tu</td><td class="v">-te</td><td>chamas-te</td></tr>
+          <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">-se</td><td>chama-se</td></tr>
+          <tr><td>N&oacute;s</td><td class="v">-nos</td><td>chamamo-nos <em>(s f&auml;llt!)</em></td></tr>
+          <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">-se</td><td>chamam-se</td></tr>
+        </table>
+
+        <h3>Wichtige reflexive Verben</h3>
+        <p>chamar-se (hei&szlig;en), levantar-se (aufstehen), sentar-se (sich setzen), deitar-se (sich hinlegen), lavar-se (sich waschen), vestir-se (sich anziehen), esquecer-se (de) (vergessen), lembrar-se (de) (sich erinnern), divertir-se (Spa&szlig; haben), sentir-se (sich f&uuml;hlen), parecer-se (com) (&auml;hneln), mudar-se (umziehen), encontrar-se (com) (sich treffen)</p>
+
+        <div class="warning">
+          <strong>NIE im Infinitiv lassen!</strong>
+          ❌ "Voc&ecirc; sempre <em>esquecer-se</em> do anivers&aacute;rio."<br>
+          ✅ "Voc&ecirc; sempre <strong>esquece-se</strong> do anivers&aacute;rio." oder<br>
+          ✅ "Voc&ecirc; sempre <strong>se esquece</strong> do anivers&aacute;rio." (Pronomen davor bei Adverb "sempre")
+        </div>
+
+        <div class="rule">
+          <strong>Stellung des Pronomens:</strong>
+          Standard: nach dem Verb (chamo-me).<br>
+          Vor dem Verb bei: Verneinung (n&atilde;o me chamo), Adverbien (sempre me chamo), Fragew&ouml;rtern (Como te chamas?), unterordnenden Konjunktionen (sei que me chamo).
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. PRETERITO PERFEITO -->
+    <div class="topic" id="preterito-perfeito">
+      <div class="topic-header">
+        <div class="topic-num">11</div>
+        <div class="topic-title">Pret&eacute;rito Perfeito &mdash; Abgeschlossene Vergangenheit</div>
+        <span class="topic-tag intermediate">A2</span>
+      </div>
+
+      <div class="card">
+        <h3>Regelm&auml;&szlig;ige Endungen</h3>
+        <table>
+          <tr><th>Person</th><th>-ar (falar)</th><th>-er (comer)</th><th>-ir (partir)</th></tr>
+          <tr><td>Eu</td><td>fal<span class="v">ei</span></td><td>com<span class="v">i</span></td><td>part<span class="v">i</span></td></tr>
+          <tr><td>Tu</td><td>fal<span class="v">aste</span></td><td>com<span class="v">este</span></td><td>part<span class="v">iste</span></td></tr>
+          <tr><td>Ele/Ela</td><td>fal<span class="v">ou</span></td><td>com<span class="v">eu</span></td><td>part<span class="v">iu</span></td></tr>
+          <tr><td>N&oacute;s</td><td>fal<span class="v">&aacute;mos</span> <small>(PT-PT mit Akzent!)</small></td><td>com<span class="v">emos</span></td><td>part<span class="v">imos</span></td></tr>
+          <tr><td>Eles/Elas</td><td>fal<span class="v">aram</span></td><td>com<span class="v">eram</span></td><td>part<span class="v">iram</span></td></tr>
+        </table>
+
+        <h3>Unregelm&auml;&szlig;ige Verben</h3>
+        <table>
+          <tr><th>Person</th><th>ser/ir</th><th>ter</th><th>fazer</th><th>estar</th><th>p&ocirc;r</th><th>vir</th></tr>
+          <tr><td>Eu</td><td class="r">fui</td><td class="r">tive</td><td class="r">fiz</td><td class="r">estive</td><td>pus</td><td>vim</td></tr>
+          <tr><td>Tu</td><td>foste</td><td>tiveste</td><td>fizeste</td><td>estiveste</td><td>puseste</td><td>vieste</td></tr>
+          <tr><td>Ele/Ela</td><td>foi</td><td>teve</td><td>fez</td><td>esteve</td><td>p&ocirc;s</td><td>veio</td></tr>
+          <tr><td>N&oacute;s</td><td>fomos</td><td>tivemos</td><td>fizemos</td><td>estivemos</td><td>pusemos</td><td>viemos</td></tr>
+          <tr><td>Eles/Elas</td><td>foram</td><td>tiveram</td><td>fizeram</td><td>estiveram</td><td>puseram</td><td>vieram</td></tr>
+        </table>
+
+        <div class="warning">
+          <strong>SER und IR haben gleiche Form!</strong>
+          "Eu fui m&eacute;dico" = Ich war Arzt (ser)<br>
+          "Eu fui ao cinema" = Ich ging ins Kino (ir)<br>
+          Unterscheiden mit Pr&auml;position "a/ao" (= ir).
+        </div>
+
+        <h3>Mehr Verben (Pret&eacute;rito)</h3>
+        <table>
+          <tr><th>Verb</th><th>eu</th><th>ele/ela</th></tr>
+          <tr><td>dizer</td><td>disse</td><td>disse</td></tr>
+          <tr><td>ver</td><td>vi</td><td>viu</td></tr>
+          <tr><td>poder</td><td>pude</td><td>p&ocirc;de</td></tr>
+          <tr><td>saber</td><td>soube</td><td>soube</td></tr>
+          <tr><td>querer</td><td>quis</td><td>quis</td></tr>
+          <tr><td>trazer</td><td>trouxe</td><td>trouxe</td></tr>
+          <tr><td>dar</td><td>dei</td><td>deu</td></tr>
+        </table>
+
+        <h3>Trigger-W&ouml;rter</h3>
+        <p><strong>ontem, anteontem, na semana passada, no fim de semana, h&aacute; X dias, j&aacute;, ainda n&atilde;o, de repente</strong></p>
+
+        <a class="practice-link" href="lektion-09-preterito-perfeito.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 12. IMPERFEITO -->
+    <div class="topic" id="preterito-imperfeito">
+      <div class="topic-header">
+        <div class="topic-num">12</div>
+        <div class="topic-title">Pret&eacute;rito Imperfeito &mdash; Beschreibende Vergangenheit</div>
+        <span class="topic-tag intermediate">A2/B1</span>
+      </div>
+
+      <div class="card">
+        <h3>Regelm&auml;&szlig;ige Endungen</h3>
+        <table>
+          <tr><th>Person</th><th>-ar (falar)</th><th>-er (comer)</th><th>-ir (partir)</th></tr>
+          <tr><td>Eu</td><td>fal<span class="v">ava</span></td><td>com<span class="v">ia</span></td><td>part<span class="v">ia</span></td></tr>
+          <tr><td>Tu</td><td>fal<span class="v">avas</span></td><td>com<span class="v">ias</span></td><td>part<span class="v">ias</span></td></tr>
+          <tr><td>Ele/Ela</td><td>fal<span class="v">ava</span></td><td>com<span class="v">ia</span></td><td>part<span class="v">ia</span></td></tr>
+          <tr><td>N&oacute;s</td><td>fal<span class="v">&aacute;vamos</span></td><td>com<span class="v">&iacute;amos</span></td><td>part<span class="v">&iacute;amos</span></td></tr>
+          <tr><td>Eles/Elas</td><td>fal<span class="v">avam</span></td><td>com<span class="v">iam</span></td><td>part<span class="v">iam</span></td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>Gute Nachricht:</strong>
+          -er und -ir haben <em>identische</em> Endungen im Imperfeito.
+        </div>
+
+        <h3>Nur 4 unregelm&auml;&szlig;ige Verben!</h3>
+        <table>
+          <tr><th>Person</th><th>ser</th><th>ter</th><th>vir</th><th>p&ocirc;r</th></tr>
+          <tr><td>Eu</td><td class="r">era</td><td class="r">tinha</td><td class="r">vinha</td><td class="r">punha</td></tr>
+          <tr><td>Tu</td><td>eras</td><td>tinhas</td><td>vinhas</td><td>punhas</td></tr>
+          <tr><td>Ele/Ela</td><td class="r">era</td><td class="r">tinha</td><td class="r">vinha</td><td class="r">punha</td></tr>
+          <tr><td>N&oacute;s</td><td>&eacute;ramos</td><td>t&iacute;nhamos</td><td>v&iacute;nhamos</td><td>p&uacute;nhamos</td></tr>
+          <tr><td>Eles/Elas</td><td>eram</td><td>tinham</td><td>vinham</td><td>punham</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>estar ist hier regelm&auml;&szlig;ig!</strong>
+          estava, estavas, estava, est&aacute;vamos, estavam (wie falar). Trotz "unregelm&auml;&szlig;ig" im Presente.
+        </div>
+
+        <h3>Verwendungen</h3>
+        <ul>
+          <li><strong>Beschreibung in Vergangenheit:</strong> A casa <strong>era</strong> grande e <strong>tinha</strong> jardim.</li>
+          <li><strong>Wiederholt fr&uuml;her:</strong> Quando <strong>era</strong> crian&ccedil;a, <strong>ia</strong> &agrave; praia todos os dias.</li>
+          <li><strong>Andauernd im Moment:</strong> <strong>Estava</strong> a ler quando tu ligaste.</li>
+          <li><strong>Alter in Vergangenheit:</strong> Em 2020, <strong>tinha</strong> 22 anos.</li>
+          <li><strong>Uhrzeit/Wetter:</strong> <strong>Eram</strong> 10 horas. <strong>Chovia</strong>.</li>
+          <li><strong>H&ouml;flichkeit:</strong> <strong>Queria</strong> um caf&eacute;, por favor. (Ich h&auml;tte gerne einen Kaffee.)</li>
+        </ul>
+
+        <a class="practice-link" href="lektion-11-preterito-imperfeito.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 13. PERFEITO VS IMPERFEITO -->
+    <div class="topic" id="perfeito-vs-imperfeito">
+      <div class="topic-header">
+        <div class="topic-num">13</div>
+        <div class="topic-title">Perfeito vs. Imperfeito &mdash; Welches w&auml;hlen?</div>
+        <span class="topic-tag advanced">B1</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Situation</th><th>Perfeito (was passierte)</th><th>Imperfeito (wie war's)</th></tr>
+          <tr>
+            <td>Einmaliges Ereignis</td>
+            <td class="g">Ontem, eu fui ao cinema.</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Wiederholt fr&uuml;her</td>
+            <td>&mdash;</td>
+            <td class="g">Quando era crian&ccedil;a, ia ao cinema.</td>
+          </tr>
+          <tr>
+            <td>Beschreibung Hintergrund</td>
+            <td>&mdash;</td>
+            <td class="g">A casa era grande, tinha jardim.</td>
+          </tr>
+          <tr>
+            <td>Konkrete Aktion mitten in einer Szene</td>
+            <td class="g">Telefone <strong>tocou</strong>.</td>
+            <td>(Hintergrund: <strong>chovia</strong>.)</td>
+          </tr>
+          <tr>
+            <td>Zustand zu einem Zeitpunkt</td>
+            <td>&mdash;</td>
+            <td class="g">Em 2020, eu tinha 22 anos.</td>
+          </tr>
+        </table>
+
+        <div class="example">
+          <strong>Klassischer Mix-Satz:</strong>
+          "Estava a ler (Imperfeito = Hintergrund) quando o telefone tocou (Perfeito = pl&ouml;tzliches Ereignis)."
+        </div>
+
+        <div class="rule">
+          <strong>Trigger-W&ouml;rter:</strong><br>
+          Perfeito: <strong>ontem, na semana passada, h&aacute; dois dias, de repente, em 2020</strong><br>
+          Imperfeito: <strong>sempre, todos os dias, antigamente, quando era pequeno, enquanto, geralmente</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. ESTAR A + INF -->
+    <div class="topic" id="estar-a-inf">
+      <div class="topic-header">
+        <div class="topic-num">14</div>
+        <div class="topic-title">Estar a + Infinitiv &mdash; Verlaufsform</div>
+        <span class="topic-tag intermediate">PT-PT</span>
+      </div>
+
+      <div class="card">
+        <h3>Konstruktion</h3>
+        <p><strong>Estar konjugiert + a + Infinitiv</strong></p>
+        <ul>
+          <li>Estou <strong>a trabalhar</strong>. (Ich arbeite gerade.)</li>
+          <li>Est&aacute; <strong>a chover</strong>. (Es regnet.)</li>
+          <li>Estamos <strong>a aprender</strong>. (Wir lernen gerade.)</li>
+        </ul>
+
+        <div class="warning">
+          <strong>PT-PT vs PT-BR:</strong>
+          PT-PT: estou <strong>a comer</strong> &bull; PT-BR: estou <strong>comendo</strong>. Du lernst PT-PT &mdash; nutze "a + Inf"!
+        </div>
+
+        <a class="practice-link" href="lektion-14-estar-a-uhrzeit.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 15. IR + INF -->
+    <div class="topic" id="ir-inf">
+      <div class="topic-header">
+        <div class="topic-num">15</div>
+        <div class="topic-title">Ir + Infinitiv &mdash; Einfache Zukunft</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Konstruktion</h3>
+        <p><strong>Ir konjugiert + Infinitiv</strong></p>
+        <ul>
+          <li>Eu <strong>vou comer</strong>. (Ich werde essen.)</li>
+          <li>Ela <strong>vai viajar</strong>. (Sie wird reisen.)</li>
+          <li>N&oacute;s <strong>vamos sair</strong>. (Wir werden ausgehen.)</li>
+        </ul>
+
+        <div class="rule">
+          <strong>Doppelnutzen von "ir":</strong>
+          "Vou ao caf&eacute;" = Ich gehe ins Caf&eacute; (echte Bewegung)<br>
+          "Vou tomar caf&eacute;" = Ich werde Kaffee trinken (Zukunft, Inf folgt)
+        </div>
+
+        <a class="practice-link" href="lektion-13-ir-infinitiv.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 16. PERSONALPRONOMEN -->
+    <div class="topic" id="pronomes-pessoais">
+      <div class="topic-header">
+        <div class="topic-num">16</div>
+        <div class="topic-title">Personalpronomen (Subjekt)</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Pronomen</th><th>Bedeutung</th><th>Hinweis</th></tr>
+          <tr><td class="v">Eu</td><td>ich</td><td></td></tr>
+          <tr><td class="v">Tu</td><td>du (informell)</td><td>PT-PT Standard</td></tr>
+          <tr><td class="v">Voc&ecirc;</td><td>Sie / du (BR)</td><td>formell PT, informell BR</td></tr>
+          <tr><td class="v">Ele / Ela</td><td>er / sie</td><td></td></tr>
+          <tr><td class="v">N&oacute;s</td><td>wir</td><td></td></tr>
+          <tr><td class="v">Voc&ecirc;s</td><td>ihr / Sie (Pl)</td><td></td></tr>
+          <tr><td class="v">Eles / Elas</td><td>sie</td><td>m+gemischt / nur w</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>Subjektpronomen oft weggelassen!</strong>
+          Da die Verbendung die Person zeigt, ist das Pronomen oft &uuml;berfl&uuml;ssig:<br>
+          "Sou alem&atilde;o" = "Eu sou alem&atilde;o" (beides ok)
+        </div>
+
+        <h3>Pronomen mit Pr&auml;position</h3>
+        <table>
+          <tr><th>Standard</th><th>Mit "com" (= mit)</th></tr>
+          <tr><td>com mim</td><td class="v">comigo</td></tr>
+          <tr><td>com ti</td><td class="v">contigo</td></tr>
+          <tr><td>com ele/ela</td><td>com ele/ela</td></tr>
+          <tr><td>com n&oacute;s</td><td class="v">connosco</td></tr>
+          <tr><td>com v&oacute;s</td><td class="v">convosco</td></tr>
+          <tr><td>com eles/elas</td><td>com eles/elas</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 17. POSSESSIV -->
+    <div class="topic" id="possessiv">
+      <div class="topic-header">
+        <div class="topic-num">17</div>
+        <div class="topic-title">Possessivpronomen</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Person</th><th>m. Sg.</th><th>f. Sg.</th><th>m. Pl.</th><th>f. Pl.</th></tr>
+          <tr><td>eu (mein)</td><td class="v">meu</td><td class="v">minha</td><td class="v">meus</td><td class="v">minhas</td></tr>
+          <tr><td>tu (dein)</td><td class="v">teu</td><td class="v">tua</td><td class="v">teus</td><td class="v">tuas</td></tr>
+          <tr><td>ele/ela/voc&ecirc;</td><td class="v">seu</td><td class="v">sua</td><td class="v">seus</td><td class="v">suas</td></tr>
+          <tr><td>n&oacute;s</td><td class="v">nosso</td><td class="v">nossa</td><td class="v">nossos</td><td class="v">nossas</td></tr>
+          <tr><td>eles/elas/voc&ecirc;s</td><td class="v">seu</td><td class="v">sua</td><td class="v">seus</td><td class="v">suas</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>Konkordanz mit BESITZ, nicht Besitzer!</strong>
+          "minha casa" (Frau wie Mann sagen das, weil casa weiblich ist)
+        </div>
+
+        <div class="warning">
+          <strong>Mit Artikel in PT-PT!</strong>
+          ✅ "<strong>a</strong> minha casa" / "<strong>o</strong> meu carro" (Standard PT-PT)<br>
+          BR oft ohne: "minha casa". Aber bei Familienmitgliedern Sg. oft auch in PT-PT ohne: "minha m&atilde;e".
+        </div>
+
+        <div class="deep">
+          <strong>"Seu/sua" mehrdeutig?</strong>
+          Zur Klarheit: <strong>dele</strong> (sein) / <strong>dela</strong> (ihr) / <strong>deles/delas</strong> (deren)<br>
+          "O carro <strong>dele</strong>" = sein Auto / "O carro <strong>dela</strong>" = ihr Auto
+        </div>
+
+        <a class="practice-link" href="lektion-12-possessivpronomen.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 18. OBJEKTPRONOMEN -->
+    <div class="topic" id="objekt">
+      <div class="topic-header">
+        <div class="topic-num">18</div>
+        <div class="topic-title">Objektpronomen (Direkt + Indirekt)</div>
+        <span class="topic-tag advanced">B1</span>
+      </div>
+
+      <div class="card">
+        <h3>Direktobjekt (wen?/was?)</h3>
+        <table>
+          <tr><th>Person</th><th>Pronomen</th><th>Beispiel</th></tr>
+          <tr><td>mich</td><td class="v">me</td><td>Ela conhece-me.</td></tr>
+          <tr><td>dich</td><td class="v">te</td><td>Vejo-te.</td></tr>
+          <tr><td>ihn (m)</td><td class="v">o</td><td>Conhe&ccedil;o-o.</td></tr>
+          <tr><td>sie (f)</td><td class="v">a</td><td>Conhe&ccedil;o-a.</td></tr>
+          <tr><td>uns</td><td class="v">nos</td><td>Ajudam-nos.</td></tr>
+          <tr><td>euch</td><td class="v">vos</td><td>Vejo-vos.</td></tr>
+          <tr><td>sie (m. Pl)</td><td class="v">os</td><td>Conhe&ccedil;o-os.</td></tr>
+          <tr><td>sie (f. Pl)</td><td class="v">as</td><td>Vejo-as.</td></tr>
+        </table>
+
+        <h3>Indirektobjekt (wem?/f&uuml;r wen?)</h3>
+        <table>
+          <tr><th>Person</th><th>Pronomen</th><th>Beispiel</th></tr>
+          <tr><td>mir</td><td class="v">me</td><td>D&aacute;-me um caf&eacute;.</td></tr>
+          <tr><td>dir</td><td class="v">te</td><td>Dou-te um livro.</td></tr>
+          <tr><td>ihm/ihr</td><td class="v">lhe</td><td>Falo-lhe.</td></tr>
+          <tr><td>uns</td><td class="v">nos</td><td>Escreve-nos.</td></tr>
+          <tr><td>euch</td><td class="v">vos</td><td>Conto-vos.</td></tr>
+          <tr><td>ihnen</td><td class="v">lhes</td><td>Mostro-lhes.</td></tr>
+        </table>
+
+        <h3>Stellung</h3>
+        <p><strong>Standard:</strong> Verb+Pronomen mit Bindestrich (Conhe&ccedil;o-a).</p>
+        <p><strong>Vor dem Verb</strong> bei:</p>
+        <table>
+          <tr><th>Trigger</th><th>Beispiel</th></tr>
+          <tr><td>Verneinung (n&atilde;o)</td><td>N&atilde;o <span class="v">a</span> conhe&ccedil;o.</td></tr>
+          <tr><td>Adverbien (j&aacute;, sempre, nunca, tamb&eacute;m)</td><td>J&aacute; <span class="v">a</span> vi.</td></tr>
+          <tr><td>Fragew&ouml;rter</td><td>Quem <span class="v">te</span> chamou?</td></tr>
+          <tr><td>Untergeordnete S&auml;tze</td><td>Sei que <span class="v">te</span> conhece.</td></tr>
+        </table>
+
+        <a class="practice-link" href="lektion-16-objektpronomen.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 19. FRAGEWÖRTER -->
+    <div class="topic" id="interrogativos">
+      <div class="topic-header">
+        <div class="topic-num">19</div>
+        <div class="topic-title">Fragew&ouml;rter</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Fragewort</th><th>Bedeutung</th><th>Beispiel</th></tr>
+          <tr><td class="v">Quem</td><td>Wer (nur Personen)</td><td>Quem &eacute; ela?</td></tr>
+          <tr><td class="v">Como</td><td>Wie</td><td>Como te chamas?</td></tr>
+          <tr><td class="v">Qual / Quais</td><td>Welche/r (Auswahl)</td><td>Qual &eacute; a tua nacionalidade?</td></tr>
+          <tr><td class="v">O que / Que</td><td>Was</td><td>O que &eacute; isto?</td></tr>
+          <tr><td class="v">Onde</td><td>Wo</td><td>Onde moras?</td></tr>
+          <tr><td class="v">Quando</td><td>Wann</td><td>Quando vens?</td></tr>
+          <tr><td class="v">Quanto/a/os/as</td><td>Wie viel/e</td><td>Quantos anos tens?</td></tr>
+          <tr><td class="v">Porqu&ecirc;?</td><td>Warum?</td><td>Porqu&ecirc;?</td></tr>
+          <tr><td class="v">Porque</td><td>weil</td><td>Porque tenho fome.</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>Wichtige Konstruktion: "&eacute; que"</strong>
+          Wird oft eingef&uuml;gt, klingt nat&uuml;rlicher:<br>
+          Statt "Como te chamas?" &rarr; "Como <strong>&eacute; que</strong> te chamas?"
+        </div>
+
+        <a class="practice-link" href="lektion-07-fragewoerter.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 20. ARTIKEL -->
+    <div class="topic" id="artigos">
+      <div class="topic-header">
+        <div class="topic-num">20</div>
+        <div class="topic-title">Artikel</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Bestimmt (der/die/das)</h3>
+        <table>
+          <tr><th></th><th>Singular</th><th>Plural</th></tr>
+          <tr><td>Maskulin</td><td class="v">o</td><td class="v">os</td></tr>
+          <tr><td>Feminin</td><td class="v">a</td><td class="v">as</td></tr>
+        </table>
+
+        <h3>Unbestimmt (ein/eine)</h3>
+        <table>
+          <tr><th></th><th>Singular</th><th>Plural</th></tr>
+          <tr><td>Maskulin</td><td class="v">um</td><td class="v">uns (einige)</td></tr>
+          <tr><td>Feminin</td><td class="v">uma</td><td class="v">umas (einige)</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>Faustregeln Geschlecht:</strong>
+          W&ouml;rter auf <strong>-o</strong> meist maskulin, auf <strong>-a</strong> meist feminin. Ausnahmen: o problema, o tema, o programa, o dia &mdash; alle maskulin trotz -a!
+        </div>
+
+        <h3>Artikel vor Namen!</h3>
+        <p>Im Portugiesischen kommt vor Namen ein Artikel: <strong>o Pedro</strong>, <strong>a Maria</strong>. (Anders als Deutsch.)</p>
+      </div>
+    </div>
+
+    <!-- 21. KONTRAKTIONEN -->
+    <div class="topic" id="kontraktionen">
+      <div class="topic-header">
+        <div class="topic-num">21</div>
+        <div class="topic-title">Kontraktionen (Pr&auml;position + Artikel)</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Mit bestimmten Artikeln</h3>
+        <table>
+          <tr><th></th><th>+ o</th><th>+ a</th><th>+ os</th><th>+ as</th></tr>
+          <tr><td>em (in)</td><td class="v">no</td><td class="v">na</td><td class="v">nos</td><td class="v">nas</td></tr>
+          <tr><td>de (von)</td><td class="v">do</td><td class="v">da</td><td class="v">dos</td><td class="v">das</td></tr>
+          <tr><td>a (zu)</td><td class="v">ao</td><td class="v">&agrave;</td><td class="v">aos</td><td class="v">&agrave;s</td></tr>
+          <tr><td>por (durch)</td><td class="v">pelo</td><td class="v">pela</td><td class="v">pelos</td><td class="v">pelas</td></tr>
+        </table>
+
+        <h3>Mit unbestimmten Artikeln</h3>
+        <table>
+          <tr><th></th><th>+ um</th><th>+ uma</th><th>+ uns</th><th>+ umas</th></tr>
+          <tr><td>em</td><td class="v">num</td><td class="v">numa</td><td class="v">nuns</td><td class="v">numas</td></tr>
+          <tr><td>de</td><td class="v">dum</td><td class="v">duma</td><td class="v">duns</td><td class="v">dumas</td></tr>
+        </table>
+
+        <h3>Mit Pronomen</h3>
+        <ul>
+          <li>de + ele = <strong>dele</strong>, de + ela = <strong>dela</strong></li>
+          <li>de + isto = <strong>disto</strong>, de + isso = <strong>disso</strong>, de + aquilo = <strong>daquilo</strong></li>
+          <li>em + isto = <strong>nisto</strong>, em + isso = <strong>nisso</strong></li>
+        </ul>
+
+        <div class="rule">
+          <strong>Pflicht!</strong>
+          Diese Kontraktionen sind nicht optional. "em o" gibt's nicht &mdash; es ist immer "no".
+        </div>
+
+        <a class="practice-link" href="lektion-06-kontraktionen.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 22. ADJEKTIVE -->
+    <div class="topic" id="adjektive">
+      <div class="topic-header">
+        <div class="topic-num">22</div>
+        <div class="topic-title">Adjektive &mdash; Konkordanz &amp; Stellung</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Konkordanz mit dem Substantiv</h3>
+        <table>
+          <tr><th>Singular</th><th>Plural</th></tr>
+          <tr><td>O carro &eacute; <span class="v">caro</span> (m)</td><td>Os carros s&atilde;o <span class="v">caros</span></td></tr>
+          <tr><td>A mala &eacute; <span class="v">cara</span> (f)</td><td>As malas s&atilde;o <span class="v">caras</span></td></tr>
+        </table>
+
+        <h3>Adjektive auf -e (gleich m/f)</h3>
+        <p>inteligente, grande, forte, simples, importante, doce, verde, triste, feliz</p>
+        <p><em>"O homem inteligente / A mulher inteligente"</em></p>
+
+        <h3>Stellung</h3>
+        <p><strong>Standard: nach dem Substantiv</strong>. Aber manche &auml;ndern Bedeutung je nach Stellung:</p>
+        <table>
+          <tr><th>Vor Substantiv</th><th>Nach Substantiv</th></tr>
+          <tr><td>um <span class="v">grande</span> homem (= bedeutender)</td><td>um homem <span class="v">grande</span> (= gro&szlig;er)</td></tr>
+          <tr><td>um <span class="v">velho</span> amigo (= alter Freund)</td><td>um amigo <span class="v">velho</span> (= alt)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 23. NACIONALIDADES -->
+    <div class="topic" id="nacionalidades">
+      <div class="topic-header">
+        <div class="topic-num">23</div>
+        <div class="topic-title">Nacionalidades</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>Drei Hauptmuster</h3>
+        <table>
+          <tr><th>Muster</th><th>Beispiele</th></tr>
+          <tr><td>-&ecirc;s / -esa</td><td>portugu&ecirc;s/portuguesa, franc&ecirc;s, ingl&ecirc;s, japon&ecirc;s, holand&ecirc;s, chin&ecirc;s</td></tr>
+          <tr><td>-o / -a</td><td>brasileiro/brasileira, italiano, russo, americano, su&iacute;&ccedil;o</td></tr>
+          <tr><td>-ense (gleich!)</td><td>guineense, canadense, costarriquense</td></tr>
+        </table>
+
+        <h3>Sonderf&auml;lle</h3>
+        <table>
+          <tr><th>Land</th><th>Maskulin</th><th>Feminin</th></tr>
+          <tr><td>Alemanha</td><td>alem&atilde;o</td><td>alem&atilde;</td></tr>
+          <tr><td>Espanha</td><td>espanhol</td><td>espanhola</td></tr>
+          <tr><td>B&eacute;lgica</td><td>belga</td><td>belga (gleich!)</td></tr>
+          <tr><td>Su&eacute;cia</td><td>sueco</td><td>sueca</td></tr>
+        </table>
+
+        <a class="practice-link" href="lektion-03-nacionalidades-profissoes.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 24. PROFISSÕES -->
+    <div class="topic" id="profissoes">
+      <div class="topic-header">
+        <div class="topic-num">24</div>
+        <div class="topic-title">Profiss&otilde;es (Berufe)</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Muster</th><th>Beispiele</th></tr>
+          <tr><td>-o / -a</td><td>m&eacute;dico/m&eacute;dica, advogado/advogada, engenheiro/engenheira</td></tr>
+          <tr><td>-or / -ora</td><td>professor/professora, tradutor, cantor, escritor</td></tr>
+          <tr><td>gleich (-ista, -ente)</td><td>jornalista, dentista, motorista, estudante, gerente</td></tr>
+        </table>
+
+        <div class="warning">
+          <strong>Kein Artikel vor Beruf nach ser!</strong>
+          ✅ "Sou m&eacute;dico." &nbsp; ❌ "Sou um m&eacute;dico."
+        </div>
+      </div>
+    </div>
+
+    <!-- 25. NUMEROS -->
+    <div class="topic" id="numeros">
+      <div class="topic-header">
+        <div class="topic-num">25</div>
+        <div class="topic-title">Zahlen</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <h3>0&ndash;20</h3>
+        <p>zero, um/uma, dois/duas, tr&ecirc;s, quatro, cinco, seis, sete, oito, nove, dez, onze, doze, treze, catorze, quinze, dezasseis, dezassete, dezoito, dezanove, vinte</p>
+
+        <h3>Zehner</h3>
+        <p>vinte, trinta, quarenta, cinquenta, sessenta, setenta, oitenta, noventa, cem (100), duzentos (200), trezentos (300)</p>
+
+        <div class="warning">
+          <strong>PT-PT:</strong>
+          dez<strong>a</strong>sseis, dez<strong>a</strong>ssete, dez<strong>a</strong>nove (mit "a"). PT-BR: dezesseis, dezessete...
+        </div>
+
+        <h3>Zusammensetzung mit "e"</h3>
+        <p>21 = vinte <strong>e</strong> um &bull; 35 = trinta <strong>e</strong> cinco &bull; 99 = noventa <strong>e</strong> nove</p>
+      </div>
+    </div>
+
+    <!-- 26. UHRZEIT -->
+    <div class="topic" id="uhrzeit">
+      <div class="topic-header">
+        <div class="topic-num">26</div>
+        <div class="topic-title">Uhrzeit</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <p><strong>Frage:</strong> Que horas s&atilde;o?</p>
+
+        <table>
+          <tr><th>Form</th><th>Wann</th><th>Beispiel</th></tr>
+          <tr><td><span class="v">&Eacute;</span> + Singular</td><td>1, Mittag, Mitternacht</td><td>&Eacute; uma hora.</td></tr>
+          <tr><td><span class="v">S&atilde;o</span> + Plural</td><td>alle anderen</td><td>S&atilde;o duas horas.</td></tr>
+        </table>
+
+        <h3>Mit Minuten</h3>
+        <ul>
+          <li>3:15 &rarr; S&atilde;o tr&ecirc;s e um quarto / e quinze</li>
+          <li>3:30 &rarr; S&atilde;o tr&ecirc;s e meia / e trinta</li>
+          <li>3:45 &rarr; S&atilde;o um quarto para as quatro</li>
+          <li>3:50 &rarr; S&atilde;o dez para as quatro</li>
+        </ul>
+
+        <h3>"Um wie viel Uhr?"</h3>
+        <p><strong>A que horas...?</strong> Antwort: <strong>&Agrave;</strong> uma / <strong>&Agrave;s</strong> duas / <strong>&Agrave;s</strong> nove.</p>
+
+        <a class="practice-link" href="lektion-14-estar-a-uhrzeit.html">&Uuml;bung &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 27. ESTAR COM -->
+    <div class="topic" id="estar-com">
+      <div class="topic-header">
+        <div class="topic-num">27</div>
+        <div class="topic-title">Estar com + Substantiv</div>
+        <span class="topic-tag intermediate">Wichtig</span>
+      </div>
+
+      <div class="card">
+        <p>Im Portugiesischen sagt man oft <strong>estar com + Substantiv</strong>, wo wir im Deutschen "haben" oder "sein" benutzen.</p>
+
+        <table>
+          <tr><th>Portugiesisch</th><th>Deutsch</th></tr>
+          <tr><td>Estou <span class="v">com fome</span></td><td>Ich habe Hunger</td></tr>
+          <tr><td>Estou <span class="v">com sede</span></td><td>Ich habe Durst</td></tr>
+          <tr><td>Estou <span class="v">com sono</span></td><td>Ich bin m&uuml;de</td></tr>
+          <tr><td>Estou <span class="v">com calor</span></td><td>Mir ist hei&szlig;</td></tr>
+          <tr><td>Estou <span class="v">com frio</span></td><td>Mir ist kalt</td></tr>
+          <tr><td>Estou <span class="v">com medo</span></td><td>Ich habe Angst</td></tr>
+          <tr><td>Estou <span class="v">com saudades</span></td><td>Ich habe Sehnsucht</td></tr>
+          <tr><td>Estou <span class="v">com pressa</span></td><td>Ich habe es eilig</td></tr>
+          <tr><td>Estou <span class="v">com vontade de</span></td><td>Ich habe Lust auf</td></tr>
+        </table>
+
+        <div class="rule">
+          <strong>"Ter" = Alternative:</strong>
+          "Estou com fome" = "Tenho fome" (gleichwertig). Aber bei aktuellen Zust&auml;nden lieber estar com.
+        </div>
+
+        <div class="warning">
+          <strong>NUR mit Substantiven!</strong>
+          ❌ "Estou com cansada" (cansada = Adjektiv)<br>
+          ✅ "Estou cansada" (Adjektiv direkt mit estar)<br>
+          ✅ "Estou com sono" (sono = Substantiv)
+        </div>
+      </div>
+    </div>
+
+    <!-- 28. SABER VS PODER -->
+    <div class="topic" id="saber-vs-poder">
+      <div class="topic-header">
+        <div class="topic-num">28</div>
+        <div class="topic-title">Saber vs. Poder &mdash; "k&ouml;nnen"</div>
+        <span class="topic-tag intermediate">Mittel</span>
+      </div>
+
+      <div class="card">
+        <p>Beide hei&szlig;en "k&ouml;nnen", aber unterschiedlich:</p>
+        <table>
+          <tr><th>Verb + Inf</th><th>Bedeutung</th><th>Beispiel</th></tr>
+          <tr><td class="v">saber + Inf</td><td>etwas gelernt haben, F&auml;higkeit</td><td>Sei nadar. (Ich kann schwimmen)</td></tr>
+          <tr><td class="v">poder + Inf</td><td>d&uuml;rfen, M&ouml;glichkeit haben</td><td>Posso sair? (Darf ich gehen?)</td></tr>
+        </table>
+
+        <div class="example">
+          <strong>Vergleich:</strong>
+          "Sei falar portugu&ecirc;s" = Ich habe Portugiesisch gelernt &amp; kann es.<br>
+          "Posso falar portugu&ecirc;s" = Ich darf jetzt Portugiesisch sprechen / habe die M&ouml;glichkeit.
+        </div>
+      </div>
+    </div>
+
+    <!-- 29. HÄUFIGKEIT -->
+    <div class="topic" id="hauefigkeit">
+      <div class="topic-header">
+        <div class="topic-num">29</div>
+        <div class="topic-title">H&auml;ufigkeitsadverbien</div>
+        <span class="topic-tag basic">Basic</span>
+      </div>
+
+      <div class="card">
+        <table>
+          <tr><th>Wort</th><th>Bedeutung</th><th>Beispiel</th></tr>
+          <tr><td class="v">sempre</td><td>immer</td><td>Sempre como em casa.</td></tr>
+          <tr><td class="v">nunca</td><td>nie</td><td>Nunca fumo.</td></tr>
+          <tr><td class="v">&agrave;s vezes</td><td>manchmal</td><td>&Agrave;s vezes saio &agrave; noite.</td></tr>
+          <tr><td class="v">com frequ&ecirc;ncia</td><td>oft</td><td>Vou ao caf&eacute; com frequ&ecirc;ncia.</td></tr>
+          <tr><td class="v">muitas vezes</td><td>oft (= viele Male)</td><td>Muitas vezes esque&ccedil;o-me.</td></tr>
+          <tr><td class="v">poucas vezes</td><td>selten</td><td>Poucas vezes jogo futebol.</td></tr>
+          <tr><td class="v">raramente</td><td>selten</td><td>Raramente vejo TV.</td></tr>
+          <tr><td class="v">quase nunca</td><td>fast nie</td><td>Quase nunca como carne.</td></tr>
+          <tr><td class="v">geralmente</td><td>normalerweise</td><td>Geralmente acordo cedo.</td></tr>
+        </table>
+
+        <h3>Frequenz mit "vezes"</h3>
+        <ul>
+          <li>uma vez por semana / m&ecirc;s / ano</li>
+          <li>duas vezes por semana</li>
+          <li>tr&ecirc;s vezes ao dia</li>
+          <li>todos os dias / todas as semanas</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Highlight aktiven Sidebar-Link beim Scrollen
+const links = document.querySelectorAll('.sidebar a');
+const topics = document.querySelectorAll('.topic');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  topics.forEach(topic => {
+    const rect = topic.getBoundingClientRect();
+    if (rect.top <= 100) current = topic.id;
+  });
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
