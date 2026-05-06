@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 16 - Objektpronomen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #f9a825; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 8px 12px; font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 200px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 16</div>
+    <h1>Objektpronomen <span class="level-tag">A2/B1</span></h1>
+    <p>"Ich kenne <strong>sie</strong>" / "Ich gebe <strong>dir</strong>..." &mdash; Pronomen statt Substantive</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Worum geht's?</h3>
+      <p>Statt "Ich kenne <strong>die Maria</strong>" sagst du "Ich kenne <strong>sie</strong>" &mdash; das ist ein <span class="highlight">Objektpronomen</span>. Im Portugiesischen gibt es zwei Sorten:</p>
+      <ul style="padding-left: 20px; font-size: 14px; line-height: 1.8; color: #4a4540;">
+        <li><strong>Direktobjekt</strong>: ohne Pr&auml;position. "Ich sehe <em>sie</em>" &rarr; <strong>vejo-a</strong></li>
+        <li><strong>Indirektobjekt</strong>: meistens mit "an / f&uuml;r". "Ich gebe <em>ihr</em> ein Buch" &rarr; <strong>dou-lhe um livro</strong></li>
+      </ul>
+
+      <div class="recall-box">
+        <strong>Aus deinen Live-Klassen:</strong>
+        "Eles <strong>nos</strong> deram" (Sie gaben uns) &bull; "<strong>D&aacute;-te</strong> muita energia" (Es gibt dir viel Energie) &bull; "Quero <strong>te</strong> contar uma coisa" (Ich m&ouml;chte dir etwas erz&auml;hlen) &mdash; das nutzt du schon!
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Direktobjekt-Pronomen</h3>
+      <p>Antwort auf die Frage <em>"wen oder was?"</em></p>
+      <table>
+        <tr><th>Person</th><th>Pronomen</th><th>Beispiel</th></tr>
+        <tr><td>mich</td><td class="v">me</td><td>Ela conhece-<span class="v">me</span>. (Sie kennt mich.)</td></tr>
+        <tr><td>dich</td><td class="v">te</td><td>Eu vejo-<span class="v">te</span>. (Ich sehe dich.)</td></tr>
+        <tr><td>ihn / es (m)</td><td class="v">o</td><td>Conhe&ccedil;o-<span class="v">o</span>. (Ich kenne ihn.)</td></tr>
+        <tr><td>sie / es (f)</td><td class="v">a</td><td>Conhe&ccedil;o-<span class="v">a</span>. (Ich kenne sie.)</td></tr>
+        <tr><td>uns</td><td class="v">nos</td><td>Eles ajudam-<span class="v">nos</span>. (Sie helfen uns.)</td></tr>
+        <tr><td>euch</td><td class="v">vos</td><td>Vejo-<span class="v">vos</span>. (Ich sehe euch.)</td></tr>
+        <tr><td>sie (m. Pl)</td><td class="v">os</td><td>Conhe&ccedil;o-<span class="v">os</span>. (Ich kenne sie.)</td></tr>
+        <tr><td>sie (f. Pl)</td><td class="v">as</td><td>Vejo-<span class="v">as</span>. (Ich sehe sie.)</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Indirektobjekt-Pronomen</h3>
+      <p>Antwort auf die Frage <em>"wem oder f&uuml;r wen?"</em></p>
+      <table>
+        <tr><th>Person</th><th>Pronomen</th><th>Beispiel</th></tr>
+        <tr><td>mir</td><td class="v">me</td><td>D&aacute;-<span class="v">me</span> o livro. (Gib mir das Buch.)</td></tr>
+        <tr><td>dir</td><td class="v">te</td><td>Dou-<span class="v">te</span> um presente. (Ich gebe dir ein Geschenk.)</td></tr>
+        <tr><td>ihm / ihr</td><td class="v">lhe</td><td>Falo-<span class="v">lhe</span>. (Ich spreche mit ihm/ihr.)</td></tr>
+        <tr><td>uns</td><td class="v">nos</td><td>Escreve-<span class="v">nos</span>. (Schreib uns.)</td></tr>
+        <tr><td>euch</td><td class="v">vos</td><td>Conto-<span class="v">vos</span>. (Ich erz&auml;hle euch.)</td></tr>
+        <tr><td>ihnen</td><td class="v">lhes</td><td>Mostro-<span class="v">lhes</span>. (Ich zeige ihnen.)</td></tr>
+      </table>
+      <div class="insight">
+        <strong>Kurzes Memo:</strong>
+        Direktobjekt: <strong>o, a, os, as</strong> (gleich wie Artikel!) &bull; Indirektobjekt: <strong>lhe, lhes</strong> (mit "lh"-Laut)
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Wo steht das Pronomen? (PT-PT)</h3>
+      <p>Im europ&auml;ischen Portugiesisch steht das Pronomen meistens <strong>nach dem Verb mit Bindestrich</strong>:</p>
+      <table>
+        <tr><th>Standard (nach dem Verb)</th><th>Bedeutung</th></tr>
+        <tr><td>Conhe&ccedil;o-a.</td><td>Ich kenne sie.</td></tr>
+        <tr><td>Vejo-te amanh&atilde;.</td><td>Ich sehe dich morgen.</td></tr>
+        <tr><td>D&aacute;-me um caf&eacute;.</td><td>Gib mir einen Kaffee.</td></tr>
+      </table>
+
+      <p style="margin-top: 16px;"><strong>Aber: vor dem Verb</strong> in diesen F&auml;llen:</p>
+      <table>
+        <tr><th>Trigger</th><th>Beispiel</th></tr>
+        <tr><td>Verneinung</td><td><span class="v">N&atilde;o</span> a conhe&ccedil;o.</td></tr>
+        <tr><td>Fragew&ouml;rter</td><td><span class="v">Quem</span> te chamou?</td></tr>
+        <tr><td>Untergeordnete S&auml;tze</td><td>Sei <span class="v">que</span> te conhece.</td></tr>
+        <tr><td>Adverbien (j&aacute;, ainda, sempre, nunca, tamb&eacute;m...)</td><td><span class="v">J&aacute;</span> a vi.</td></tr>
+        <tr><td>Pronomen-Satz-Anfang</td><td><span class="v">Algu&eacute;m</span> me chamou.</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <strong>Wichtigster Trigger: Verneinung!</strong>
+        Bei "n&atilde;o" wandert das Pronomen IMMER vor das Verb:<br>
+        ✅ "N&atilde;o <strong>a</strong> conhe&ccedil;o."<br>
+        ❌ "N&atilde;o conhe&ccedil;o-a."
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Spezialregel: o/a/os/as nach bestimmten Endungen</h3>
+      <p>Wenn das Verb auf <strong>-r, -s, -z</strong> endet, wird das Pronomen zu <strong>lo/la/los/las</strong> und der letzte Buchstabe vom Verb f&auml;llt weg:</p>
+      <table>
+        <tr><th>Vorher</th><th>Nachher</th><th>Beispiel</th></tr>
+        <tr><td>conhecer + o</td><td>conhec&ecirc;-<span class="v">lo</span></td><td>Vou conhec&ecirc;-lo. (Ich werde ihn kennenlernen.)</td></tr>
+        <tr><td>fazes + a</td><td>faze-<span class="v">la</span></td><td>Faze-la? (Machst du sie/es?)</td></tr>
+        <tr><td>faz + os</td><td>f&aacute;-<span class="v">los</span></td><td>F&aacute;-los amanh&atilde;. (Mach sie morgen.)</td></tr>
+      </table>
+      <div class="insight">
+        <strong>Spar dir das f&uuml;r sp&auml;ter:</strong>
+        Diese Regel ist h&auml;ufig in Schriftsprache, aber im Sprechen kannst du auch ausweichen ("Vou conhecer ele/ela") oder einfach das Substantiv wiederholen ("Vou conhecer o Pedro").
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Praktische Beispiele</h3>
+      <table>
+        <tr><th>Ohne Pronomen</th><th>Mit Pronomen</th></tr>
+        <tr><td>Conhe&ccedil;o a Maria.</td><td>Conhe&ccedil;o-<span class="v">a</span>.</td></tr>
+        <tr><td>Vejo o filme amanh&atilde;.</td><td>Vejo-<span class="v">o</span> amanh&atilde;.</td></tr>
+        <tr><td>Dou um livro ao Pedro.</td><td>Dou-<span class="v">lhe</span> um livro.</td></tr>
+        <tr><td>Trago o caf&eacute; para ti.</td><td>Trago-<span class="v">te</span> o caf&eacute;.</td></tr>
+        <tr><td>N&atilde;o vi a Ana.</td><td>N&atilde;o <span class="v">a</span> vi. (vor Verb!)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Direktobjekt -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Direktobjekt: o, a, os, as</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Ich kenne <strong>die Maria</strong> &rarr; Ich kenne sie.</div>
+      <div class="input-row">
+        <span>Conhe&ccedil;o-</span>
+        <input type="text" class="answer-input" data-answers="a" style="width: 80px;">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Ich sehe <strong>den Pedro</strong> &rarr; Ich sehe ihn.</div>
+      <div class="input-row">
+        <span>Vejo-</span>
+        <input type="text" class="answer-input" data-answers="o" style="width: 80px;">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Ich lese <strong>die Bücher</strong> &rarr; Ich lese sie. (m. Pl)</div>
+      <div class="input-row">
+        <span>Leio-</span>
+        <input type="text" class="answer-input" data-answers="os" style="width: 80px;">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">Ich kaufe <strong>die Blumen</strong> &rarr; Ich kaufe sie. (f. Pl)</div>
+      <div class="input-row">
+        <span>Compro-</span>
+        <input type="text" class="answer-input" data-answers="as" style="width: 80px;">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Sie ruft <strong>mich</strong> an. (chamar)</div>
+      <div class="input-row">
+        <span>Ela chama-</span>
+        <input type="text" class="answer-input" data-answers="me" style="width: 80px;">
+        <span>.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6 &mdash; Verneinung!</div>
+      <div class="exercise-hint">Ich kenne sie nicht. (Maria, mit "n&atilde;o" wandert Pronomen vor Verb)</div>
+      <input type="text" class="translation-input" data-answers="não a conheço.|nao a conheço.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Indirektobjekt -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Indirektobjekt: me, te, lhe, nos, lhes</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 12</div>
+      <div class="exercise-hint">Ich gebe <strong>dir</strong> ein Geschenk.</div>
+      <div class="input-row">
+        <span>Dou-</span>
+        <input type="text" class="answer-input" data-answers="te" style="width: 80px;">
+        <span>um presente.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 12</div>
+      <div class="exercise-hint">Ich erz&auml;hle <strong>ihm</strong> alles.</div>
+      <div class="input-row">
+        <span>Conto-</span>
+        <input type="text" class="answer-input" data-answers="lhe" style="width: 80px;">
+        <span>tudo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 12</div>
+      <div class="exercise-hint">Sie schreibt <strong>uns</strong> jeden Tag.</div>
+      <div class="input-row">
+        <span>Ela escreve-</span>
+        <input type="text" class="answer-input" data-answers="nos" style="width: 80px;">
+        <span>todos os dias.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 12</div>
+      <div class="exercise-hint">Wir zeigen <strong>ihnen</strong> die Stadt.</div>
+      <div class="input-row">
+        <span>Mostramos-</span>
+        <input type="text" class="answer-input" data-answers="lhes" style="width: 80px;">
+        <span>a cidade.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 12</div>
+      <div class="exercise-hint">Sie geben <strong>uns</strong> Energie. (aus deiner Live-Klasse: D&aacute;-te muita energia)</div>
+      <div class="input-row">
+        <span>D&atilde;o-</span>
+        <input type="text" class="answer-input" data-answers="nos" style="width: 80px;">
+        <span>energia.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 12 &mdash; Verneinung!</div>
+      <div class="exercise-hint">Ich erz&auml;hle es dir nicht.</div>
+      <input type="text" class="translation-input" data-answers="não te conto.|nao te conto.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Ganze Sätze -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; S&auml;tze umbauen mit Pronomen</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 16</div>
+      <div class="exercise-hint">"Ich sehe Pedro morgen." &rarr; ersetze "Pedro" durch Pronomen</div>
+      <input type="text" class="translation-input" data-answers="vejo-o amanhã.|eu vejo-o amanhã.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 16</div>
+      <div class="exercise-hint">"Sie kennt deine Freunde nicht." &rarr; ersetze "deine Freunde"</div>
+      <input type="text" class="translation-input" data-answers="ela não os conhece.|nao os conhece ela.|ela nao os conhece.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 16</div>
+      <div class="exercise-hint">"Sie haben mir das Geld gegeben." (dar Pretérito = deram)</div>
+      <input type="text" class="translation-input" data-answers="deram-me o dinheiro.|eles deram-me o dinheiro.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 16 &mdash; Finale</div>
+      <div class="exercise-hint">"Ich m&ouml;chte dir eine Sache erz&auml;hlen, aber ich kann dich heute nicht treffen." (aus deiner Live-Klasse-Konstruktion)</div>
+      <input type="text" class="translation-input" data-answers="quero contar-te uma coisa, mas hoje não te posso encontrar.|quero te contar uma coisa, mas hoje nao posso encontrar-te.|quero contar-te uma coisa mas não te posso encontrar hoje.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Pronomen sitzen!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Ein paar Stellen kannst du dir nochmal anschauen.';
+  else if(pct>=0.4)msg.textContent='Bom! Die Verneinungs-Regel ist tricky — schau die Tabelle nochmal an.';
+  else msg.textContent='Nochmal in Ruhe durch die Tabellen gehen.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-16','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
