@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 17 - Demonstrativpronomen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #2e7d32; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+
+  /* Visual: 3 Räume */
+  .space-viz { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 20px 0; }
+  .space-card { padding: 16px; border-radius: 10px; text-align: center; }
+  .space-card.near { background: #c8e6c9; border: 2px solid #2e7d32; }
+  .space-card.mid { background: #fff3e0; border: 2px solid #e8721d; }
+  .space-card.far { background: #e8eaf6; border: 2px solid #3f51b5; }
+  .space-emoji { font-size: 24px; margin-bottom: 6px; }
+  .space-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .space-desc { font-size: 11px; color: #6b6560; }
+  .space-words { font-size: 13px; font-weight: 700; margin-top: 6px; color: #2d2a26; }
+
+  .exercise-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 8px 12px; font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } .space-viz { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 17</div>
+    <h1>Demonstrativpronomen <span class="level-tag">Praktisch</span></h1>
+    <p>"Dieser hier, der da, jener dort" &mdash; este, esse, aquele</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="grammar-box">
+      <h3>Die 3 R&auml;ume des Portugiesischen</h3>
+      <p>Im Deutschen unterscheiden wir nur <strong>dies-/der-/jener</strong>, oft eher unklar. Im Portugiesischen gibt es <span class="highlight">drei klare R&auml;ume</span>:</p>
+
+      <div class="space-viz">
+        <div class="space-card near">
+          <div class="space-emoji">&#9757;&#65039;</div>
+          <div class="space-title">N&auml;he zu MIR</div>
+          <div class="space-desc">"hier", was ich anfasse</div>
+          <div class="space-words">este / esta</div>
+        </div>
+        <div class="space-card mid">
+          <div class="space-emoji">&#128072;</div>
+          <div class="space-title">N&auml;he zu DIR</div>
+          <div class="space-desc">"da", bei dir</div>
+          <div class="space-words">esse / essa</div>
+        </div>
+        <div class="space-card far">
+          <div class="space-emoji">&#128070;</div>
+          <div class="space-title">WEIT WEG</div>
+          <div class="space-desc">"dort dr&uuml;ben"</div>
+          <div class="space-words">aquele / aquela</div>
+        </div>
+      </div>
+
+      <div class="recall-box">
+        <strong>Eselsbr&uuml;cke:</strong>
+        Bei <strong>est</strong>e &rarr; <strong>"hi-ER" (E wie est)</strong><br>
+        Bei <strong>ess</strong>e &rarr; <strong>"da bei Dir"</strong><br>
+        Bei <strong>aque</strong>le &rarr; <strong>"DRORT" (Beide weit weg)</strong>
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Komplette Tabelle</h3>
+      <table>
+        <tr><th>Raum</th><th>m. Sg.</th><th>f. Sg.</th><th>m. Pl.</th><th>f. Pl.</th></tr>
+        <tr><td>N&auml;he zu mir</td><td class="v">este</td><td class="v">esta</td><td class="v">estes</td><td class="v">estas</td></tr>
+        <tr><td>N&auml;he zu dir</td><td class="v">esse</td><td class="v">essa</td><td class="v">esses</td><td class="v">essas</td></tr>
+        <tr><td>Weit weg</td><td class="v">aquele</td><td class="v">aquela</td><td class="v">aqueles</td><td class="v">aquelas</td></tr>
+      </table>
+
+      <h3>Beispiele aus dem Alltag</h3>
+      <table>
+        <tr><th>Portugiesisch</th><th>Deutsch / Situation</th></tr>
+        <tr><td><span class="v">Este</span> caf&eacute; &eacute; bom.</td><td>Dieser Kaffee (den ich trinke) ist gut.</td></tr>
+        <tr><td><span class="v">Essa</span> camisa &eacute; bonita.</td><td>Das Hemd (das du tr&auml;gst) ist sch&ouml;n.</td></tr>
+        <tr><td><span class="v">Aquele</span> edif&iacute;cio &eacute; alto.</td><td>Jenes Geb&auml;ude (dort weiter weg) ist hoch.</td></tr>
+        <tr><td>Quero <span class="v">esta</span> casa.</td><td>Ich will dieses Haus (hier).</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Neutrale Form: isto / isso / aquilo</h3>
+      <p>Wenn du auf etwas <strong>Unbestimmtes / nicht identifiziertes</strong> zeigst, gibt es eine neutrale Form (immer Singular, kein Geschlecht):</p>
+
+      <table>
+        <tr><th>Form</th><th>Verwendung</th><th>Beispiel</th></tr>
+        <tr><td class="v">isto</td><td>nahe (was ist <em>das hier</em>?)</td><td>O que &eacute; isto?</td></tr>
+        <tr><td class="v">isso</td><td>bei dir (was ist <em>das da</em>?)</td><td>D&aacute;-me isso!</td></tr>
+        <tr><td class="v">aquilo</td><td>weit weg (was ist <em>das dort</em>?)</td><td>Aquilo &eacute; um carro novo.</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Wann este/esta vs. isto?</strong>
+        Wenn du auf eine konkrete Sache verweist deren Wort du kennst &rarr; este/esta + Substantiv ("este livro")<br>
+        Wenn unbestimmt / abstrakt / unklar was es ist &rarr; isto ("o que &eacute; isto?")
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Kontraktionen mit em / de</h3>
+      <p>Demonstrativpronomen verschmelzen mit <strong>em</strong> und <strong>de</strong> (wie schon bei den Artikeln):</p>
+
+      <table>
+        <tr><th></th><th>+ em (in)</th><th>+ de (von)</th></tr>
+        <tr><td>este/esta</td><td class="v">neste / nesta</td><td class="v">deste / desta</td></tr>
+        <tr><td>esse/essa</td><td class="v">nesse / nessa</td><td class="v">desse / dessa</td></tr>
+        <tr><td>aquele/aquela</td><td class="v">naquele / naquela</td><td class="v">daquele / daquela</td></tr>
+        <tr><td>isto</td><td class="v">nisto</td><td class="v">disto</td></tr>
+        <tr><td>isso</td><td class="v">nisso</td><td class="v">disso</td></tr>
+        <tr><td>aquilo</td><td class="v">naquilo</td><td class="v">daquilo</td></tr>
+      </table>
+
+      <p style="margin-top: 16px;"><strong>Beispiele:</strong></p>
+      <ul style="padding-left: 20px; font-size: 14px; line-height: 1.8; color: #4a4540;">
+        <li>Moro <span class="v">nesta</span> cidade. (= em + esta cidade = in dieser Stadt)</li>
+        <li>Gosto <span class="v">deste</span> livro. (= de + este livro = von diesem Buch)</li>
+        <li>N&atilde;o gosto <span class="v">disso</span>. (= de + isso = von dem da)</li>
+        <li><span class="v">Naquele</span> restaurante a comida &eacute; &oacute;tima. (= em + aquele = in jenem)</li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>Pflicht!</strong>
+        "em este" gibt es nicht &mdash; immer "neste". Genauso "de aquele" &rarr; "daquele".
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Zeit-Verwendung (este = jetzt, esse = vor kurzem, aquele = lange her)</h3>
+      <table>
+        <tr><th>Form</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td><span class="v">esta semana</span></td><td>diese Woche (jetzt)</td><td>Esta semana tenho muito trabalho.</td></tr>
+        <tr><td><span class="v">essa semana</span></td><td>diese Woche (von der du sprichst)</td><td>Essa semana foi dif&iacute;cil para ti?</td></tr>
+        <tr><td><span class="v">naquele dia</span></td><td>an jenem Tag (lange her)</td><td>Naquele dia, eu fui ao m&eacute;dico.</td></tr>
+        <tr><td><span class="v">deste ano</span></td><td>dieses Jahres</td><td>Os planos deste ano.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Richtige Form -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; este / esta / esse / essa / aquele / aquela</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Du h&auml;ltst ein Buch in der Hand. "<strong>Dieses</strong> Buch ist gut." (livro = m.)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="este" style="width: 120px;">
+        <span>livro &eacute; bom.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Dein Gespr&auml;chspartner tr&auml;gt eine Brille. "<strong>Diese</strong> Brille ist toll." (&oacute;culos = m. Pl)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="esses" style="width: 120px;">
+        <span>&oacute;culos s&atilde;o &oacute;timos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Ihr zeigt auf ein weit entferntes Geb&auml;ude. "<strong>Jenes</strong> Geb&auml;ude ist sch&ouml;n." (edif&iacute;cio = m.)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="aquele" style="width: 120px;">
+        <span>edif&iacute;cio &eacute; bonito.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">Du zeigst auf deine eigene Tasche. "<strong>Diese</strong> Tasche ist neu." (mala = f.)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="esta" style="width: 120px;">
+        <span>mala &eacute; nova.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Du fragst zu dem T-Shirt das DEIN Gegen&uuml;ber tr&auml;gt: "<strong>Dieses</strong> T-Shirt ist sch&ouml;n." (camiseta = f.)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="essa" style="width: 120px;">
+        <span>camiseta &eacute; bonita.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">Ihr seht in der Ferne Frauen. "<strong>Jene</strong> Frauen sind aus Brasilien." (mulheres = f. Pl)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="aquelas" style="width: 120px;">
+        <span>mulheres s&atilde;o do Brasil.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: isto / isso / aquilo -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Neutrale Form (isto / isso / aquilo)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 10</div>
+      <div class="exercise-hint">Du fragst (zeigend auf etwas in deiner Hand): "Was ist <strong>das hier</strong>?"</div>
+      <div class="input-row">
+        <span>O que &eacute;</span>
+        <input type="text" class="answer-input" data-answers="isto" style="width: 120px;">
+        <span>?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 10</div>
+      <div class="exercise-hint">"Gib mir <strong>das da</strong>!" (zeigt auf etwas bei dir)</div>
+      <div class="input-row">
+        <span>D&aacute;-me</span>
+        <input type="text" class="answer-input" data-answers="isso" style="width: 120px;">
+        <span>!</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 10</div>
+      <div class="exercise-hint">"<strong>Das dort</strong> ist mein Haus." (zeigt in die Ferne)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="aquilo" style="width: 120px;">
+        <span>&eacute; a minha casa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 10</div>
+      <div class="exercise-hint">"Ich mag <strong>das</strong> nicht." (allgemein, was sie gerade gemacht hat)</div>
+      <input type="text" class="translation-input" data-answers="não gosto disso.|eu não gosto disso.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Kontraktionen -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Kontraktionen (em + ... / de + ...)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 14</div>
+      <div class="exercise-hint">em + este &rarr; ?</div>
+      <input type="text" class="answer-input" data-answers="neste" style="width: 140px;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 14</div>
+      <div class="exercise-hint">de + esta &rarr; ?</div>
+      <input type="text" class="answer-input" data-answers="desta" style="width: 140px;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 14</div>
+      <div class="exercise-hint">em + aquele &rarr; ?</div>
+      <input type="text" class="answer-input" data-answers="naquele" style="width: 140px;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 14</div>
+      <div class="exercise-hint">de + isso &rarr; ?</div>
+      <input type="text" class="answer-input" data-answers="disso" style="width: 140px;">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 4: Ganze Sätze -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 4 &mdash; S&auml;tze (mit Kontraktionen)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 19</div>
+      <div class="exercise-hint">Ich wohne in dieser Stadt. (cidade = f.)</div>
+      <input type="text" class="translation-input" data-answers="moro nesta cidade.|eu moro nesta cidade.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 19</div>
+      <div class="exercise-hint">Ich mag dieses Restaurant. (gostar de + restaurante = m.)</div>
+      <input type="text" class="translation-input" data-answers="gosto deste restaurante.|eu gosto deste restaurante.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 19</div>
+      <div class="exercise-hint">In jenem Caf&eacute; (weit weg) ist der Kaffee gut. (caf&eacute; = m.)</div>
+      <input type="text" class="translation-input" data-answers="naquele café o café é bom.|naquele café, o café é bom.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 19</div>
+      <div class="exercise-hint">Diese Woche habe ich viel zu tun.</div>
+      <input type="text" class="translation-input" data-answers="esta semana tenho muito que fazer.|esta semana tenho muita coisa para fazer.|esta semana tenho muito trabalho.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">19 von 19 &mdash; Finale</div>
+      <div class="exercise-hint">An jenem Tag (lange her) ging ich zum Arzt und am Abend a&szlig; ich in diesem Restaurant.</div>
+      <input type="text" class="translation-input" data-answers="naquele dia fui ao médico e à noite comi neste restaurante.|naquele dia eu fui ao médico e à noite comi neste restaurante.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Die drei Räume sitzen!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Die Kontraktionen sind tricky — schau die Tabelle nochmal an.';
+  else if(pct>=0.4)msg.textContent='Bom! Geh die drei Räume in Ruhe nochmal durch.';
+  else msg.textContent='Nochmal: este=hier, esse=bei dir, aquele=dort drüben.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-17','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
