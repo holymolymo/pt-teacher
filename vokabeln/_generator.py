@@ -706,6 +706,36 @@ CARDS = [
     ("Lavar-se", "sich waschen", "reflexiv"),
     ("Nunca me deito cedo", "Ich gehe nie früh schlafen", "Pronomen vor Verb wegen 'nunca'"),
     ("Também nos levantamos cedo", "Wir stehen auch früh auf", "Pronomen vor Verb wegen 'também'"),
+
+    # === Klasse 03.06.2026 — Business-Plan, Restaurant, Fast Food ===
+    # Business raus
+    ("Decidiu sair", "hat entschieden auszusteigen", "decidir + Inf"),
+    ("Sair do negócio", "aus dem Business aussteigen", ""),
+    ("Saída", "Ausgang / Ausstieg", ""),
+    ("Não estava a me sentir bem", "Ich fühlte mich nicht wohl", "Imperfeito + estar a + Inf"),
+    ("As coisas não estão a correr bem", "Die Dinge laufen nicht gut", "estar a correr = laufen"),
+    ("Como eu planejei / planeei", "wie ich geplant habe", "planear (PT-PT) / planejar (BR)"),
+    ("Planear / Planejar", "planen", "PT-PT: planear, BR: planejar"),
+    # Restaurant gründen
+    ("Restaurante de fast food", "Fast-Food-Restaurant", ""),
+    ("Abrir um restaurante", "ein Restaurant eröffnen", ""),
+    ("Vender", "verkaufen", ""),
+    ("Que comida vais vender?", "Welches Essen wirst du verkaufen?", ""),
+    ("Materiais para cozinha", "Küchenausstattung / Material", ""),
+    ("Fornecedor / Fornecedores", "Lieferant/en", ""),
+    ("Fritadeira", "Fritteuse", ""),
+    ("Fritadeira dupla", "Doppelfritteuse", ""),
+    # Essen
+    ("Hamburguer", "Burger", "spelling: hambúrguer"),
+    ("Shawarma", "Shawarma", ""),
+    ("Pedaço / Pedaços", "Stück / Stücke", ""),
+    # Ruhetag
+    ("Dia de folga", "Ruhetag / freier Tag", ""),
+    ("Dia de descanso", "Ruhetag", "Synonym von folga"),
+    ("Folga / Descanso", "Pause / Erholung", ""),
+    ("Hoje é dia de folga para desportos", "Heute ist Sport-Ruhetag", "Beispielsatz"),
+    # Konversation
+    ("Depois da nossa aula", "nach unserer Stunde", ""),
 ]
 
 
