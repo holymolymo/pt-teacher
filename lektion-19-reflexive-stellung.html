@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 19 - Reflexive Verben & Pronomen-Stellung</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #f9a825; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 30px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 15px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 17px; font-weight: 600; margin-bottom: 12px; }
+  .grammar-box p { font-size: 14px; line-height: 1.7; color: #4a4540; margin-bottom: 10px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 9px 12px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 8px 12px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 14px 0; font-size: 13px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 3px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 14px 0; font-size: 13px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 3px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 14px 0; font-size: 13px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 3px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 22px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 8px 12px; font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 36px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 44px; font-weight: 700; color: #e8721d; margin-bottom: 6px; }
+  .score-label { font-size: 14px; color: #6b6560; margin-bottom: 14px; }
+  .score-message { font-size: 14px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+
+  /* Trigger chips */
+  .trigger-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+  .trigger-chip { background: #fff3e0; border: 1.5px solid #ffb74d; padding: 5px 12px; border-radius: 16px; font-size: 13px; font-weight: 600; color: #e65100; }
+
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 24px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 19</div>
+    <h1>Reflexive Verben &mdash; Stellung der Pronomen <span class="level-tag">Buch + Klasse 27.05</span></h1>
+    <p>Wann steht das Pronomen vor und wann nach dem Verb?</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 1 &mdash; Was sind reflexive Verben?</div>
+
+    <div class="grammar-box">
+      <h3>Reflexivpronomen</h3>
+      <p>Reflexive Verben dr&uuml;cken aus, dass eine Handlung auf das Subjekt zur&uuml;ckwirkt &mdash; <strong>ich wasche mich</strong>, <strong>du setzt dich</strong>. Jede Person hat ihr eigenes Pronomen:</p>
+      <table>
+        <tr><th>Person</th><th>Pronomen</th></tr>
+        <tr><td>Eu</td><td class="v">me</td></tr>
+        <tr><td>Tu</td><td class="v">te</td></tr>
+        <tr><td>Ele / Ela / Voc&ecirc;</td><td class="v">se</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">nos</td></tr>
+        <tr><td>Eles / Elas / Voc&ecirc;s</td><td class="v">se</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Wichtige reflexive Verben</h3>
+      <table>
+        <tr><th>Verb</th><th>Bedeutung</th></tr>
+        <tr><td>chamar-se</td><td>hei&szlig;en</td></tr>
+        <tr><td>levantar-se</td><td>aufstehen</td></tr>
+        <tr><td>sentar-se</td><td>sich setzen</td></tr>
+        <tr><td>deitar-se</td><td>sich hinlegen / schlafen gehen</td></tr>
+        <tr><td>lavar-se</td><td>sich waschen</td></tr>
+        <tr><td>vestir-se</td><td>sich anziehen</td></tr>
+        <tr><td>esquecer-se (de)</td><td>vergessen</td></tr>
+        <tr><td>lembrar-se (de)</td><td>sich erinnern</td></tr>
+        <tr><td>sentir-se</td><td>sich f&uuml;hlen</td></tr>
+        <tr><td>parecer-se (com)</td><td>&auml;hneln</td></tr>
+        <tr><td>mudar-se</td><td>umziehen</td></tr>
+        <tr><td>inscrever-se</td><td>sich anmelden</td></tr>
+        <tr><td>atrasar-se</td><td>sich versp&auml;ten</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 2 &mdash; Pronomen NACH dem Verb (Standard)</div>
+
+    <div class="grammar-box">
+      <h3>Standardfall: Pronomen + Bindestrich nach dem Verb</h3>
+      <p>In Aussages&auml;tzen ohne besonderen Trigger steht das Pronomen <strong>direkt nach dem Verb mit Bindestrich</strong>.</p>
+      <table>
+        <tr><th>Person</th><th>Verb-Pronomen</th><th>Rest</th></tr>
+        <tr><td>Eu</td><td class="v">levanto-me</td><td>cedo.</td></tr>
+        <tr><td>Tu</td><td class="v">deitas-te</td><td>tarde.</td></tr>
+        <tr><td>Ele/Ela/Voc&ecirc;</td><td class="v">lava-se</td><td>todos os dias.</td></tr>
+        <tr><td>N&oacute;s</td><td class="v">sentamo-nos</td><td>&agrave; mesa.</td></tr>
+        <tr><td>Eles/Elas/Voc&ecirc;s</td><td class="v">sentam-se</td><td>no sof&aacute;.</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <strong>Achtung bei "nós"!</strong>
+        Vor <strong>-nos</strong> f&auml;llt das <strong>s</strong> am Verbende weg:<br>
+        ❌ "sentamos-nos" &rarr; ✅ "<strong>sentamo-nos</strong>"<br>
+        Genauso: "lavamos-nos" &rarr; "<strong>lavamo-nos</strong>", "levantamos-nos" &rarr; "<strong>levantamo-nos</strong>"
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 3 &mdash; Pronomen VOR dem Verb (Trigger!)</div>
+
+    <div class="grammar-box">
+      <h3>Wann wandert das Pronomen vor das Verb?</h3>
+      <p>Bei bestimmten <strong>Triggern</strong> r&uuml;ckt das Pronomen <strong>vor das Verb</strong> &mdash; ohne Bindestrich!</p>
+
+      <div class="trigger-list">
+        <div class="trigger-chip">Fragew&ouml;rter</div>
+        <div class="trigger-chip">N&atilde;o (Verneinung)</div>
+        <div class="trigger-chip">Nunca</div>
+        <div class="trigger-chip">Tamb&eacute;m</div>
+        <div class="trigger-chip">J&aacute;</div>
+        <div class="trigger-chip">S&oacute;</div>
+        <div class="trigger-chip">Sempre</div>
+        <div class="trigger-chip">Que (Konjunktion)</div>
+      </div>
+
+      <table>
+        <tr><th>Trigger</th><th>Pronomen</th><th>Verb</th><th>Rest</th></tr>
+        <tr><td>Como</td><td class="v">te</td><td>chamas</td><td>?</td></tr>
+        <tr><td>N&atilde;o</td><td class="v">se</td><td>deita</td><td>tarde?</td></tr>
+        <tr><td>Nunca</td><td class="v">me</td><td>deito</td><td>cedo.</td></tr>
+        <tr><td>Tamb&eacute;m</td><td class="v">nos</td><td>levantamos</td><td>cedo.</td></tr>
+        <tr><td>S&oacute;</td><td class="v">se</td><td>sentam</td><td>no sof&aacute;.</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Eselsbr&uuml;cke:</strong>
+        <strong>NIE</strong> "n&atilde;o se chama-te" &mdash; bei "n&atilde;o" SCHRECKT das Pronomen NACH VORN! Das gleiche bei nunca/sempre/j&aacute;/s&oacute;/tamb&eacute;m und Fragew&ouml;rtern.
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Vergleich: Mit und ohne Trigger</h3>
+      <table>
+        <tr><th>Ohne Trigger (Standard)</th><th>Mit Trigger (Vor Verb)</th></tr>
+        <tr><td>Levanto-<span class="v">me</span> cedo.</td><td>Nunca <span class="v">me</span> levanto cedo.</td></tr>
+        <tr><td>Cham<span class="v">o</span>-me Moritz.</td><td>Como <span class="v">me</span> chamo?</td></tr>
+        <tr><td>Senta-<span class="v">se</span> aqui.</td><td>N&atilde;o <span class="v">se</span> senta aqui.</td></tr>
+        <tr><td>Esqueces-<span class="v">te</span> sempre.</td><td>Tu <span class="v">te</span> esqueces sempre. (PT-BR-Stil)</td></tr>
+      </table>
+
+      <div class="recall-box">
+        <strong>Aus deinen Live-Klassen:</strong>
+        "Como <strong>te</strong> chamas?" (Fragewort) &bull; "Como <strong>se</strong> chama?" (Fragewort)<br>
+        "Ele vai <strong>mudar-se</strong>" (Standard nach Verb)<br>
+        "Vou <strong>inscrever-me</strong>" (Standard nach Verb)
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Standardstellung -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Standardstellung (nach Verb)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">Ich stehe früh auf. (levantar-se, eu)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="levanto-me">
+        <span>cedo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">Du gehst spät schlafen. (deitar-se, tu)</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="deitas-te">
+        <span>tarde.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">Sie (ela) wäscht sich jeden Tag.</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="lava-se">
+        <span>todos os dias.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6 &mdash; Achtung nós!</div>
+      <div class="exercise-hint">Wir setzen uns an den Tisch. (sentar-se, nós — Achtung: s entfällt!)</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="sentamo-nos">
+        <span>&agrave; mesa.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">Sie (eles) setzen sich aufs Sofa. (sentar-se, eles)</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="sentam-se">
+        <span>no sof&aacute;.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">Wir stehen früh auf. (levantar-se, nós — Achtung: s entfällt!)</div>
+      <div class="input-row">
+        <span>N&oacute;s</span>
+        <input type="text" class="answer-input" data-answers="levantamo-nos">
+        <span>cedo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Vor dem Verb -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Pronomen VOR dem Verb (Trigger!)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 8</div>
+      <div class="exercise-hint">"Wie hei&szlig;t du?" (Como + chamar-se + tu)</div>
+      <div class="input-row">
+        <span>Como</span>
+        <input type="text" class="answer-input" data-answers="te" style="width: 80px;">
+        <span>chamas?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 8</div>
+      <div class="exercise-hint">"Legt er sich nicht sp&auml;t hin?" (N&atilde;o + deitar-se + ele)</div>
+      <div class="input-row">
+        <span>N&atilde;o</span>
+        <input type="text" class="answer-input" data-answers="se" style="width: 80px;">
+        <span>deita tarde?</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 12</div>
+      <div class="exercise-hint">"Ich gehe nie früh schlafen." (Nunca + deitar-se + eu)</div>
+      <div class="input-row">
+        <span>Nunca</span>
+        <input type="text" class="answer-input" data-answers="me" style="width: 80px;">
+        <span>deito cedo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 12</div>
+      <div class="exercise-hint">"Wir stehen auch früh auf." (Tamb&eacute;m + levantar-se + nós)</div>
+      <div class="input-row">
+        <span>Tamb&eacute;m</span>
+        <input type="text" class="answer-input" data-answers="nos" style="width: 80px;">
+        <span>levantamos cedo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 12</div>
+      <div class="exercise-hint">"Sie setzen sich nur aufs Sofa." (Só + sentar-se + eles)</div>
+      <div class="input-row">
+        <span>S&oacute;</span>
+        <input type="text" class="answer-input" data-answers="se" style="width: 80px;">
+        <span>sentam no sof&aacute;.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 12</div>
+      <div class="exercise-hint">"Ich vergesse mich immer." (Sempre + esquecer-se + eu)</div>
+      <div class="input-row">
+        <span>Sempre</span>
+        <input type="text" class="answer-input" data-answers="me" style="width: 80px;">
+        <span>esque&ccedil;o.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 3: Ganze Sätze (aus Klasse 27.05) -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 3 &mdash; Ganze S&auml;tze (aus deiner Klasse 27.05)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 18</div>
+      <div class="exercise-hint">"Entschuldigung für die Verspätung."</div>
+      <input type="text" class="translation-input" data-answers="desculpe pelo atraso.|desculpa pelo atraso.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 18</div>
+      <div class="exercise-hint">Ich habe auf die Metro gewartet, deshalb habe ich mich ein bisschen verspätet.</div>
+      <input type="text" class="translation-input" data-answers="esperei o metrô e por isso atrasei-me um pouco.|esperei o metro e por isso atrasei um pouco.|eu esperei o metrô e por isso me atrasei um pouco.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="exercise-hint">"Ich habe es geschafft, das Problem zu lösen." (conseguir + Inf)</div>
+      <input type="text" class="translation-input" data-answers="consegui resolver o problema.|eu consegui resolver o problema.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="exercise-hint">Bist du noch müde? (ainda + estar)</div>
+      <input type="text" class="translation-input" data-answers="tu ainda estás cansado?|ainda estás cansado?|tu ainda estás cansada?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="exercise-hint">Du scheinst sehr glücklich, aber letzte Woche warst du gestresst.</div>
+      <input type="text" class="translation-input" data-answers="tu pareces muito feliz, mas na semana passada estavas estressado.|pareces muito feliz mas na semana passada estavas estressado.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 18 &mdash; Finale</div>
+      <div class="exercise-hint">Ich werde mich n&auml;chste Woche im Fitnessstudio anmelden und meinen Mitbewohnern hilft mein Spanisch. (inscrever-se + colegas + Spanisch)</div>
+      <input type="text" class="translation-input" data-answers="vou inscrever-me no ginásio na próxima semana e o meu espanhol ajuda os meus colegas.|vou me inscrever no ginásio na próxima semana e o meu espanhol ajuda os meus colegas de quarto.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Reflexive Stellung sitzt!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Die Trigger sind tricky — geh die Tabelle nochmal durch.';
+  else if(pct>=0.4)msg.textContent='Bom! Schau dir die Trigger-Liste nochmal an.';
+  else msg.textContent='Geh in Ruhe durch — nó (s)+nos = sentamo-nos!';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-19','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>

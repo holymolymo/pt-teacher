@@ -629,6 +629,83 @@ CARDS = [
     ("Na próxima semana", "nächste Woche", ""),
     ("Na semana passada", "letzte Woche", ""),
     ("Estou a 10 minutos de...", "Ich bin 10 Minuten von... entfernt", "Distanz/Zeit"),
+
+    # === Klasse 27.05.2026 — Verspätung, Schmerz, Konditional, se ===
+    # Verspätung
+    ("Desculpe pelo atraso", "Entschuldigung für die Verspätung", "Standardausdruck"),
+    ("Atraso", "Verspätung", "Substantiv"),
+    ("Atrasar-se", "sich verspäten", "reflexiv"),
+    ("Esperei", "ich wartete", "esperar Pretérito"),
+    ("Esperar", "warten", ""),
+    ("Estou à espera de...", "Ich warte auf...", "esperar mit Präposition"),
+    # Stress
+    ("Estressado / Estressada", "gestresst", "Adjektiv"),
+    ("Estresse", "Stress", "Substantiv"),
+    ("Não tem estresse", "kein Stress", "ugs."),
+    # Conseguir
+    ("Eu consegui", "ich habe es geschafft", "conseguir Pretérito"),
+    ("Tu conseguiste", "du hast es geschafft", ""),
+    ("Não consegui", "ich habe es nicht geschafft", ""),
+    # Imperfeito
+    ("Estavas", "du warst", "estar Imperfeito"),
+    # Konversation Essen
+    ("Que tipo de...?", "Was für ein...?", "Frage"),
+    ("Preparei", "ich bereitete zu", "preparar Pretérito"),
+    ("Preparar comida", "Essen zubereiten", ""),
+    ("Carne de cabrito", "Ziegenfleisch", ""),
+    ("Sabor", "Geschmack", "o sabor"),
+    ("Sabor forte", "starker Geschmack", ""),
+    # Konditional
+    ("Tu podias", "du könntest", "Konditional von poder"),
+    ("Eu podia", "ich könnte", ""),
+    ("Não diria", "Ich würde nicht sagen", "Konditional von dizer"),
+    # Hypothesen mit "se"
+    ("Se", "wenn / falls", "Konjunktion"),
+    ("Se eu comprar...", "Wenn ich kaufe...", "Konjunktiv Futur"),
+    # Kleidung
+    ("Calças de natação", "Badehose", ""),
+    # Charaktereigenschaft
+    ("Corajoso / Corajosa", "mutig", ""),
+    ("Louco / Louca", "verrückt", ""),
+    # Schmerz & Körper
+    ("Doloroso / Dolorosa", "schmerzhaft", ""),
+    ("Doer", "schmerzen / wehtun", ""),
+    ("Doeu", "es tat weh", "doer Pretérito"),
+    ("Não doeu", "es tat nicht weh", ""),
+    ("Agulha / Agulhas", "Nadel/n", ""),
+    ("Furo", "Loch / Piercing", ""),
+    ("Furar", "durchstechen / piercen", ""),
+    ("A dor varia de pessoa para pessoa", "Schmerz variiert von Person zu Person", ""),
+    ("Variar", "variieren", ""),
+    ("Depende de...", "es kommt darauf an...", "depender de"),
+    ("Parte do corpo", "Körperteil", ""),
+    # Geld / Abo
+    ("Subscrição", "Abonnement", ""),
+    ("Por mês / Por semana / Por ano", "pro Monat / Woche / Jahr", "Zeit-Distribution"),
+    ("Pagar", "bezahlen", ""),
+    ("Paguei", "ich bezahlte", "pagar Pretérito"),
+    ("Quanto custa?", "Wie viel kostet es?", ""),
+    ("Qual é o preço?", "Wie ist der Preis?", ""),
+    # Beziehung
+    ("Há quanto tempo?", "Wie lange schon?", "Dauer-Frage"),
+    ("Há muito tempo", "schon lange", ""),
+    ("Estou com ela há muito tempo", "Ich bin schon lange mit ihr zusammen", ""),
+    # Konversation
+    ("Eu não sabia", "Ich wusste nicht", "saber Imperfeito"),
+    ("Mundo real", "reale Welt", ""),
+    ("Perigoso / Perigosa", "gefährlich", ""),
+    ("Acho que não", "Ich denke nicht", ""),
+
+    # === Buch — Konjugação pronominal reflexa (Stellung der Pronomen) ===
+    ("Levantar-se", "aufstehen", "reflexiv"),
+    ("Levanto-me cedo", "Ich stehe früh auf", "nach Verb"),
+    ("Sentar-se", "sich (hin)setzen", "reflexiv"),
+    ("Sentamo-nos à mesa", "Wir setzen uns an den Tisch", "Achtung: s entfällt vor -nos!"),
+    ("Deitar-se", "sich hinlegen / schlafen gehen", "reflexiv"),
+    ("Deito-me tarde", "Ich gehe spät schlafen", ""),
+    ("Lavar-se", "sich waschen", "reflexiv"),
+    ("Nunca me deito cedo", "Ich gehe nie früh schlafen", "Pronomen vor Verb wegen 'nunca'"),
+    ("Também nos levantamos cedo", "Wir stehen auch früh auf", "Pronomen vor Verb wegen 'também'"),
 ]
 
 
