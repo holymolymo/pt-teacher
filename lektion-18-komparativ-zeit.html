@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 18 - Komparativ & Zeitausdrücke</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .level-tag { display: inline-block; background: #2e7d32; color: white; font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 16px; color: #6b6560; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #e8721d; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .grammar-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .grammar-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .grammar-box p { font-size: 15px; line-height: 1.7; color: #4a4540; margin-bottom: 12px; }
+  .grammar-box p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 14px; }
+  th { background: #2d2a26; color: white; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; } th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .insight { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 4px; }
+  .recall-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #795600; }
+  .recall-box strong { display: block; margin-bottom: 4px; }
+  .warning-box { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 14px; line-height: 1.6; color: #b71c1c; }
+  .warning-box strong { display: block; margin-bottom: 4px; }
+  .exercise-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 8px 12px; font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 40px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 32px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .results.show { display: block; }
+  .score { font-size: 48px; font-weight: 700; color: #e8721d; margin-bottom: 8px; }
+  .score-label { font-size: 16px; color: #6b6560; margin-bottom: 16px; }
+  .score-message { font-size: 15px; color: #4a4540; line-height: 1.6; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+  .next-lesson-btn { display: none; width: 100%; max-width: 300px; background: #2e7d32; color: white; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn.show { display: block; }
+  .reset-btn { display: none; width: 100%; max-width: 300px; background: white; color: #e8721d; border: 2px solid #e8721d; border-radius: 12px; padding: 12px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 16px 60px; } .header h1 { font-size: 26px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 18</div>
+    <h1>Komparativ &amp; Zeitausdr&uuml;cke <span class="level-tag">Valencia-Klasse</span></h1>
+    <p>Vergleichen + sagen wann was passiert &mdash; alles aus deiner letzten Klasse</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 1 &mdash; Komparativ (vergleichen)</div>
+
+    <div class="grammar-box">
+      <h3>Drei Komparativ-Formen</h3>
+      <table>
+        <tr><th>Form</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td><span class="v">mais X do que Y</span></td><td>mehr X als Y</td><td>Valencia &eacute; <strong>mais caro do que</strong> Berlim.</td></tr>
+        <tr><td><span class="v">menos X do que Y</span></td><td>weniger X als Y</td><td>Berlim &eacute; <strong>menos caro do que</strong> Lisboa.</td></tr>
+        <tr><td><span class="v">t&atilde;o X como Y</span></td><td>so X wie Y</td><td>Valencia &eacute; <strong>t&atilde;o bonita como</strong> Lisboa.</td></tr>
+      </table>
+
+      <div class="recall-box">
+        <strong>Aus deiner Klasse:</strong>
+        "Saiu muito caro" (es kam sehr teuer) &bull; "Comparado com Lisboa" (verglichen mit Lissabon) &bull; "Muito parecido com Lisboa" (sehr &auml;hnlich wie Lissabon)
+      </div>
+
+      <div class="insight">
+        <strong>"do que" vs. "que":</strong>
+        Beide gehen ("mais caro do que" / "mais caro que"). "do que" ist die Standardform, "que" h&ouml;rt man eher umgangssprachlich.
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Unregelm&auml;&szlig;ige Komparative</h3>
+      <p>Vier Adjektive haben unregelm&auml;&szlig;ige Komparativformen:</p>
+      <table>
+        <tr><th>Adjektiv</th><th>Komparativ</th><th>Beispiel</th></tr>
+        <tr><td>bom (gut)</td><td class="v">melhor</td><td>Lisboa &eacute; <strong>melhor do que</strong> Madrid.</td></tr>
+        <tr><td>mau (schlecht)</td><td class="v">pior</td><td>O tempo est&aacute; <strong>pior do que</strong> ontem.</td></tr>
+        <tr><td>grande</td><td class="v">maior</td><td>Berlim &eacute; <strong>maior do que</strong> Lisboa.</td></tr>
+        <tr><td>pequeno</td><td class="v">menor</td><td>Lisboa &eacute; <strong>menor do que</strong> Berlim.</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Vergleichs-Konstruktionen aus deiner Klasse</h3>
+      <table>
+        <tr><th>Konstruktion</th><th>Verwendung</th></tr>
+        <tr><td><span class="v">parecido com</span></td><td>&auml;hnlich wie: "Valencia &eacute; parecido com Lisboa"</td></tr>
+        <tr><td><span class="v">comparado com</span></td><td>verglichen mit: "Comparado com Lisboa, &eacute; mais barato"</td></tr>
+        <tr><td><span class="v">mesma / mesmo</span></td><td>gleich/dasselbe: "T&ecirc;m a mesma l&iacute;ngua"</td></tr>
+        <tr><td><span class="v">por isso</span></td><td>deshalb: "Por isso, vou aprender espanhol"</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 1: Komparativ -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 1 &mdash; Komparativ</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 7</div>
+      <div class="exercise-hint">Valencia ist teurer als Berlin.</div>
+      <input type="text" class="translation-input" data-answers="valencia é mais cara do que berlim.|valencia é mais caro do que berlim.|valencia é mais cara que berlim.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 7</div>
+      <div class="exercise-hint">Valencia ist sehr &auml;hnlich wie Lissabon.</div>
+      <input type="text" class="translation-input" data-answers="valencia é muito parecida com lisboa.|valencia é muito parecido com lisboa.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 7</div>
+      <div class="exercise-hint">Verglichen mit Lissabon ist Madrid billiger.</div>
+      <input type="text" class="translation-input" data-answers="comparado com lisboa, madrid é mais barato.|comparado com lisboa madrid é mais barato.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 7</div>
+      <div class="exercise-hint">Diese Wohnung ist besser als die andere. (apartamento = m.)</div>
+      <input type="text" class="translation-input" data-answers="este apartamento é melhor do que o outro.|este apartamento é melhor que o outro.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 7</div>
+      <div class="exercise-hint">Berlin ist gr&ouml;&szlig;er als Lissabon.</div>
+      <input type="text" class="translation-input" data-answers="berlim é maior do que lisboa.|berlim é maior que lisboa.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 7</div>
+      <div class="exercise-hint">Wir haben die gleiche Sprache, deshalb verstehe ich (alles).</div>
+      <input type="text" class="translation-input" data-answers="temos a mesma língua, por isso entendo (tudo).|temos a mesma língua por isso entendo.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 7</div>
+      <div class="exercise-hint">Es kam teurer als ich dachte. (deine echte Klasse!)</div>
+      <input type="text" class="translation-input" data-answers="saiu mais caro do que eu pensei.|saiu mais caro do que pensei.|saiu mais caro que eu pensava.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- TEIL 2: Zeitausdrücke -->
+  <div class="section">
+    <div class="section-title">Teil 2 &mdash; Zeitausdr&uuml;cke (wann?)</div>
+
+    <div class="grammar-box">
+      <h3>Vergangenheit, Gegenwart, Zukunft</h3>
+      <table>
+        <tr><th>Vergangenheit</th><th>Heute / regelm&auml;&szlig;ig</th><th>Zukunft</th></tr>
+        <tr>
+          <td><span class="v">ontem</span> (gestern)</td>
+          <td><span class="v">hoje</span> (heute)</td>
+          <td><span class="v">amanh&atilde;</span> (morgen)</td>
+        </tr>
+        <tr>
+          <td><span class="v">anteontem</span> (vorgestern)</td>
+          <td><span class="v">agora</span> (jetzt)</td>
+          <td><span class="v">depois de amanh&atilde;</span> (&uuml;bermorgen)</td>
+        </tr>
+        <tr>
+          <td><span class="v">na semana passada</span></td>
+          <td><span class="v">esta semana</span></td>
+          <td><span class="v">na pr&oacute;xima semana</span></td>
+        </tr>
+        <tr>
+          <td><span class="v">no m&ecirc;s passado</span></td>
+          <td><span class="v">este m&ecirc;s</span></td>
+          <td><span class="v">no pr&oacute;ximo m&ecirc;s</span></td>
+        </tr>
+        <tr>
+          <td><span class="v">no ano passado</span></td>
+          <td><span class="v">este ano</span></td>
+          <td><span class="v">no pr&oacute;ximo ano</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Wochentage</h3>
+      <table>
+        <tr><th>Wochentag</th><th>"am" (zeitlich)</th></tr>
+        <tr><td>Segunda-feira (Mo)</td><td><span class="v">na</span> segunda-feira</td></tr>
+        <tr><td>Ter&ccedil;a-feira (Di)</td><td><span class="v">na</span> ter&ccedil;a-feira</td></tr>
+        <tr><td>Quarta-feira (Mi)</td><td><span class="v">na</span> quarta-feira</td></tr>
+        <tr><td>Quinta-feira (Do)</td><td><span class="v">na</span> quinta-feira</td></tr>
+        <tr><td>Sexta-feira (Fr)</td><td><span class="v">na</span> sexta-feira</td></tr>
+        <tr><td>S&aacute;bado</td><td><span class="v">no</span> s&aacute;bado</td></tr>
+        <tr><td>Domingo</td><td><span class="v">no</span> domingo</td></tr>
+      </table>
+      <div class="recall-box">
+        <strong>Aus deiner Klasse:</strong>
+        "Na quarta-feira" (am Mittwoch) &bull; "No domingo" &bull; "No fim de semana"
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Tageszeit</h3>
+      <table>
+        <tr><th>Ausdruck</th><th>Bedeutung</th></tr>
+        <tr><td><span class="v">de manh&atilde;</span></td><td>morgens</td></tr>
+        <tr><td><span class="v">&agrave; tarde</span></td><td>am Nachmittag</td></tr>
+        <tr><td><span class="v">&agrave; noite</span></td><td>abends</td></tr>
+        <tr><td><span class="v">de madrugada</span></td><td>in der Nacht / sehr fr&uuml;h</td></tr>
+        <tr><td><span class="v">ao meio-dia</span></td><td>mittags (= 12 Uhr)</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-box">
+      <h3>Dauer &amp; Distanz (aus deiner Klasse)</h3>
+      <table>
+        <tr><th>Ausdruck</th><th>Bedeutung</th></tr>
+        <tr><td>Vou ficar <span class="v">por 2 meses</span></td><td>Ich werde 2 Monate bleiben</td></tr>
+        <tr><td>Estou aqui <span class="v">h&aacute; uma semana</span></td><td>Ich bin seit einer Woche hier</td></tr>
+        <tr><td>Estou <span class="v">a 10 minutos do</span> gin&aacute;sio</td><td>Ich bin 10 Min vom Gym entfernt</td></tr>
+        <tr><td><span class="v">No fim dos dois meses</span></td><td>Am Ende der 2 Monate</td></tr>
+        <tr><td><span class="v">Ainda</span> n&atilde;o fiz</td><td>Ich habe noch nicht gemacht</td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>"H&aacute;" f&uuml;r Dauer in der Vergangenheit:</strong>
+        "Estou aqui <strong>h&aacute;</strong> uma semana" = Ich bin seit 1 Woche hier (Aktion startete vor 1 Woche, dauert noch an).
+      </div>
+    </div>
+  </div>
+
+  <!-- &Uuml;bung 2: Zeitausdrücke -->
+  <div class="section">
+    <div class="section-title">&Uuml;bung 2 &mdash; Zeitausdr&uuml;cke</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 14</div>
+      <div class="exercise-hint">letzte Woche</div>
+      <input type="text" class="answer-input" data-answers="na semana passada" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 14</div>
+      <div class="exercise-hint">n&auml;chste Woche</div>
+      <input type="text" class="answer-input" data-answers="na próxima semana" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 14</div>
+      <div class="exercise-hint">am Mittwoch</div>
+      <input type="text" class="answer-input" data-answers="na quarta-feira|na quarta" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 14</div>
+      <div class="exercise-hint">am Sonntag</div>
+      <input type="text" class="answer-input" data-answers="no domingo" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 14</div>
+      <div class="exercise-hint">morgens</div>
+      <input type="text" class="answer-input" data-answers="de manhã" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 14</div>
+      <div class="exercise-hint">abends</div>
+      <input type="text" class="answer-input" data-answers="à noite" style="width: 100%;">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 14</div>
+      <div class="exercise-hint">Ich werde f&uuml;r 2 Monate in Valencia bleiben.</div>
+      <input type="text" class="translation-input" data-answers="vou ficar em valencia por 2 meses.|eu vou ficar em valencia por dois meses.|vou ficar em valência por 2 meses.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- TEIL 3: Konversation -->
+  <div class="section">
+    <div class="section-title">Teil 3 &mdash; Konversation: Dein Valencia-Update</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 19</div>
+      <div class="exercise-hint">Ich kam gestern nach Valencia. (vir Pretérito = vim)</div>
+      <input type="text" class="translation-input" data-answers="eu vim para valencia ontem.|vim para valência ontem.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 19</div>
+      <div class="exercise-hint">Meine Mitbewohner sind sehr nett.</div>
+      <input type="text" class="translation-input" data-answers="os meus colegas de quarto são muito boas.|as minhas colegas de quarto são muito boas.|os meus colegas de quarto são muito simpáticos.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 19</div>
+      <div class="exercise-hint">Er wird n&auml;chste Woche umziehen.</div>
+      <input type="text" class="translation-input" data-answers="ele vai mudar-se na próxima semana.|ele vai se mudar na próxima semana.|ele vai sair na próxima semana.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 19</div>
+      <div class="exercise-hint">Ich werde mich im Fitnessstudio anmelden.</div>
+      <input type="text" class="translation-input" data-answers="vou inscrever-me no ginásio.|eu vou me inscrever no ginásio.|vou inscrever-me no ginásio.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">19 von 19 &mdash; Finale!</div>
+      <div class="exercise-hint">Mein Plan ist, zuerst Portugiesisch zu lernen und dann Spanisch, weil ich Kollegen aus Portugal habe.</div>
+      <input type="text" class="translation-input" data-answers="meu plano é aprender português primeiro e depois espanhol porque tenho colegas de portugal.|o meu plano é aprender português primeiro e depois aprender espanhol porque tenho colegas de portugal.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten pr&uuml;fen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zur&uuml;ck zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){return str.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isCloseEnough(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0,total=inputs.length;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(a=>normalize(a)),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),match=isCloseEnough(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(match==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(match==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ (Perfekt: '+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Richtige Antwort: '+raw.split('|')[0];}
+  });
+  document.getElementById('results').classList.add('show');document.getElementById('score').textContent=correct+' / '+total;
+  const pct=correct/total,msg=document.getElementById('scoreMessage');
+  if(pct===1)msg.textContent='Perfeito! Bereit für deine nächste Live-Klasse!';
+  else if(pct>=0.7)msg.textContent='Muito bem! Die Komparativ-Konstruktionen sitzen.';
+  else if(pct>=0.4)msg.textContent='Bom! Schau dir die Tabellen nochmal an.';
+  else msg.textContent='Geh in Ruhe durch die Boxen.';
+  document.getElementById('nextBtn').classList.add('show');document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-18','done');document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');document.getElementById('nextBtn').classList.remove('show');document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
