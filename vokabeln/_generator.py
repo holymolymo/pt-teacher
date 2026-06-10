@@ -736,6 +736,71 @@ CARDS = [
     ("Hoje é dia de folga para desportos", "Heute ist Sport-Ruhetag", "Beispielsatz"),
     # Konversation
     ("Depois da nossa aula", "nach unserer Stunde", ""),
+
+    # === Klasse 10.06.2026 — Wasserfall, Stromausfall, Partys, Beziehungen ===
+    # Ausflug / Natur
+    ("Cachoeira", "Wasserfall", ""),
+    ("Massaroca", "frischer Mais (gegrillt)", "regionales Gericht"),
+    ("A 30 minutos da cidade", "30 Minuten von der Stadt entfernt", "Distanz-Ausdruck"),
+    # Stromausfall
+    ("Corte elétrico / Cortes eléctricos", "Stromausfall / -ausfälle", ""),
+    ("Sem electricidade", "ohne Strom", ""),
+    ("Não tinha electricidade", "es gab keinen Strom", "Imperfeito"),
+    ("Quase todo o dia", "fast den ganzen Tag", ""),
+    # Wohnen
+    ("Agência imobiliária", "Immobilienbüro", ""),
+    ("Antes de me mudar", "bevor ich umzog", "antes de + Inf"),
+    ("Antes de + Inf", "vor (zeitlich) + Verb", "z.B. antes de comer"),
+    # Pretérito Perfeito 2. Person
+    ("Tu preparaste", "du hast vorbereitet", "preparar tu"),
+    ("Tu reagiste", "du hast reagiert", "reagir tu"),
+    ("Tentaste", "du hast versucht", "tentar tu"),
+    # Objektpronomen mit Pretérito
+    ("Ela deu-me", "sie gab mir", "dar + Pronomen"),
+    ("Disse-me", "(er/sie) sagte mir", "dizer + Pronomen"),
+    ("Tu mostraste-me", "du hast mir gezeigt", "mostrar + Pronomen"),
+    # Zeit-Ausdrücke
+    ("Uma semana atrás", "vor einer Woche", "Vergangenheit"),
+    ("Há uma semana", "vor einer Woche / seit einer Woche", "PT-PT-Standard"),
+    # Verben (Infinitive)
+    ("Precisar de", "brauchen", "precisar de algo"),
+    ("Não precisaste", "du brauchtest nicht", "precisar tu"),
+    ("Tentar", "versuchen", ""),
+    ("Mostrar", "zeigen", ""),
+    ("Reagir", "reagieren", ""),
+    ("Aproximar-se", "sich nähern / ansprechen", "reflexiv im Kontext"),
+    ("Abordar", "ansprechen / zugehen auf", "abordar alguém"),
+    # Höflichkeit / Floskeln
+    ("Pelo menos", "wenigstens / mindestens", ""),
+    ("Pelo menos tentaste", "wenigstens hast du es versucht", ""),
+    # Gefühle / Charakter
+    ("Coragem", "Mut", ""),
+    ("Não tenho coragem", "ich habe nicht den Mut", ""),
+    ("Surpreso / Surpresa", "überrascht", ""),
+    ("Ficar surpreso", "überrascht sein/werden", "ficar + Adj"),
+    # Beziehungen
+    ("Namorar", "daten / mit jdm. zusammen sein", ""),
+    ("Namoro", "Beziehung (Boyfriend/Girlfriend)", "Substantiv"),
+    # Festas / Soziales
+    ("Festas", "Partys / Feste", ""),
+    ("Lugares lotados", "überfüllte Orte", ""),
+    ("Lotado / Lotada", "überfüllt", ""),
+    # Ausdrücke
+    ("Metade", "Hälfte", ""),
+    ("É a vida", "So ist das Leben", "Standardphrase"),
+    ("Por enquanto", "vorerst / im Moment", ""),
+    ("Continuar sozinho", "alleine weitermachen", ""),
+    # Stadt / Demografie
+    ("Habitantes", "Einwohner", "mais de 300 mil habitantes"),
+    ("Vila sede", "Hauptdorf / Gemeindesitz", ""),
+    # Business / Praktisch
+    ("Vídeos", "Videos", ""),
+    ("Para ambos", "für beide", ""),
+    ("Ambos / Ambas", "beide", ""),
+    # Essen
+    ("Molho", "Sauce", ""),
+    ("Molho de alho", "Knoblauchsauce", ""),
+    ("Restaurantes Árabes", "arabische Restaurants", ""),
 ]
 
 
