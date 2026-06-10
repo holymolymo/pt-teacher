@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 20 - Konditional</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 32px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 16px; margin-bottom: 12px; }
+  .level-tag { display: inline-block; background: #2e7d32; color: white; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 5px; margin-left: 6px; vertical-align: middle; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header p { font-size: 14px; color: #6b6560; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #e8721d; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .card { background: white; border-radius: 12px; padding: 22px 24px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .card p { font-size: 14px; line-height: 1.7; color: #4a4540; margin-bottom: 8px; }
+  .card p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0; font-size: 13px; }
+  th { background: #2d2a26; color: white; padding: 8px 12px; text-align: left; font-weight: 500; font-size: 12px; }
+  th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 7px 12px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .v { color: #e8721d; font-weight: 600; }
+  .recall { background: #fff8e1; border-left: 3px solid #f9a825; border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #795600; }
+  .recall strong { display: block; margin-bottom: 3px; }
+  .insight { background: #e8f5e9; border-left: 3px solid #2e7d32; border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 3px; }
+  .exercise-card { background: white; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 11px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 7px 11px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 36px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: white; border-radius: 12px; }
+  .results.show { display: block; }
+  .score { font-size: 44px; font-weight: 800; color: #e8721d; }
+  .score-label { font-size: 13px; color: #6b6560; margin-bottom: 12px; }
+  .score-message { font-size: 14px; color: #4a4540; line-height: 1.5; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+  .next-lesson-btn, .reset-btn { display: none; width: 100%; max-width: 300px; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn { background: #2e7d32; color: white; border: none; }
+  .reset-btn { background: white; color: #e8721d; border: 2px solid #e8721d; }
+  .next-lesson-btn.show, .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 14px 60px; } .header h1 { font-size: 24px; } .answer-input { width: 160px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 20</div>
+    <h1>Konditional <span class="level-tag">B1</span></h1>
+    <p>Was du <em>würdest</em> tun — gostaria, seria, faria...</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Warum jetzt dieses Thema?</div>
+    <div class="card">
+      <p>Du nutzt schon <strong>Konditional-Fragmente</strong> in deinen Live-Klassen — aber nur diese:</p>
+      <ul style="padding-left: 20px; font-size: 14px; line-height: 1.8; color: #4a4540;">
+        <li><strong>gostaria</strong> de correr mais</li>
+        <li><strong>seria</strong> melhor</li>
+        <li><strong>queria</strong> um café</li>
+        <li>tu <strong>podias</strong></li>
+        <li>não <strong>diria</strong> que é perigoso</li>
+      </ul>
+      <p>Aber das sind nur 5 Fragmente. Mit dem Konditional kannst du <strong>JEDES Verb</strong> in "ich würde..."-Form bringen. Heute lernen wir die Logik.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Grammatik</div>
+
+    <div class="card">
+      <h3>Das Geheimnis: Infinitiv + Endung</h3>
+      <p>Im Konditional musst du den Verbstamm <strong>nicht ändern</strong> — du hängst die Endung einfach an den ganzen Infinitiv an. Super einfach!</p>
+
+      <table>
+        <tr><th>Person</th><th>Endung</th><th>falar (sprechen)</th><th>comer (essen)</th><th>partir (abreisen)</th></tr>
+        <tr><td>Eu</td><td class="v">-ia</td><td>falar<span class="v">ia</span></td><td>comer<span class="v">ia</span></td><td>partir<span class="v">ia</span></td></tr>
+        <tr><td>Tu</td><td class="v">-ias</td><td>falar<span class="v">ias</span></td><td>comer<span class="v">ias</span></td><td>partir<span class="v">ias</span></td></tr>
+        <tr><td>Ele/Ela</td><td class="v">-ia</td><td>falar<span class="v">ia</span></td><td>comer<span class="v">ia</span></td><td>partir<span class="v">ia</span></td></tr>
+        <tr><td>Nós</td><td class="v">-íamos</td><td>falar<span class="v">íamos</span></td><td>comer<span class="v">íamos</span></td><td>partir<span class="v">íamos</span></td></tr>
+        <tr><td>Eles/Elas</td><td class="v">-iam</td><td>falar<span class="v">iam</span></td><td>comer<span class="v">iam</span></td><td>partir<span class="v">iam</span></td></tr>
+      </table>
+
+      <div class="insight">
+        <strong>Endungen sind die gleichen wie im Imperfeito!</strong>
+        Die Endungen <strong>-ia, -ias, -ia, -íamos, -iam</strong> kennst du schon vom Imperfeito (comia, vivia, partia). Der Unterschied: Im Konditional hängst du sie an den <strong>ganzen Infinitiv</strong> (falar+ia = falaria), im Imperfeito an den <strong>Stamm</strong> (fal+ava).
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Nur 3 unregelmäßige Verben!</h3>
+      <p>Diese drei haben einen veränderten Stamm — alle anderen sind regelmäßig:</p>
+      <table>
+        <tr><th>Infinitiv</th><th>Konditional-Stamm</th><th>eu</th><th>nós</th></tr>
+        <tr><td>fazer</td><td class="v">far-</td><td>faria</td><td>faríamos</td></tr>
+        <tr><td>dizer</td><td class="v">dir-</td><td>diria</td><td>diríamos</td></tr>
+        <tr><td>trazer</td><td class="v">trar-</td><td>traria</td><td>traríamos</td></tr>
+      </table>
+      <div class="recall">
+        <strong>Du nutzt das schon!</strong>
+        "Não <strong>diria</strong> que é perigoso" — du sagst es schon. Jetzt weißt du auch warum: <em>dizer</em> verkürzt sich zu <em>dir-</em> + Endung.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Verwendung im Alltag</h3>
+      <table>
+        <tr><th>Funktion</th><th>Beispiel</th></tr>
+        <tr><td><strong>Höfliche Bitte</strong></td><td><span class="v">Gostaria</span> de um café, por favor.</td></tr>
+        <tr><td><strong>Hypothese</strong></td><td>Eu <span class="v">faria</span> isso de outra forma.</td></tr>
+        <tr><td><strong>Empfehlung / Rat</strong></td><td>Eu <span class="v">no teu lugar</span> não <span class="v">diria</span> isso.</td></tr>
+        <tr><td><strong>"Würde" + Bedingung</strong></td><td>Se tivesse tempo, <span class="v">aprenderia</span> espanhol.</td></tr>
+        <tr><td><strong>Wunsch</strong></td><td><span class="v">Seria</span> bom viver em Lisboa.</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Konditional vs. Imperfeito (heikel!)</h3>
+      <p>Im Alltag wird <strong>Imperfeito oft statt Konditional</strong> verwendet — besonders bei <strong>gostar, ser, querer, poder, dever</strong>:</p>
+      <table>
+        <tr><th>Konditional (formal)</th><th>Imperfeito (umgangssprachlich)</th></tr>
+        <tr><td>Eu <strong>gostaria</strong> de um café.</td><td>Eu <strong>queria</strong> um café.</td></tr>
+        <tr><td>Tu <strong>poderias</strong> ajudar?</td><td>Tu <strong>podias</strong> ajudar?</td></tr>
+        <tr><td><strong>Seria</strong> bom.</td><td><strong>Era</strong> bom.</td></tr>
+      </table>
+      <div class="recall">
+        <strong>Aus deinen Klassen:</strong>
+        Du sagst meistens <em>"queria, podias, seria"</em> — das ist eine Mischung. Beides ist okay! Aber wenn du formal klingen willst (z.B. im Restaurant), nutze <strong>gostaria</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 1 -->
+  <div class="section">
+    <div class="section-title">Übung 1 — Regelmäßiges Konditional</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 6</div>
+      <div class="exercise-hint">"Ich würde gerne ein Restaurant eröffnen." (gostar de + abrir)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="gostaria">
+        <span>de abrir um restaurante.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 6</div>
+      <div class="exercise-hint">"Ich würde mehr laufen, wenn ich Zeit hätte." (correr Konditional eu)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="correria">
+        <span>mais se tivesse tempo.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 6</div>
+      <div class="exercise-hint">"Du würdest sicher gut leben in Portugal." (viver Konditional tu)</div>
+      <div class="input-row">
+        <span>Tu</span>
+        <input type="text" class="answer-input" data-answers="viverias">
+        <span>bem em Portugal.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 6</div>
+      <div class="exercise-hint">"Wir würden zusammen reisen." (viajar Konditional nós)</div>
+      <div class="input-row">
+        <span>Nós</span>
+        <input type="text" class="answer-input" data-answers="viajaríamos|viajariamos">
+        <span>juntos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 6</div>
+      <div class="exercise-hint">"Sie (ela) würde es kaufen." (comprar Konditional ela)</div>
+      <div class="input-row">
+        <span>Ela</span>
+        <input type="text" class="answer-input" data-answers="compraria">
+        <span>isso.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 6</div>
+      <div class="exercise-hint">"Sie (eles) würden gerne studieren." (gostar de + estudar)</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="gostariam">
+        <span>de estudar.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- Übung 2 -->
+  <div class="section">
+    <div class="section-title">Übung 2 — Unregelmäßige (far-, dir-, trar-)</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 10</div>
+      <div class="exercise-hint">"Ich würde das anders machen." (fazer Konditional eu)</div>
+      <div class="input-row">
+        <span>Eu</span>
+        <input type="text" class="answer-input" data-answers="faria">
+        <span>isso de outra forma.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 10</div>
+      <div class="exercise-hint">"Ich würde nicht sagen, dass es gefährlich ist." (dizer)</div>
+      <input type="text" class="translation-input" data-answers="não diria que é perigoso.|eu não diria que é perigoso.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 10</div>
+      <div class="exercise-hint">"Sie würden eine Geschenk mitbringen." (trazer Konditional eles)</div>
+      <div class="input-row">
+        <span>Eles</span>
+        <input type="text" class="answer-input" data-answers="trariam">
+        <span>um presente.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 10</div>
+      <div class="exercise-hint">"Wir würden alles tun, um zu helfen." (fazer Konditional nós)</div>
+      <div class="input-row">
+        <span>Nós</span>
+        <input type="text" class="answer-input" data-answers="faríamos|fariamos">
+        <span>tudo para ajudar.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- Übung 3 -->
+  <div class="section">
+    <div class="section-title">Übung 3 — Anwendung in echten Sätzen</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 16</div>
+      <div class="translation-prompt">Ich hätte gerne einen Kaffee, bitte. (höfliche Bestellung)</div>
+      <input type="text" class="translation-input" data-answers="gostaria de um café, por favor.|eu gostaria de um café por favor.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 16</div>
+      <div class="translation-prompt">Es wäre besser, wenn wir morgen gehen würden.</div>
+      <input type="text" class="translation-input" data-answers="seria melhor se fôssemos amanhã.|seria melhor se nós fossemos amanhã.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 16</div>
+      <div class="translation-prompt">Könntest du mir helfen? (poder im Konditional, tu)</div>
+      <input type="text" class="translation-input" data-answers="poderias ajudar-me?|tu poderias me ajudar?|podias ajudar-me?">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 16</div>
+      <div class="translation-prompt">Wenn ich Geld hätte, würde ich nach Portugal reisen.</div>
+      <input type="text" class="translation-input" data-answers="se tivesse dinheiro, viajaria para portugal.|se eu tivesse dinheiro viajaria para portugal.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 16</div>
+      <div class="translation-prompt">An deiner Stelle würde ich das nicht machen.</div>
+      <input type="text" class="translation-input" data-answers="no teu lugar, eu não faria isso.|no teu lugar não faria isso.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 16 — Finale</div>
+      <div class="translation-prompt">Ich würde gerne Spanisch lernen, aber zuerst möchte ich Portugiesisch fertig lernen.</div>
+      <input type="text" class="translation-input" data-answers="gostaria de aprender espanhol, mas primeiro quero acabar de aprender português.|eu gostaria de aprender espanhol mas primeiro quero terminar português.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten prüfen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zurück zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(s){return s.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isClose(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(normalize),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),m=isClose(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(m==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(m==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ ('+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='→ '+raw.split('|')[0];}
+  });
+  const t=inputs.length;
+  document.getElementById('results').classList.add('show');
+  document.getElementById('score').textContent=correct+' / '+t;
+  const pct=correct/t;
+  const msg=pct===1?'Perfeito! Konditional sitzt!':pct>=0.7?'Muito bem! Schau dir die roten Stellen an.':pct>=0.4?'Bom! Die unregelmäßigen brauchen Übung.':'Geh die Tabellen nochmal durch.';
+  document.getElementById('scoreMessage').textContent=msg;
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-20','done');
+  document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
