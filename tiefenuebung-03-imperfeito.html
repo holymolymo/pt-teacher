@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiefenübung 3 - Pretérito Imperfeito</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #c62828; }
+  .header { text-align: center; margin-bottom: 28px; }
+  .lesson-tag { display: inline-block; background: linear-gradient(135deg, #c62828, #b71c1c); color: white; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 16px; margin-bottom: 12px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header p { font-size: 14px; color: #6b6560; }
+  .progress-bar-sticky { position: sticky; top: 0; z-index: 20; background: rgba(245,240,235,0.95); backdrop-filter: blur(10px); margin: 0 -20px 24px; padding: 12px 20px; border-bottom: 1px solid #ffcdd2; }
+  .progress-row { display: flex; align-items: center; gap: 12px; font-size: 12px; }
+  .progress-bar { flex: 1; height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #c62828, #ef5350); width: 0%; transition: width 0.3s; }
+  .score-display { font-weight: 700; color: #c62828; }
+  .drill { background: white; border-radius: 10px; padding: 16px 18px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .drill.correct { background: linear-gradient(135deg, white, #e8f5e9); border-left: 3px solid #2e7d32; }
+  .drill.incorrect { background: linear-gradient(135deg, white, #ffebee); border-left: 3px solid #c62828; }
+  .drill-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .drill-num { font-size: 11px; font-weight: 700; color: #9e9892; }
+  .drill-task { font-size: 14px; font-weight: 500; color: #2d2a26; margin-bottom: 10px; line-height: 1.4; }
+  .drill-task strong { color: #c62828; }
+  .drill-task .verb { background: #ffcdd2; padding: 1px 6px; border-radius: 4px; font-weight: 700; }
+  .drill-input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .drill-input { border: 2px solid #ffcdd2; border-radius: 6px; padding: 7px 11px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 160px; outline: none; }
+  .drill-input:focus { border-color: #c62828; background: white; }
+  .drill-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .drill-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .hint-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .hint-btn { background: white; border: 1.5px solid #e8d5c4; color: #6b6560; padding: 5px 10px; border-radius: 14px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .hint-btn:hover { background: #fff8e1; border-color: #f9a825; color: #795600; }
+  .hint-btn.used { background: #fff8e1; border-color: #f9a825; color: #795600; }
+  .hint-content { display: none; margin-top: 8px; padding: 10px 12px; border-radius: 6px; font-size: 12px; line-height: 1.5; }
+  .hint-content.show { display: block; }
+  .hint-content.tip { background: #fff8e1; border-left: 3px solid #f9a825; color: #795600; }
+  .hint-content.row { background: #e3f2fd; border-left: 3px solid #1976d2; color: #0d47a1; font-family: 'SF Mono', Menlo, monospace; }
+  .hint-content.table { background: #f5f0eb; border-left: 3px solid #6b6560; color: #2d2a26; }
+  .hint-content table { width: 100%; margin-top: 6px; font-size: 11px; }
+  .hint-content th, .hint-content td { padding: 3px 6px; border-bottom: 1px solid #ede6df; text-align: left; }
+  .hint-content th { background: #2d2a26; color: white; font-weight: 500; }
+  .hint-content .eu { color: #c62828; font-weight: 700; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .block-header { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #c62828; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #ffcdd2; display: flex; justify-content: space-between; }
+  .block-header .count { background: #c62828; color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 32px auto 0; background: linear-gradient(135deg, #c62828, #b71c1c); color: white; border: none; border-radius: 12px; padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: white; border-radius: 12px; }
+  .results.show { display: block; }
+  .score { font-size: 44px; font-weight: 800; color: #c62828; }
+  .score-label { font-size: 13px; color: #6b6560; margin-bottom: 12px; }
+  .score-message { font-size: 14px; color: #4a4540; line-height: 1.5; }
+  .reset-btn { display: none; margin: 16px auto 0; background: white; color: #c62828; border: 2px solid #c62828; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  .next-btn { display: none; margin: 10px auto 0; background: #2e7d32; color: white; border: none; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; text-decoration: none; }
+  .next-btn.show { display: inline-block; }
+  @media (max-width: 600px) { .progress-bar-sticky { margin: 0 -14px 20px; } .page { padding: 20px 14px 60px; } .drill-input { width: 140px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="index.html" class="back-link">&larr; Dashboard</a>
+  <div class="header">
+    <div class="lesson-tag">Tiefenübung 3 &bull; Drill</div>
+    <h1>Pretérito Imperfeito</h1>
+    <p>Beschreibende Vergangenheit — estava, tinha, era...</p>
+  </div>
+
+  <div class="progress-bar-sticky">
+    <div class="progress-row">
+      <span class="score-display" id="progressText">0 / 30</span>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <span id="progressPct">0%</span>
+    </div>
+  </div>
+
+  <!-- BLOCK A: Regelmäßige Endungen -->
+  <div class="block-header"><span>Block A &bull; Regelm&auml;&szlig;ig (-ar/-er/-ir)</span><span class="count">10</span></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">1 / 30</div></div>
+    <div class="drill-task"><span class="verb">falar</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="falava"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">-ar Verb eu: -ava</div>
+    <div class="hint-content table"><table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr><tr><td class="eu">-ava</td><td>-avas</td><td>-ava</td><td>-ávamos</td><td>-avam</td></tr></table></div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">2 / 30</div></div>
+    <div class="drill-task"><span class="verb">comer</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="comia"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">-er Verb eu: -ia (gleich wie -ir!)</div>
+    <div class="hint-content table"><table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr><tr><td class="eu">-ia</td><td>-ias</td><td>-ia</td><td>-íamos</td><td>-iam</td></tr></table></div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">3 / 30</div></div>
+    <div class="drill-task"><span class="verb">partir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="partia"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-ir Verb eu: -ia (genauso wie -er!)</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">4 / 30</div></div>
+    <div class="drill-task"><span class="verb">morar</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="morava"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-ar Verb: morava ("Wo wohntest du als Kind?" — morava).</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">5 / 30</div></div>
+    <div class="drill-task"><span class="verb">trabalhar</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="trabalhávamos|trabalhavamos"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Mit Akzent! -ávamos.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">6 / 30</div></div>
+    <div class="drill-task"><span class="verb">comer</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="comíamos|comiamos"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Mit Akzent! com + íamos.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">7 / 30</div></div>
+    <div class="drill-task"><span class="verb">falar</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="falavam"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-ar eles: -avam</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">8 / 30</div></div>
+    <div class="drill-task"><span class="verb">aprender</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="aprendiam"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-er eles: -iam</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">9 / 30</div></div>
+    <div class="drill-task"><span class="verb">trabalhar</span> → <strong>ele</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="trabalhava"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Gleich wie eu! (-ava bei -ar)</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">10 / 30</div></div>
+    <div class="drill-task"><span class="verb">comer</span> → <strong>tu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="comias"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-er tu: -ias</div>
+    <div class="feedback"></div></div>
+
+  <!-- BLOCK B: Die 4 unregelmäßigen -->
+  <div class="block-header"><span>Block B &bull; Die 4 unregelm&auml;&szlig;igen (ser/ter/vir/p&ocirc;r)</span><span class="count">10</span></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">11 / 30</div></div>
+    <div class="drill-task"><span class="verb">ser</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="era"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">3 Buchstaben. "Quando era criança..."</div>
+    <div class="hint-content table"><table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr><tr><td class="eu">era</td><td>eras</td><td>era</td><td>éramos</td><td>eram</td></tr></table></div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">12 / 30</div></div>
+    <div class="drill-task"><span class="verb">ter</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="tinha"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">5 Buchstaben. tinha (mit -nha Endung).</div>
+    <div class="hint-content table"><table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr><tr><td class="eu">tinha</td><td>tinhas</td><td>tinha</td><td>tínhamos</td><td>tinham</td></tr></table></div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">13 / 30</div></div>
+    <div class="drill-task"><span class="verb">vir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vinha"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Wie tinha aber mit v.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">14 / 30</div></div>
+    <div class="drill-task"><span class="verb">pôr</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="punha"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Wie tinha aber mit p + u.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">15 / 30</div></div>
+    <div class="drill-task"><span class="verb">ser</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="éramos|eramos"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Mit Akzent! éramos.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">16 / 30</div></div>
+    <div class="drill-task"><span class="verb">ter</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="tínhamos|tinhamos"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Mit Akzent! tínhamos.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">17 / 30</div></div>
+    <div class="drill-task"><span class="verb">ter</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="tinham"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">tinha + m.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">18 / 30</div></div>
+    <div class="drill-task"><span class="verb">ser</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="eram"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">era + m.</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">19 / 30</div></div>
+    <div class="drill-task"><span class="verb">estar</span> → <strong>eu</strong> ___ <em>(Achtung: estar ist hier REGELMÄSSIG!)</em></div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="estava"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">est + ava. "Eu estava muito cheio". Im Imperfeito ist estar REGULAR!</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">20 / 30</div></div>
+    <div class="drill-task"><span class="verb">estar</span> → <strong>tu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="estavas"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">"Onde estavas?" — aus deiner Klasse!</div>
+    <div class="feedback"></div></div>
+
+  <!-- BLOCK C: Sätze -->
+  <div class="block-header"><span>Block C &bull; In S&auml;tzen (Beschreibungen)</span><span class="count">10</span></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">21 / 30</div></div>
+    <div class="drill-task">Quando eu ___ <span class="verb">(ser)</span> criança, jogava futebol.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="era"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">eu + ser Imperfeito</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">22 / 30</div></div>
+    <div class="drill-task">A minha avó ___ <span class="verb">(ter)</span> uma casa grande.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="tinha"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">ela + ter Imperfeito</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">23 / 30</div></div>
+    <div class="drill-task">Onde tu ___ <span class="verb">(estar)</span>?</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="estavas"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Aus deiner Klasse: "Onde estavas?"</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">24 / 30</div></div>
+    <div class="drill-task">Antes, eu ___ <span class="verb">(morar)</span> em Berlim.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="morava"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-ar Imperfeito eu: -ava</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">25 / 30</div></div>
+    <div class="drill-task">Nós ___ <span class="verb">(ir)</span> à praia todos os fins de semana.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="íamos|iamos"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">ir → íamos (wie -ir regelmäßig: -íamos!)</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">26 / 30</div></div>
+    <div class="drill-task">Quando eu ___ <span class="verb">(viver)</span> em Portugal, comia ananás.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vivia"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Aus deiner Klasse: "Quando eu vivia em Portugal..."</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">27 / 30</div></div>
+    <div class="drill-task">Ontem, eu ___ <span class="verb">(estar)</span> muito cheio.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="estava"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">Aus deiner Klasse: "Eu estava muito cheio".</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">28 / 30</div></div>
+    <div class="drill-task"><span class="verb">Queria</span> um café, por favor. <em>(Höfliche Bitte)</em></div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="queria"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">querer Imperfeito = höfliche Bitte ("Ich hätte gerne...")</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">29 / 30</div></div>
+    <div class="drill-task">Quando eu ___ <span class="verb">(ser)</span> jovem, tinha muitos amigos.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="era"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">eu + ser Imperfeito = era</div>
+    <div class="feedback"></div></div>
+
+  <div class="drill"><div class="drill-header"><div class="drill-num">30 / 30</div></div>
+    <div class="drill-task">Eu não ___ <span class="verb">(saber)</span> que ele tem namorada.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="sabia"></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">saber Imperfeito eu: sabia. Aus deiner Klasse: "Eu não sabia".</div>
+    <div class="feedback"></div></div>
+
+  <button class="check-btn" onclick="checkAll()">Alle prüfen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+    <div id="hintStats" style="margin-top: 12px; font-size: 12px; color: #6b6560;"></div>
+  </div>
+
+  <a class="next-btn" id="nextBtn" href="index.html">Zum Dashboard</a>
+  <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal</button>
+</div>
+
+<script>
+let hintsUsed = 0;
+function showHint(btn, level) {
+  const drill = btn.closest('.drill');
+  const content = drill.querySelector('.hint-content.' + level);
+  if (!content) return;
+  if (!btn.classList.contains('used')) { hintsUsed++; btn.classList.add('used'); }
+  content.classList.toggle('show');
+}
+function normalize(s) { return s.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').replace(/[.!?,;:'"\/]/g, ''); }
+function updateProgress() {
+  const inputs = document.querySelectorAll('.drill-input');
+  const filled = Array.from(inputs).filter(i => i.value.trim() !== '').length;
+  const pct = Math.round((filled / inputs.length) * 100);
+  document.getElementById('progressText').textContent = filled + ' / ' + inputs.length;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+document.querySelectorAll('.drill-input').forEach(input => {
+  input.addEventListener('input', updateProgress);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault();
+      const all = Array.from(document.querySelectorAll('.drill-input'));
+      const idx = all.indexOf(input);
+      if (idx < all.length - 1) all[idx + 1].focus(); else checkAll();
+    }
+  });
+});
+function checkAll() {
+  let correct = 0;
+  const inputs = document.querySelectorAll('.drill-input');
+  inputs.forEach(input => {
+    const raw = input.getAttribute('data-answers');
+    const accepted = raw.split('|').map(normalize);
+    const user = normalize(input.value);
+    const drill = input.closest('.drill');
+    const fb = drill.querySelector('.feedback');
+    if (user === '') { input.classList.add('incorrect'); drill.classList.add('incorrect'); fb.className = 'feedback show incorrect'; fb.textContent = '→ ' + raw.split('|')[0]; }
+    else if (accepted.includes(user)) { input.classList.add('correct'); drill.classList.add('correct'); fb.className = 'feedback show correct'; fb.textContent = 'Richtig! ✅'; correct++; }
+    else { input.classList.add('incorrect'); drill.classList.add('incorrect'); fb.className = 'feedback show incorrect'; fb.textContent = '→ ' + raw.split('|')[0]; }
+  });
+  const total = inputs.length;
+  document.getElementById('results').classList.add('show');
+  document.getElementById('score').textContent = correct + ' / ' + total;
+  const pct = correct / total;
+  let msg = pct === 1 ? 'Perfeito!' : pct >= 0.9 ? 'Excelente!' : pct >= 0.75 ? 'Muito bem!' : pct >= 0.5 ? 'Bom!' : 'Nutze die Tabellen!';
+  document.getElementById('scoreMessage').textContent = msg;
+  document.getElementById('hintStats').textContent = hintsUsed > 0 ? 'Hints benutzt: ' + hintsUsed : 'Ohne Hints geschafft! 🔥';
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('resetBtn').classList.add('show');
+  document.querySelector('.check-btn').style.display = 'none';
+  localStorage.setItem('pt-tiefen-03', 'done');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function resetAll() {
+  hintsUsed = 0;
+  document.querySelectorAll('.drill-input').forEach(i => { i.value = ''; i.classList.remove('correct', 'incorrect'); });
+  document.querySelectorAll('.drill').forEach(d => d.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('.feedback').forEach(f => { f.className = 'feedback'; });
+  document.querySelectorAll('.hint-btn').forEach(b => b.classList.remove('used'));
+  document.querySelectorAll('.hint-content').forEach(c => c.classList.remove('show'));
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display = 'block';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
