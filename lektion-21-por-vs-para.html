@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 21 - Por vs Para</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #e8721d; }
+  .header { text-align: center; margin-bottom: 32px; }
+  .lesson-tag { display: inline-block; background: #e8721d; color: white; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 16px; margin-bottom: 12px; }
+  .level-tag { display: inline-block; background: #c62828; color: white; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 5px; margin-left: 6px; vertical-align: middle; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header p { font-size: 14px; color: #6b6560; }
+
+  .vs-banner { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; margin: 24px 0; }
+  .vs-card { padding: 20px; border-radius: 14px; text-align: center; }
+  .vs-card.por { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 2px solid #e8721d; }
+  .vs-card.para { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #2e7d32; }
+  .vs-card .word { font-size: 32px; font-weight: 800; margin-bottom: 4px; }
+  .vs-card.por .word { color: #d4650f; }
+  .vs-card.para .word { color: #1b5e20; }
+  .vs-card .sub { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; opacity: 0.8; }
+  .vs-divider { font-size: 24px; font-weight: 800; color: #9e9892; }
+
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #e8721d; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e8d5c4; }
+  .card { background: white; border-radius: 12px; padding: 22px 24px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .card p { font-size: 14px; line-height: 1.7; color: #4a4540; margin-bottom: 8px; }
+  .card p:last-child { margin-bottom: 0; }
+  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0; font-size: 13px; }
+  th { background: #2d2a26; color: white; padding: 8px 12px; text-align: left; font-weight: 500; font-size: 12px; }
+  th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 7px 12px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  tr:last-child td { border-bottom: none; } tr:nth-child(even) td { background: #faf8f5; }
+  .por { color: #d4650f; font-weight: 700; }
+  .para { color: #1b5e20; font-weight: 700; }
+  .recall { background: #fff8e1; border-left: 3px solid #f9a825; border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #795600; }
+  .recall strong { display: block; margin-bottom: 3px; }
+  .insight { background: #e8f5e9; border-left: 3px solid #2e7d32; border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #1b5e20; }
+  .insight strong { display: block; margin-bottom: 3px; }
+  .warning { background: #ffebee; border-left: 3px solid #c62828; border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #b71c1c; }
+  .warning strong { display: block; margin-bottom: 3px; }
+
+  /* Compare side-by-side */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+  .compare-col { padding: 12px 14px; border-radius: 8px; font-size: 13px; line-height: 1.6; }
+  .compare-col.por { background: #fff3e0; color: #795600; }
+  .compare-col.para { background: #e8f5e9; color: #1b5e20; }
+  .compare-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 700; }
+
+  .exercise-card { background: white; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 11px; font-weight: 700; color: #e8721d; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .exercise-hint { font-size: 13px; color: #6b6560; margin-bottom: 10px; line-height: 1.5; }
+  .exercise-hint strong { color: #2d2a26; }
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 6px; padding: 7px 11px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 100px; outline: none; }
+  .answer-input:focus { border-color: #e8721d; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .translation-prompt { background: #f5f0eb; border-radius: 6px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; color: #4a4540; line-height: 1.4; }
+  .translation-input { width: 100%; border: 2px solid #e8d5c4; border-radius: 6px; padding: 9px 12px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; outline: none; }
+  .translation-input:focus { border-color: #e8721d; background: white; }
+  .translation-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .translation-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 36px auto 0; background: #e8721d; color: white; border: none; border-radius: 12px; padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #d4650f; }
+  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: white; border-radius: 12px; }
+  .results.show { display: block; }
+  .score { font-size: 44px; font-weight: 800; color: #e8721d; }
+  .score-label { font-size: 13px; color: #6b6560; margin-bottom: 12px; }
+  .score-message { font-size: 14px; color: #4a4540; line-height: 1.5; }
+  .btn-group { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+  .next-lesson-btn, .reset-btn { display: none; width: 100%; max-width: 300px; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; text-align: center; }
+  .next-lesson-btn { background: #2e7d32; color: white; border: none; }
+  .reset-btn { background: white; color: #e8721d; border: 2px solid #e8721d; }
+  .next-lesson-btn.show, .reset-btn.show { display: block; }
+  @media (max-width: 600px) { .page { padding: 24px 14px 60px; } .header h1 { font-size: 24px; } .compare { grid-template-columns: 1fr; } .vs-banner { grid-template-columns: 1fr; } .vs-divider { display: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Lektion 21</div>
+    <h1>Por vs. Para <span class="level-tag">Klassiker</span></h1>
+    <p>Die beiden Präpositionen, die jeder Lerner verwechselt</p>
+  </div>
+
+  <div class="vs-banner">
+    <div class="vs-card por">
+      <div class="word">POR</div>
+      <div class="sub">durch · wegen · pro</div>
+    </div>
+    <div class="vs-divider">vs.</div>
+    <div class="vs-card para">
+      <div class="word">PARA</div>
+      <div class="sub">für · zu · nach · um zu</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Warum jetzt</div>
+    <div class="card">
+      <p>Du nutzt schon viele Konstruktionen mit por und para:</p>
+      <ul style="padding-left: 20px; font-size: 14px; line-height: 1.8; color: #4a4540;">
+        <li><span class="por">por</span> isso, <span class="por">por</span> mês, <span class="por">por</span> enquanto, <span class="por">por</span> favor</li>
+        <li><span class="para">para</span> ti, <span class="para">para</span> ambos, <span class="para">para</span> o meu futuro, vou <span class="para">para</span> Valência</li>
+      </ul>
+      <p>Aber bei neuen Sätzen ratest du gerade noch. Heute lernen wir die <strong>Logik</strong> dahinter — danach kannst du jeden Fall entscheiden.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 1 — POR (durch, wegen, pro)</div>
+
+    <div class="card">
+      <h3>5 Hauptbedeutungen</h3>
+      <table>
+        <tr><th>Bedeutung</th><th>Beispiel</th><th>Deutsch</th></tr>
+        <tr><td><strong>Grund / Ursache</strong></td><td><span class="por">Por</span> isso vou trabalhar.</td><td>Deshalb gehe ich arbeiten.</td></tr>
+        <tr><td><strong>Pro / Frequenz</strong></td><td>Treino 3 vezes <span class="por">por</span> semana.</td><td>3x pro Woche.</td></tr>
+        <tr><td><strong>Zeitdauer</strong></td><td>Vou ficar <span class="por">por</span> 2 meses.</td><td>Für 2 Monate (= 2 Monate lang).</td></tr>
+        <tr><td><strong>Bewegung durch</strong></td><td>Passei <span class="por">pelo</span> centro.</td><td>Ich kam durchs Zentrum.</td></tr>
+        <tr><td><strong>Tausch / Preis</strong></td><td>Comprei <span class="por">por</span> 20€.</td><td>Für (= im Tausch gegen) 20€.</td></tr>
+      </table>
+
+      <h3 style="margin-top: 20px;">Feste Ausdrücke mit POR</h3>
+      <p><span class="por">por</span> favor (bitte) · <span class="por">por</span> exemplo · <span class="por">por</span> enquanto (vorerst) · <span class="por">por</span> acaso (zufällig) · <span class="por">por</span> isso (deshalb) · <span class="por">por</span> fim · <span class="por">por</span> mim (für mich = von mir aus) · <span class="por">pelo</span> menos (mindestens)</p>
+
+      <div class="warning">
+        <strong>Kontraktion mit Artikeln!</strong>
+        por + o = <span class="por">pelo</span> · por + a = <span class="por">pela</span> · por + os = <span class="por">pelos</span> · por + as = <span class="por">pelas</span><br>
+        Beispiel: "Passei <span class="por">pelo</span> parque" (= durch den Park)
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 2 — PARA (für, zu, nach, um zu)</div>
+
+    <div class="card">
+      <h3>5 Hauptbedeutungen</h3>
+      <table>
+        <tr><th>Bedeutung</th><th>Beispiel</th><th>Deutsch</th></tr>
+        <tr><td><strong>Empfänger / Adressat</strong></td><td>Este café é <span class="para">para</span> ti.</td><td>Für dich.</td></tr>
+        <tr><td><strong>Ziel / Richtung</strong></td><td>Vou <span class="para">para</span> Lisboa.</td><td>Nach Lissabon (länger).</td></tr>
+        <tr><td><strong>Zweck / Ziel (um zu)</strong></td><td>Estudo <span class="para">para</span> aprender.</td><td>Um zu lernen.</td></tr>
+        <tr><td><strong>Deadline / Frist</strong></td><td>Faz isso <span class="para">para</span> amanhã.</td><td>Bis morgen.</td></tr>
+        <tr><td><strong>Vergleich</strong></td><td>Alto <span class="para">para</span> a sua idade.</td><td>Groß für sein Alter.</td></tr>
+      </table>
+
+      <h3 style="margin-top: 20px;">Feste Ausdrücke mit PARA</h3>
+      <p><span class="para">para</span> ti / <span class="para">para</span> mim / <span class="para">para</span> ele · <span class="para">para</span> ambos (für beide) · <span class="para">para</span> sempre · <span class="para">para</span> que (damit) · <span class="para">para</span> o meu futuro</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teil 3 — Die wichtigsten Verwechslungen</div>
+
+    <div class="card">
+      <h3>1. Bewegung: POR vs PARA</h3>
+      <div class="compare">
+        <div class="compare-col por">
+          <h4>POR = durch (Weg)</h4>
+          Passei <strong>pelo</strong> teu bairro.<br>
+          <em>(Ich kam DURCH deinen Stadtteil.)</em>
+        </div>
+        <div class="compare-col para">
+          <h4>PARA = nach (Ziel)</h4>
+          Vou <strong>para</strong> o teu bairro.<br>
+          <em>(Ich gehe NACH/ZU deinem Stadtteil.)</em>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 20px;">2. Zeit: POR vs PARA</h3>
+      <div class="compare">
+        <div class="compare-col por">
+          <h4>POR = wie lange (Dauer)</h4>
+          Vou ficar <strong>por</strong> 2 meses.<br>
+          <em>(2 Monate lang.)</em>
+        </div>
+        <div class="compare-col para">
+          <h4>PARA = bis wann (Deadline)</h4>
+          Preciso disso <strong>para</strong> amanhã.<br>
+          <em>(Bis morgen.)</em>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 20px;">3. Grund vs Zweck</h3>
+      <div class="compare">
+        <div class="compare-col por">
+          <h4>POR = warum (Grund)</h4>
+          Trabalho <strong>por</strong> dinheiro.<br>
+          <em>(Wegen Geld / weil ich Geld brauche.)</em>
+        </div>
+        <div class="compare-col para">
+          <h4>PARA = wozu (Zweck)</h4>
+          Trabalho <strong>para</strong> viver bem.<br>
+          <em>(Um gut zu leben.)</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Eselsbrücke: 5 W-Fragen</h3>
+      <table>
+        <tr><th>Frage</th><th>Antwort</th></tr>
+        <tr><td><strong>Für wen?</strong></td><td class="para">para</td></tr>
+        <tr><td><strong>Wozu? / Um zu?</strong></td><td class="para">para</td></tr>
+        <tr><td><strong>Wohin? (Ziel)</strong></td><td class="para">para</td></tr>
+        <tr><td><strong>Wann (Deadline)?</strong></td><td class="para">para</td></tr>
+        <tr><td><strong>Warum? (Grund)</strong></td><td class="por">por</td></tr>
+        <tr><td><strong>Wie lange? (Dauer)</strong></td><td class="por">por</td></tr>
+        <tr><td><strong>Wodurch? Wo durch?</strong></td><td class="por">por</td></tr>
+        <tr><td><strong>Pro Einheit?</strong></td><td class="por">por</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 1: por oder para? -->
+  <div class="section">
+    <div class="section-title">Übung 1 — Por oder Para?</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">1 von 12</div>
+      <div class="exercise-hint">"3 Mal pro Woche" (Frequenz)</div>
+      <div class="input-row">
+        <span>3 vezes</span>
+        <input type="text" class="answer-input" data-answers="por">
+        <span>semana.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">2 von 12</div>
+      <div class="exercise-hint">"Dieser Kaffee ist für dich." (Empfänger)</div>
+      <div class="input-row">
+        <span>Este café é</span>
+        <input type="text" class="answer-input" data-answers="para">
+        <span>ti.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">3 von 12</div>
+      <div class="exercise-hint">"Ich werde nach Valencia fahren." (Ziel)</div>
+      <div class="input-row">
+        <span>Vou</span>
+        <input type="text" class="answer-input" data-answers="para">
+        <span>Valência.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">4 von 12</div>
+      <div class="exercise-hint">"Ich bleibe 2 Monate." (Dauer)</div>
+      <div class="input-row">
+        <span>Vou ficar</span>
+        <input type="text" class="answer-input" data-answers="por">
+        <span>2 meses.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">5 von 12</div>
+      <div class="exercise-hint">"Ich lerne, um Portugiesisch zu sprechen." (Zweck)</div>
+      <div class="input-row">
+        <span>Estudo</span>
+        <input type="text" class="answer-input" data-answers="para">
+        <span>falar português.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">6 von 12</div>
+      <div class="exercise-hint">"Deshalb (= aus diesem Grund)..."</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="por">
+        <span>isso, vou comprar uma fritadeira.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">7 von 12</div>
+      <div class="exercise-hint">"Es kostet 28€ pro Monat."</div>
+      <div class="input-row">
+        <span>28€</span>
+        <input type="text" class="answer-input" data-answers="por">
+        <span>mês.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">8 von 12</div>
+      <div class="exercise-hint">"Für meine Zukunft."</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="para">
+        <span>o meu futuro.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">9 von 12</div>
+      <div class="exercise-hint">"Für beide." (Empfänger)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="para">
+        <span>ambos.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">10 von 12</div>
+      <div class="exercise-hint">"Vorerst alleine weitermachen."</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="por">
+        <span>enquanto, vou continuar sozinho.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">11 von 12</div>
+      <div class="exercise-hint">"Bitte!" (Höflichkeitsformel)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="por">
+        <span>favor!</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">12 von 12</div>
+      <div class="exercise-hint">"Wenigstens hast du es versucht." (Aus deiner Klasse!)</div>
+      <div class="input-row">
+        <input type="text" class="answer-input" data-answers="pelo">
+        <span>menos tentaste.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 2: Tricky Sätze -->
+  <div class="section">
+    <div class="section-title">Übung 2 — Tricky! Wann por, wann para?</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">13 von 18</div>
+      <div class="exercise-hint">Ich arbeite, um Geld zu verdienen. (Zweck)</div>
+      <div class="input-row">
+        <span>Trabalho</span>
+        <input type="text" class="answer-input" data-answers="para">
+        <span>ganhar dinheiro.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">14 von 18</div>
+      <div class="exercise-hint">Ich arbeite wegen des Geldes. (Grund)</div>
+      <div class="input-row">
+        <span>Trabalho</span>
+        <input type="text" class="answer-input" data-answers="por">
+        <span>dinheiro.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">15 von 18</div>
+      <div class="exercise-hint">Ich gehe DURCH den Park. (Bewegung durch → mit Artikel kontraktiert)</div>
+      <div class="input-row">
+        <span>Vou passar</span>
+        <input type="text" class="answer-input" data-answers="pelo">
+        <span>parque.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">16 von 18</div>
+      <div class="exercise-hint">Ich brauche es bis morgen. (Deadline)</div>
+      <div class="input-row">
+        <span>Preciso disso</span>
+        <input type="text" class="answer-input" data-answers="para">
+        <span>amanhã.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">17 von 18</div>
+      <div class="exercise-hint">Ich kaufte es für 20€. (Tausch/Preis)</div>
+      <div class="input-row">
+        <span>Comprei</span>
+        <input type="text" class="answer-input" data-answers="por">
+        <span>20 euros.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">18 von 18</div>
+      <div class="exercise-hint">Er ist groß für sein Alter. (Vergleich)</div>
+      <div class="input-row">
+        <span>Ele é alto</span>
+        <input type="text" class="answer-input" data-answers="para">
+        <span>a sua idade.</span>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- ÜBUNG 3: Ganze Sätze -->
+  <div class="section">
+    <div class="section-title">Übung 3 — Übersetze ganze Sätze</div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">19 von 22</div>
+      <div class="translation-prompt">Ich gehe für 2 Monate nach Valencia.</div>
+      <input type="text" class="translation-input" data-answers="vou para valência por 2 meses.|vou para valencia por dois meses.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">20 von 22</div>
+      <div class="translation-prompt">Ich lerne 3 Mal pro Woche, um besser zu sprechen.</div>
+      <input type="text" class="translation-input" data-answers="estudo 3 vezes por semana para falar melhor.|eu estudo três vezes por semana para falar melhor.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">21 von 22</div>
+      <div class="translation-prompt">Dieses Geschenk ist für dich, weil heute dein Geburtstag ist.</div>
+      <input type="text" class="translation-input" data-answers="este presente é para ti, porque hoje é o teu aniversário.|este presente é para ti porque hoje é o teu aniversário.">
+      <div class="feedback"></div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-label">22 von 22 — Finale</div>
+      <div class="translation-prompt">Vorerst bleibe ich alleine, aber ich gehe heute Abend durch das Zentrum.</div>
+      <input type="text" class="translation-input" data-answers="por enquanto vou ficar sozinho, mas vou passar pelo centro esta noite.|por enquanto fico sozinho mas esta noite vou passar pelo centro.">
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Antworten prüfen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <div class="btn-group">
+    <a class="next-lesson-btn" id="nextBtn" href="index.html">Zurück zum Dashboard</a>
+    <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal versuchen</button>
+  </div>
+
+</div>
+
+<script>
+function normalize(s){return s.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').replace(/[.!?,;:'"\/]/g,'');}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]!==b[j-1]?1:0));return dp[m][n];}
+function isClose(u,accepted){if(accepted.includes(u))return'exact';for(const a of accepted){const d=a.length<=8?1:a.length<=20?2:3;if(levenshtein(u,a)<=d)return'close';}return'wrong';}
+function checkAnswers(){
+  const inputs=document.querySelectorAll('.answer-input,.translation-input');let correct=0;
+  inputs.forEach(input=>{
+    const raw=input.getAttribute('data-answers'),accepted=raw.split('|').map(normalize),user=normalize(input.value);
+    const fb=input.closest('.exercise-card').querySelector('.feedback'),m=isClose(user,accepted);
+    if(user===''){input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='Lösung: '+raw.split('|')[0];}
+    else if(m==='exact'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Richtig! ✅';correct++;}
+    else if(m==='close'){input.classList.add('correct');fb.className='feedback show correct';fb.textContent='Passt! ✅ ('+raw.split('|')[0]+')';correct++;}
+    else{input.classList.add('incorrect');fb.className='feedback show incorrect';fb.textContent='→ '+raw.split('|')[0];}
+  });
+  const t=inputs.length;
+  document.getElementById('results').classList.add('show');
+  document.getElementById('score').textContent=correct+' / '+t;
+  const pct=correct/t;
+  const msg=pct===1?'Perfeito! Por/Para sitzt!':pct>=0.7?'Muito bem! Schau dir die Verwechslungen nochmal an.':pct>=0.4?'Bom! Wozu? = para. Warum? = por.':'Geh die 5 Eselsbrücken durch.';
+  document.getElementById('scoreMessage').textContent=msg;
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('resetBtn').classList.add('show');
+  localStorage.setItem('pt-lektion-21','done');
+  document.querySelector('.check-btn').style.display='none';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetAll(){
+  document.querySelectorAll('.answer-input,.translation-input').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';});
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.answer-input,.translation-input').forEach((input,i,arr)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<arr.length-1)arr[i+1].focus();else checkAnswers();}});});
+</script>
+</body>
+</html>
