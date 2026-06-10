@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiefenübung 1 - Unregelmäßige Verben</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #c62828; }
+  .header { text-align: center; margin-bottom: 28px; }
+  .lesson-tag { display: inline-block; background: linear-gradient(135deg, #c62828, #b71c1c); color: white; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 16px; margin-bottom: 12px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header p { font-size: 14px; color: #6b6560; }
+
+  /* Sticky progress bar with score */
+  .progress-bar-sticky {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(245,240,235,0.95); backdrop-filter: blur(10px);
+    margin: 0 -20px 24px; padding: 12px 20px;
+    border-bottom: 1px solid #ffcdd2;
+  }
+  .progress-row { display: flex; align-items: center; gap: 12px; font-size: 12px; }
+  .progress-bar { flex: 1; height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #c62828, #ef5350); width: 0%; transition: width 0.3s; }
+  .score-display { font-weight: 700; color: #c62828; }
+
+  /* Drill cards */
+  .drill { background: white; border-radius: 10px; padding: 16px 18px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: all 0.2s; }
+  .drill.correct { background: linear-gradient(135deg, white, #e8f5e9); border-left: 3px solid #2e7d32; }
+  .drill.incorrect { background: linear-gradient(135deg, white, #ffebee); border-left: 3px solid #c62828; }
+  .drill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; }
+  .drill-num { font-size: 11px; font-weight: 700; color: #9e9892; }
+  .drill-task { font-size: 14px; font-weight: 500; color: #2d2a26; margin-bottom: 10px; line-height: 1.4; }
+  .drill-task strong { color: #c62828; }
+  .drill-task .verb { background: #ffcdd2; padding: 1px 6px; border-radius: 4px; font-weight: 700; }
+
+  .drill-input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .drill-input { border: 2px solid #ffcdd2; border-radius: 6px; padding: 7px 11px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 160px; outline: none; }
+  .drill-input:focus { border-color: #c62828; background: white; }
+  .drill-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .drill-input.incorrect { border-color: #c62828; background: #ffebee; }
+
+  /* Hint buttons */
+  .hint-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .hint-btn {
+    background: white; border: 1.5px solid #e8d5c4; color: #6b6560;
+    padding: 5px 10px; border-radius: 14px; font-size: 11px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .hint-btn:hover { background: #fff8e1; border-color: #f9a825; color: #795600; }
+  .hint-btn.used { background: #fff8e1; border-color: #f9a825; color: #795600; cursor: default; }
+  .hint-btn.locked { opacity: 0.4; cursor: not-allowed; }
+
+  .hint-content { display: none; margin-top: 8px; padding: 10px 12px; border-radius: 6px; font-size: 12px; line-height: 1.5; }
+  .hint-content.show { display: block; }
+  .hint-content.tip { background: #fff8e1; border-left: 3px solid #f9a825; color: #795600; }
+  .hint-content.row { background: #e3f2fd; border-left: 3px solid #1976d2; color: #0d47a1; font-family: 'SF Mono', Menlo, monospace; }
+  .hint-content.table { background: #f5f0eb; border-left: 3px solid #6b6560; color: #2d2a26; }
+  .hint-content table { width: 100%; margin-top: 6px; font-size: 11px; }
+  .hint-content th, .hint-content td { padding: 3px 6px; border-bottom: 1px solid #ede6df; text-align: left; }
+  .hint-content th { background: #2d2a26; color: white; font-weight: 500; }
+  .hint-content .eu { color: #c62828; font-weight: 700; }
+
+  .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+
+  /* Block headers */
+  .block-header { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #c62828; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #ffcdd2; display: flex; justify-content: space-between; align-items: center; }
+  .block-header .count { background: #c62828; color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; }
+
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 32px auto 0; background: linear-gradient(135deg, #c62828, #b71c1c); color: white; border: none; border-radius: 12px; padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: white; border-radius: 12px; }
+  .results.show { display: block; }
+  .score { font-size: 44px; font-weight: 800; color: #c62828; }
+  .score-label { font-size: 13px; color: #6b6560; margin-bottom: 12px; }
+  .score-message { font-size: 14px; color: #4a4540; line-height: 1.5; }
+  .reset-btn { display: none; margin: 16px auto 0; background: white; color: #c62828; border: 2px solid #c62828; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn.show { display: block; }
+  .next-btn { display: none; margin: 10px auto 0; background: #2e7d32; color: white; border: none; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none; }
+  .next-btn.show { display: inline-block; }
+
+  @media (max-width: 600px) {
+    .progress-bar-sticky { margin: 0 -14px 20px; padding: 10px 14px; }
+    .page { padding: 20px 14px 60px; }
+    .drill-input { width: 140px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">&larr; Dashboard</a>
+
+  <div class="header">
+    <div class="lesson-tag">Tiefenübung 1 &bull; Drill</div>
+    <h1>Unregelmäßige Verben — Presente</h1>
+    <p>Die berüchtigten eu-Formen — mit Hilfe-Buttons pro Aufgabe</p>
+  </div>
+
+  <!-- Sticky Progress -->
+  <div class="progress-bar-sticky">
+    <div class="progress-row">
+      <span class="score-display" id="progressText">0 / 45</span>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <span id="progressPct">0%</span>
+    </div>
+  </div>
+
+  <!-- BLOCK A: eu-Formen DRILL (Reine eu-Form abfragen) -->
+  <div class="block-header">
+    <span>Block A &bull; Die eu-Formen pur</span>
+    <span class="count">12</span>
+  </div>
+
+  <!-- Drill template — using JS to generate is overkill, just write them out -->
+  <div class="drill" data-num="1">
+    <div class="drill-header"><div class="drill-num">1 / 45</div></div>
+    <div class="drill-task"><span class="verb">saber</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row">
+      <input type="text" class="drill-input" data-answers="sei" placeholder="...">
+    </div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">Nur 3 Buchstaben. Wie das deutsche "weiß" klingt es ein bisschen.</div>
+    <div class="hint-content row">eu <span class="eu">sei</span> | tu sabes | ele sabe</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele/ela</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">sei</td><td>sabes</td><td>sabe</td><td>sabemos</td><td>sabem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="2">
+    <div class="drill-header"><div class="drill-num">2 / 45</div></div>
+    <div class="drill-task"><span class="verb">trazer</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="trago" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">z → g. Klingt fast wie "trage" (Deutsch "ich trage").</div>
+    <div class="hint-content row">eu <span class="eu">trago</span> | tu trazes | ele traz</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">trago</td><td>trazes</td><td>traz</td><td>trazemos</td><td>trazem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="3">
+    <div class="drill-header"><div class="drill-num">3 / 45</div></div>
+    <div class="drill-task"><span class="verb">ver</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vejo" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">"j"-Laut wie in "Journalist". Endet auf -ejo.</div>
+    <div class="hint-content row">eu <span class="eu">vejo</span> | tu vês | ele vê</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">vejo</td><td>vês</td><td>vê</td><td>vemos</td><td>veem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="4">
+    <div class="drill-header"><div class="drill-num">4 / 45</div></div>
+    <div class="drill-task"><span class="verb">dizer</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="digo" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">z → g. Klingt wie das spanische "digo".</div>
+    <div class="hint-content row">eu <span class="eu">digo</span> | tu dizes | ele diz</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">digo</td><td>dizes</td><td>diz</td><td>dizemos</td><td>dizem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="5">
+    <div class="drill-header"><div class="drill-num">5 / 45</div></div>
+    <div class="drill-task"><span class="verb">fazer</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="faço|faco" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">Cedilha! z → ç vor o. Es klingt weich wie "fasso".</div>
+    <div class="hint-content row">eu <span class="eu">faço</span> | tu fazes | ele faz</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">faço</td><td>fazes</td><td>faz</td><td>fazemos</td><td>fazem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="6">
+    <div class="drill-header"><div class="drill-num">6 / 45</div></div>
+    <div class="drill-task"><span class="verb">ler</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="leio" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">Mit -io. Ein "i" wird eingefügt!</div>
+    <div class="hint-content row">eu <span class="eu">leio</span> | tu lês | ele lê</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">leio</td><td>lês</td><td>lê</td><td>lemos</td><td>leem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="7">
+    <div class="drill-header"><div class="drill-num">7 / 45</div></div>
+    <div class="drill-task"><span class="verb">pôr</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="ponho" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">Endet auf "-nho" wie tenho/venho. 5 Buchstaben.</div>
+    <div class="hint-content row">eu <span class="eu">ponho</span> | tu pões | ele põe</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">ponho</td><td>pões</td><td>põe</td><td>pomos</td><td>põem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="8">
+    <div class="drill-header"><div class="drill-num">8 / 45</div></div>
+    <div class="drill-task"><span class="verb">perder</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="perco" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">d → c! Klingt wie "Park-o".</div>
+    <div class="hint-content row">eu <span class="eu">perco</span> | tu perdes | ele perde</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">perco</td><td>perdes</td><td>perde</td><td>perdemos</td><td>perdem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="9">
+    <div class="drill-header"><div class="drill-num">9 / 45</div></div>
+    <div class="drill-task"><span class="verb">querer</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="quero" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">Wie das spanische "quiero", aber ohne i.</div>
+    <div class="hint-content row">eu <span class="eu">quero</span> | tu queres | ele quer</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">quero</td><td>queres</td><td>quer</td><td>queremos</td><td>querem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="10">
+    <div class="drill-header"><div class="drill-num">10 / 45</div></div>
+    <div class="drill-task"><span class="verb">poder</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="posso" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">d → ss! Posso. 5 Buchstaben.</div>
+    <div class="hint-content row">eu <span class="eu">posso</span> | tu podes | ele pode</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">posso</td><td>podes</td><td>pode</td><td>podemos</td><td>podem</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="11">
+    <div class="drill-header"><div class="drill-num">11 / 45</div></div>
+    <div class="drill-task"><span class="verb">dar</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="dou" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">Nur 3 Buchstaben. Endet auf -ou (wie sou).</div>
+    <div class="hint-content row">eu <span class="eu">dou</span> | tu dás | ele dá</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">dou</td><td>dás</td><td>dá</td><td>damos</td><td>dão</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="12">
+    <div class="drill-header"><div class="drill-num">12 / 45</div></div>
+    <div class="drill-task"><span class="verb">vir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="venho" placeholder="..."></div>
+    <div class="hint-row">
+      <button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button>
+      <button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button>
+      <button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button>
+    </div>
+    <div class="hint-content tip">-nho wie ponho/tenho. Vergleichbar mit "tenho".</div>
+    <div class="hint-content row">eu <span class="eu">venho</span> | tu vens | ele vem</div>
+    <div class="hint-content table">
+      <table><tr><th>eu</th><th>tu</th><th>ele</th><th>nós</th><th>eles</th></tr>
+      <tr><td class="eu">venho</td><td>vens</td><td>vem</td><td>vimos</td><td>vêm</td></tr></table>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- BLOCK B: andere Personen MIX -->
+  <div class="block-header">
+    <span>Block B &bull; Andere Personen — Mix</span>
+    <span class="count">15</span>
+  </div>
+
+  <div class="drill" data-num="13">
+    <div class="drill-header"><div class="drill-num">13 / 45</div></div>
+    <div class="drill-task"><span class="verb">ver</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vemos" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">Wie regelmäßiges -er: v + emos.</div>
+    <div class="hint-content row">eu vejo | nós <span class="eu">vemos</span> | eles veem</div>
+    <div class="hint-content table"><table><tr><th>nós</th><th>eles</th></tr><tr><td class="eu">vemos</td><td>veem</td></tr></table></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="14">
+    <div class="drill-header"><div class="drill-num">14 / 45</div></div>
+    <div class="drill-task"><span class="verb">ler</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="leem" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">l + eem (doppel-e).</div>
+    <div class="hint-content row">eu leio | nós lemos | eles <span class="eu">leem</span></div>
+    <div class="hint-content table"><table><tr><th>eu</th><th>nós</th><th>eles</th></tr><tr><td>leio</td><td>lemos</td><td class="eu">leem</td></tr></table></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="15">
+    <div class="drill-header"><div class="drill-num">15 / 45</div></div>
+    <div class="drill-task"><span class="verb">pôr</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="põem" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button><button class="hint-btn" onclick="showHint(this,'table')">📖 Tabelle</button></div>
+    <div class="hint-content tip">Mit Tilde! p + õem.</div>
+    <div class="hint-content row">eu ponho | nós pomos | eles <span class="eu">põem</span></div>
+    <div class="hint-content table"><table><tr><th>eu</th><th>nós</th><th>eles</th></tr><tr><td>ponho</td><td>pomos</td><td class="eu">põem</td></tr></table></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="16">
+    <div class="drill-header"><div class="drill-num">16 / 45</div></div>
+    <div class="drill-task"><span class="verb">trazer</span> → <strong>ele</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="traz" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Nur 4 Buchstaben — endet auf -z (kein e!).</div>
+    <div class="hint-content row">eu trago | tu trazes | ele <span class="eu">traz</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="17">
+    <div class="drill-header"><div class="drill-num">17 / 45</div></div>
+    <div class="drill-task"><span class="verb">fazer</span> → <strong>ele</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="faz" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Nur 3 Buchstaben — kürzer als du denkst!</div>
+    <div class="hint-content row">eu faço | tu fazes | ele <span class="eu">faz</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="18">
+    <div class="drill-header"><div class="drill-num">18 / 45</div></div>
+    <div class="drill-task"><span class="verb">dizer</span> → <strong>ele</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="diz" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">3 Buchstaben. Wie "diz" gesprochen.</div>
+    <div class="hint-content row">eu digo | tu dizes | ele <span class="eu">diz</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="19">
+    <div class="drill-header"><div class="drill-num">19 / 45</div></div>
+    <div class="drill-task"><span class="verb">querer</span> → <strong>ele</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="quer" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Endet nicht auf -e! (Ausnahme der 3. Pers Sg.)</div>
+    <div class="hint-content row">eu quero | tu queres | ele <span class="eu">quer</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="20">
+    <div class="drill-header"><div class="drill-num">20 / 45</div></div>
+    <div class="drill-task"><span class="verb">vir</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vêm|vem" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Mit Zirkumflex (^). Sieht aus wie ele vem, klingt anders.</div>
+    <div class="hint-content row">eu venho | nós vimos | eles <span class="eu">vêm</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="21">
+    <div class="drill-header"><div class="drill-num">21 / 45</div></div>
+    <div class="drill-task"><span class="verb">ir</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vamos" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Auch für "Lass uns ...". Klingt wie spanisch.</div>
+    <div class="hint-content row">eu vou | tu vais | ele vai | nós <span class="eu">vamos</span> | eles vão</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="22">
+    <div class="drill-header"><div class="drill-num">22 / 45</div></div>
+    <div class="drill-task"><span class="verb">ter</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="têm|tem" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Mit Zirkumflex! Unterscheidet sich nur in Schrift von "tem".</div>
+    <div class="hint-content row">eu tenho | ele tem | eles <span class="eu">têm</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="23">
+    <div class="drill-header"><div class="drill-num">23 / 45</div></div>
+    <div class="drill-task"><span class="verb">poder</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="podemos" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Wie regelmäßiges -er.</div>
+    <div class="hint-content row">eu posso | nós <span class="eu">podemos</span> | eles podem</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="24">
+    <div class="drill-header"><div class="drill-num">24 / 45</div></div>
+    <div class="drill-task"><span class="verb">saber</span> → <strong>nós</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="sabemos" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Wie regelmäßiges -er. NICHT seimos!</div>
+    <div class="hint-content row">eu sei | nós <span class="eu">sabemos</span> | eles sabem</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="25">
+    <div class="drill-header"><div class="drill-num">25 / 45</div></div>
+    <div class="drill-task"><span class="verb">dar</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="dão|dao" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Mit Tilde! Endet wie são/vão.</div>
+    <div class="hint-content row">eu dou | nós damos | eles <span class="eu">dão</span></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="26">
+    <div class="drill-header"><div class="drill-num">26 / 45</div></div>
+    <div class="drill-task"><span class="verb">dizer</span> → <strong>tu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="dizes" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Regelmäßiges -er. Stamm + es.</div>
+    <div class="hint-content row">eu digo | tu <span class="eu">dizes</span> | ele diz</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="27">
+    <div class="drill-header"><div class="drill-num">27 / 45</div></div>
+    <div class="drill-task"><span class="verb">ler</span> → <strong>tu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="lês|les" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button><button class="hint-btn" onclick="showHint(this,'row')">📋 Zeile</button></div>
+    <div class="hint-content tip">Mit Zirkumflex! l + ês.</div>
+    <div class="hint-content row">eu leio | tu <span class="eu">lês</span> | ele lê</div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- BLOCK C: Sätze (Lückentext) -->
+  <div class="block-header">
+    <span>Block C &bull; In Sätzen anwenden</span>
+    <span class="count">12</span>
+  </div>
+
+  <div class="drill" data-num="28">
+    <div class="drill-header"><div class="drill-num">28 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(fazer)</span> desporto todos os dias.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="faço|faco" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">eu + fazer → mit Cedilha (ç)</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="29">
+    <div class="drill-header"><div class="drill-num">29 / 45</div></div>
+    <div class="drill-task">Eu nunca ___ <span class="verb">(perder)</span> o guarda-chuva.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="perco" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">d → c. perco!</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="30">
+    <div class="drill-header"><div class="drill-num">30 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(trazer)</span> um presente para a Ana.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="trago" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">z → g</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="31">
+    <div class="drill-header"><div class="drill-num">31 / 45</div></div>
+    <div class="drill-task">A empregada ___ <span class="verb">(trazer)</span> o pão.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="traz" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">3. Pers. Sg. — ohne -e am Ende!</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="32">
+    <div class="drill-header"><div class="drill-num">32 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(ler)</span> o jornal todos os dias.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="leio" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">+i: leio</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="33">
+    <div class="drill-header"><div class="drill-num">33 / 45</div></div>
+    <div class="drill-task">O Sr. Ramos ___ <span class="verb">(ler)</span> o jornal.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="lê|le" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">3. Pers. Sg. — mit Zirkumflex! Nur 2 Buchstaben.</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="34">
+    <div class="drill-header"><div class="drill-num">34 / 45</div></div>
+    <div class="drill-task">Eu não ___ <span class="verb">(saber)</span> o nome dela.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="sei" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">eu-Form von saber: kurz und unregelmäßig</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="35">
+    <div class="drill-header"><div class="drill-num">35 / 45</div></div>
+    <div class="drill-task">Ela ___ <span class="verb">(saber)</span> falar muitas línguas.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="sabe" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">3. Pers. Sg. von saber. Regelmäßig wie -er.</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="36">
+    <div class="drill-header"><div class="drill-num">36 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(pôr)</span> o livro na mesa.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="ponho" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-nho-Endung!</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="37">
+    <div class="drill-header"><div class="drill-num">37 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(ver)</span> um filme.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="vejo" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">-jo am Ende!</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="38">
+    <div class="drill-header"><div class="drill-num">38 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(dizer)</span> a verdade.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="digo" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">z → g</div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="39">
+    <div class="drill-header"><div class="drill-num">39 / 45</div></div>
+    <div class="drill-task">Eu ___ <span class="verb">(querer)</span> ficar em casa hoje.</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="quero" placeholder="..."></div>
+    <div class="hint-row"><button class="hint-btn" onclick="showHint(this,'tip')">💡 Tipp</button></div>
+    <div class="hint-content tip">5 Buchstaben.</div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- BLOCK D: Schnell-Mix (kurze Drills) -->
+  <div class="block-header">
+    <span>Block D &bull; Speed-Drill (kein Tipp!)</span>
+    <span class="count">6</span>
+  </div>
+
+  <div class="drill" data-num="40">
+    <div class="drill-header"><div class="drill-num">40 / 45</div></div>
+    <div class="drill-task"><span class="verb">ouvir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="ouço|ouco" placeholder="..."></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="41">
+    <div class="drill-header"><div class="drill-num">41 / 45</div></div>
+    <div class="drill-task"><span class="verb">pedir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="peço|peco" placeholder="..."></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="42">
+    <div class="drill-header"><div class="drill-num">42 / 45</div></div>
+    <div class="drill-task"><span class="verb">dormir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="durmo" placeholder="..."></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="43">
+    <div class="drill-header"><div class="drill-num">43 / 45</div></div>
+    <div class="drill-task"><span class="verb">subir</span> → <strong>eles</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="sobem" placeholder="..."></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="44">
+    <div class="drill-header"><div class="drill-num">44 / 45</div></div>
+    <div class="drill-task"><span class="verb">conseguir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="consigo" placeholder="..."></div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="drill" data-num="45">
+    <div class="drill-header"><div class="drill-num">45 / 45</div></div>
+    <div class="drill-task"><span class="verb">vestir</span> → <strong>eu</strong> ___</div>
+    <div class="drill-input-row"><input type="text" class="drill-input" data-answers="visto" placeholder="..."></div>
+    <div class="feedback"></div>
+  </div>
+
+  <button class="check-btn" onclick="checkAll()">Alle prüfen</button>
+
+  <div class="results" id="results">
+    <div class="score" id="score"></div>
+    <div class="score-label">richtige Antworten</div>
+    <div class="score-message" id="scoreMessage"></div>
+    <div id="hintStats" style="margin-top: 12px; font-size: 12px; color: #6b6560;"></div>
+  </div>
+
+  <a class="next-btn" id="nextBtn" href="index.html">Zum Dashboard</a>
+  <button class="reset-btn" id="resetBtn" onclick="resetAll()">Nochmal</button>
+
+</div>
+
+<script>
+let hintsUsed = 0;
+
+function showHint(btn, level) {
+  const drill = btn.closest('.drill');
+  const content = drill.querySelector('.hint-content.' + level);
+  if (!content) return;
+  if (!btn.classList.contains('used')) {
+    hintsUsed++;
+    btn.classList.add('used');
+  }
+  content.classList.toggle('show');
+}
+
+function normalize(s) {
+  return s.trim().toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/\s+/g, ' ').replace(/[.!?,;:'"\/]/g, '');
+}
+
+function updateProgress() {
+  const inputs = document.querySelectorAll('.drill-input');
+  const filled = Array.from(inputs).filter(i => i.value.trim() !== '').length;
+  const pct = Math.round((filled / inputs.length) * 100);
+  document.getElementById('progressText').textContent = filled + ' / ' + inputs.length;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+document.querySelectorAll('.drill-input').forEach(input => {
+  input.addEventListener('input', updateProgress);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const all = Array.from(document.querySelectorAll('.drill-input'));
+      const idx = all.indexOf(input);
+      if (idx < all.length - 1) all[idx + 1].focus();
+      else checkAll();
+    }
+  });
+});
+
+function checkAll() {
+  let correct = 0;
+  const inputs = document.querySelectorAll('.drill-input');
+  inputs.forEach(input => {
+    const raw = input.getAttribute('data-answers');
+    const accepted = raw.split('|').map(normalize);
+    const user = normalize(input.value);
+    const drill = input.closest('.drill');
+    const fb = drill.querySelector('.feedback');
+
+    if (user === '') {
+      input.classList.add('incorrect');
+      drill.classList.add('incorrect');
+      fb.className = 'feedback show incorrect';
+      fb.textContent = '→ ' + raw.split('|')[0];
+    } else if (accepted.includes(user)) {
+      input.classList.add('correct');
+      drill.classList.add('correct');
+      fb.className = 'feedback show correct';
+      fb.textContent = 'Richtig! ✅';
+      correct++;
+    } else {
+      input.classList.add('incorrect');
+      drill.classList.add('incorrect');
+      fb.className = 'feedback show incorrect';
+      fb.textContent = '→ ' + raw.split('|')[0];
+    }
+  });
+
+  const total = inputs.length;
+  document.getElementById('results').classList.add('show');
+  document.getElementById('score').textContent = correct + ' / ' + total;
+
+  const pct = correct / total;
+  let msg = '';
+  if (pct === 1) msg = 'Perfeito! Unregelmäßige eu-Formen sitzen!';
+  else if (pct >= 0.9) msg = 'Excelente! Fast alle richtig.';
+  else if (pct >= 0.75) msg = 'Muito bem! Schau dir die roten Stellen nochmal an.';
+  else if (pct >= 0.5) msg = 'Bom começo. Die Tabellen helfen — nutze sie!';
+  else msg = 'Lass die Hints zu — die sind dafür da!';
+
+  document.getElementById('scoreMessage').textContent = msg;
+  document.getElementById('hintStats').textContent =
+    hintsUsed > 0 ? 'Du hast ' + hintsUsed + ' Hint(s) benutzt — beim nächsten Mal weniger?' : 'Ohne Hints geschafft! 🔥';
+
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('resetBtn').classList.add('show');
+  document.querySelector('.check-btn').style.display = 'none';
+  localStorage.setItem('pt-tiefen-01', 'done');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetAll() {
+  hintsUsed = 0;
+  document.querySelectorAll('.drill-input').forEach(i => { i.value = ''; i.classList.remove('correct', 'incorrect'); });
+  document.querySelectorAll('.drill').forEach(d => d.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('.feedback').forEach(f => { f.className = 'feedback'; });
+  document.querySelectorAll('.hint-btn').forEach(b => b.classList.remove('used'));
+  document.querySelectorAll('.hint-content').forEach(c => c.classList.remove('show'));
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('resetBtn').classList.remove('show');
+  document.querySelector('.check-btn').style.display = 'block';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
