@@ -801,6 +801,60 @@ CARDS = [
     ("Molho", "Sauce", ""),
     ("Molho de alho", "Knoblauchsauce", ""),
     ("Restaurantes Árabes", "arabische Restaurants", ""),
+
+    # === Klasse 17.06.2026 — Coworking, Filme, Fußball ===
+    # Coworking
+    ("Reservar", "reservieren / buchen", ""),
+    ("Reservei", "ich habe reserviert", "reservar Pretérito"),
+    ("Sala", "Raum / Saal", "anders als quarto = Schlafzimmer!"),
+    ("Sala de conferências", "Konferenzraum", ""),
+    ("Quarto vs. Sala", "Schlafzimmer vs. Raum/Wohnzimmer", "WICHTIG: quarto NUR Schlafzimmer"),
+    ("Assinar", "unterschreiben / sich eintragen", ""),
+    ("Assinei numa lista", "ich habe mich in eine Liste eingetragen", ""),
+    ("Lista", "Liste", ""),
+    ("Mesa fixa", "fester Arbeitsplatz", "im Coworking"),
+    ("Disponível / Disponíveis", "verfügbar / frei", ""),
+    ("Não tinha mesas disponíveis", "es gab keine freien Tische", ""),
+    ("Eu decidi", "ich habe mich entschieden", "decidir Pretérito"),
+    # Konversation Frequenz
+    ("Passo a passo", "Schritt für Schritt", ""),
+    # Geld
+    ("Pagar um serviço", "einen Service bezahlen", ""),
+    # Kochen
+    ("Praticar", "üben / praktizieren", "Synonym zu treinar"),
+    ("Apa", "Fladenbrot", "afrikanisches Brot"),
+    ("Ao invés de", "anstatt / anstelle von", ""),
+    ("Carne moída", "Hackfleisch", ""),
+    # Filme / TV
+    ("Assistir", "anschauen / zusehen", "filme/série assistir"),
+    ("Eu assisto", "ich schaue (an)", "assistir Presente"),
+    ("Tu assistes?", "Schaust du?", ""),
+    ("Tu tens que assistir", "Du musst (es) ansehen", ""),
+    ("Filme / Filmes", "Film / Filme", ""),
+    ("Cinema", "Kino", ""),
+    ("Série / Séries", "Serie / Serien", ""),
+    ("Telefone", "Telefon / Handy", "auch im Sinne 'mobile'"),
+    ("Diretor de cinema", "Filmregisseur", ""),
+    ("De todos os tempos", "aller Zeiten", "o melhor de todos os tempos"),
+    # Fußball / Sport
+    ("Futebol", "Fußball", ""),
+    ("Jogo / Partida", "Spiel / Match", ""),
+    ("Grande fã", "großer Fan", ""),
+    ("Não tenho muito interesse em", "Ich habe kein großes Interesse an", ""),
+    # Bewertung
+    ("Melhor / Melhores", "besser / der/die/das beste", "Komparativ unregelmäßig"),
+    ("O melhor", "der/das beste", ""),
+    ("Mau / Má", "schlecht (m/w)", "Adjektiv"),
+    ("Qualidade", "Qualität", ""),
+    ("Quantidade", "Quantität / Menge", ""),
+    ("Muita quantidade, pouca qualidade", "viel Quantität, wenig Qualität", "typische Phrase"),
+    ("Aleatório / Aleatória", "zufällig", ""),
+    # Konversation
+    ("Todos eles / Todas elas", "alle (von ihnen)", ""),
+    ("Pergunta / Perguntas", "Frage/n", ""),
+    ("Fazer perguntas", "Fragen stellen", ""),
+    ("Antes de vir", "bevor (ich) kam", "antes de + Inf"),
+    ("Serviço", "Service / Dienstleistung", ""),
 ]
 
 

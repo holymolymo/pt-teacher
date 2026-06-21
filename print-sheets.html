@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Druck-Lernblätter — Portugiesisch</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; }
+
+  .nav { background: #2d2a26; color: white; padding: 14px 20px; position: sticky; top: 0; z-index: 10; }
+  .nav .container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .nav h1 { font-size: 16px; font-weight: 700; }
+  .nav .actions { display: flex; gap: 8px; }
+  .nav button, .nav a { background: rgba(255,255,255,0.12); color: white; border: none; padding: 7px 14px; font-size: 12px; border-radius: 6px; cursor: pointer; font-family: inherit; text-decoration: none; }
+  .nav button:hover, .nav a:hover { background: rgba(255,255,255,0.2); }
+  .nav .print-btn { background: #e8721d; }
+  .nav .print-btn:hover { background: #d4650f; }
+
+  .intro { max-width: 900px; margin: 16px auto; padding: 16px 24px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .intro p { font-size: 13px; line-height: 1.6; color: #6b6560; }
+  .intro strong { color: #2d2a26; }
+
+  .toc { max-width: 900px; margin: 16px auto; background: white; border-radius: 12px; padding: 16px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .toc h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #e8721d; margin-bottom: 10px; }
+  .toc ol { list-style: none; columns: 2; column-gap: 24px; }
+  .toc li { padding: 4px 0; font-size: 13px; counter-increment: tocount; }
+  .toc li::before { content: counter(tocount) "."; color: #e8721d; font-weight: 700; margin-right: 6px; }
+  .toc { counter-reset: tocount; }
+  .toc a { color: #2d2a26; text-decoration: none; }
+  .toc a:hover { color: #e8721d; }
+
+  .sheet {
+    background: white;
+    max-width: 900px;
+    margin: 16px auto;
+    padding: 32px 40px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    page-break-after: always;
+    border-radius: 0;
+  }
+
+  .sheet-header { border-bottom: 3px solid #2d2a26; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .sheet-header h1 { font-size: 22px; font-weight: 800; color: #1a1715; }
+  .sheet-header .meta { font-size: 10px; color: #9e9892; text-transform: uppercase; letter-spacing: 1px; }
+
+  .sheet h2 { font-size: 14px; font-weight: 700; color: #e8721d; text-transform: uppercase; letter-spacing: 1px; margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #ffe0b2; }
+  .sheet h2:first-child { margin-top: 0; }
+  .sheet h3 { font-size: 12px; font-weight: 700; color: #2d2a26; margin: 12px 0 4px; }
+  .sheet p { font-size: 11.5px; line-height: 1.6; color: #4a4540; margin-bottom: 6px; }
+
+  /* Tabellen kompakt */
+  .sheet table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; font-size: 11px; }
+  .sheet th { background: #2d2a26; color: white; padding: 4px 8px; text-align: left; font-weight: 600; }
+  .sheet td { padding: 4px 8px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  .sheet td.eu { font-weight: 700; color: #c62828; }
+  .sheet td.v { color: #e8721d; font-weight: 600; }
+  .sheet td.head { background: #f5f0eb; font-weight: 600; }
+
+  /* 2-Spalten Layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* Tipps & Boxen */
+  .tip { background: #fff8e1; border-left: 3px solid #f9a825; padding: 8px 10px; margin: 6px 0; font-size: 11px; line-height: 1.5; color: #795600; }
+  .warn { background: #ffebee; border-left: 3px solid #c62828; padding: 8px 10px; margin: 6px 0; font-size: 11px; line-height: 1.5; color: #b71c1c; }
+  .rule { background: #e8f5e9; border-left: 3px solid #2e7d32; padding: 8px 10px; margin: 6px 0; font-size: 11px; line-height: 1.5; color: #1b5e20; }
+  .tip strong, .warn strong, .rule strong { display: block; margin-bottom: 2px; font-weight: 700; }
+
+  /* Vokabel-Listen */
+  .vocab-list { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-size: 11px; line-height: 1.6; }
+  .vocab-list .pt { font-weight: 600; color: #c62828; }
+  .vocab-list .de { color: #4a4540; }
+
+  /* Print-Styles */
+  @media print {
+    body { background: white; }
+    .nav, .intro, .toc { display: none; }
+    .sheet {
+      max-width: 100%;
+      margin: 0;
+      padding: 12mm 14mm;
+      box-shadow: none;
+      page-break-after: always;
+      border-radius: 0;
+    }
+    .sheet:last-child { page-break-after: auto; }
+    .sheet h2 { color: #c62828 !important; }
+    .sheet td.eu { color: #c62828 !important; }
+    .sheet td.v { color: #c62828 !important; }
+    @page { margin: 0; size: A4 portrait; }
+  }
+
+  @media (max-width: 700px) {
+    .sheet { padding: 20px 24px; }
+    .two-col { grid-template-columns: 1fr; }
+    .toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="container">
+    <h1>📄 Druck-Lernblätter</h1>
+    <div class="actions">
+      <a href="index.html">← Dashboard</a>
+      <button class="print-btn" onclick="window.print()">🖨️ Drucken / PDF speichern</button>
+    </div>
+  </div>
+</div>
+
+<div class="intro">
+  <p><strong>Für dein Strand-Lernen:</strong> Klicke oben auf "🖨️ Drucken / PDF speichern". Im Druck-Dialog → "Als PDF speichern" wählen (oder direkt drucken). Jedes Sheet ist auf eine A4-Seite optimiert.</p>
+</div>
+
+<div class="toc">
+  <h3>Inhalt</h3>
+  <ol>
+    <li><a href="#s1">Pronomen — alle 4 Arten</a></li>
+    <li><a href="#s2">Ser / Estar / Ter / Ir / Vir — Presente</a></li>
+    <li><a href="#s3">Unregelmäßige Verben — Presente (die 10 wichtigsten)</a></li>
+    <li><a href="#s4">-ar / -er / -ir Endungen</a></li>
+    <li><a href="#s5">-ir Sonderformen + Cedilha-Regel</a></li>
+    <li><a href="#s6">Pretérito Perfeito (Vergangenheit)</a></li>
+    <li><a href="#s7">Pretérito Imperfeito (Beschreibung)</a></li>
+    <li><a href="#s8">Konditional (würde)</a></li>
+    <li><a href="#s9">Reflexive Verben + Pronomen-Stellung</a></li>
+    <li><a href="#s10">Artikel + Kontraktionen + Por/Para</a></li>
+    <li><a href="#s11">Fragewörter + häufige Konstruktionen</a></li>
+    <li><a href="#s12">Top 100 Vokabeln nach Themen</a></li>
+    <li><a href="#s13">Redewendungen & Konversation</a></li>
+  </ol>
+</div>
+
+<!-- ========================= SHEET 1: PRONOMEN ========================= -->
+<div class="sheet" id="s1">
+  <div class="sheet-header">
+    <h1>Sheet 1 · Pronomen</h1>
+    <div class="meta">Alle 4 Arten auf einer Seite</div>
+  </div>
+
+  <h2>Persönlich (Subjekt)</h2>
+  <table>
+    <tr><th>Person</th><th>Singular</th><th>Person</th><th>Plural</th></tr>
+    <tr><td>1.</td><td class="eu">eu</td><td>1.</td><td class="eu">nós</td></tr>
+    <tr><td>2.</td><td class="eu">tu</td><td>2.</td><td class="eu">vós (selten)</td></tr>
+    <tr><td>3.</td><td class="eu">ele / ela / você</td><td>3.</td><td class="eu">eles / elas / vocês</td></tr>
+  </table>
+
+  <div class="two-col">
+    <div>
+      <h2>Possessiv</h2>
+      <table>
+        <tr><th></th><th>m. Sg</th><th>f. Sg</th><th>m. Pl</th><th>f. Pl</th></tr>
+        <tr><td>eu</td><td class="v">meu</td><td class="v">minha</td><td>meus</td><td>minhas</td></tr>
+        <tr><td>tu</td><td class="v">teu</td><td class="v">tua</td><td>teus</td><td>tuas</td></tr>
+        <tr><td>ele/ela</td><td class="v">seu</td><td class="v">sua</td><td>seus</td><td>suas</td></tr>
+        <tr><td>nós</td><td class="v">nosso</td><td class="v">nossa</td><td>nossos</td><td>nossas</td></tr>
+        <tr><td>eles</td><td class="v">seu</td><td class="v">sua</td><td>seus</td><td>suas</td></tr>
+      </table>
+      <div class="rule"><strong>PT-PT:</strong> Mit Artikel! "a minha casa", "o meu carro"</div>
+    </div>
+
+    <div>
+      <h2>Reflexiv</h2>
+      <table>
+        <tr><th>Person</th><th>Pronomen</th><th>Bsp.</th></tr>
+        <tr><td>eu</td><td class="v">-me</td><td>chamo-me</td></tr>
+        <tr><td>tu</td><td class="v">-te</td><td>chamas-te</td></tr>
+        <tr><td>ele/ela</td><td class="v">-se</td><td>chama-se</td></tr>
+        <tr><td>nós</td><td class="v">-nos</td><td>chamamo-nos</td></tr>
+        <tr><td>eles</td><td class="v">-se</td><td>chamam-se</td></tr>
+      </table>
+      <div class="warn"><strong>Nós:</strong> s entfällt vor -nos!</div>
+    </div>
+  </div>
+
+  <h2>Objekt (Direkt + Indirekt)</h2>
+  <table>
+    <tr><th>Person</th><th>Direkt (wen?)</th><th>Indirekt (wem?)</th><th>Mit "com"</th></tr>
+    <tr><td>mich/mir</td><td class="v">me</td><td class="v">me</td><td>comigo</td></tr>
+    <tr><td>dich/dir</td><td class="v">te</td><td class="v">te</td><td>contigo</td></tr>
+    <tr><td>ihn / sie</td><td class="v">o / a</td><td class="v">lhe</td><td>com ele / ela</td></tr>
+    <tr><td>uns</td><td class="v">nos</td><td class="v">nos</td><td>connosco</td></tr>
+    <tr><td>euch</td><td class="v">vos</td><td class="v">vos</td><td>convosco</td></tr>
+    <tr><td>sie (Pl)</td><td class="v">os / as</td><td class="v">lhes</td><td>com eles/elas</td></tr>
+  </table>
+
+  <h2>Demonstrativ — 3 Räume</h2>
+  <table>
+    <tr><th>Raum</th><th>m.Sg</th><th>f.Sg</th><th>Pl</th><th>neutral</th></tr>
+    <tr><td>👆 hier (bei mir)</td><td class="v">este</td><td class="v">esta</td><td>estes/estas</td><td class="v">isto</td></tr>
+    <tr><td>👉 da (bei dir)</td><td class="v">esse</td><td class="v">essa</td><td>esses/essas</td><td class="v">isso</td></tr>
+    <tr><td>👈 dort (weg)</td><td class="v">aquele</td><td class="v">aquela</td><td>aqueles/aquelas</td><td class="v">aquilo</td></tr>
+  </table>
+</div>
+
+<!-- ========================= SHEET 2: SER/ESTAR/TER/IR/VIR ========================= -->
+<div class="sheet" id="s2">
+  <div class="sheet-header">
+    <h1>Sheet 2 · Die 5 wichtigsten Verben (Presente)</h1>
+    <div class="meta">ser · estar · ter · ir · vir</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2>SER (sein, dauerhaft)</h2>
+      <table>
+        <tr><th></th><th>Form</th><th>Verneint</th></tr>
+        <tr><td>eu</td><td class="eu">sou</td><td>não sou</td></tr>
+        <tr><td>tu</td><td class="eu">és</td><td>não és</td></tr>
+        <tr><td>ele/ela</td><td class="eu">é</td><td>não é</td></tr>
+        <tr><td>nós</td><td class="eu">somos</td><td>não somos</td></tr>
+        <tr><td>eles</td><td class="eu">são</td><td>não são</td></tr>
+      </table>
+      <p><strong>Wofür:</strong> Identität, Nationalität, Beruf, Charakter, Zeit/Datum, Material, permanenter Ort</p>
+    </div>
+
+    <div>
+      <h2>ESTAR (sein, temporär)</h2>
+      <table>
+        <tr><th></th><th>Form</th></tr>
+        <tr><td>eu</td><td class="eu">estou</td></tr>
+        <tr><td>tu</td><td class="eu">estás</td></tr>
+        <tr><td>ele/ela</td><td class="eu">está</td></tr>
+        <tr><td>nós</td><td class="eu">estamos</td></tr>
+        <tr><td>eles</td><td class="eu">estão</td></tr>
+      </table>
+      <p><strong>Wofür:</strong> Aktueller Zustand, aktueller Ort, Wetter, Verlaufsform (estar a + Inf)</p>
+    </div>
+  </div>
+
+  <div class="rule"><strong>SER vs. ESTAR:</strong> Kann sich ändern? → estar. Dauerhaft? → ser. Beruf IMMER ser ("Sou médico" nie "Estou médico"). NIE Artikel: "Sou alemão" — nicht "um alemão".</div>
+
+  <div class="two-col">
+    <div>
+      <h2>TER (haben)</h2>
+      <table>
+        <tr><th></th><th>Form</th></tr>
+        <tr><td>eu</td><td class="eu">tenho</td></tr>
+        <tr><td>tu</td><td class="eu">tens</td></tr>
+        <tr><td>ele/ela</td><td class="eu">tem</td></tr>
+        <tr><td>nós</td><td class="eu">temos</td></tr>
+        <tr><td>eles</td><td class="eu">têm</td></tr>
+      </table>
+      <p><strong>Wofür:</strong> Besitz + Alter ("Tenho 28 anos" = ich bin 28!)</p>
+    </div>
+
+    <div>
+      <h2>IR (gehen / werden)</h2>
+      <table>
+        <tr><th></th><th>Form</th></tr>
+        <tr><td>eu</td><td class="eu">vou</td></tr>
+        <tr><td>tu</td><td class="eu">vais</td></tr>
+        <tr><td>ele/ela</td><td class="eu">vai</td></tr>
+        <tr><td>nós</td><td class="eu">vamos</td></tr>
+        <tr><td>eles</td><td class="eu">vão</td></tr>
+      </table>
+      <p><strong>Wofür:</strong> "ir + Inf" = Zukunft ("Vou comer"). "ir a/para" = gehen nach.</p>
+    </div>
+  </div>
+
+  <h2>VIR (kommen)</h2>
+  <table>
+    <tr><td>eu</td><td class="eu">venho</td><td>tu</td><td class="eu">vens</td><td>ele/ela</td><td class="eu">vem</td><td>nós</td><td class="eu">vimos</td><td>eles</td><td class="eu">vêm</td></tr>
+  </table>
+</div>
+
+<!-- ========================= SHEET 3: UNREGELMÄSSIGE ========================= -->
+<div class="sheet" id="s3">
+  <div class="sheet-header">
+    <h1>Sheet 3 · Unregelmäßige Verben (Presente)</h1>
+    <div class="meta">Die 10 wichtigsten — eu-Formen besonders!</div>
+  </div>
+
+  <table>
+    <tr><th>Infinitiv</th><th class="eu">eu</th><th>tu</th><th>ele/ela</th><th>nós</th><th>eles</th></tr>
+    <tr><td>saber (wissen/können)</td><td class="eu">sei</td><td>sabes</td><td>sabe</td><td>sabemos</td><td>sabem</td></tr>
+    <tr><td>trazer (bringen)</td><td class="eu">trago</td><td>trazes</td><td>traz</td><td>trazemos</td><td>trazem</td></tr>
+    <tr><td>ver (sehen)</td><td class="eu">vejo</td><td>vês</td><td>vê</td><td>vemos</td><td>veem</td></tr>
+    <tr><td>dizer (sagen)</td><td class="eu">digo</td><td>dizes</td><td>diz</td><td>dizemos</td><td>dizem</td></tr>
+    <tr><td>fazer (machen)</td><td class="eu">faço</td><td>fazes</td><td>faz</td><td>fazemos</td><td>fazem</td></tr>
+    <tr><td>ler (lesen)</td><td class="eu">leio</td><td>lês</td><td>lê</td><td>lemos</td><td>leem</td></tr>
+    <tr><td>pôr (setzen/legen)</td><td class="eu">ponho</td><td>pões</td><td>põe</td><td>pomos</td><td>põem</td></tr>
+    <tr><td>perder (verlieren)</td><td class="eu">perco</td><td>perdes</td><td>perde</td><td>perdemos</td><td>perdem</td></tr>
+    <tr><td>querer (wollen)</td><td class="eu">quero</td><td>queres</td><td>quer</td><td>queremos</td><td>querem</td></tr>
+    <tr><td>poder (können)</td><td class="eu">posso</td><td>podes</td><td>pode</td><td>podemos</td><td>podem</td></tr>
+    <tr><td>dar (geben)</td><td class="eu">dou</td><td>dás</td><td>dá</td><td>damos</td><td>dão</td></tr>
+  </table>
+
+  <div class="warn"><strong>Auswendig lernen!</strong> sei · trago · vejo · digo · faço · leio · ponho · perco · quero · posso · dou</div>
+
+  <h2>Saber + Inf vs. Poder + Inf</h2>
+  <table>
+    <tr><th>Konstruktion</th><th>Bedeutung</th><th>Beispiel</th></tr>
+    <tr><td class="v">saber + Inf</td><td>etwas gelernt haben</td><td>Sei nadar. (Ich kann schwimmen)</td></tr>
+    <tr><td class="v">poder + Inf</td><td>dürfen / Möglichkeit</td><td>Posso sair? (Darf ich gehen?)</td></tr>
+  </table>
+</div>
+
+<!-- ========================= SHEET 4: -ar/-er/-ir ========================= -->
+<div class="sheet" id="s4">
+  <div class="sheet-header">
+    <h1>Sheet 4 · Regelmäßige Endungen (Presente)</h1>
+    <div class="meta">-ar / -er / -ir</div>
+  </div>
+
+  <table>
+    <tr><th>Person</th><th class="head">-ar (falar)</th><th class="head">-er (comer)</th><th class="head">-ir (partir)</th></tr>
+    <tr><td>eu</td><td>fal<span class="eu">o</span></td><td>com<span class="eu">o</span></td><td>part<span class="eu">o</span></td></tr>
+    <tr><td>tu</td><td>fal<span class="eu">as</span></td><td>com<span class="eu">es</span></td><td>part<span class="eu">es</span></td></tr>
+    <tr><td>ele/ela</td><td>fal<span class="eu">a</span></td><td>com<span class="eu">e</span></td><td>part<span class="eu">e</span></td></tr>
+    <tr><td>nós</td><td>fal<span class="eu">amos</span></td><td>com<span class="eu">emos</span></td><td>part<span class="eu">imos</span></td></tr>
+    <tr><td>eles</td><td>fal<span class="eu">am</span></td><td>com<span class="eu">em</span></td><td>part<span class="eu">em</span></td></tr>
+  </table>
+
+  <div class="rule"><strong>Vergleich:</strong> -er und -ir nur in nós unterschiedlich (-emos vs -imos). Eu-Form immer -o.</div>
+
+  <h2>Die wichtigsten Verben nach Gruppe</h2>
+  <div class="two-col">
+    <div>
+      <h3>-ar (~60% aller Verben)</h3>
+      <p>falar, trabalhar, morar, viver, viajar, gostar, tomar, comprar, almoçar, jantar, cozinhar, chegar, começar, terminar, acordar, ajudar, pagar, levar, deixar, ganhar, jogar, andar, dançar, encontrar, mostrar, esperar, tentar, mudar, ficar, chamar, voltar, entrar, fechar, abrir, perguntar, dar, estudar, falar, brincar, parar</p>
+    </div>
+    <div>
+      <h3>-er & -ir</h3>
+      <p><strong>-er:</strong> comer, beber, aprender, escrever, viver, correr, vender, entender, compreender, conhecer, esquecer, conseguir, dever, receber, descer, parecer, atender, resolver</p>
+      <p><strong>-ir:</strong> abrir, partir, decidir, dividir, discutir, permitir, admitir, assistir, garantir, sair, vir, ir</p>
+    </div>
+  </div>
+
+  <h2>"Estar a + Inf" (PT-PT Verlaufsform)</h2>
+  <p>Im europäischen Portugiesisch: <strong>estar + a + Infinitiv</strong>:</p>
+  <p><span class="v">Estou a trabalhar</span> (ich arbeite gerade) · <span class="v">Está a chover</span> (es regnet) · <span class="v">Estamos a aprender</span> (wir lernen gerade)</p>
+
+  <h2>"Ir + Inf" (Einfache Zukunft)</h2>
+  <p><strong>Ir konjugiert + Infinitiv</strong>:</p>
+  <p><span class="v">Vou comer</span> · <span class="v">Vais trabalhar</span> · <span class="v">Vai viajar</span> · <span class="v">Vamos sair</span> · <span class="v">Vão aprender</span></p>
+</div>
+
+<!-- ========================= SHEET 5: -ir Sonderformen + Cedilha ========================= -->
+<div class="sheet" id="s5">
+  <div class="sheet-header">
+    <h1>Sheet 5 · -ir Sonderformen + Cedilha-Regel</h1>
+    <div class="meta">Die heimtückischen eu-Formen</div>
+  </div>
+
+  <h2>Cedilha: c → ç vor o</h2>
+  <p>Bei Verben auf -cer, -zer, -cir in der eu-Form:</p>
+  <table>
+    <tr><th>Infinitiv</th><th class="eu">eu</th><th>Bedeutung</th></tr>
+    <tr><td>conhecer</td><td class="eu">conheço</td><td>kennen</td></tr>
+    <tr><td>esquecer</td><td class="eu">esqueço</td><td>vergessen</td></tr>
+    <tr><td>aquecer</td><td class="eu">aqueço</td><td>aufwärmen</td></tr>
+    <tr><td>descer</td><td class="eu">desço</td><td>hinuntergehen</td></tr>
+    <tr><td>fazer</td><td class="eu">faço</td><td>machen</td></tr>
+    <tr><td>parecer</td><td class="eu">pareço</td><td>scheinen</td></tr>
+    <tr><td>ouvir</td><td class="eu">ouço</td><td>hören (Sonderfall)</td></tr>
+    <tr><td>pedir</td><td class="eu">peço</td><td>bitten (Sonderfall)</td></tr>
+  </table>
+
+  <h2>-ir Sonderformen in eu-Form</h2>
+  <table>
+    <tr><th>Verb</th><th class="eu">eu (geändert)</th><th>tu/ele (normal)</th></tr>
+    <tr><td>vestir (anziehen)</td><td class="eu">visto (e→i)</td><td>vestes, veste</td></tr>
+    <tr><td>servir</td><td class="eu">sirvo (e→i)</td><td>serves, serve</td></tr>
+    <tr><td>sentir</td><td class="eu">sinto (e→i)</td><td>sentes, sente</td></tr>
+    <tr><td>preferir</td><td class="eu">prefiro (e→i)</td><td>preferes, prefere</td></tr>
+    <tr><td>seguir</td><td class="eu">sigo (gu→g)</td><td>segues, segue</td></tr>
+    <tr><td>conseguir</td><td class="eu">consigo</td><td>consegues, consegue</td></tr>
+    <tr><td>corrigir</td><td class="eu">corrijo (g→j)</td><td>corriges, corrige</td></tr>
+    <tr><td>dirigir</td><td class="eu">dirijo (g→j)</td><td>diriges, dirige</td></tr>
+  </table>
+
+  <h2>Unregelmäßige -ir Verben</h2>
+  <table>
+    <tr><th>Verb</th><th class="eu">eu</th><th>tu</th><th>ele/ela</th><th>nós</th><th>eles</th></tr>
+    <tr><td>ir</td><td class="eu">vou</td><td>vais</td><td>vai</td><td>vamos</td><td>vão</td></tr>
+    <tr><td>vir</td><td class="eu">venho</td><td>vens</td><td>vem</td><td>vimos</td><td>vêm</td></tr>
+    <tr><td>sair</td><td class="eu">saio</td><td>sais</td><td>sai</td><td>saímos</td><td>saem</td></tr>
+    <tr><td>cair</td><td class="eu">caio</td><td>cais</td><td>cai</td><td>caímos</td><td>caem</td></tr>
+    <tr><td>subir</td><td class="eu">subo</td><td>sobes</td><td>sobe</td><td>subimos</td><td>sobem</td></tr>
+    <tr><td>dormir</td><td class="eu">durmo</td><td>dormes</td><td>dorme</td><td>dormimos</td><td>dormem</td></tr>
+    <tr><td>fugir</td><td class="eu">fujo</td><td>foges</td><td>foge</td><td>fugimos</td><td>fogem</td></tr>
+  </table>
+</div>
+
+<!-- ========================= SHEET 6: PRETÉRITO PERFEITO ========================= -->
+<div class="sheet" id="s6">
+  <div class="sheet-header">
+    <h1>Sheet 6 · Pretérito Perfeito</h1>
+    <div class="meta">Abgeschlossene Vergangenheit (was passierte)</div>
+  </div>
+
+  <h2>Regelmäßige Endungen</h2>
+  <table>
+    <tr><th>Person</th><th class="head">-ar (falar)</th><th class="head">-er (comer)</th><th class="head">-ir (partir)</th></tr>
+    <tr><td>eu</td><td>fal<span class="eu">ei</span></td><td>com<span class="eu">i</span></td><td>part<span class="eu">i</span></td></tr>
+    <tr><td>tu</td><td>fal<span class="eu">aste</span></td><td>com<span class="eu">este</span></td><td>part<span class="eu">iste</span></td></tr>
+    <tr><td>ele/ela</td><td>fal<span class="eu">ou</span></td><td>com<span class="eu">eu</span></td><td>part<span class="eu">iu</span></td></tr>
+    <tr><td>nós</td><td>fal<span class="eu">ámos</span> (PT)</td><td>com<span class="eu">emos</span></td><td>part<span class="eu">imos</span></td></tr>
+    <tr><td>eles</td><td>fal<span class="eu">aram</span></td><td>com<span class="eu">eram</span></td><td>part<span class="eu">iram</span></td></tr>
+  </table>
+
+  <h2>Unregelmäßige Verben (kompakt)</h2>
+  <table>
+    <tr><th></th><th>ser/ir</th><th>ter</th><th>fazer</th><th>estar</th><th>vir</th><th>pôr</th><th>dar</th><th>ver</th></tr>
+    <tr><td>eu</td><td class="eu">fui</td><td class="eu">tive</td><td class="eu">fiz</td><td class="eu">estive</td><td class="eu">vim</td><td class="eu">pus</td><td class="eu">dei</td><td class="eu">vi</td></tr>
+    <tr><td>tu</td><td>foste</td><td>tiveste</td><td>fizeste</td><td>estiveste</td><td>vieste</td><td>puseste</td><td>deste</td><td>viste</td></tr>
+    <tr><td>ele/ela</td><td>foi</td><td>teve</td><td>fez</td><td>esteve</td><td>veio</td><td>pôs</td><td>deu</td><td>viu</td></tr>
+    <tr><td>nós</td><td>fomos</td><td>tivemos</td><td>fizemos</td><td>estivemos</td><td>viemos</td><td>pusemos</td><td>demos</td><td>vimos</td></tr>
+    <tr><td>eles</td><td>foram</td><td>tiveram</td><td>fizeram</td><td>estiveram</td><td>vieram</td><td>puseram</td><td>deram</td><td>viram</td></tr>
+  </table>
+
+  <table style="margin-top: 6px;">
+    <tr><th></th><th>dizer</th><th>poder</th><th>saber</th><th>querer</th><th>trazer</th></tr>
+    <tr><td>eu</td><td class="eu">disse</td><td class="eu">pude</td><td class="eu">soube</td><td class="eu">quis</td><td class="eu">trouxe</td></tr>
+    <tr><td>ele/ela</td><td>disse</td><td>pôde</td><td>soube</td><td>quis</td><td>trouxe</td></tr>
+    <tr><td>nós</td><td>dissemos</td><td>pudemos</td><td>soubemos</td><td>quisemos</td><td>trouxemos</td></tr>
+  </table>
+
+  <div class="warn"><strong>SER und IR haben gleiche Form!</strong> "fui médico" (war Arzt — ser) vs "fui ao cinema" (ging ins Kino — ir). Unterschied: ir + a/ao.</div>
+
+  <h2>Trigger-Wörter</h2>
+  <p><strong>ontem · anteontem · na semana passada · no fim de semana · há X dias · de repente · uma vez · em 2020</strong></p>
+</div>
+
+<!-- ========================= SHEET 7: IMPERFEITO ========================= -->
+<div class="sheet" id="s7">
+  <div class="sheet-header">
+    <h1>Sheet 7 · Pretérito Imperfeito</h1>
+    <div class="meta">Beschreibende Vergangenheit (wie war es)</div>
+  </div>
+
+  <h2>Regelmäßige Endungen</h2>
+  <table>
+    <tr><th>Person</th><th class="head">-ar (falar)</th><th class="head">-er (comer)</th><th class="head">-ir (partir)</th></tr>
+    <tr><td>eu</td><td>fal<span class="eu">ava</span></td><td>com<span class="eu">ia</span></td><td>part<span class="eu">ia</span></td></tr>
+    <tr><td>tu</td><td>fal<span class="eu">avas</span></td><td>com<span class="eu">ias</span></td><td>part<span class="eu">ias</span></td></tr>
+    <tr><td>ele/ela</td><td>fal<span class="eu">ava</span></td><td>com<span class="eu">ia</span></td><td>part<span class="eu">ia</span></td></tr>
+    <tr><td>nós</td><td>fal<span class="eu">ávamos</span></td><td>com<span class="eu">íamos</span></td><td>part<span class="eu">íamos</span></td></tr>
+    <tr><td>eles</td><td>fal<span class="eu">avam</span></td><td>com<span class="eu">iam</span></td><td>part<span class="eu">iam</span></td></tr>
+  </table>
+
+  <div class="rule"><strong>-er und -ir = identische Endungen!</strong> -ia/-ias/-ia/-íamos/-iam</div>
+
+  <h2>Die 4 unregelmäßigen Verben (alles!)</h2>
+  <table>
+    <tr><th>Person</th><th>ser</th><th>ter</th><th>vir</th><th>pôr</th></tr>
+    <tr><td>eu</td><td class="eu">era</td><td class="eu">tinha</td><td class="eu">vinha</td><td class="eu">punha</td></tr>
+    <tr><td>tu</td><td>eras</td><td>tinhas</td><td>vinhas</td><td>punhas</td></tr>
+    <tr><td>ele/ela</td><td>era</td><td>tinha</td><td>vinha</td><td>punha</td></tr>
+    <tr><td>nós</td><td>éramos</td><td>tínhamos</td><td>vínhamos</td><td>púnhamos</td></tr>
+    <tr><td>eles</td><td>eram</td><td>tinham</td><td>vinham</td><td>punham</td></tr>
+  </table>
+
+  <div class="rule"><strong>estar ist hier REGELMÄSSIG!</strong> estava, estavas, estava, estávamos, estavam</div>
+
+  <h2>Perfeito vs Imperfeito</h2>
+  <table>
+    <tr><th>Situation</th><th>Form</th><th>Beispiel</th></tr>
+    <tr><td>Einmaliges Ereignis</td><td class="eu">Perfeito</td><td>Ontem fui ao cinema.</td></tr>
+    <tr><td>Wiederholt früher</td><td class="eu">Imperfeito</td><td>Quando era criança, ia ao cinema.</td></tr>
+    <tr><td>Beschreibung Hintergrund</td><td class="eu">Imperfeito</td><td>A casa era grande.</td></tr>
+    <tr><td>Andauernd → unterbrochen</td><td>beide</td><td>Estava a ler quando o telefone tocou.</td></tr>
+    <tr><td>Höfliche Bitte</td><td class="eu">Imperfeito</td><td>Queria um café, por favor.</td></tr>
+  </table>
+
+  <h2>Trigger-Wörter Imperfeito</h2>
+  <p><strong>sempre · todos os dias · antigamente · quando era pequeno · enquanto · geralmente · às vezes</strong></p>
+</div>
+
+<!-- ========================= SHEET 8: KONDITIONAL ========================= -->
+<div class="sheet" id="s8">
+  <div class="sheet-header">
+    <h1>Sheet 8 · Konditional ("würde")</h1>
+    <div class="meta">Infinitiv + Endung</div>
+  </div>
+
+  <h2>Trick: Endung an den GANZEN Infinitiv</h2>
+  <table>
+    <tr><th>Person</th><th>Endung</th><th>falar</th><th>comer</th><th>partir</th></tr>
+    <tr><td>eu</td><td class="eu">-ia</td><td>falaria</td><td>comeria</td><td>partiria</td></tr>
+    <tr><td>tu</td><td class="eu">-ias</td><td>falarias</td><td>comerias</td><td>partirias</td></tr>
+    <tr><td>ele/ela</td><td class="eu">-ia</td><td>falaria</td><td>comeria</td><td>partiria</td></tr>
+    <tr><td>nós</td><td class="eu">-íamos</td><td>falaríamos</td><td>comeríamos</td><td>partiríamos</td></tr>
+    <tr><td>eles</td><td class="eu">-iam</td><td>falariam</td><td>comeriam</td><td>partiriam</td></tr>
+  </table>
+
+  <div class="rule"><strong>Endungen identisch mit Imperfeito-Endungen!</strong> Unterschied: Konditional an Infinitiv, Imperfeito an Stamm.</div>
+
+  <h2>Nur 3 Unregelmäßige</h2>
+  <table>
+    <tr><th>Infinitiv</th><th>Stamm</th><th class="eu">eu</th><th>nós</th></tr>
+    <tr><td>fazer</td><td class="v">far-</td><td class="eu">faria</td><td>faríamos</td></tr>
+    <tr><td>dizer</td><td class="v">dir-</td><td class="eu">diria</td><td>diríamos</td></tr>
+    <tr><td>trazer</td><td class="v">trar-</td><td class="eu">traria</td><td>traríamos</td></tr>
+  </table>
+
+  <h2>Verwendung</h2>
+  <p>• <strong>Höfliche Bitte:</strong> Gostaria de um café.</p>
+  <p>• <strong>Hypothese:</strong> Faria isso de outra forma.</p>
+  <p>• <strong>Rat:</strong> No teu lugar, não diria isso.</p>
+  <p>• <strong>Würde + Bedingung:</strong> Se tivesse tempo, aprenderia espanhol.</p>
+
+  <div class="tip"><strong>Im Alltag oft Imperfeito statt Konditional!</strong> "queria/podias/seria" statt "gostaria/poderias/seria" — beides okay.</div>
+</div>
+
+<!-- ========================= SHEET 9: REFLEXIVE STELLUNG ========================= -->
+<div class="sheet" id="s9">
+  <div class="sheet-header">
+    <h1>Sheet 9 · Reflexive + Pronomen-Stellung</h1>
+    <div class="meta">Wann vor dem Verb, wann danach</div>
+  </div>
+
+  <h2>Standardstellung: NACH dem Verb (Bindestrich)</h2>
+  <table>
+    <tr><th>Person</th><th>Form (chamar-se)</th><th>Form (levantar-se)</th></tr>
+    <tr><td>eu</td><td class="eu">chamo-me</td><td>levanto-me</td></tr>
+    <tr><td>tu</td><td class="eu">chamas-te</td><td>levantas-te</td></tr>
+    <tr><td>ele/ela</td><td class="eu">chama-se</td><td>levanta-se</td></tr>
+    <tr><td>nós</td><td class="eu">chamamo-nos</td><td>levantamo-nos</td></tr>
+    <tr><td>eles</td><td class="eu">chamam-se</td><td>levantam-se</td></tr>
+  </table>
+
+  <div class="warn"><strong>Bei nós entfällt das s!</strong> Nicht "chamamos-nos" sondern "chamamo-nos". Genauso "levantamo-nos", "sentamo-nos".</div>
+
+  <h2>VOR dem Verb bei Triggern</h2>
+  <table>
+    <tr><th>Trigger</th><th>Beispiel</th></tr>
+    <tr><td><strong>não</strong> (Verneinung)</td><td>Não <span class="v">me</span> deito cedo.</td></tr>
+    <tr><td><strong>nunca</strong></td><td>Nunca <span class="v">me</span> esqueço.</td></tr>
+    <tr><td><strong>também</strong></td><td>Também <span class="v">nos</span> levantamos cedo.</td></tr>
+    <tr><td><strong>já / ainda</strong></td><td>Já <span class="v">se</span> deitou.</td></tr>
+    <tr><td><strong>só</strong></td><td>Só <span class="v">se</span> sentam no sofá.</td></tr>
+    <tr><td><strong>sempre</strong></td><td>Sempre <span class="v">me</span> esqueço.</td></tr>
+    <tr><td><strong>Fragewörter</strong></td><td>Como <span class="v">te</span> chamas?</td></tr>
+    <tr><td><strong>que</strong> (Konjunktion)</td><td>Sei que <span class="v">se</span> chama Pedro.</td></tr>
+  </table>
+
+  <h2>Wichtige reflexive Verben</h2>
+  <div class="vocab-list">
+    <div class="pt">chamar-se</div><div class="de">heißen</div>
+    <div class="pt">levantar-se</div><div class="de">aufstehen</div>
+    <div class="pt">sentar-se</div><div class="de">sich setzen</div>
+    <div class="pt">deitar-se</div><div class="de">sich hinlegen / schlafen</div>
+    <div class="pt">lavar-se</div><div class="de">sich waschen</div>
+    <div class="pt">vestir-se</div><div class="de">sich anziehen</div>
+    <div class="pt">esquecer-se (de)</div><div class="de">vergessen</div>
+    <div class="pt">lembrar-se (de)</div><div class="de">sich erinnern</div>
+    <div class="pt">sentir-se</div><div class="de">sich fühlen</div>
+    <div class="pt">parecer-se (com)</div><div class="de">ähneln</div>
+    <div class="pt">mudar-se</div><div class="de">umziehen</div>
+    <div class="pt">inscrever-se</div><div class="de">sich anmelden</div>
+    <div class="pt">atrasar-se</div><div class="de">sich verspäten</div>
+    <div class="pt">divertir-se</div><div class="de">Spaß haben</div>
+  </div>
+</div>
+
+<!-- ========================= SHEET 10: ARTIKEL + KONTRAKTIONEN + POR/PARA ========================= -->
+<div class="sheet" id="s10">
+  <div class="sheet-header">
+    <h1>Sheet 10 · Artikel · Kontraktionen · Por/Para</h1>
+    <div class="meta">Die Klassiker</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2>Artikel</h2>
+      <table>
+        <tr><th></th><th>Sg</th><th>Pl</th></tr>
+        <tr><td>Maskulin</td><td class="eu">o (um)</td><td class="eu">os (uns)</td></tr>
+        <tr><td>Feminin</td><td class="eu">a (uma)</td><td class="eu">as (umas)</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Kontraktionen</h2>
+      <table>
+        <tr><th></th><th>+o</th><th>+a</th><th>+os</th><th>+as</th></tr>
+        <tr><td>em</td><td class="eu">no</td><td class="eu">na</td><td>nos</td><td>nas</td></tr>
+        <tr><td>de</td><td class="eu">do</td><td class="eu">da</td><td>dos</td><td>das</td></tr>
+        <tr><td>a</td><td class="eu">ao</td><td class="eu">à</td><td>aos</td><td>às</td></tr>
+        <tr><td>por</td><td class="eu">pelo</td><td class="eu">pela</td><td>pelos</td><td>pelas</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>POR (durch · wegen · pro)</h2>
+  <table>
+    <tr><th>Bedeutung</th><th>Beispiel</th></tr>
+    <tr><td>Grund/Ursache</td><td>Por isso vou trabalhar.</td></tr>
+    <tr><td>Pro / Frequenz</td><td>Treino 3 vezes por semana.</td></tr>
+    <tr><td>Zeitdauer</td><td>Vou ficar por 2 meses.</td></tr>
+    <tr><td>Bewegung durch</td><td>Passei pelo centro.</td></tr>
+    <tr><td>Tausch/Preis</td><td>Comprei por 20€.</td></tr>
+  </table>
+  <p><strong>Feste Ausdrücke:</strong> por favor · por exemplo · por isso · pelo menos · por enquanto · por acaso · por fim</p>
+
+  <h2>PARA (für · zu · nach · um zu)</h2>
+  <table>
+    <tr><th>Bedeutung</th><th>Beispiel</th></tr>
+    <tr><td>Empfänger</td><td>Este café é para ti.</td></tr>
+    <tr><td>Ziel/Richtung</td><td>Vou para Lisboa.</td></tr>
+    <tr><td>Zweck (um zu)</td><td>Estudo para aprender.</td></tr>
+    <tr><td>Deadline</td><td>Faz isso para amanhã.</td></tr>
+    <tr><td>Vergleich</td><td>Alto para a sua idade.</td></tr>
+  </table>
+</div>
+
+<!-- ========================= SHEET 11: FRAGEWÖRTER ========================= -->
+<div class="sheet" id="s11">
+  <div class="sheet-header">
+    <h1>Sheet 11 · Fragewörter + Konstruktionen</h1>
+    <div class="meta">Alles zum Fragen</div>
+  </div>
+
+  <h2>Fragewörter</h2>
+  <table>
+    <tr><th>Port.</th><th>Deutsch</th><th>Wofür</th></tr>
+    <tr><td class="eu">Quem?</td><td>Wer?</td><td>nur Personen</td></tr>
+    <tr><td class="eu">Como?</td><td>Wie?</td><td>Art und Weise</td></tr>
+    <tr><td class="eu">Qual / Quais?</td><td>Welche/r?</td><td>Auswahl aus mehreren</td></tr>
+    <tr><td class="eu">O que / Que?</td><td>Was?</td><td>Dinge, allgemeine Infos</td></tr>
+    <tr><td class="eu">Onde?</td><td>Wo?</td><td>Ort</td></tr>
+    <tr><td class="eu">Quando?</td><td>Wann?</td><td>Zeit</td></tr>
+    <tr><td class="eu">Quanto / Quantos?</td><td>Wie viel/e?</td><td>Menge</td></tr>
+    <tr><td class="eu">Porquê?</td><td>Warum?</td><td>(Antwort: porque)</td></tr>
+  </table>
+
+  <div class="tip"><strong>"é que" oft eingeschoben:</strong> "Como é que te chamas?" / "Onde é que moras?" — klingt natürlicher.</div>
+
+  <h2>Komparativ</h2>
+  <table>
+    <tr><th>Form</th><th>Beispiel</th></tr>
+    <tr><td class="eu">mais X do que Y</td><td>Valência é mais caro do que Berlim.</td></tr>
+    <tr><td class="eu">menos X do que Y</td><td>Berlim é menos caro do que Lisboa.</td></tr>
+    <tr><td class="eu">tão X como Y</td><td>Valência é tão bonita como Lisboa.</td></tr>
+    <tr><td class="eu">parecido com</td><td>Valência é parecido com Lisboa.</td></tr>
+    <tr><td class="eu">comparado com</td><td>Comparado com Lisboa, Berlim é mais barato.</td></tr>
+  </table>
+
+  <h2>Unregelmäßige Komparative</h2>
+  <p>bom → <span class="eu">melhor</span> · mau → <span class="eu">pior</span> · grande → <span class="eu">maior</span> · pequeno → <span class="eu">menor</span></p>
+
+  <h2>Häufigkeitsadverbien</h2>
+  <div class="vocab-list">
+    <div class="pt">sempre</div><div class="de">immer</div>
+    <div class="pt">nunca</div><div class="de">nie</div>
+    <div class="pt">às vezes</div><div class="de">manchmal</div>
+    <div class="pt">com frequência</div><div class="de">oft</div>
+    <div class="pt">muitas vezes</div><div class="de">oft (= viele Male)</div>
+    <div class="pt">poucas vezes / raramente</div><div class="de">selten</div>
+    <div class="pt">quase nunca</div><div class="de">fast nie</div>
+    <div class="pt">geralmente</div><div class="de">normalerweise</div>
+  </div>
+
+  <h2>Estar com + Substantiv</h2>
+  <div class="vocab-list">
+    <div class="pt">estou com fome</div><div class="de">ich habe Hunger</div>
+    <div class="pt">estou com sede</div><div class="de">ich habe Durst</div>
+    <div class="pt">estou com sono</div><div class="de">ich bin müde</div>
+    <div class="pt">estou com calor / frio</div><div class="de">mir ist heiß / kalt</div>
+    <div class="pt">estou com medo</div><div class="de">ich habe Angst</div>
+    <div class="pt">estou com saudades</div><div class="de">ich habe Sehnsucht</div>
+    <div class="pt">estou com pressa</div><div class="de">ich habe es eilig</div>
+    <div class="pt">estou com vontade de</div><div class="de">ich habe Lust auf</div>
+  </div>
+</div>
+
+<!-- ========================= SHEET 12: TOP VOKABELN ========================= -->
+<div class="sheet" id="s12">
+  <div class="sheet-header">
+    <h1>Sheet 12 · Top-Vokabeln nach Themen</h1>
+    <div class="meta">Die wichtigsten 150</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2>Zeit</h2>
+      <div class="vocab-list">
+        <div class="pt">hoje / ontem / amanhã</div><div class="de">heute/gestern/morgen</div>
+        <div class="pt">de manhã / à tarde / à noite</div><div class="de">morgens/nachm./abends</div>
+        <div class="pt">cedo / tarde</div><div class="de">früh / spät</div>
+        <div class="pt">agora / depois / antes</div><div class="de">jetzt / danach / vorher</div>
+        <div class="pt">na próxima semana</div><div class="de">nächste Woche</div>
+        <div class="pt">na semana passada</div><div class="de">letzte Woche</div>
+        <div class="pt">no fim de semana</div><div class="de">am Wochenende</div>
+        <div class="pt">há X tempo</div><div class="de">seit/vor X Zeit</div>
+        <div class="pt">por enquanto</div><div class="de">vorerst</div>
+        <div class="pt">de novo / novamente</div><div class="de">wieder</div>
+      </div>
+
+      <h2>Familie</h2>
+      <div class="vocab-list">
+        <div class="pt">pai / mãe</div><div class="de">Vater / Mutter</div>
+        <div class="pt">pais</div><div class="de">Eltern (vs. país = Land!)</div>
+        <div class="pt">filho / filha</div><div class="de">Sohn / Tochter</div>
+        <div class="pt">irmão / irmã</div><div class="de">Bruder / Schwester</div>
+        <div class="pt">avô / avó</div><div class="de">Opa / Oma</div>
+        <div class="pt">namorado/a</div><div class="de">Freund/in (Beziehung)</div>
+      </div>
+
+      <h2>Essen</h2>
+      <div class="vocab-list">
+        <div class="pt">comida / comer</div><div class="de">Essen / essen</div>
+        <div class="pt">pequeno-almoço / almoço / jantar</div><div class="de">Frühstück/Mittag/Abend</div>
+        <div class="pt">café / pão / queijo</div><div class="de">Kaffee/Brot/Käse</div>
+        <div class="pt">carne / peixe / frango</div><div class="de">Fleisch/Fisch/Hähnchen</div>
+        <div class="pt">arroz / batata / massa</div><div class="de">Reis/Kartoffel/Pasta</div>
+        <div class="pt">fruta / morango / ananás</div><div class="de">Obst/Erdbeere/Ananas</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Orte</h2>
+      <div class="vocab-list">
+        <div class="pt">casa / em casa</div><div class="de">Haus / zu Hause</div>
+        <div class="pt">cidade / vila</div><div class="de">Stadt / Dorf</div>
+        <div class="pt">rua / praia / parque</div><div class="de">Straße/Strand/Park</div>
+        <div class="pt">restaurante / café</div><div class="de">Restaurant / Café</div>
+        <div class="pt">ginásio / escritório</div><div class="de">Fitnessstudio/Büro</div>
+        <div class="pt">faculdade / escola</div><div class="de">Uni / Schule</div>
+        <div class="pt">cinema / supermercado</div><div class="de">Kino / Supermarkt</div>
+      </div>
+
+      <h2>Eigenschaften</h2>
+      <div class="vocab-list">
+        <div class="pt">grande / pequeno</div><div class="de">groß / klein</div>
+        <div class="pt">alto / baixo</div><div class="de">groß/klein (Person)</div>
+        <div class="pt">bom / mau (melhor/pior)</div><div class="de">gut/schlecht (besser/schlechter)</div>
+        <div class="pt">bonito / feio</div><div class="de">schön / hässlich</div>
+        <div class="pt">caro / barato</div><div class="de">teuer / billig</div>
+        <div class="pt">fácil / difícil</div><div class="de">leicht / schwer</div>
+        <div class="pt">cansado / tranquilo</div><div class="de">müde / ruhig</div>
+        <div class="pt">feliz / triste / contente</div><div class="de">glücklich/traurig/zufrieden</div>
+      </div>
+
+      <h2>Konversation</h2>
+      <div class="vocab-list">
+        <div class="pt">também / mas / então</div><div class="de">auch/aber/also</div>
+        <div class="pt">por isso</div><div class="de">deshalb</div>
+        <div class="pt">porque (Antwort)</div><div class="de">weil</div>
+        <div class="pt">acho que…</div><div class="de">ich denke, dass</div>
+        <div class="pt">talvez</div><div class="de">vielleicht</div>
+        <div class="pt">claro / com certeza</div><div class="de">klar / sicher</div>
+        <div class="pt">desculpa / por favor / obrigado</div><div class="de">tschuldigung/bitte/danke</div>
+        <div class="pt">tens razão</div><div class="de">du hast Recht</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= SHEET 13: REDEWENDUNGEN ========================= -->
+<div class="sheet" id="s13">
+  <div class="sheet-header">
+    <h1>Sheet 13 · Redewendungen & Konversation</h1>
+    <div class="meta">Was du wirklich sagst</div>
+  </div>
+
+  <h2>Sich vorstellen</h2>
+  <div class="vocab-list">
+    <div class="pt">Chamo-me Moritz.</div><div class="de">Ich heiße Moritz.</div>
+    <div class="pt">Sou da Alemanha.</div><div class="de">Ich komme aus Deutschland.</div>
+    <div class="pt">Tenho 28 anos.</div><div class="de">Ich bin 28 Jahre alt.</div>
+    <div class="pt">Sou empreendedor.</div><div class="de">Ich bin Unternehmer.</div>
+    <div class="pt">Moro entre a Alemanha e Portugal.</div><div class="de">Wohne zwischen DE und PT.</div>
+    <div class="pt">Vivi muito tempo em Lisboa.</div><div class="de">Habe lange in Lissabon gelebt.</div>
+  </div>
+
+  <h2>Smalltalk / Wochenende</h2>
+  <div class="vocab-list">
+    <div class="pt">Como foi o teu fim de semana?</div><div class="de">Wie war dein Wochenende?</div>
+    <div class="pt">Foi tranquilo.</div><div class="de">War ruhig.</div>
+    <div class="pt">O que fizeste?</div><div class="de">Was hast du gemacht?</div>
+    <div class="pt">Como vai?</div><div class="de">Wie geht's?</div>
+    <div class="pt">Como vão as coisas?</div><div class="de">Wie laufen die Dinge?</div>
+    <div class="pt">Tudo bem? — Tudo bem.</div><div class="de">Alles gut? — Alles gut.</div>
+    <div class="pt">Desculpe pelo atraso.</div><div class="de">Sorry für die Verspätung.</div>
+  </div>
+
+  <h2>Restaurant / Bestellung</h2>
+  <div class="vocab-list">
+    <div class="pt">Queria um café, por favor.</div><div class="de">Ich hätte gerne einen Kaffee.</div>
+    <div class="pt">Quanto custa?</div><div class="de">Wie viel kostet?</div>
+    <div class="pt">A conta, por favor.</div><div class="de">Die Rechnung bitte.</div>
+    <div class="pt">Está muito bom.</div><div class="de">Es ist sehr gut.</div>
+  </div>
+
+  <h2>Meinungen ausdrücken</h2>
+  <div class="vocab-list">
+    <div class="pt">Eu acho que…</div><div class="de">Ich denke, dass…</div>
+    <div class="pt">Na minha opinião…</div><div class="de">Meiner Meinung nach…</div>
+    <div class="pt">Tens razão.</div><div class="de">Du hast Recht.</div>
+    <div class="pt">Não diria que é…</div><div class="de">Ich würde nicht sagen, dass…</div>
+    <div class="pt">É a vida / É assim.</div><div class="de">So ist das Leben.</div>
+    <div class="pt">Por isso… / Por enquanto…</div><div class="de">Deshalb / Vorerst</div>
+  </div>
+
+  <h2>Sprüche / Motivation</h2>
+  <div class="vocab-list">
+    <div class="pt">Sem consistência, sem sucesso.</div><div class="de">Ohne Konsistenz kein Erfolg.</div>
+    <div class="pt">Pouco a pouco / Passo a passo.</div><div class="de">Stück für Stück.</div>
+    <div class="pt">Pelo menos tentaste.</div><div class="de">Wenigstens hast du es versucht.</div>
+    <div class="pt">Não há sucesso sem riscos.</div><div class="de">Kein Erfolg ohne Risiken.</div>
+    <div class="pt">Quanto mais tentas, mais chances tens.</div><div class="de">Je mehr du versuchst, desto mehr Chancen.</div>
+    <div class="pt">Vamos chegar lá.</div><div class="de">Wir werden es schaffen.</div>
+  </div>
+
+  <h2>Verben mit Präpositionen (heikel!)</h2>
+  <div class="vocab-list">
+    <div class="pt">gostar <strong>de</strong></div><div class="de">mögen</div>
+    <div class="pt">precisar <strong>de</strong></div><div class="de">brauchen</div>
+    <div class="pt">depender <strong>de</strong></div><div class="de">abhängen von</div>
+    <div class="pt">esquecer-se <strong>de</strong></div><div class="de">vergessen</div>
+    <div class="pt">lembrar-se <strong>de</strong></div><div class="de">sich erinnern</div>
+    <div class="pt">começar <strong>a</strong> + Inf</div><div class="de">anfangen zu</div>
+    <div class="pt">continuar <strong>a</strong> + Inf</div><div class="de">weiter</div>
+    <div class="pt">tentar + Inf (ohne!)</div><div class="de">versuchen zu</div>
+    <div class="pt">conseguir + Inf (ohne!)</div><div class="de">schaffen zu</div>
+    <div class="pt">parecer-se <strong>com</strong></div><div class="de">ähneln</div>
+    <div class="pt">aprender <strong>a</strong> + Inf</div><div class="de">lernen zu</div>
+  </div>
+</div>
+
+<script>
+  // Optional: warn if user prints in landscape
+</script>
+</body>
+</html>
