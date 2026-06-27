@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Großer Diagnose-Test — Portugiesisch</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #c62828; }
+
+  .header { text-align: center; margin-bottom: 24px; }
+  .lesson-tag { display: inline-block; background: #c62828; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: #1a1715; }
+  .header p { font-size: 15px; color: #6b6560; line-height: 1.5; max-width: 540px; margin: 0 auto; }
+
+  .intro-box { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .intro-box h3 { font-size: 14px; font-weight: 700; color: #c62828; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .intro-box ul { padding-left: 18px; font-size: 13.5px; line-height: 1.7; color: #4a4540; }
+  .intro-box li { margin-bottom: 4px; }
+  .intro-box strong { color: #1a1715; }
+
+  /* Sticky progress */
+  .progress-bar-sticky { position: sticky; top: 0; background: #f5f0eb; padding: 12px 0; z-index: 50; margin-bottom: 16px; }
+  .progress-bar { height: 8px; background: #ede6df; border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #c62828; transition: width 0.3s; width: 0%; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #6b6560; margin-top: 6px; }
+
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #c62828; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #ffcdd2; display: flex; justify-content: space-between; align-items: center; }
+  .section-title .count { font-size: 11px; color: #9e9892; font-weight: 500; letter-spacing: 0.5px; }
+
+  .exercise-card { background: white; border-radius: 12px; padding: 22px 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 600; color: #9e9892; margin-bottom: 8px; }
+  .exercise-prompt { font-size: 15px; line-height: 1.55; margin-bottom: 12px; color: #2d2a26; }
+  .exercise-prompt em { color: #6b6560; font-style: italic; }
+
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 15px; }
+  .answer-input {
+    border: 2px solid #e8d5c4; border-radius: 8px; padding: 9px 12px;
+    font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26;
+    width: 200px; outline: none; transition: border-color 0.15s;
+  }
+  .answer-input:focus { border-color: #c62828; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .translation-input { width: 100%; }
+
+  .feedback { margin-top: 10px; padding: 9px 13px; border-radius: 8px; font-size: 13.5px; display: none; line-height: 1.5; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .feedback strong { font-weight: 700; }
+
+  .check-btn {
+    display: block; width: 100%; max-width: 320px; margin: 32px auto 0;
+    background: #c62828; color: white; border: none; border-radius: 12px;
+    padding: 18px 32px; font-size: 17px; font-weight: 700; font-family: inherit;
+    cursor: pointer; letter-spacing: 0.3px;
+  }
+  .check-btn:hover { background: #b71c1c; }
+
+  /* Results */
+  .results { display: none; margin-top: 32px; }
+  .results.show { display: block; }
+
+  .results-summary { background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-align: center; margin-bottom: 16px; }
+  .score-big { font-size: 56px; font-weight: 800; color: #c62828; }
+  .score-total { font-size: 16px; color: #6b6560; margin-bottom: 6px; }
+  .score-label { font-size: 14px; color: #4a4540; line-height: 1.5; max-width: 480px; margin: 8px auto 0; }
+
+  .topic-results { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 16px; }
+  .topic-results h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #2d2a26; margin-bottom: 16px; }
+  .topic-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ede6df; font-size: 14px; gap: 12px; }
+  .topic-row:last-child { border-bottom: none; }
+  .topic-name { flex: 1; font-weight: 500; color: #2d2a26; }
+  .topic-bar { width: 140px; height: 10px; background: #ede6df; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
+  .topic-fill { height: 100%; border-radius: 5px; transition: width 0.6s; }
+  .topic-fill.good { background: #2e7d32; }
+  .topic-fill.ok   { background: #f9a825; }
+  .topic-fill.bad  { background: #c62828; }
+  .topic-score { font-size: 13px; color: #6b6560; min-width: 56px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  .recommendations { background: linear-gradient(135deg, #fff8e1, white); border-left: 4px solid #f9a825; border-radius: 0 12px 12px 0; padding: 20px 24px; margin-bottom: 16px; }
+  .recommendations h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #795600; margin-bottom: 12px; }
+  .recommendations ul { padding-left: 20px; font-size: 14px; line-height: 1.7; color: #4a4540; }
+  .recommendations li { margin-bottom: 6px; }
+  .recommendations strong { color: #c62828; }
+
+  .reset-btn { display: block; width: 100%; max-width: 320px; margin: 16px auto; background: white; color: #c62828; border: 2px solid #c62828; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn:hover { background: #ffebee; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 24px; }
+    .answer-input { width: 160px; font-size: 14px; }
+    .exercise-card { padding: 18px; }
+    .topic-bar { width: 90px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+<div class="header">
+  <div class="lesson-tag">Diagnose-Test &middot; A2/B1</div>
+  <h1>Gro&szlig;er Einstufungstest</h1>
+  <p>80 Aufgaben quer durch alle Themen. Am Ende siehst du pro Bereich, was sitzt und was wir nochmal &uuml;ben sollten.</p>
+</div>
+
+<div class="intro-box">
+  <h3>So funktioniert&apos;s</h3>
+  <ul>
+    <li>10 Sektionen mit insgesamt <strong>80 Aufgaben</strong> &mdash; rechne mit ~30 Minuten</li>
+    <li>Bei <strong>Tippfehlern</strong> sind wir mild (Akzente werden ignoriert, ein Buchstabe daneben ist okay)</li>
+    <li>Bei den &Uuml;bersetzungen reicht <strong>eine richtige Variante</strong> (auch wenn mehrere m&ouml;glich w&auml;ren)</li>
+    <li>Am Ende: <strong>Auswertung pro Thema</strong> + Empfehlung, was wir vertiefen sollten</li>
+    <li>Wenn du etwas nicht wei&szlig;t: <strong>leer lassen</strong> oder Bestes versuchen &mdash; das hilft mehr als raten</li>
+  </ul>
+</div>
+
+<div class="progress-bar-sticky">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label"><span id="progressText">0 von 80 ausgef&uuml;llt</span><span id="progressPct">0%</span></div>
+</div>
+
+<!-- ====================== 1. SER vs ESTAR ====================== -->
+<div class="section" data-topic="ser-estar">
+  <div class="section-title"><span>1. Ser vs. Estar</span><span class="count">8 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">1.1 &mdash; Beruf</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="sou"><span>m&eacute;dico.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.2 &mdash; Aktueller Ort</div><div class="input-row"><span>O Pedro</span><input type="text" class="answer-input" data-answers="est&aacute;|esta"><span>em casa.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.3 &mdash; Nationalit&auml;t</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="somos"><span>alem&atilde;es.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.4 &mdash; M&uuml;de</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="estou"><span>muito cansado hoje.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.5 &mdash; Permanenter Ort (Stadt)</div><div class="input-row"><span>Lisboa</span><input type="text" class="answer-input" data-answers="&eacute;|e"><span>em Portugal.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.6 &mdash; Verlaufsform (PT-PT)</div><div class="input-row"><span>Ela</span><input type="text" class="answer-input" data-answers="est&aacute;|esta"><span>a trabalhar.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.7 &mdash; Charakter</div><div class="input-row"><span>Os meus pais</span><input type="text" class="answer-input" data-answers="s&atilde;o|sao"><span>muito simp&aacute;ticos.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">1.8 &mdash; Wetter</div><div class="input-row"><span>Hoje</span><input type="text" class="answer-input" data-answers="est&aacute;|esta"><span>calor.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 2. PRESENTE — REGELMÄSSIG ====================== -->
+<div class="section" data-topic="presente-regel">
+  <div class="section-title"><span>2. Presente &mdash; Regelm&auml;&szlig;ige Verben</span><span class="count">8 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">2.1 &mdash; falar (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="falo"><span>portugu&ecirc;s.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.2 &mdash; comer (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="comemos"><span>frango.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.3 &mdash; partir (eles)</div><div class="input-row"><span>Eles</span><input type="text" class="answer-input" data-answers="partem"><span>amanh&atilde;.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.4 &mdash; tomar (n&oacute;s) &mdash; Achtung -ar!</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="tomamos"><span>caf&eacute; de manh&atilde;.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.5 &mdash; trabalhar (tu)</div><div class="input-row"><span>Tu</span><input type="text" class="answer-input" data-answers="trabalhas"><span>em Lisboa.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.6 &mdash; aprender (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="aprendo"><span>portugu&ecirc;s todos os dias.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.7 &mdash; decidir (ela)</div><div class="input-row"><span>Ela</span><input type="text" class="answer-input" data-answers="decide"><span>r&aacute;pido.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">2.8 &mdash; viver (vocês)</div><div class="input-row"><span>Voc&ecirc;s</span><input type="text" class="answer-input" data-answers="vivem"><span>em Espanha.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 3. PRESENTE — UNREGELMÄSSIG ====================== -->
+<div class="section" data-topic="presente-unregel">
+  <div class="section-title"><span>3. Presente &mdash; Unregelm&auml;&szlig;ige Verben</span><span class="count">10 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">3.1 &mdash; ter (eu) &mdash; Alter angeben!</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="tenho"><span>28 anos.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.2 &mdash; ir (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="vamos"><span>ao cinema.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.3 &mdash; fazer (eu) &mdash; Cedilha!</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="fa&ccedil;o|faco"><span>desporto.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.4 &mdash; saber (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="sei"><span>nadar.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.5 &mdash; vir (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="venho"><span>de Berlim.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.6 &mdash; querer (ele)</div><div class="input-row"><span>Ele</span><input type="text" class="answer-input" data-answers="quer"><span>um caf&eacute;.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.7 &mdash; poder (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="posso"><span>ajudar.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.8 &mdash; ver (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="vejo"><span>filmes.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.9 &mdash; dizer (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="digo"><span>a verdade.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">3.10 &mdash; conhecer (eu) &mdash; Cedilha!</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="conhe&ccedil;o|conheco"><span>Lisboa muito bem.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 4. PRETÉRITO PERFEITO ====================== -->
+<div class="section" data-topic="perfeito">
+  <div class="section-title"><span>4. Pret&eacute;rito Perfeito</span><span class="count">10 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">4.1 &mdash; falar (eu) &mdash; gestern</div><div class="input-row"><span>Ontem eu</span><input type="text" class="answer-input" data-answers="falei"><span>com o m&eacute;dico.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.2 &mdash; comer (eles)</div><div class="input-row"><span>Eles</span><input type="text" class="answer-input" data-answers="comeram"><span>pizza ontem.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.3 &mdash; ser/ir (eu) &mdash; gleiche Form!</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="fui"><span>ao supermercado.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.4 &mdash; ter (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="tivemos"><span>uma festa &oacute;ptima.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.5 &mdash; fazer (ele)</div><div class="input-row"><span>Ele</span><input type="text" class="answer-input" data-answers="fez"><span>os trabalhos de casa.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.6 &mdash; estar (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="estive"><span>doente na semana passada.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.7 &mdash; ver (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="vimos"><span>um filme.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.8 &mdash; dizer (ela)</div><div class="input-row"><span>Ela</span><input type="text" class="answer-input" data-answers="disse"><span>que sim.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.9 &mdash; partir (tu)</div><div class="input-row"><span>Tu</span><input type="text" class="answer-input" data-answers="partiste"><span>cedo.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">4.10 &mdash; vir (eles)</div><div class="input-row"><span>Eles</span><input type="text" class="answer-input" data-answers="vieram"><span>tarde.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 5. IMPERFEITO ====================== -->
+<div class="section" data-topic="imperfeito">
+  <div class="section-title"><span>5. Pret&eacute;rito Imperfeito</span><span class="count">8 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">5.1 &mdash; ser (eu) &mdash; "Als ich klein war..."</div><div class="input-row"><span>Quando eu</span><input type="text" class="answer-input" data-answers="era"><span>pequeno...</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">5.2 &mdash; ter (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="t&iacute;nhamos|tinhamos"><span>um c&atilde;o.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercie-label">5.3 &mdash; falar (ela)</div><div class="input-row"><span>Ela</span><input type="text" class="answer-input" data-answers="falava"><span>sempre comigo.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">5.4 &mdash; comer (eu)</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="comia"><span>muito chocolate.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">5.5 &mdash; vir (eles)</div><div class="input-row"><span>Eles</span><input type="text" class="answer-input" data-answers="vinham"><span>todos os domingos.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">5.6 &mdash; estar (eu) &mdash; achtung: regelm&auml;&szlig;ig!</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="estava"><span>cansado.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">5.7 &mdash; H&ouml;fliche Bitte ("ich h&auml;tte gern")</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="queria"><span>um caf&eacute;, por favor.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">5.8 &mdash; ir (n&oacute;s) &mdash; fr&uuml;her</div><div class="input-row"><span>Antigamente n&oacute;s</span><input type="text" class="answer-input" data-answers="&iacute;amos|iamos"><span>&agrave; praia.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 6. KONDITIONAL ====================== -->
+<div class="section" data-topic="konditional">
+  <div class="section-title"><span>6. Konditional (&quot;w&uuml;rde&quot;)</span><span class="count">6 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">6.1 &mdash; gostar (eu) &mdash; w&uuml;rde m&ouml;gen</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="gostaria"><span>de viajar.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">6.2 &mdash; comer (tu)</div><div class="input-row"><span>Tu</span><input type="text" class="answer-input" data-answers="comerias"><span>esse bolo?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">6.3 &mdash; fazer (ele) &mdash; unregelm&auml;&szlig;ig!</div><div class="input-row"><span>Ele</span><input type="text" class="answer-input" data-answers="faria"><span>isso por ti.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">6.4 &mdash; dizer (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="dir&iacute;amos|diriamos"><span>a verdade.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">6.5 &mdash; ser (isso)</div><div class="input-row"><span>Isso</span><input type="text" class="answer-input" data-answers="seria"><span>&oacute;ptimo!</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">6.6 &mdash; poder (eles)</div><div class="input-row"><span>Eles</span><input type="text" class="answer-input" data-answers="poderiam"><span>ajudar-nos.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 7. PRÄPOSITIONEN ====================== -->
+<div class="section" data-topic="praepositionen">
+  <div class="section-title"><span>7. Pr&auml;positionen (a/para/por/de) + Kontraktionen</span><span class="count">10 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">7.1 &mdash; Kurzer Trip (a/para)</div><div class="input-row"><span>Vou</span><input type="text" class="answer-input" data-answers="a"><span>Lisboa este fim de semana.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.2 &mdash; Lange/Umzug (a/para)</div><div class="input-row"><span>Mudei-me</span><input type="text" class="answer-input" data-answers="para"><span>Espanha.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.3 &mdash; Vorbei kommen (por/pelo)</div><div class="input-row"><span>Passei</span><input type="text" class="answer-input" data-answers="pelo"><span>centro da cidade.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.4 &mdash; Startpunkt (de/do)</div><div class="input-row"><span>Saio</span><input type="text" class="answer-input" data-answers="de"><span>casa &agrave;s sete.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.5 &mdash; Kontraktion a+o</div><div class="input-row"><span>Vou</span><input type="text" class="answer-input" data-answers="ao"><span>supermercado.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.6 &mdash; Kontraktion em+a</div><div class="input-row"><span>Estou</span><input type="text" class="answer-input" data-answers="na"><span>escola.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.7 &mdash; por vs para (Grund)</div><div class="input-row"><span>Fa&ccedil;o isso</span><input type="text" class="answer-input" data-answers="por"><span>ti (= deinetwegen).</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.8 &mdash; por vs para (Empf&auml;nger)</div><div class="input-row"><span>Este presente &eacute;</span><input type="text" class="answer-input" data-answers="para"><span>ti.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.9 &mdash; chegar + ?</div><div class="input-row"><span>Ele chega</span><input type="text" class="answer-input" data-answers="&agrave;|a"><span>casa &agrave; tarde.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">7.10 &mdash; Pro Woche</div><div class="input-row"><span>Treino 3 vezes</span><input type="text" class="answer-input" data-answers="por"><span>semana.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 8. REFLEXIVE + STELLUNG ====================== -->
+<div class="section" data-topic="reflexive">
+  <div class="section-title"><span>8. Reflexive Verben + Pronomen-Stellung</span><span class="count">8 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">8.1 &mdash; chamar-se (eu)</div><div class="input-row"><input type="text" class="answer-input" data-answers="chamo-me"><span>Moritz.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.2 &mdash; chamar-se (tu) &mdash; Frage</div><div class="input-row"><span>Como te</span><input type="text" class="answer-input" data-answers="chamas"><span>?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.3 &mdash; levantar-se (n&oacute;s) &mdash; Achtung s entf&auml;llt!</div><div class="input-row"><input type="text" class="answer-input" data-answers="levantamo-nos"><span>cedo.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.4 &mdash; deitar-se (ela) mit "n&atilde;o"</div><div class="input-row"><span>Ela n&atilde;o</span><input type="text" class="answer-input" data-answers="se deita"><span>cedo.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.5 &mdash; esquecer-se (eu) mit "sempre"</div><div class="input-row"><span>Sempre</span><input type="text" class="answer-input" data-answers="me esque&ccedil;o|me esqueco"><span>das chaves.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.6 &mdash; sentar-se (eles)</div><div class="input-row"><input type="text" class="answer-input" data-answers="sentam-se"><span>no sof&aacute;.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.7 &mdash; lembrar-se (tu) &mdash; Frage</div><div class="input-row"><span>Quando &eacute; que te</span><input type="text" class="answer-input" data-answers="lembras"><span>disso?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">8.8 &mdash; sentir-se (ele) mit "nunca"</div><div class="input-row"><span>Ele nunca</span><input type="text" class="answer-input" data-answers="se sente"><span>cansado.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 9. FRAGEWÖRTER + KOMPARATIV ====================== -->
+<div class="section" data-topic="fragew-komp">
+  <div class="section-title"><span>9. Fragew&ouml;rter + Komparativ</span><span class="count">6 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">9.1 &mdash; "Wer?"</div><div class="input-row"><input type="text" class="answer-input" data-answers="quem"><span>&eacute; aquela pessoa?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">9.2 &mdash; "Wann?"</div><div class="input-row"><input type="text" class="answer-input" data-answers="quando"><span>chegas a Lisboa?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">9.3 &mdash; "Wie viele?"</div><div class="input-row"><input type="text" class="answer-input" data-answers="quantos"><span>anos tens?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">9.4 &mdash; "Warum?"</div><div class="input-row"><input type="text" class="answer-input" data-answers="porqu&ecirc;|porque"><span>n&atilde;o vens?</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">9.5 &mdash; Komparativ ("teurer als")</div><div class="input-row"><span>Lisboa &eacute;</span><input type="text" class="answer-input" data-answers="mais cara do que|mais caro do que"><span>Berlim.</span></div><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">9.6 &mdash; Unregelm&auml;&szlig;ig: "besser"</div><div class="input-row"><span>Este caf&eacute; &eacute;</span><input type="text" class="answer-input" data-answers="melhor"><span>do que o outro.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ====================== 10. ÜBERSETZUNG ====================== -->
+<div class="section" data-topic="uebersetzung">
+  <div class="section-title"><span>10. &Uuml;bersetzung DE &rarr; PT (Gesamtcheck)</span><span class="count">6 Aufgaben</span></div>
+
+  <div class="exercise-card"><div class="exercise-label">10.1</div><div class="exercise-prompt">Ich hei&szlig;e Moritz und bin 28 Jahre alt.</div><input type="text" class="answer-input translation-input" data-answers="chamo-me moritz e tenho 28 anos"><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">10.2</div><div class="exercise-prompt">Gestern war ich im Restaurant.</div><input type="text" class="answer-input translation-input" data-answers="ontem fui ao restaurante|ontem eu fui ao restaurante|ontem estive no restaurante"><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">10.3</div><div class="exercise-prompt">Ich h&auml;tte gerne einen Kaffee, bitte.</div><input type="text" class="answer-input translation-input" data-answers="queria um caf&eacute; por favor|queria um cafe por favor|gostaria de um caf&eacute; por favor"><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">10.4</div><div class="exercise-prompt">Als ich klein war, wohnte ich in Berlin.</div><input type="text" class="answer-input translation-input" data-answers="quando era pequeno morava em berlim|quando eu era pequeno morava em berlim|quando era pequeno vivia em berlim"><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">10.5</div><div class="exercise-prompt">Wir gehen am Wochenende ins Kino.</div><input type="text" class="answer-input translation-input" data-answers="vamos ao cinema no fim de semana|n&oacute;s vamos ao cinema no fim de semana"><div class="feedback"></div></div>
+  <div class="exercise-card"><div class="exercise-label">10.6</div><div class="exercise-prompt">Ich w&uuml;rde gerne nach Portugal ziehen.</div><input type="text" class="answer-input translation-input" data-answers="gostaria de mudar-me para portugal|gostaria de me mudar para portugal|eu gostaria de mudar-me para portugal"><div class="feedback"></div></div>
+</div>
+
+<button class="check-btn" onclick="checkAll()">📊 Test auswerten</button>
+
+<div class="results" id="results">
+  <div class="results-summary">
+    <div class="score-total" id="scoreTotal">0 von 80</div>
+    <div class="score-big" id="scoreBig">0%</div>
+    <div class="score-label" id="scoreLabel"></div>
+  </div>
+
+  <div class="topic-results">
+    <h3>📋 Auswertung pro Thema</h3>
+    <div id="topicRows"></div>
+  </div>
+
+  <div class="recommendations">
+    <h3>🎯 Was wir als N&auml;chstes &uuml;ben sollten</h3>
+    <ul id="recList"></ul>
+  </div>
+
+  <button class="reset-btn" onclick="location.reload()">Test zur&uuml;cksetzen</button>
+</div>
+
+</div>
+
+<script>
+const topicNames = {
+  'ser-estar':        'Ser vs. Estar',
+  'presente-regel':   'Presente — regelmäßige Verben',
+  'presente-unregel': 'Presente — unregelmäßige Verben',
+  'perfeito':         'Pretérito Perfeito',
+  'imperfeito':       'Pretérito Imperfeito',
+  'konditional':      'Konditional',
+  'praepositionen':   'Präpositionen + Kontraktionen',
+  'reflexive':        'Reflexive Verben + Stellung',
+  'fragew-komp':      'Fragewörter + Komparativ',
+  'uebersetzung':     'Übersetzung DE→PT'
+};
+
+// Normalisieren: lowercase, ohne Akzente, trim
+function normalize(s) {
+  return (s || '').toLowerCase().trim()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+// Levenshtein für Tippfehler-Toleranz
+function lev(a, b) {
+  const m = a.length, n = b.length;
+  if (Math.abs(m - n) > 2) return 99;
+  const dp = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) {
+    dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+  }
+  return dp[m][n];
+}
+
+function isCorrect(user, answers) {
+  const u = normalize(user);
+  if (!u) return false;
+  const variants = answers.split('|').map(normalize);
+  for (const v of variants) {
+    if (u === v) return true;
+    // Toleranz: bei Wörtern ≤6 Zeichen → 1 Fehler ok, sonst 2
+    const tol = v.length <= 6 ? 1 : 2;
+    if (lev(u, v) <= tol) return true;
+  }
+  return false;
+}
+
+// Progress-Bar live
+function updateProgress() {
+  const inputs = document.querySelectorAll('.answer-input');
+  const filled = Array.from(inputs).filter(i => i.value.trim().length > 0).length;
+  const pct = Math.round((filled / inputs.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = filled + ' von ' + inputs.length + ' ausgefüllt';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+document.querySelectorAll('.answer-input').forEach(i => i.addEventListener('input', updateProgress));
+
+function checkAll() {
+  const sections = document.querySelectorAll('.section');
+  const perTopic = {};
+  let totalCorrect = 0, totalCount = 0;
+
+  sections.forEach(sec => {
+    const topic = sec.dataset.topic;
+    perTopic[topic] = { correct: 0, total: 0, wrong: [] };
+
+    sec.querySelectorAll('.exercise-card').forEach(card => {
+      const input = card.querySelector('.answer-input');
+      const fb = card.querySelector('.feedback');
+      if (!input || !fb) return;
+      const answers = input.dataset.answers || '';
+      const ok = isCorrect(input.value, answers);
+      perTopic[topic].total++;
+      totalCount++;
+      if (ok) {
+        input.classList.add('correct');
+        input.classList.remove('incorrect');
+        fb.className = 'feedback show correct';
+        fb.innerHTML = '✓ Richtig!';
+        perTopic[topic].correct++;
+        totalCorrect++;
+      } else {
+        input.classList.add('incorrect');
+        input.classList.remove('correct');
+        fb.className = 'feedback show incorrect';
+        const correct = answers.split('|')[0];
+        fb.innerHTML = '✗ Richtig wäre: <strong>' + correct + '</strong>';
+      }
+    });
+  });
+
+  // Summary
+  const pct = totalCount ? Math.round(totalCorrect / totalCount * 100) : 0;
+  document.getElementById('scoreTotal').textContent = totalCorrect + ' von ' + totalCount + ' richtig';
+  document.getElementById('scoreBig').textContent = pct + '%';
+
+  let label = '';
+  if (pct >= 85) label = 'Stark! Du bist sicher in den meisten Themen — perfekter Stand für B1.';
+  else if (pct >= 70) label = 'Solider A2/B1-Stand. Ein paar Themen brauchen noch Festigung.';
+  else if (pct >= 50) label = 'A2-Niveau erreicht. Du hast die Basis, einige Themen sind noch wackelig.';
+  else label = 'Wir sollten die Grundlagen nochmal sauber durchgehen.';
+  document.getElementById('scoreLabel').textContent = label;
+
+  // Topic rows
+  const rows = document.getElementById('topicRows');
+  rows.innerHTML = '';
+  const weakTopics = [];
+  Object.entries(perTopic).forEach(([key, data]) => {
+    const tPct = data.total ? Math.round(data.correct / data.total * 100) : 0;
+    const cls = tPct >= 80 ? 'good' : tPct >= 60 ? 'ok' : 'bad';
+    if (tPct < 70) weakTopics.push({ name: topicNames[key], pct: tPct });
+
+    rows.innerHTML += `
+      <div class="topic-row">
+        <div class="topic-name">${topicNames[key]}</div>
+        <div class="topic-bar"><div class="topic-fill ${cls}" style="width: ${tPct}%"></div></div>
+        <div class="topic-score">${data.correct}/${data.total} · ${tPct}%</div>
+      </div>`;
+  });
+
+  // Recommendations
+  const recList = document.getElementById('recList');
+  recList.innerHTML = '';
+  if (weakTopics.length === 0) {
+    recList.innerHTML = '<li>Alles solide! Wir können mit neuen Themen weitermachen (z.B. Imperativo, Conjuntivo).</li>';
+  } else {
+    weakTopics.sort((a, b) => a.pct - b.pct);
+    weakTopics.forEach(t => {
+      recList.innerHTML += `<li><strong>${t.name}</strong> (${t.pct}%) — gezielt vertiefen</li>`;
+    });
+    recList.innerHTML += '<li style="margin-top: 10px;">Schick mir die Ergebnisse oder mach einen Screenshot — ich bau dir dann gezielte Übungen für die schwachen Bereiche.</li>';
+  }
+
+  document.getElementById('results').classList.add('show');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
