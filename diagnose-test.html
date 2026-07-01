@@ -335,9 +335,11 @@ function isCorrect(user, answers) {
   const variants = answers.split('|').map(normalize);
   for (const v of variants) {
     if (u === v) return true;
-    // Toleranz: bei Wörtern ≤6 Zeichen → 1 Fehler ok, sonst 2
-    const tol = v.length <= 6 ? 1 : 2;
-    if (lev(u, v) <= tol) return true;
+    // Strenge Toleranz: kurze Wörter EXAKT (sonst werden Verb-Zeitformen
+    // durchgewunken, z.B. "comem" statt "comeram"). Nur längere Wörter
+    // dürfen 1-2 Tippfehler haben.
+    const tol = v.length >= 9 ? 2 : (v.length >= 7 ? 1 : 0);
+    if (tol > 0 && lev(u, v) <= tol) return true;
   }
   return false;
 }
