@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pretérito Perfeito — Tempuslücke fixen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  .page { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #7b1fa2; }
+
+  .header { text-align: center; margin-bottom: 24px; }
+  .tag { display: inline-block; background: #7b1fa2; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header p { font-size: 14px; color: #6b6560; line-height: 1.5; max-width: 520px; margin: 0 auto; }
+
+  /* Warum-Box */
+  .why-box { background: #fff8e1; border-left: 4px solid #f9a825; padding: 16px 20px; margin-bottom: 24px; border-radius: 0 10px 10px 0; font-size: 13.5px; line-height: 1.6; color: #5d3a0a; }
+  .why-box strong { color: #795600; display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* Regel-Boxen */
+  .rule { background: white; border-left: 4px solid #7b1fa2; padding: 16px 20px; margin-bottom: 18px; border-radius: 0 10px 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .rule h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #7b1fa2; margin-bottom: 8px; }
+  .rule p { font-size: 14px; line-height: 1.6; color: #4a4540; margin-bottom: 6px; }
+  .rule .triggers { font-size: 12px; color: #6b6560; margin-top: 6px; }
+  .rule .triggers b { color: #c62828; font-weight: 700; }
+  .rule table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 12px; }
+  .rule th { background: #2d2a26; color: white; padding: 5px 8px; text-align: left; font-weight: 500; }
+  .rule td { padding: 4px 8px; border-bottom: 1px solid #ede6df; }
+  .rule tr:last-child td { border-bottom: none; }
+  .rule .eu { color: #c62828; font-weight: 700; }
+
+  /* Sticky progress */
+  .progress-bar-sticky { position: sticky; top: 0; background: #f5f0eb; padding: 10px 0; z-index: 50; margin-bottom: 14px; }
+  .progress-bar { height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #7b1fa2; transition: width 0.3s; width: 0%; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: #6b6560; margin-top: 5px; }
+
+  /* Section */
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #7b1fa2; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #e1bee7; display: flex; justify-content: space-between; align-items: center; }
+  .section-title .count { font-size: 10px; color: #9e9892; font-weight: 500; }
+
+  /* Exercise */
+  .ex { background: white; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .ex-label { font-size: 11px; font-weight: 600; color: #9e9892; margin-bottom: 6px; }
+  .ex-prompt { font-size: 14.5px; line-height: 1.5; margin-bottom: 10px; }
+  .trigger-hi { background: #ffebee; color: #c62828; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+
+  .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .input-row span { font-size: 14.5px; }
+  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 8px 12px; font-size: 14.5px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #7b1fa2; background: white; }
+  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+
+  /* Radio-buttons für Tempus-Wahl */
+  .choice-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .choice-btn { flex: 1; min-width: 100px; padding: 10px 14px; border: 2px solid #e8d5c4; border-radius: 8px; background: white; font-size: 14px; font-family: inherit; cursor: pointer; text-align: center; transition: all 0.1s; }
+  .choice-btn:hover { border-color: #7b1fa2; }
+  .choice-btn.selected { border-color: #7b1fa2; background: #f3e5f5; font-weight: 600; }
+  .choice-btn.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .choice-btn.incorrect { border-color: #c62828; background: #ffebee; }
+
+  .feedback { margin-top: 8px; padding: 8px 12px; border-radius: 6px; font-size: 12.5px; display: none; line-height: 1.4; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 32px auto 0; background: #7b1fa2; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #6a1b9a; }
+
+  .results { display: none; margin-top: 28px; }
+  .results.show { display: block; }
+  .results-card { background: white; border-radius: 12px; padding: 26px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 14px; }
+  .score-big { font-size: 48px; font-weight: 800; color: #7b1fa2; }
+  .score-label { font-size: 14px; color: #4a4540; margin-top: 6px; line-height: 1.5; }
+  .save-note { background: linear-gradient(135deg, #1a1715, #2d2a26); color: white; padding: 20px; border-radius: 12px; margin-bottom: 14px; }
+  .save-note strong { display: block; font-size: 14px; margin-bottom: 4px; }
+  .save-note p { font-size: 12.5px; opacity: 0.9; line-height: 1.5; }
+  .save-note a { color: #ff9800; font-weight: 600; }
+  .again-btn { display: block; width: 100%; max-width: 300px; margin: 16px auto; background: white; color: #7b1fa2; border: 2px solid #7b1fa2; border-radius: 12px; padding: 12px 32px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .again-btn:hover { background: #f3e5f5; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 22px; }
+    .answer-input { width: 150px; font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+
+<div class="header">
+  <div class="tag">Foundation Fix &middot; Tempus</div>
+  <h1>Pret&eacute;rito Perfeito &mdash; Tempusl&uuml;cke fixen</h1>
+  <p>Vergangenheit statt "immer Pr&auml;sens". Erst lernst du WANN Perfeito, dann WIE.</p>
+</div>
+
+<div class="why-box">
+  <strong>&#128296; Warum diese &Uuml;bung?</strong>
+  Im Diagnose-Test hast du bei Vergangenheits-S&auml;tzen fast immer Presente benutzt (z.B. "Eu vou ao supermercado" statt "fui", obwohl "ontem" da stand). Das ist keine Konjugations-, sondern eine <strong>Tempusl&uuml;cke</strong>. Diese &Uuml;bung fixt das in 3 Schichten.
+</div>
+
+<h2 style="font-size: 15px; color: #7b1fa2; margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 1px;">Regeln zum Nachlesen (bevor du anf&auml;ngst)</h2>
+
+<div class="rule">
+  <h3>Regel 1 &mdash; Trigger f&uuml;r Perfeito</h3>
+  <p>Steht eins dieser W&ouml;rter im Satz &rarr; Vergangenheit (Perfeito), NIE Presente:</p>
+  <div class="triggers"><b>ontem</b> (gestern) &middot; <b>anteontem</b> (vorgestern) &middot; <b>na semana passada</b> &middot; <b>no m&ecirc;s passado</b> &middot; <b>h&aacute; X dias/anos</b> &middot; <b>em 2020</b> &middot; <b>ontem &agrave; noite</b> &middot; <b>de repente</b></div>
+</div>
+
+<div class="rule">
+  <h3>Regel 2 &mdash; Endungen f&uuml;r regelm&auml;&szlig;ige Verben</h3>
+  <table>
+    <tr><th>Person</th><th>-ar (falar)</th><th>-er (comer)</th><th>-ir (partir)</th></tr>
+    <tr><td>eu</td><td class="eu">falei</td><td class="eu">comi</td><td class="eu">parti</td></tr>
+    <tr><td>tu</td><td>falaste</td><td>comeste</td><td>partiste</td></tr>
+    <tr><td>ele/ela</td><td>falou</td><td>comeu</td><td>partiu</td></tr>
+    <tr><td>n&oacute;s</td><td>fal&aacute;mos</td><td>comemos</td><td>partimos</td></tr>
+    <tr><td>eles</td><td>falaram</td><td>comeram</td><td>partiram</td></tr>
+  </table>
+</div>
+
+<div class="rule">
+  <h3>Regel 3 &mdash; Die 8 wichtigsten Unregelm&auml;&szlig;igen</h3>
+  <table>
+    <tr><th></th><th>ser/ir</th><th>ter</th><th>fazer</th><th>estar</th><th>vir</th><th>ver</th><th>dar</th><th>p&ocirc;r</th></tr>
+    <tr><td>eu</td><td class="eu">fui</td><td class="eu">tive</td><td class="eu">fiz</td><td class="eu">estive</td><td class="eu">vim</td><td class="eu">vi</td><td class="eu">dei</td><td class="eu">pus</td></tr>
+    <tr><td>ele</td><td>foi</td><td>teve</td><td>fez</td><td>esteve</td><td>veio</td><td>viu</td><td>deu</td><td>p&ocirc;s</td></tr>
+    <tr><td>n&oacute;s</td><td>fomos</td><td>tivemos</td><td>fizemos</td><td>estivemos</td><td>viemos</td><td>vimos</td><td>demos</td><td>pusemos</td></tr>
+    <tr><td>eles</td><td>foram</td><td>tiveram</td><td>fizeram</td><td>estiveram</td><td>vieram</td><td>viram</td><td>deram</td><td>puseram</td></tr>
+  </table>
+</div>
+
+<div class="rule">
+  <h3>Regel 4 &mdash; Extra: dizer, poder, saber, querer, trazer</h3>
+  <table>
+    <tr><th></th><th>dizer</th><th>poder</th><th>saber</th><th>querer</th><th>trazer</th></tr>
+    <tr><td>eu</td><td class="eu">disse</td><td class="eu">pude</td><td class="eu">soube</td><td class="eu">quis</td><td class="eu">trouxe</td></tr>
+    <tr><td>ele</td><td>disse</td><td>p&ocirc;de</td><td>soube</td><td>quis</td><td>trouxe</td></tr>
+    <tr><td>n&oacute;s</td><td>dissemos</td><td>pudemos</td><td>soubemos</td><td>quisemos</td><td>trouxemos</td></tr>
+    <tr><td>eles</td><td>disseram</td><td>puderam</td><td>souberam</td><td>quiseram</td><td>trouxeram</td></tr>
+  </table>
+</div>
+
+<div class="progress-bar-sticky">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label"><span id="progressText">0 von 30 bearbeitet</span><span id="progressPct">0%</span></div>
+</div>
+
+<!-- ============== SECTION 1: TEMPUS-WAHL ============== -->
+<div class="section" data-section-name="Tempus-Wahl (Presente oder Perfeito?)">
+  <div class="section-title"><span>1. Tempus-Wahl</span><span class="count">10 Aufgaben</span></div>
+  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Klick auf die richtige Form. Achte auf die <span class="trigger-hi">Zeit-W&ouml;rter</span>.</p>
+
+  <div class="ex" data-type="choice" data-correct="fui">
+    <div class="ex-label">1.1</div>
+    <div class="ex-prompt"><span class="trigger-hi">Ontem</span> eu ___ ao supermercado.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="vou">vou</button><button class="choice-btn" data-val="fui">fui</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="vou">
+    <div class="ex-label">1.2</div>
+    <div class="ex-prompt"><span class="trigger-hi">Hoje</span> eu ___ ao trabalho.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="vou">vou</button><button class="choice-btn" data-val="fui">fui</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="comeu">
+    <div class="ex-label">1.3</div>
+    <div class="ex-prompt"><span class="trigger-hi">Na semana passada</span>, o Pedro ___ pizza.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="come">come</button><button class="choice-btn" data-val="comeu">comeu</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="come">
+    <div class="ex-label">1.4</div>
+    <div class="ex-prompt"><span class="trigger-hi">Todos os dias</span>, o Pedro ___ fruta.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="come">come</button><button class="choice-btn" data-val="comeu">comeu</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="tivemos">
+    <div class="ex-label">1.5</div>
+    <div class="ex-prompt"><span class="trigger-hi">Anteontem</span> n&oacute;s ___ uma reuni&atilde;o.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="temos">temos</button><button class="choice-btn" data-val="tivemos">tivemos</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="temos">
+    <div class="ex-label">1.6</div>
+    <div class="ex-prompt"><span class="trigger-hi">Agora</span> n&oacute;s ___ uma reuni&atilde;o.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="temos">temos</button><button class="choice-btn" data-val="tivemos">tivemos</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="morei">
+    <div class="ex-label">1.7</div>
+    <div class="ex-prompt"><span class="trigger-hi">H&aacute; dois anos</span>, eu ___ em Berlim.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="moro">moro</button><button class="choice-btn" data-val="morei">morei</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="moro">
+    <div class="ex-label">1.8</div>
+    <div class="ex-prompt"><span class="trigger-hi">Actualmente</span> eu ___ em Val&ecirc;ncia.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="moro">moro</button><button class="choice-btn" data-val="morei">morei</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="viste">
+    <div class="ex-label">1.9</div>
+    <div class="ex-prompt"><span class="trigger-hi">Ontem &agrave; noite</span>, tu ___ a s&eacute;rie.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="v&ecirc;s">vês</button><button class="choice-btn" data-val="viste">viste</button></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="choice" data-correct="fizeram">
+    <div class="ex-label">1.10</div>
+    <div class="ex-prompt"><span class="trigger-hi">No fim de semana</span> eles ___ um bolo.</div>
+    <div class="choice-row"><button class="choice-btn" data-val="fazem">fazem</button><button class="choice-btn" data-val="fizeram">fizeram</button></div>
+    <div class="feedback"></div>
+  </div>
+</div>
+
+<!-- ============== SECTION 2: KONJUGATION UNREGELMÄSSIG ============== -->
+<div class="section" data-section-name="Unregelmäßige Konjugation">
+  <div class="section-title"><span>2. Konjugation &mdash; Unregelm&auml;&szlig;ige</span><span class="count">15 Aufgaben</span></div>
+  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Schreib die Perfeito-Form. Alle S&auml;tze sind Vergangenheit &mdash; die Trigger sind extra hervorgehoben.</p>
+
+  <div class="ex" data-type="fill" data-correct="fui"><div class="ex-label">2.1 &mdash; ir (eu)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> eu</span><input class="answer-input" type="text"><span>ao cinema.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="fizemos"><div class="ex-label">2.2 &mdash; fazer (nós)</div><div class="input-row"><span><span class="trigger-hi">Na semana passada</span> n&oacute;s</span><input class="answer-input" type="text"><span>uma festa.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="teve"><div class="ex-label">2.3 &mdash; ter (ele)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> ele</span><input class="answer-input" type="text"><span>uma reuni&atilde;o.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="estive"><div class="ex-label">2.4 &mdash; estar (eu)</div><div class="input-row"><span><span class="trigger-hi">Na semana passada</span> eu</span><input class="answer-input" type="text"><span>doente.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="vieram"><div class="ex-label">2.5 &mdash; vir (eles)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> eles</span><input class="answer-input" type="text"><span>tarde.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="viu"><div class="ex-label">2.6 &mdash; ver (ela)</div><div class="input-row"><span><span class="trigger-hi">Ontem &agrave; noite</span> ela</span><input class="answer-input" type="text"><span>um filme.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="foste"><div class="ex-label">2.7 &mdash; ir (tu)</div><div class="input-row"><span><span class="trigger-hi">Anteontem</span> tu</span><input class="answer-input" type="text"><span>ao supermercado?</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="disse"><div class="ex-label">2.8 &mdash; dizer (ele)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> ele</span><input class="answer-input" type="text"><span>que sim.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="tivemos"><div class="ex-label">2.9 &mdash; ter (nós)</div><div class="input-row"><span><span class="trigger-hi">No m&ecirc;s passado</span> n&oacute;s</span><input class="answer-input" type="text"><span>muitas visitas.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="fez"><div class="ex-label">2.10 &mdash; fazer (ele)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> ele</span><input class="answer-input" type="text"><span>desporto.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="pude"><div class="ex-label">2.11 &mdash; poder (eu)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> n&atilde;o</span><input class="answer-input" type="text"><span>ir &agrave; festa.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="quis"><div class="ex-label">2.12 &mdash; querer (ela)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> ela n&atilde;o</span><input class="answer-input" type="text"><span>vir connosco.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="foram"><div class="ex-label">2.13 &mdash; ir (eles)</div><div class="input-row"><span><span class="trigger-hi">Na semana passada</span> eles</span><input class="answer-input" type="text"><span>a Paris.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="vimos"><div class="ex-label">2.14 &mdash; ver (nós)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> n&oacute;s</span><input class="answer-input" type="text"><span>a Ana no caf&eacute;.</span></div><div class="feedback"></div></div>
+  <div class="ex" data-type="fill" data-correct="dei"><div class="ex-label">2.15 &mdash; dar (eu)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> eu</span><input class="answer-input" type="text"><span>um presente ao Pedro.</span></div><div class="feedback"></div></div>
+</div>
+
+<!-- ============== SECTION 3: FREIE SATZBILDUNG ============== -->
+<div class="section" data-section-name="Freie Satzbildung">
+  <div class="section-title"><span>3. Freie Satzbildung</span><span class="count">5 Aufgaben</span></div>
+  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">&Uuml;bersetze den ganzen Satz. Achte auf Trigger und die richtige Perfeito-Form.</p>
+
+  <div class="ex" data-type="translate" data-correct="ontem falei com o meu irm&atilde;o|ontem eu falei com o meu irm&atilde;o">
+    <div class="ex-label">3.1</div>
+    <div class="ex-prompt">Gestern habe ich mit meinem Bruder gesprochen.</div>
+    <div class="input-row"><input class="answer-input" type="text" style="width: 100%;"></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="translate" data-correct="na semana passada fomos ao cinema|na semana passada n&oacute;s fomos ao cinema">
+    <div class="ex-label">3.2</div>
+    <div class="ex-prompt">Letzte Woche sind wir ins Kino gegangen.</div>
+    <div class="input-row"><input class="answer-input" type="text" style="width: 100%;"></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="translate" data-correct="ontem estive doente|ontem eu estive doente">
+    <div class="ex-label">3.3</div>
+    <div class="ex-prompt">Gestern war ich krank.</div>
+    <div class="input-row"><input class="answer-input" type="text" style="width: 100%;"></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="translate" data-correct="ela fez um bolo ontem|ontem ela fez um bolo">
+    <div class="ex-label">3.4</div>
+    <div class="ex-prompt">Sie hat gestern einen Kuchen gemacht.</div>
+    <div class="input-row"><input class="answer-input" type="text" style="width: 100%;"></div>
+    <div class="feedback"></div>
+  </div>
+  <div class="ex" data-type="translate" data-correct="anteontem eles vieram para casa|anteontem eles vieram a casa">
+    <div class="ex-label">3.5</div>
+    <div class="ex-prompt">Vorgestern sind sie nach Hause gekommen.</div>
+    <div class="input-row"><input class="answer-input" type="text" style="width: 100%;"></div>
+    <div class="feedback"></div>
+  </div>
+</div>
+
+<button class="check-btn" onclick="checkAll()">&#128200; Auswerten</button>
+
+<div class="results" id="results">
+  <div class="results-card">
+    <div class="score-big" id="scoreBig">0%</div>
+    <div id="scoreDetail" style="font-size: 15px; color: #6b6560; margin-top: 4px;"></div>
+    <div class="score-label" id="scoreLabel"></div>
+  </div>
+
+  <div class="save-note">
+    <strong>&#128190; Gespeichert!</strong>
+    <p>Dein Ergebnis ist automatisch in der Historie. &Uuml;ber <a href="fortschritt.html">Fortschritt</a> kopierst du alle Ergebnisse mit einem Klick f&uuml;r Claude.</p>
+  </div>
+
+  <button class="again-btn" onclick="location.reload()">Nochmal machen</button>
+  <a class="again-btn" href="fortschritt.html" style="text-decoration: none; text-align: center; display: block;">&rarr; Zur Fortschritt-Seite</a>
+</div>
+
+</div>
+
+<script src="js/progress.js"></script>
+<script>
+function normalize(s) {
+  return (s || '').toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ');
+}
+function lev(a,b) {
+  const m=a.length,n=b.length; if(Math.abs(m-n)>3) return 99;
+  const dp=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=0;i<=m;i++)dp[i][0]=i; for(let j=0;j<=n;j++)dp[0][j]=j;
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[m][n];
+}
+function isCorrect(user, answers) {
+  const u = normalize(user); if(!u) return false;
+  const variants = answers.split('|').map(normalize);
+  for (const v of variants) {
+    if (u === v) return true;
+    // Strenge Toleranz: nur bei längeren Wörtern
+    const tol = v.length >= 12 ? 2 : (v.length >= 8 ? 1 : 0);
+    if (tol > 0 && lev(u, v) <= tol) return true;
+  }
+  return false;
+}
+
+// Choice buttons
+document.querySelectorAll('.choice-btn').forEach(btn => {
+  btn.onclick = function() {
+    // Alle Buttons in dieser Zeile deselektieren
+    this.parentElement.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    updateProgress();
+  };
+});
+
+// Text inputs — Progress live tracken
+document.querySelectorAll('.answer-input').forEach(inp => {
+  inp.addEventListener('input', updateProgress);
+});
+
+function updateProgress() {
+  const exs = document.querySelectorAll('.ex');
+  let done = 0;
+  exs.forEach(ex => {
+    if (ex.dataset.type === 'choice') {
+      if (ex.querySelector('.choice-btn.selected')) done++;
+    } else {
+      const inp = ex.querySelector('.answer-input');
+      if (inp && inp.value.trim()) done++;
+    }
+  });
+  const total = exs.length;
+  const pct = Math.round(done/total*100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = done + ' von ' + total + ' bearbeitet';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+function checkAll() {
+  const sectionData = [];
+  document.querySelectorAll('.section').forEach(sec => {
+    const secName = sec.dataset.sectionName;
+    const section = { name: secName, score: 0, total: 0, wrong: [] };
+
+    sec.querySelectorAll('.ex').forEach(ex => {
+      section.total++;
+      const label = ex.querySelector('.ex-label').textContent;
+      const prompt = ex.querySelector('.ex-prompt').textContent.trim();
+      const feedback = ex.querySelector('.feedback');
+      const correctAnswers = ex.dataset.correct;
+      let userAnswer = '', isRight = false;
+
+      if (ex.dataset.type === 'choice') {
+        const sel = ex.querySelector('.choice-btn.selected');
+        userAnswer = sel ? sel.dataset.val : '';
+        isRight = normalize(userAnswer) === normalize(correctAnswers);
+        // Buttons färben
+        ex.querySelectorAll('.choice-btn').forEach(b => {
+          b.disabled = true;
+          if (b.dataset.val === correctAnswers) b.classList.add('correct');
+          else if (b === sel) b.classList.add('incorrect');
+        });
+      } else {
+        const inp = ex.querySelector('.answer-input');
+        userAnswer = inp.value.trim();
+        isRight = isCorrect(userAnswer, correctAnswers);
+        inp.disabled = true;
+        inp.classList.add(isRight ? 'correct' : 'incorrect');
+      }
+
+      feedback.className = 'feedback show ' + (isRight ? 'correct' : 'incorrect');
+      const firstCorrect = correctAnswers.split('|')[0];
+      feedback.innerHTML = isRight ? '✓ Richtig!' : `✗ Richtig w&auml;re: <strong>${firstCorrect}</strong>`;
+
+      if (isRight) {
+        section.score++;
+      } else {
+        section.wrong.push({ q: prompt, user: userAnswer, correct: firstCorrect });
+      }
+    });
+
+    sectionData.push(section);
+  });
+
+  // Total score
+  const totalScore = sectionData.reduce((s, sec) => s + sec.score, 0);
+  const totalCount = sectionData.reduce((s, sec) => s + sec.total, 0);
+  const pct = Math.round(totalScore/totalCount*100);
+
+  document.getElementById('scoreBig').textContent = pct + '%';
+  document.getElementById('scoreDetail').textContent = totalScore + ' von ' + totalCount + ' richtig';
+
+  // Feedback nach Score
+  let label = '';
+  const sec1 = sectionData[0], sec2 = sectionData[1], sec3 = sectionData[2];
+  if (pct >= 85) label = 'Perfeito sitzt! Der Tempus-Wechsel ist drin.';
+  else if (pct >= 70) label = 'Solide! Kleine Feinheiten bei den unregelmäßigen Formen. Nochmal wiederholen macht Sinn.';
+  else if (pct >= 50) label = 'Wackelig — vor allem die unregelmäßigen Formen. Regel 3+4 oben nochmal genau anschauen und diese Übung morgen nochmal.';
+  else label = 'Grundregel noch nicht gefestigt. Regeln oben in Ruhe lesen, dann nochmal.';
+
+  if (sec1 && sec1.score < 8) label += ' → Sektion 1 (Tempus-Wahl) ist die Basis, die MUSS zuerst sitzen.';
+  document.getElementById('scoreLabel').textContent = label;
+
+  // In Historie speichern
+  PTProgress.save({
+    exerciseId: 'perfeito-tempus-v1',
+    exerciseName: 'Perfeito Tempuslücke — V1',
+    topic: 'perfeito',
+    sections: sectionData
+  });
+
+  document.getElementById('results').classList.add('show');
+  document.getElementById('results').scrollIntoView({behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
