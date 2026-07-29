@@ -1,36 +1,4 @@
-﻿Portugiesisch;Deutsch;Notiz/Beispiel
-Bom dia;Guten Morgen / Guten Tag;
-Boa tarde;Guten Nachmittag;
-Boa noite;Guten Abend / Gute Nacht;
-Olá;Hallo;
-Por favor / Se faz favor;bitte;
-Obrigado / Obrigada;danke (m / w);passt sich an Sprecher an!
-Sim / Não;ja / nein;
-Eu;ich;
-Tu;du (informell);in Brasilien selten, in Portugal Standard
-Você;Sie / du (BR);formell PT, informell BR
-Ele / Ela;er / sie;
-Nós;wir;
-Vocês;ihr / Sie (Plural);
-Eles / Elas;sie (m+gemischt / nur w);
-Chamo-me Moritz;Ich heiße Moritz;chamar-se reflexiv
-Como te chamas?;Wie heißt du? (informell);Como é que te chamas? = ausführlicher
-Qual é o seu nome?;Wie heißen Sie? (formell);
-Meu nome é...;Mein Name ist...;Alternative zu chamar-se
-Sou da Alemanha;Ich komme aus Deutschland;ser + de
-Sou alemão;Ich bin Deutscher;Nationalität ohne Artikel
-Tenho 28 anos;Ich bin 28 Jahre alt;Achtung: ter (haben), nicht ser!
-Quantos anos tens?;Wie alt bist du?;alternative: Que idade tem?
-Sou empreendedor;Ich bin Unternehmer;Beruf ohne Artikel
-Quem;Wer;nur für Personen
-Como;Wie;
-Qual / Quais;Welche/r;Auswahl aus mehreren
-O que / Que;Was;für Dinge, allgemein
-Onde;Wo;
-Quando;Wann;
-Quanto / Quantos;Wie viel / Wie viele;
-Porquê?;Warum?;Frage am Satzende
-Porque;weil;Antwort
+﻿Portugiesisch;Deutsch;Notiz
 Eu sou;Ich bin;ser - Identität
 Tu és;Du bist;
 Ele/Ela é;Er/Sie ist;
@@ -56,41 +24,6 @@ Tu vens;Du kommst;
 Ele/Ela vem;Er/Sie kommt;
 Nós vimos;Wir kommen;
 Eles vêm;Sie kommen;
-Médico / Médica;Arzt / Ärztin;ohne Artikel: Sou médico
-Advogado / Advogada;Anwalt / Anwältin;
-Professor / Professora;Lehrer / Lehrerin;
-Engenheiro / Engenheira;Ingenieur / Ingenieurin;
-Tradutor / Tradutora;Übersetzer / Übersetzerin;
-Cantor / Cantora;Sänger / Sängerin;
-Pintor / Pintora;Maler / Malerin;
-Cabeleireiro / Cabeleireira;Friseur / Friseurin;
-Jornalista;Journalist (gleich m/f);
-Dentista;Zahnarzt (gleich m/f);
-Motorista;Fahrer (gleich m/f);
-Estudante;Student (gleich m/f);
-Empreendedor / Empreendedora;Unternehmer / Unternehmerin;
-Casado / Casada;verheiratet;
-Solteiro / Solteira;ledig / single;
-Divorciado / Divorciada;geschieden;
-Viúvo / Viúva;verwitwet;
-Pai;Vater;
-Mãe;Mutter;
-Pais;Eltern;ohne Akzent!
-País;Land;MIT Akzent — anderes Wort!
-Filho / Filha;Sohn / Tochter;
-Irmão / Irmã;Bruder / Schwester;
-Avó / Avô;Großmutter / Großvater;
-Namorado / Namorada;Freund/in (Beziehung);
-Meu / Minha;mein/e;passt zum BESITZ, nicht Besitzer
-Teu / Tua;dein/e;informell
-Seu / Sua;sein / ihr / Ihr (formell);ggf. mit dele/dela präzisieren
-Nosso / Nossa;unser/e;
-Vosso / Vossa;euer/e;selten in PT-PT
-Dele / Dela;von ihm / von ihr;de + ele/ela
-no / na / nos / nas;in/im (em + Artikel);em+o=no, em+a=na
-do / da / dos / das;vom/von (de + Artikel);de+o=do
-ao / à / aos / às;zum/zur (a + Artikel);a+o=ao
-num / numa;in einem/einer;em+um, em+uma
 trabalhar;arbeiten;Trabalho com... / como...
 morar / viver;wohnen / leben;"synonym; Moro/Vivo em Frankfurt"
 estudar;lernen / studieren;
@@ -157,62 +90,81 @@ construir;bauen;Construí uma casa
 mentir;lügen;eu minto
 descer;hinuntergehen;eu desço (mit ç!)
 esquecer-se;vergessen;"eu esqueço-me; reflexiv konjugieren!"
-Sempre;immer;
-Nunca;nie;
-Às vezes;manchmal;
-Com frequência;oft;
-Quase;fast / beinahe;
-Poucas vezes;selten;
-Uma vez por semana;einmal pro Woche;
-Duas a três vezes por semana;zwei bis drei Mal pro Woche;
-Todos os dias;jeden Tag;
-Hoje / Ontem / Amanhã;heute / gestern / morgen;
-De manhã / De tarde / De noite;morgens / nachmittags / abends;
-Cedo / Tarde;früh / spät;
-Depois;danach / später / dann;
-Depois de;nach (zeitlich);+ Substantiv/Infinitiv
-Antes / Antes de;vorher / vor;
-Agora;jetzt;
-Até agora;bis jetzt;
-De novo / Novamente;wieder / nochmal;
-Logo / Mais tarde;gleich / später;
-Última / Último;letzte/r;No último fim de semana
-Segunda-feira;Montag;
-Terça-feira;Dienstag;
-Quarta-feira;Mittwoch;
-Quinta-feira;Donnerstag;
-Sexta-feira;Freitag;
-Sábado / Domingo;Samstag / Sonntag;
-Fim de semana;Wochenende;
-Que horas são?;Wie spät ist es?;
-É uma hora;Es ist 1 Uhr;Singular!
-São duas horas;Es ist 2 Uhr;ab 2: São + Plural
-E meia / E um quarto;halb / Viertel nach;
-Meio-dia / Meia-noite;Mittag / Mitternacht;
-A que horas?;Um wie viel Uhr?;Antwort: às oito
-Em casa;zu Hause;
-No escritório;im Büro;
-Na rua;auf der Straße;
-Na praia;am Strand;
-No restaurante;im Restaurant;
-Cidade / Cidade natal;Stadt / Heimatstadt;
-Vila;Dorf;Viver na vila
-Faculdade / Universidade;Hochschule / Universität;
-Estação do comboio;Bahnhof;PT-PT (BR: estação de trem)
-Ginásio;Fitnessstudio;
-Sauna;Sauna;
-Terraço;Dachterrasse;
-Parque;Park;
-Floresta;Wald;
-Natureza;Natur;Na natureza
-Direito / À direita;geradeaus / rechts;
-À esquerda;links;
-Diretamente;direkt;
-Longe;weit (weg);
-Perto;nah / in der Nähe;
-Aqui / Lá;hier / dort;
-Fora;draußen;
-Dentro;drinnen;
+Eu fui;Ich war / ich ging;ir/ser Pretérito
+Eu fiz;Ich habe gemacht;fazer Pretérito
+Eu tive;Ich hatte;ter Pretérito
+Eu estive;Ich war (gerade);estar Pretérito
+Eu vi;Ich habe gesehen;ver Pretérito
+Eu disse;Ich habe gesagt;dizer Pretérito
+Eu fiquei;Ich blieb;ficar Pretérito
+Eu saí;Ich ging raus;sair Pretérito
+Eu comi / bebi;Ich aß / trank;
+Eu comprei;Ich kaufte;
+Eu cozinhei;Ich kochte;
+Eu treinei;Ich trainierte;
+Eu corri;Ich lief / joggte;
+Eu encontrei;Ich traf;
+Eu construí;Ich baute;construir
+Eu provei;Ich probierte;
+Eu notei;Ich bemerkte;
+Eles deram;Sie gaben;dar Pretérito
+Como foi o teu fim de semana?;Wie war dein Wochenende?;
+O que fizeste?;Was hast du gemacht?;
+O que tens feito?;Was hast du so gemacht?;Pretérito Perfeito Composto
+Eu estava;Ich war (Zustand);estar Imperfeito
+Eu tinha;Ich hatte;ter Imperfeito
+Eu era;Ich war;ser Imperfeito
+Quando era criança;als ich Kind war;typischer Imperfeito-Trigger
+Tinha sol;Es war sonnig;Imperfeito beim Wetter
+Estava ensolarado;Es war sonnig;
+Vivia em Portugal;Ich lebte in Portugal;
+Eu gostaria;Ich würde gerne;Konditional - höflich
+Queria;Ich hätte gerne;höflich beim Bestellen
+Inscrever-se;sich anmelden / einschreiben;z.B. ginásio, curso — reflexiv
+Atrasar-se;sich verspäten;reflexiv
+Esperar;warten;
+Sabor;Geschmack;o sabor
+Doer;schmerzen / wehtun;
+Furar;durchstechen / piercen;
+Variar;variieren;
+Pagar;bezahlen;
+Vender;verkaufen;
+Hamburguer;Burger;spelling: hambúrguer
+Tentar;versuchen;
+Mostrar;zeigen;
+Reagir;reagieren;
+Aproximar-se;sich nähern / ansprechen;reflexiv im Kontext
+Abordar;ansprechen / zugehen auf;abordar alguém
+Namorar;daten / mit jdm. zusammen sein;
+Reservar;reservieren / buchen;
+Assinar;unterschreiben / sich eintragen;
+Praticar;üben / praktizieren;Synonym zu treinar
+Assistir;anschauen / zusehen;filme/série assistir
+Olhar;schauen (auf etwas);V: olhar para
+Escutar;zuhören / lauschen;eu escuto todos os dias
+Entender;verstehen;
+Compreender;verstehen (Synonym);
+Pedir;bitten / bestellen;eu peço
+Conseguir;schaffen / hinbekommen;eu consigo
+Diferenciar;unterscheiden;diferenciar espanhol de português
+Ficar em forma;in Form bleiben;
+Acelerar;beschleunigen;o coração acelera
+Concordar;zustimmen;eu concordo
+Defender-se;sich verteidigen;reflexiv! me defendo
+Aproveitar;genießen;aproveite as tuas cervejas!
+Desfrutar;genießen (Synonym);
+Melhorar;besser werden / verbessern;vai melhorar
+Aumentar;erhöhen / steigern;aumentar a distância
+Focar (em);sich fokussieren auf;devias focar em dois produtos
+Testar;testen;
+Preparar;vorbereiten;
+Praticar;üben;para praticar
+Jogar;spielen (Sport / Spiel);jogar futebol
+Tocar;spielen (Instrument) / berühren;tocar guitarra
+Brincar;spielen (Kinder);crianças brincam
+Pegar;nehmen / greifen;pegar um avião
+Voar;fliegen;voar para Moçambique
+Roubar;stehlen;roubar a tua ideia
 Alto / Baixo;groß / klein;
 Magro / Magra;schlank / dünn;
 Gordo / Gorda;dick;
@@ -241,6 +193,94 @@ Careca;Glatze / glatzköpfig;
 Comprido;lang;
 Largo / Larga;breit;
 Preguiçoso / Preguiçosa;faul;Substantiv: preguiça
+Branco / Branca;weiß;
+Preto / Preta;schwarz;
+Vermelho / Vermelha;rot;
+Azul / Azuis;blau (Sg/Pl);
+Verde;grün;
+Amarelo / Amarela;gelb;
+Castanho / Castanha;braun;
+Cinzento / Cinzenta;grau;
+Cor-de-laranja;orange;
+Cor-de-rosa;rosa;
+Louro / Loiro;blond;
+Dourado;golden;
+Estou bem;Es geht mir gut;
+Estou cheio;Ich bin satt;
+Estou cansado;Ich bin müde;
+Estou feliz;Ich bin glücklich;
+Me sinto muito bem;Ich fühle mich sehr gut;sentir-se reflexiv
+Muito bem disposto;sehr gut gelaunt;
+Diverti-me;Ich hatte Spaß;divertir-se
+Foi divertido / Foi fixe;Es hat Spaß gemacht / Es war cool;fixe = umgangssprachlich
+Quarto;Zimmer;
+Mesa;Tisch;auch im Coworking
+Seria;es wäre;Konditional von ser
+Plano;Plan;Meu plano é...
+Projecto;Projekt;PT-PT mit -ct! (BR: projeto)
+Atraso;Verspätung;Substantiv
+Subscrição;Abonnement;
+Fritadeira;Fritteuse;
+Shawarma;Shawarma;
+Cachoeira;Wasserfall;
+Molho;Sauce;
+Sala;Raum / Saal;anders als quarto = Schlafzimmer!
+Lista;Liste;
+Apa;Fladenbrot;afrikanisches Brot
+Cinema;Kino;
+Estranho / Estranha;seltsam;é muito estranho
+Parecido / Parecida;ähnlich;línguas parecidas
+Intenso / Intensa;intensiv;mais intenso do que Muay Thai
+Infeliz / Infelizes;unglücklich;infelizes com a vida
+Musculoso / Musculosa;muskulös;
+Burro / Burra;dumm;pessoas burras
+Médico / Médica;Arzt / Ärztin;ohne Artikel: Sou médico
+Advogado / Advogada;Anwalt / Anwältin;
+Professor / Professora;Lehrer / Lehrerin;
+Engenheiro / Engenheira;Ingenieur / Ingenieurin;
+Tradutor / Tradutora;Übersetzer / Übersetzerin;
+Cantor / Cantora;Sänger / Sängerin;
+Pintor / Pintora;Maler / Malerin;
+Cabeleireiro / Cabeleireira;Friseur / Friseurin;
+Jornalista;Journalist (gleich m/f);
+Dentista;Zahnarzt (gleich m/f);
+Motorista;Fahrer (gleich m/f);
+Estudante;Student (gleich m/f);
+Empreendedor / Empreendedora;Unternehmer / Unternehmerin;
+Casado / Casada;verheiratet;
+Solteiro / Solteira;ledig / single;
+Divorciado / Divorciada;geschieden;
+Viúvo / Viúva;verwitwet;
+Pai;Vater;
+Mãe;Mutter;
+Pais;Eltern;ohne Akzent!
+País;Land;MIT Akzent — anderes Wort!
+Filho / Filha;Sohn / Tochter;
+Irmão / Irmã;Bruder / Schwester;
+Avó / Avô;Großmutter / Großvater;
+Namorado / Namorada;Freund/in (Beziehung);
+Segunda-feira;Montag;
+Terça-feira;Dienstag;
+Quarta-feira;Mittwoch;
+Quinta-feira;Donnerstag;
+Sexta-feira;Freitag;
+Sábado / Domingo;Samstag / Sonntag;
+Fim de semana;Wochenende;
+Em casa;zu Hause;
+No escritório;im Büro;
+Na rua;auf der Straße;
+Na praia;am Strand;
+No restaurante;im Restaurant;
+Cidade / Cidade natal;Stadt / Heimatstadt;
+Vila;Dorf;Viver na vila
+Faculdade / Universidade;Hochschule / Universität;
+Estação do comboio;Bahnhof;PT-PT (BR: estação de trem)
+Ginásio;Fitnessstudio;
+Sauna;Sauna;
+Terraço;Dachterrasse;
+Parque;Park;
+Floresta;Wald;
+Natureza;Natur;Na natureza
 Corpo;Körper;Todo o corpo = full body
 Cabeça;Kopf;
 Cabelo;Haar;
@@ -256,18 +296,6 @@ Casaco;Jacke / Mantel;
 Saia;Rock;
 Sapatos;Schuhe;
 Fato;Anzug;
-Branco / Branca;weiß;
-Preto / Preta;schwarz;
-Vermelho / Vermelha;rot;
-Azul / Azuis;blau (Sg/Pl);
-Verde;grün;
-Amarelo / Amarela;gelb;
-Castanho / Castanha;braun;
-Cinzento / Cinzenta;grau;
-Cor-de-laranja;orange;
-Cor-de-rosa;rosa;
-Louro / Loiro;blond;
-Dourado;golden;
 Comida;Essen;Comida favorita = Lieblingsessen
 Pequeno-almoço;Frühstück;
 Almoço / Jantar;Mittagessen / Abendessen;
@@ -301,100 +329,6 @@ Ananás;Ananas;PT-PT (BR: abacaxi)
 Papaia;Papaya;
 Graviola;Stachelannone;tropische Frucht
 Maçã / Banana / Laranja;Apfel / Banane / Orange;
-Estou com fome;Ich habe Hunger;estar com + Substantiv
-Estou com sede;Ich habe Durst;
-Estou com sono;Ich bin müde / schläfrig;
-Estou com calor / frio;Mir ist heiß / kalt;
-Estou com medo;Ich habe Angst;
-Estou com saudades;Ich habe Sehnsucht;typisch portugiesisch!
-Estou com inveja;Ich bin neidisch;
-Estou com vontade de;Ich habe Lust auf;+ Inf/Substantiv
-Estou com dor de dentes;Ich habe Zahnschmerzen;
-Estou bem;Es geht mir gut;
-Estou cheio;Ich bin satt;
-Estou cansado;Ich bin müde;
-Estou feliz;Ich bin glücklich;
-Me sinto muito bem;Ich fühle mich sehr gut;sentir-se reflexiv
-Muito bem disposto;sehr gut gelaunt;
-Diverti-me;Ich hatte Spaß;divertir-se
-Foi divertido / Foi fixe;Es hat Spaß gemacht / Es war cool;fixe = umgangssprachlich
-Estou a + Inf;Ich bin gerade dabei zu...;PT-PT (BR: -ndo Form)
-Estou a trabalhar;Ich arbeite gerade;
-Está a funcionar;Es funktioniert (gerade);
-Está a chover;Es regnet (gerade);
-O que estás a fazer agora?;Was machst du gerade?;
-Vou cozinhar;Ich werde kochen;ir + Inf
-Vou viajar amanhã;Ich werde morgen reisen;
-O que vais fazer?;Was wirst du machen?;
-Fazer a mala;den Koffer packen;
-Eu fui;Ich war / ich ging;ir/ser Pretérito
-Eu fiz;Ich habe gemacht;fazer Pretérito
-Eu tive;Ich hatte;ter Pretérito
-Eu estive;Ich war (gerade);estar Pretérito
-Eu vi;Ich habe gesehen;ver Pretérito
-Eu disse;Ich habe gesagt;dizer Pretérito
-Eu fiquei;Ich blieb;ficar Pretérito
-Eu saí;Ich ging raus;sair Pretérito
-Eu comi / bebi;Ich aß / trank;
-Eu comprei;Ich kaufte;
-Eu cozinhei;Ich kochte;
-Eu treinei;Ich trainierte;
-Eu corri;Ich lief / joggte;
-Eu encontrei;Ich traf;
-Eu construí;Ich baute;construir
-Eu provei;Ich probierte;
-Eu notei;Ich bemerkte;
-Eles deram;Sie gaben;dar Pretérito
-Como foi o teu fim de semana?;Wie war dein Wochenende?;
-O que fizeste?;Was hast du gemacht?;
-O que tens feito?;Was hast du so gemacht?;Pretérito Perfeito Composto
-Eu estava;Ich war (Zustand);estar Imperfeito
-Eu tinha;Ich hatte;ter Imperfeito
-Eu era;Ich war;ser Imperfeito
-Quando era criança;als ich Kind war;typischer Imperfeito-Trigger
-Tinha sol;Es war sonnig;Imperfeito beim Wetter
-Estava ensolarado;Es war sonnig;
-Vivia em Portugal;Ich lebte in Portugal;
-Eu gostaria;Ich würde gerne;Konditional - höflich
-Queria;Ich hätte gerne;höflich beim Bestellen
-Eu sei + Inf;Ich kann + Inf (gelernt);Sei nadar = Ich kann schwimmen
-Posso + Inf;Ich darf / kann + Inf;Erlaubnis/Möglichkeit
-Eu tento + Inf;Ich versuche + Inf;
-Tenho que + Inf;Ich muss + Inf;
-Comecei a + Inf;Ich habe angefangen zu...;começar a
-Continuar a + Inf;weiter machen;
-Mas;aber;
-Também;auch;
-Então;also / dann;Füllwort
-Por exemplo;zum Beispiel;
-Principalmente;vor allem;
-Infelizmente;leider;
-Felizmente;zum Glück;
-Assim;so / auf diese Weise;
-Quase;fast;
-Só / Apenas;nur;
-Já;schon;
-Ainda;noch;
-Para / Por;für / durch;Faustregel: para=Ziel, por=Grund
-Comigo;mit mir;
-Contigo;mit dir;
-Connosco / Conosco;mit uns;PT-PT: connosco
-Convosco;mit euch;
-Para ti / Para si;für dich / für Sie;
-Tu tens razão;Du hast Recht;
-Não há problema;Kein Problem;
-Não é bem...;Es ist nicht wirklich...;
-É verdade;Das stimmt;
-Acho que...;Ich denke, dass...;
-O que achas?;Was hältst du davon?;
-Quero te contar uma coisa;Ich möchte dir etwas erzählen;
-O que mais?;Was noch?;
-Pouco a pouco;Stück für Stück;
-Vamos chegar lá;Wir werden es schaffen;
-Sem consistência, sem sucesso;Ohne Konsistenz kein Erfolg;Spruch
-Quanto mais tu tentas, mais chances tens;Je mehr du versuchst, desto mehr Chancen;Spruch
-Não há sucesso sem riscos;Kein Erfolg ohne Risiken;
-Não tens muito a perder;Du hast nicht viel zu verlieren;
 Trabalho com / como;Ich arbeite mit / als;com=Bereich, como=Rolle
 Negócio;Geschäft;
 Cliente;Kunde;
@@ -422,6 +356,124 @@ Conversação;Konversation;
 Conversar por mensagem;per Nachricht chatten;
 Estou satisfeito;Ich bin zufrieden;
 Progresso;Fortschritt;
+Flores / Árvores;Blumen / Bäume;
+Arco-íris;Regenbogen;
+Casa;Haus / Zuhause;
+Casa de banho;Badezimmer / Toilette;Onde fica a casa de banho?
+Construir uma casa;ein Haus bauen;
+Localização;Lage / Standort;Estou numa boa localização
+Coworking;Coworking-Space;
+Visitei;ich besuchte;visitar Pretérito
+Parece;es scheint / sieht aus;parecer
+Pesquisa;Recherche / Suche;
+Ninguém;niemand;Não conheço ninguém
+Ainda;noch / immer noch;Ainda não fiz isso
+Esperei;ich wartete;esperar Pretérito
+Estresse;Stress;Substantiv
+Estavas;du warst;estar Imperfeito
+Preparei;ich bereitete zu;preparar Pretérito
+Se;wenn / falls;Konjunktion
+Doeu;es tat weh;doer Pretérito
+Furo;Loch / Piercing;
+Paguei;ich bezahlte;pagar Pretérito
+Saída;Ausgang / Ausstieg;
+Massaroca;frischer Mais (gegrillt);regionales Gericht
+Tentaste;du hast versucht;tentar tu
+Disse-me;(er/sie) sagte mir;dizer + Pronomen
+Coragem;Mut;
+Namoro;Beziehung (Boyfriend/Girlfriend);Substantiv
+Festas;Partys / Feste;
+Metade;Hälfte;
+Habitantes;Einwohner;mais de 300 mil habitantes
+Vídeos;Videos;
+Reservei;ich habe reserviert;reservar Pretérito
+Telefone;Telefon / Handy;auch im Sinne 'mobile'
+Futebol;Fußball;
+Qualidade;Qualität;
+Quantidade;Quantität / Menge;
+Serviço;Service / Dienstleistung;
+Complicação / Complicações;Komplikation(en);muitas complicações com o negócio
+Falha humana / Falhas humanas;menschliche(r) Fehler;
+Lei / Leis;Gesetz(e);
+Regulamentos;Regulierungen;
+Relatório;Bericht;
+Coração;Herz;coração acelera
+Zona;Zone (auch Puls-Zone);zona 0/1/2 (Puls beim Laufen)
+Corrida;Lauf / Rennen;corri 12 km
+Punho / Punhos;Faust / Fäuste;Kampfsport
+Cotovelo / Cotovelos;Ellbogen;
+Joelho / Joelhos;Knie;
+Pontapé / Pontapés;Tritt / Tritte;
+Cenário;Szenario;num cenário da vida real
+Luta;Kampf;
+Confronto;Konfrontation;confronto de rua
+Desporto de combate;Kampfsport;
+Confiança;Vertrauen / Selbstvertrauen;dá confiança
+Karaté;Karate;
+Capoeira;Capoeira;
+Basquetebol;Basketball;
+Palavrão / Palavrões;Schimpfwort / Schimpfwörter;
+Gíria / Gírias;Slang;aprender gírias em português
+Tarefa;Aufgabe;não tive tempo para fazer minha tarefa
+Alguém / Uma pessoa;jemand / eine Person;
+Dedo / Dedos;Finger / Zehen;
+Distância;Entfernung;aumentar a distância
+Velocidade;Geschwindigkeit;aumentar a velocidade
+Treino;Training;teu treino
+Serralheiro;Schlosser;
+Forno;Ofen;forno para pizza
+Hambúrguer;Hamburger;
+Congelador;Gefrierschrank;
+Chapa;Grillplatte;chapa de hambúrguer
+Lugar;Ort / Platz;
+Avião;Flugzeug;pegar um avião
+Console / Consolas;Konsole(n);comprar consoles
+Fisio;Physio(therapie);vou ter fisio
+Bom dia;Guten Morgen / Guten Tag;
+Boa tarde;Guten Nachmittag;
+Boa noite;Guten Abend / Gute Nacht;
+Olá;Hallo;
+Por favor / Se faz favor;bitte;
+Obrigado / Obrigada;danke (m / w);passt sich an Sprecher an!
+Sim / Não;ja / nein;
+Chamo-me Moritz;Ich heiße Moritz;chamar-se reflexiv
+Como te chamas?;Wie heißt du? (informell);Como é que te chamas? = ausführlicher
+Qual é o seu nome?;Wie heißen Sie? (formell);
+Meu nome é...;Mein Name ist...;Alternative zu chamar-se
+Sou da Alemanha;Ich komme aus Deutschland;ser + de
+Sou alemão;Ich bin Deutscher;Nationalität ohne Artikel
+Tenho 28 anos;Ich bin 28 Jahre alt;Achtung: ter (haben), nicht ser!
+Quantos anos tens?;Wie alt bist du?;alternative: Que idade tem?
+Sou empreendedor;Ich bin Unternehmer;Beruf ohne Artikel
+Que horas são?;Wie spät ist es?;
+É uma hora;Es ist 1 Uhr;Singular!
+São duas horas;Es ist 2 Uhr;ab 2: São + Plural
+E meia / E um quarto;halb / Viertel nach;
+Meio-dia / Meia-noite;Mittag / Mitternacht;
+A que horas?;Um wie viel Uhr?;Antwort: às oito
+Estou com fome;Ich habe Hunger;estar com + Substantiv
+Estou com sede;Ich habe Durst;
+Estou com sono;Ich bin müde / schläfrig;
+Estou com calor / frio;Mir ist heiß / kalt;
+Estou com medo;Ich habe Angst;
+Estou com saudades;Ich habe Sehnsucht;typisch portugiesisch!
+Estou com inveja;Ich bin neidisch;
+Estou com vontade de;Ich habe Lust auf;+ Inf/Substantiv
+Estou com dor de dentes;Ich habe Zahnschmerzen;
+Tu tens razão;Du hast Recht;
+Não há problema;Kein Problem;
+Não é bem...;Es ist nicht wirklich...;
+É verdade;Das stimmt;
+Acho que...;Ich denke, dass...;
+O que achas?;Was hältst du davon?;
+Quero te contar uma coisa;Ich möchte dir etwas erzählen;
+O que mais?;Was noch?;
+Pouco a pouco;Stück für Stück;
+Vamos chegar lá;Wir werden es schaffen;
+Sem consistência, sem sucesso;Ohne Konsistenz kein Erfolg;Spruch
+Quanto mais tu tentas, mais chances tens;Je mehr du versuchst, desto mehr Chancen;Spruch
+Não há sucesso sem riscos;Kein Erfolg ohne Risiken;
+Não tens muito a perder;Du hast nicht viel zu verlieren;
 Comer fora;auswärts essen;
 Cultura de comer fora;Restaurantkultur;
 Restaurante tradicional;traditionelles Restaurant;
@@ -435,11 +487,6 @@ Frio / Calor;Kalt / Hitze;Está frio / Está calor
 Nuvens / Céu;Wolken / Himmel;
 Inverno / Verão / Primavera / Outono;Winter / Sommer / Frühling / Herbst;
 22 graus;22 Grad;
-Flores / Árvores;Blumen / Bäume;
-Arco-íris;Regenbogen;
-Casa;Haus / Zuhause;
-Casa de banho;Badezimmer / Toilette;Onde fica a casa de banho?
-Construir uma casa;ein Haus bauen;
 Coisa / Coisinhas;Sache / Kleinigkeiten;
 Mistura;Mischung;
 A mesma coisa;dasselbe;
@@ -454,24 +501,14 @@ Durante o dia / a semana;während des Tages / der Woche;
 Rotina semanal;Wochenroutine;
 Infância;Kindheit;
 Colega de quarto;Mitbewohner/in;Roommate
-Quarto;Zimmer;
-Inscrever-se;sich anmelden / einschreiben;z.B. ginásio, curso — reflexiv
 Tu inscreves-te;du meldest dich an;inscrever-se konjugiert
 Eu inscrevo-me;ich melde mich an;
-Localização;Lage / Standort;Estou numa boa localização
-Coworking;Coworking-Space;
-Mesa;Tisch;auch im Coworking
 Área aberta;offener Bereich;
 Convenção / Conferência;Konvention / Konferenz;convenção de tatuagem
-Visitei;ich besuchte;visitar Pretérito
 Eu vim para...;Ich kam nach...;vir Pretérito
-Como funciona?;Wie funktioniert es?;
-Como vai?;Wie geht es?;Como vai o seu projecto?
-Como vão as coisas?;Wie laufen die Dinge?;
 Eu acho que...;Ich denke, dass...;
 Acho que a vida é assim;Das Leben ist halt so;philosophisch
 Me deixa;Lass mich / macht mich;deixar = lassen
-Parece;es scheint / sieht aus;parecer
 Parecido com;ähnlich wie;Komparativ-Konstruktion
 Comparado com;verglichen mit;
 Mesma língua;gleiche Sprache;mesmo/mesma
@@ -480,21 +517,15 @@ Primeiro... depois...;zuerst... dann...;Sequenz
 Mais X do que Y;mehr X als Y;Komparativ-Standard
 Mais caro do que Lisboa;teurer als Lissabon;
 Saiu caro / Saiu barato;es kam teuer / billig (raus);sair de preço
-Seria;es wäre;Konditional von ser
 Gostaria de...;Ich würde gerne...;Konditional - höflich
 Eu pensei;ich dachte;pensar Pretérito
 Eu percebi;ich verstand / realisierte;perceber
 Eu entendi;ich verstand;entender
 Eu fiz pesquisa;ich habe recherchiert;fazer pesquisa
-Pesquisa;Recherche / Suche;
-Plano;Plan;Meu plano é...
-Projecto;Projekt;PT-PT mit -ct! (BR: projeto)
 Sozinho / Sozinha;allein;Estou sozinho
-Ninguém;niemand;Não conheço ninguém
 Algumas / Alguns;einige;Algumas pessoas
 Clube de corrida;Lauftreff;
 Carpinteiro / Carpinteira;Zimmermann / Zimmerin;Handwerker
-Ainda;noch / immer noch;Ainda não fiz isso
 Ainda não;noch nicht;
 Amo rotina;Ich liebe Routine;amar = lieben
 Mudam-se para Espanha;Sie ziehen nach Spanien um;mudar-se 3.Pl
@@ -506,90 +537,52 @@ Na próxima semana;nächste Woche;
 Na semana passada;letzte Woche;
 Estou a 10 minutos de...;Ich bin 10 Minuten von... entfernt;Distanz/Zeit
 Desculpe pelo atraso;Entschuldigung für die Verspätung;Standardausdruck
-Atraso;Verspätung;Substantiv
-Atrasar-se;sich verspäten;reflexiv
-Esperei;ich wartete;esperar Pretérito
-Esperar;warten;
 Estou à espera de...;Ich warte auf...;esperar mit Präposition
 Estressado / Estressada;gestresst;Adjektiv
-Estresse;Stress;Substantiv
 Não tem estresse;kein Stress;ugs.
 Eu consegui;ich habe es geschafft;conseguir Pretérito
 Tu conseguiste;du hast es geschafft;
 Não consegui;ich habe es nicht geschafft;
-Estavas;du warst;estar Imperfeito
-Que tipo de...?;Was für ein...?;Frage
-Preparei;ich bereitete zu;preparar Pretérito
 Preparar comida;Essen zubereiten;
 Carne de cabrito;Ziegenfleisch;
-Sabor;Geschmack;o sabor
 Sabor forte;starker Geschmack;
 Tu podias;du könntest;Konditional von poder
 Eu podia;ich könnte;
 Não diria;Ich würde nicht sagen;Konditional von dizer
-Se;wenn / falls;Konjunktion
 Se eu comprar...;Wenn ich kaufe...;Konjunktiv Futur
 Calças de natação;Badehose;
 Corajoso / Corajosa;mutig;
 Louco / Louca;verrückt;
 Doloroso / Dolorosa;schmerzhaft;
-Doer;schmerzen / wehtun;
-Doeu;es tat weh;doer Pretérito
 Não doeu;es tat nicht weh;
 Agulha / Agulhas;Nadel/n;
-Furo;Loch / Piercing;
-Furar;durchstechen / piercen;
 A dor varia de pessoa para pessoa;Schmerz variiert von Person zu Person;
-Variar;variieren;
 Depende de...;es kommt darauf an...;depender de
 Parte do corpo;Körperteil;
-Subscrição;Abonnement;
 Por mês / Por semana / Por ano;pro Monat / Woche / Jahr;Zeit-Distribution
-Pagar;bezahlen;
-Paguei;ich bezahlte;pagar Pretérito
-Quanto custa?;Wie viel kostet es?;
-Qual é o preço?;Wie ist der Preis?;
-Há quanto tempo?;Wie lange schon?;Dauer-Frage
 Há muito tempo;schon lange;
 Estou com ela há muito tempo;Ich bin schon lange mit ihr zusammen;
 Eu não sabia;Ich wusste nicht;saber Imperfeito
 Mundo real;reale Welt;
 Perigoso / Perigosa;gefährlich;
 Acho que não;Ich denke nicht;
-Levantar-se;aufstehen;reflexiv
-Levanto-me cedo;Ich stehe früh auf;nach Verb
-Sentar-se;sich (hin)setzen;reflexiv
-Sentamo-nos à mesa;Wir setzen uns an den Tisch;Achtung: s entfällt vor -nos!
-Deitar-se;sich hinlegen / schlafen gehen;reflexiv
-Deito-me tarde;Ich gehe spät schlafen;
-Lavar-se;sich waschen;reflexiv
-Nunca me deito cedo;Ich gehe nie früh schlafen;Pronomen vor Verb wegen 'nunca'
-Também nos levantamos cedo;Wir stehen auch früh auf;Pronomen vor Verb wegen 'também'
 Decidiu sair;hat entschieden auszusteigen;decidir + Inf
 Sair do negócio;aus dem Business aussteigen;
-Saída;Ausgang / Ausstieg;
 Não estava a me sentir bem;Ich fühlte mich nicht wohl;Imperfeito + estar a + Inf
 As coisas não estão a correr bem;Die Dinge laufen nicht gut;estar a correr = laufen
 Como eu planejei / planeei;wie ich geplant habe;planear (PT-PT) / planejar (BR)
 Planear / Planejar;planen;PT-PT: planear, BR: planejar
 Restaurante de fast food;Fast-Food-Restaurant;
 Abrir um restaurante;ein Restaurant eröffnen;
-Vender;verkaufen;
-Que comida vais vender?;Welches Essen wirst du verkaufen?;
 Materiais para cozinha;Küchenausstattung / Material;
 Fornecedor / Fornecedores;Lieferant/en;
-Fritadeira;Fritteuse;
 Fritadeira dupla;Doppelfritteuse;
-Hamburguer;Burger;spelling: hambúrguer
-Shawarma;Shawarma;
 Pedaço / Pedaços;Stück / Stücke;
 Dia de folga;Ruhetag / freier Tag;
 Dia de descanso;Ruhetag;Synonym von folga
 Folga / Descanso;Pause / Erholung;
 Hoje é dia de folga para desportos;Heute ist Sport-Ruhetag;Beispielsatz
 Depois da nossa aula;nach unserer Stunde;
-Cachoeira;Wasserfall;
-Massaroca;frischer Mais (gegrillt);regionales Gericht
 A 30 minutos da cidade;30 Minuten von der Stadt entfernt;Distanz-Ausdruck
 Corte elétrico / Cortes eléctricos;Stromausfall / -ausfälle;
 Sem electricidade;ohne Strom;
@@ -600,83 +593,187 @@ Antes de me mudar;bevor ich umzog;antes de + Inf
 Antes de + Inf;vor (zeitlich) + Verb;z.B. antes de comer
 Tu preparaste;du hast vorbereitet;preparar tu
 Tu reagiste;du hast reagiert;reagir tu
-Tentaste;du hast versucht;tentar tu
 Ela deu-me;sie gab mir;dar + Pronomen
-Disse-me;(er/sie) sagte mir;dizer + Pronomen
 Tu mostraste-me;du hast mir gezeigt;mostrar + Pronomen
 Uma semana atrás;vor einer Woche;Vergangenheit
 Há uma semana;vor einer Woche / seit einer Woche;PT-PT-Standard
 Precisar de;brauchen;precisar de algo
 Não precisaste;du brauchtest nicht;precisar tu
-Tentar;versuchen;
-Mostrar;zeigen;
-Reagir;reagieren;
-Aproximar-se;sich nähern / ansprechen;reflexiv im Kontext
-Abordar;ansprechen / zugehen auf;abordar alguém
 Pelo menos;wenigstens / mindestens;
 Pelo menos tentaste;wenigstens hast du es versucht;
-Coragem;Mut;
 Não tenho coragem;ich habe nicht den Mut;
 Surpreso / Surpresa;überrascht;
 Ficar surpreso;überrascht sein/werden;ficar + Adj
-Namorar;daten / mit jdm. zusammen sein;
-Namoro;Beziehung (Boyfriend/Girlfriend);Substantiv
-Festas;Partys / Feste;
 Lugares lotados;überfüllte Orte;
 Lotado / Lotada;überfüllt;
-Metade;Hälfte;
 É a vida;So ist das Leben;Standardphrase
 Por enquanto;vorerst / im Moment;
 Continuar sozinho;alleine weitermachen;
-Habitantes;Einwohner;mais de 300 mil habitantes
 Vila sede;Hauptdorf / Gemeindesitz;
-Vídeos;Videos;
 Para ambos;für beide;
 Ambos / Ambas;beide;
-Molho;Sauce;
 Molho de alho;Knoblauchsauce;
 Restaurantes Árabes;arabische Restaurants;
-Reservar;reservieren / buchen;
-Reservei;ich habe reserviert;reservar Pretérito
-Sala;Raum / Saal;anders als quarto = Schlafzimmer!
 Sala de conferências;Konferenzraum;
 Quarto vs. Sala;Schlafzimmer vs. Raum/Wohnzimmer;WICHTIG: quarto NUR Schlafzimmer
-Assinar;unterschreiben / sich eintragen;
 Assinei numa lista;ich habe mich in eine Liste eingetragen;
-Lista;Liste;
 Mesa fixa;fester Arbeitsplatz;im Coworking
 Disponível / Disponíveis;verfügbar / frei;
 Não tinha mesas disponíveis;es gab keine freien Tische;
 Eu decidi;ich habe mich entschieden;decidir Pretérito
 Passo a passo;Schritt für Schritt;
 Pagar um serviço;einen Service bezahlen;
-Praticar;üben / praktizieren;Synonym zu treinar
-Apa;Fladenbrot;afrikanisches Brot
 Ao invés de;anstatt / anstelle von;
 Carne moída;Hackfleisch;
-Assistir;anschauen / zusehen;filme/série assistir
 Eu assisto;ich schaue (an);assistir Presente
-Tu assistes?;Schaust du?;
 Tu tens que assistir;Du musst (es) ansehen;
 Filme / Filmes;Film / Filme;
-Cinema;Kino;
 Série / Séries;Serie / Serien;
-Telefone;Telefon / Handy;auch im Sinne 'mobile'
 Diretor de cinema;Filmregisseur;
 De todos os tempos;aller Zeiten;o melhor de todos os tempos
-Futebol;Fußball;
 Jogo / Partida;Spiel / Match;
 Grande fã;großer Fan;
 Não tenho muito interesse em;Ich habe kein großes Interesse an;
 Melhor / Melhores;besser / der/die/das beste;Komparativ unregelmäßig
 O melhor;der/das beste;
 Mau / Má;schlecht (m/w);Adjektiv
-Qualidade;Qualität;
-Quantidade;Quantität / Menge;
 Muita quantidade, pouca qualidade;viel Quantität, wenig Qualität;typische Phrase
 Aleatório / Aleatória;zufällig;
 Todos eles / Todas elas;alle (von ihnen);
 Pergunta / Perguntas;Frage/n;
 Fazer perguntas;Fragen stellen;
 Antes de vir;bevor (ich) kam;antes de + Inf
-Serviço;Service / Dienstleistung;
+Vai e vem;Hin und Her;muito vai e vem com a lei
+Fora + Nomen;außer / außerhalb;fora os negócios (außer dem Geschäft)
+Na verdade;eigentlich / tatsächlich;na verdade eu tenho treinado muito
+Ultimamente;kürzlich / in letzter Zeit;eu treino muito ultimamente
+Vi / Assisti o jogo;sah / schaute das Spiel an;ver = sehen, assistir = anschauen (Film/Serie)
+Sim, vi / Sim, assisti;ja, ich sah / ich schaute an;
+Ajuda a aprender;hilft beim Lernen;ouvir espanhol ajuda a aprender português
+Sem sentido;sinnlos;coisas sem sentido
+Sério?;ernsthaft?;
+Estou a ver;ich verstehe / ich sehe (bildlich);PT-PT Standard-Antwort
+Diga não à violência;Sag nein zur Gewalt;
+Enfim;jedenfalls / na gut;
+Assim espero;das hoffe ich;
+No início / No começo;am Anfang;
+Muitas vezes;oft (viele Male);
+Quem;Wer;nur für Personen
+Como;Wie;
+Qual / Quais;Welche/r;Auswahl aus mehreren
+O que / Que;Was;für Dinge, allgemein
+Onde;Wo;
+Quando;Wann;
+Quanto / Quantos;Wie viel / Wie viele;
+Porquê?;Warum?;Frage am Satzende
+Porque;weil;Antwort
+Como funciona?;Wie funktioniert es?;
+Como vai?;Wie geht es?;Como vai o seu projecto?
+Como vão as coisas?;Wie laufen die Dinge?;
+Que tipo de...?;Was für ein...?;Frage
+Quanto custa?;Wie viel kostet es?;
+Qual é o preço?;Wie ist der Preis?;
+Há quanto tempo?;Wie lange schon?;Dauer-Frage
+Que comida vais vender?;Welches Essen wirst du verkaufen?;
+Tu assistes?;Schaust du?;
+Foda-se;Fuck / Verdammt;sehr vulgär!
+Que porra é essa;Was zum Fick ist das;sehr vulgär
+Que merda é essa;Was zum Scheiß ist das;vulgär
+Merda;Scheiße;vulgär, alltäglich
+Caralho;Verdammt / Fick;sehr vulgär
+Eu;ich;
+Tu;du (informell);in Brasilien selten, in Portugal Standard
+Você;Sie / du (BR);formell PT, informell BR
+Ele / Ela;er / sie;
+Nós;wir;
+Vocês;ihr / Sie (Plural);
+Eles / Elas;sie (m+gemischt / nur w);
+Meu / Minha;mein/e;passt zum BESITZ, nicht Besitzer
+Teu / Tua;dein/e;informell
+Seu / Sua;sein / ihr / Ihr (formell);ggf. mit dele/dela präzisieren
+Nosso / Nossa;unser/e;
+Vosso / Vossa;euer/e;selten in PT-PT
+Dele / Dela;von ihm / von ihr;de + ele/ela
+no / na / nos / nas;in/im (em + Artikel);em+o=no, em+a=na
+do / da / dos / das;vom/von (de + Artikel);de+o=do
+ao / à / aos / às;zum/zur (a + Artikel);a+o=ao
+num / numa;in einem/einer;em+um, em+uma
+Sempre;immer;
+Nunca;nie;
+Às vezes;manchmal;
+Com frequência;oft;
+Quase;fast / beinahe;
+Poucas vezes;selten;
+Uma vez por semana;einmal pro Woche;
+Duas a três vezes por semana;zwei bis drei Mal pro Woche;
+Todos os dias;jeden Tag;
+Hoje / Ontem / Amanhã;heute / gestern / morgen;
+De manhã / De tarde / De noite;morgens / nachmittags / abends;
+Cedo / Tarde;früh / spät;
+Depois;danach / später / dann;
+Depois de;nach (zeitlich);+ Substantiv/Infinitiv
+Antes / Antes de;vorher / vor;
+Agora;jetzt;
+Até agora;bis jetzt;
+De novo / Novamente;wieder / nochmal;
+Logo / Mais tarde;gleich / später;
+Última / Último;letzte/r;No último fim de semana
+Direito / À direita;geradeaus / rechts;
+À esquerda;links;
+Diretamente;direkt;
+Longe;weit (weg);
+Perto;nah / in der Nähe;
+Aqui / Lá;hier / dort;
+Fora;draußen;
+Dentro;drinnen;
+Estou a + Inf;Ich bin gerade dabei zu...;PT-PT (BR: -ndo Form)
+Estou a trabalhar;Ich arbeite gerade;
+Está a funcionar;Es funktioniert (gerade);
+Está a chover;Es regnet (gerade);
+O que estás a fazer agora?;Was machst du gerade?;
+Vou cozinhar;Ich werde kochen;ir + Inf
+Vou viajar amanhã;Ich werde morgen reisen;
+O que vais fazer?;Was wirst du machen?;
+Fazer a mala;den Koffer packen;
+Eu sei + Inf;Ich kann + Inf (gelernt);Sei nadar = Ich kann schwimmen
+Posso + Inf;Ich darf / kann + Inf;Erlaubnis/Möglichkeit
+Eu tento + Inf;Ich versuche + Inf;
+Tenho que + Inf;Ich muss + Inf;
+Comecei a + Inf;Ich habe angefangen zu...;começar a
+Continuar a + Inf;weiter machen;
+Mas;aber;
+Também;auch;
+Então;also / dann;Füllwort
+Por exemplo;zum Beispiel;
+Principalmente;vor allem;
+Infelizmente;leider;
+Felizmente;zum Glück;
+Assim;so / auf diese Weise;
+Quase;fast;
+Só / Apenas;nur;
+Já;schon;
+Ainda;noch;
+Para / Por;für / durch;Faustregel: para=Ziel, por=Grund
+Comigo;mit mir;
+Contigo;mit dir;
+Connosco / Conosco;mit uns;PT-PT: connosco
+Convosco;mit euch;
+Para ti / Para si;für dich / für Sie;
+Levantar-se;aufstehen;reflexiv
+Levanto-me cedo;Ich stehe früh auf;nach Verb
+Sentar-se;sich (hin)setzen;reflexiv
+Sentamo-nos à mesa;Wir setzen uns an den Tisch;Achtung: s entfällt vor -nos!
+Deitar-se;sich hinlegen / schlafen gehen;reflexiv
+Deito-me tarde;Ich gehe spät schlafen;
+Lavar-se;sich waschen;reflexiv
+Nunca me deito cedo;Ich gehe nie früh schlafen;Pronomen vor Verb wegen 'nunca'
+Também nos levantamos cedo;Wir stehen auch früh auf;Pronomen vor Verb wegen 'também'
+Enquanto;während;enquanto corres
+É permitido + Inf;es ist erlaubt zu ...;é permitido usar punhos
+Do que;als (Vergleich);mais X do que Y
+Já + Perfeito;schon einmal;eu já tentei
+Nunca + Perfeito;nie;eu nunca estive
+Abaixo de;unterhalb von;
+Em menos de;in weniger als;
+Devias + Inf;du solltest ...;Konditional, sehr häufig!
+Tenho trabalhado muito;ich habe viel gearbeitet;Pretérito Perfeito Composto

@@ -3,126 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vokabeln für Lengo</title>
+<title>Vokabeln — Kategorisiert für Lengo</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
-  .page { max-width: 600px; margin: 0 auto; padding: 32px 20px 80px; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
+  .page { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
   .back-link:hover { color: #2e7d32; }
-  .header { text-align: center; margin-bottom: 32px; }
-  .lesson-tag { display: inline-block; background: #2e7d32; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
-  .header h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; color: #1a1715; }
-  .header p { font-size: 15px; color: #6b6560; line-height: 1.5; }
 
-  .stats-card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; justify-content: space-around; gap: 16px; flex-wrap: wrap; }
-  .stat { text-align: center; flex: 1; min-width: 100px; }
-  .stat-num { font-size: 28px; font-weight: 800; color: #2e7d32; }
-  .stat-label { font-size: 12px; color: #6b6560; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .header { text-align: center; margin-bottom: 24px; }
+  .lesson-tag { display: inline-block; background: #2e7d32; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
+  .header p { font-size: 14px; color: #6b6560; line-height: 1.5; max-width: 500px; margin: 0 auto; }
 
-  .info-box { background: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 24px; font-size: 14px; line-height: 1.6; color: #0d47a1; }
-  .info-box strong { display: block; margin-bottom: 6px; font-weight: 700; }
-  .info-box ol { padding-left: 20px; margin-top: 6px; }
-  .info-box li { margin-bottom: 4px; }
+  /* WICHTIG-Box */
+  .must-read { background: linear-gradient(135deg, #c62828, #b71c1c); color: white; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px; }
+  .must-read h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.9; margin-bottom: 10px; font-weight: 700; }
+  .must-read .title { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+  .must-read ol { padding-left: 22px; font-size: 13.5px; line-height: 1.7; }
+  .must-read li { margin-bottom: 4px; }
+  .must-read strong { background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 4px; }
 
-  .download-card {
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  /* Stats */
+  .stats-card { background: white; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; justify-content: space-around; gap: 12px; flex-wrap: wrap; }
+  .stat { text-align: center; flex: 1; min-width: 80px; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2e7d32; }
+  .stat-label { font-size: 11px; color: #6b6560; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
+
+  /* Packs */
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #2d2a26; margin: 22px 0 10px; font-weight: 700; }
+
+  .pack {
+    background: white;
     border-left: 4px solid #2e7d32;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 16px;
-    text-decoration: none; color: inherit;
-    transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: box-shadow 0.15s;
   }
-  .download-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25); }
+  .pack:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+  .pack .info { flex: 1; min-width: 200px; }
+  .pack .icon { font-size: 24px; margin-right: 8px; vertical-align: middle; }
+  .pack .name { font-size: 15px; font-weight: 700; display: inline-block; vertical-align: middle; }
+  .pack .desc { font-size: 12px; color: #6b6560; margin-top: 4px; line-height: 1.4; }
+  .pack .count { font-size: 11px; color: #9e9892; font-weight: 600; margin-top: 4px; }
+  .pack .dl-btn { background: #2e7d32; color: white; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .pack .dl-btn:hover { background: #1b5e20; }
 
-  .dl-icon { width: 56px; height: 56px; border-radius: 14px; background: white; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
-  .dl-info { flex: 1; min-width: 0; }
-  .dl-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #1b5e20; }
-  .dl-desc { font-size: 13px; color: #2e7d32; }
-  .dl-arrow { font-size: 24px; color: #2e7d32; flex-shrink: 0; }
+  /* Farb-Akzente pro Pack */
+  .pack.verben        { border-left-color: #7b1fa2; }
+  .pack.verben .dl-btn { background: #7b1fa2; }
+  .pack.adjektive     { border-left-color: #f57c00; }
+  .pack.adjektive .dl-btn { background: #f57c00; }
+  .pack.nomen         { border-left-color: #1976d2; }
+  .pack.nomen .dl-btn { background: #1976d2; }
+  .pack.redewendungen { border-left-color: #00838f; }
+  .pack.redewendungen .dl-btn { background: #00838f; }
+  .pack.fragen        { border-left-color: #c2185b; }
+  .pack.fragen .dl-btn { background: #c2185b; }
+  .pack.umgangssprache{ border-left-color: #d32f2f; }
+  .pack.umgangssprache .dl-btn { background: #d32f2f; }
+  .pack.grammatik     { border-left-color: #5d4037; }
+  .pack.grammatik .dl-btn { background: #5d4037; }
 
-  .update-info { background: white; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); font-size: 13px; color: #6b6560; line-height: 1.6; }
-  .update-info strong { color: #2d2a26; display: block; margin-bottom: 4px; }
+  /* Master separat */
+  .master-pack { background: linear-gradient(135deg, #f5f0eb, white); border: 2px dashed #9e9892; border-radius: 12px; padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .master-pack .info { flex: 1; }
+  .master-pack .name { font-size: 14px; font-weight: 700; color: #2d2a26; }
+  .master-pack .desc { font-size: 12px; color: #6b6560; margin-top: 3px; }
+  .master-pack .dl-btn { background: #6b6560; color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; text-decoration: none; }
 
-  .footer-note { font-size: 12px; color: #9e9892; text-align: center; margin-top: 24px; padding: 16px; background: white; border-radius: 12px; line-height: 1.5; }
+  .footer-note { font-size: 11px; color: #9e9892; text-align: center; margin-top: 20px; padding: 12px; background: white; border-radius: 8px; line-height: 1.5; }
 
   @media (max-width: 600px) {
-    .header h1 { font-size: 24px; }
+    .header h1 { font-size: 22px; }
     .stats-card { flex-direction: row; }
+    .pack { flex-direction: column; align-items: flex-start; }
+    .pack .dl-btn { width: 100%; text-align: center; }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
+<a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
 
-  <div class="header">
-    <div class="lesson-tag">Lengo Vokabel-Pack</div>
-    <h1>Deine Vokabel-Liste</h1>
-    <p>Aus deinen Live-Klassen mit dem PT-Lehrer</p>
+<div class="header">
+  <div class="lesson-tag">Vokabel-Packs (kategorisiert)</div>
+  <h1>Deine Vokabeln f&uuml;r Lengo</h1>
+  <p>Statt einem gro&szlig;en Pack mit Duplikaten &mdash; jetzt 7 thematische Packs. Lerne fokussiert nach Wortart.</p>
+</div>
+
+<div class="must-read">
+  <h3>&#128721; Wichtig: Erst alte Packs l&ouml;schen!</h3>
+  <div class="title">So machst du sauberen Tisch in Lengo</div>
+  <ol>
+    <li>&Ouml;ffne <strong>Lengo</strong> auf dem Handy &rarr; "Meine Packs"</li>
+    <li>L&ouml;sche ALLE alten Puranails-/PT-Teacher-/Vokabel-Packs</li>
+    <li>Komm hierher zur&uuml;ck und lade die neuen 7 Packs unten runter</li>
+    <li>Importiere jedes in Lengo als <strong>eigenes Pack</strong> (nicht ins gleiche mergen!)</li>
+  </ol>
+  <p style="margin-top: 10px; font-size: 12px; opacity: 0.9;">Bei Updates: nur das jeweilige Pack in Lengo l&ouml;schen und neu importieren &mdash; nicht alles auf einmal.</p>
+</div>
+
+<div class="stats-card">
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Packs</div></div>
+  <div class="stat"><div class="stat-num">778</div><div class="stat-label">Karten total</div></div>
+  <div class="stat"><div class="stat-num">17</div><div class="stat-label">Klassen</div></div>
+</div>
+
+<h2>&#128218; Die 7 Packs</h2>
+
+<a class="pack verben" href="vokabeln/vokabeln-verben.csv" download>
+  <div class="info">
+    <span class="icon">&#128170;</span><span class="name">Verben</span>
+    <div class="desc">Alle Verben mit Konjugationen &mdash; falar, comer, ir, ser/estar, fazer, dizer, unregelm&auml;&szlig;ige Formen, Perfeito, Imperfeito, Konditional</div>
+    <div class="count">166 Karten</div>
   </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
 
-  <div class="stats-card">
-    <div class="stat">
-      <div class="stat-num">681</div>
-      <div class="stat-label">Karten</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">14</div>
-      <div class="stat-label">Klassen</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Spalten</div>
-    </div>
+<a class="pack nomen" href="vokabeln/vokabeln-nomen.csv" download>
+  <div class="info">
+    <span class="icon">&#128100;</span><span class="name">Nomen</span>
+    <div class="desc">Familie, Berufe, K&ouml;rper, Essen, Fr&uuml;chte, Orte, Sport, Business, Zuhause, Natur, Kleidung, Farben</div>
+    <div class="count">196 Karten</div>
   </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
 
-  <!-- Download -->
-  <a class="download-card" href="vokabeln/vokabeln-master.csv" download>
-    <div class="dl-icon">&#128221;</div>
-    <div class="dl-info">
-      <div class="dl-title">Vokabeln herunterladen</div>
-      <div class="dl-desc">vokabeln-master.csv &bull; 681 Karten &bull; UTF-8</div>
-    </div>
-    <div class="dl-arrow">&darr;</div>
-  </a>
-
-  <div class="info-box">
-    <strong>Import in Lengo (auf dem Handy):</strong>
-    <ol>
-      <li>Tippe oben auf den gr&uuml;nen Button &mdash; CSV wird heruntergeladen</li>
-      <li>&Ouml;ffne Lengo &rarr; "Eigene Pakete" / "Pack hinzuf&uuml;gen"</li>
-      <li>"CSV importieren" &rarr; w&auml;hle die Datei</li>
-      <li>Trennzeichen: <strong>Semikolon (;)</strong> &bull; Spalten: PT &bull; DE &bull; Notiz</li>
-    </ol>
+<a class="pack adjektive" href="vokabeln/vokabeln-adjektive.csv" download>
+  <div class="info">
+    <span class="icon">&#127752;</span><span class="name">Adjektive</span>
+    <div class="desc">Beschreibungen, Gef&uuml;hle, Zust&auml;nde &mdash; groß/klein, gut/schlecht, m&uuml;de/fit, sch&ouml;n/h&auml;sslich, seltsam/tranquilo</div>
+    <div class="count">69 Karten</div>
   </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
 
-  <div class="update-info">
-    <strong>Aktualisierungen:</strong>
-    Nach jeder neuen Live-Klasse kommen die neuen Vokabeln in die gleiche Liste &mdash; einfach nochmal hier runterladen und in Lengo aktualisieren.
+<a class="pack redewendungen" href="vokabeln/vokabeln-redewendungen.csv" download>
+  <div class="info">
+    <span class="icon">&#128172;</span><span class="name">Redewendungen &amp; Alltag</span>
+    <div class="desc">Feste Phrasen, Begr&uuml;&szlig;ung, sich vorstellen, estar com Hunger/Angst, Konversation, Spr&uuml;che, Wetter, Uhrzeit</div>
+    <div class="count">229 Karten</div>
   </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
 
-  <div class="info-box" style="background: #ffebee; border-left: 4px solid #c62828; color: #b71c1c;">
-    <strong>&#9888;&#65039; Duplikate in Lengo vermeiden</strong>
-    Wenn du eine neue Version der CSV importierst, erkennt Lengo die alten Karten nicht und legt sie nochmal an. So vermeidest du Doppelte:
-    <ol>
-      <li>In Lengo: altes Pack <strong>l&ouml;schen</strong></li>
-      <li>Frische CSV (mit allen 681 Karten) <strong>neu importieren</strong></li>
-    </ol>
-    Da diese Datei alle bisherigen Karten + die neuen enth&auml;lt, verlierst du nichts.
+<a class="pack grammatik" href="vokabeln/vokabeln-grammatik.csv" download>
+  <div class="info">
+    <span class="icon">&#128295;</span><span class="name">Grammatik-Bausteine</span>
+    <div class="desc">Pronomen, Kontraktionen (no/na/do/ao), Pr&auml;positionen, Konjunktionen (enquanto, do que), Modal-Ausdr&uuml;cke</div>
+    <div class="count">96 Karten</div>
   </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
 
-  <div class="footer-note">
-    Format: <strong>UTF-8 mit BOM</strong>, Trennzeichen <strong>Semikolon (;)</strong><br>
-    Spalten: Portugiesisch &bull; Deutsch &bull; Notiz/Beispiel<br>
-    <br>
-    Letzte Aktualisierung: 17.06.2026 (nach Klasse 14 — Coworking, Filme, Fußball)
+<a class="pack fragen" href="vokabeln/vokabeln-fragen.csv" download>
+  <div class="info">
+    <span class="icon">&#10067;</span><span class="name">Fragew&ouml;rter &amp; Fragen</span>
+    <div class="desc">Quem, Como, Qual, Onde, Quando, Porqu&ecirc; und typische Fragekonstruktionen (&quot;&eacute; que&quot;)</div>
+    <div class="count">18 Karten</div>
   </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
+
+<a class="pack umgangssprache" href="vokabeln/vokabeln-umgangssprache.csv" download>
+  <div class="info">
+    <span class="icon">&#129324;</span><span class="name">Umgangssprache &amp; Slang</span>
+    <div class="desc">Foda-se, merda, que porra... &mdash; damit du verstehst, was Portugiesen wirklich sagen (Vorsicht: vulg&auml;r!)</div>
+    <div class="count">5 Karten</div>
+  </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
+
+<div class="master-pack">
+  <div class="info">
+    <div class="name">&#128193; Master-Liste (alle 778 Karten)</div>
+    <div class="desc">Falls du lieber ein einzelnes Pack magst &mdash; alles zusammen, ohne Duplikate.</div>
+  </div>
+  <a class="dl-btn" href="vokabeln/vokabeln-master.csv" download>Master &darr;</a>
+</div>
+
+<div class="footer-note">
+  Format: <strong>UTF-8 mit BOM</strong>, Trennzeichen <strong>Semikolon (;)</strong> &middot; Spalten: PT / DE / Notiz<br>
+  Letzte Aktualisierung: 24.07.2026 (nach Klassen 15.07, 17.07, 24.07 &mdash; Business, Kampfsport, Slang, Sport)
+</div>
 
 </div>
 </body>
