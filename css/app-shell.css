@@ -1,0 +1,175 @@
+/* App-Shell: gilt auf JEDER Seite. Wird NACH dem Seiten-CSS geladen, damit die
+   Polish-Regeln unten (Radien, Schatten, Touch-Targets) greifen. */
+
+:root {
+  --pt-bg: #f5f0eb;
+  --pt-card: #ffffff;
+  --pt-ink: #2d2a26;
+  --pt-ink-2: #6b6560;
+  --pt-ink-3: #9e9892;
+  --pt-line: #ede6df;
+  --pt-accent: #e8721d;
+  --pt-accent-dark: #d4650f;
+  --pt-ok: #2e7d32;
+  --pt-warn: #f9a825;
+  --pt-bad: #c62828;
+  --pt-radius: 16px;
+  --pt-shadow: 0 1px 2px rgba(45, 42, 38, 0.04), 0 6px 18px rgba(45, 42, 38, 0.06);
+  --pt-nav-h: 60px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+/* ---------- Mobile-Basics ---------- */
+html { -webkit-text-size-adjust: 100%; }
+body {
+  padding-bottom: calc(var(--pt-nav-h) + var(--safe-bottom));
+  overscroll-behavior-y: none;
+}
+a, button, input, select, textarea, label { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+button, [role="button"] { -webkit-user-select: none; user-select: none; }
+
+/* iOS zoomt bei Fokus auf Inputs unter 16px — auf dem Handy deshalb immer 16px */
+@media (max-width: 767px) {
+  input[type="text"], input:not([type]), input[type="search"], input[type="number"], select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Inhalt der Seiten braucht unten weniger Eigen-Padding, die Nav bringt ihres mit */
+.page, .main { padding-bottom: 32px; }
+
+/* ---------- Bottom-Nav ---------- */
+.bottom-nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: stretch;
+  padding: 6px 8px calc(6px + var(--safe-bottom));
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-top: 1px solid rgba(45, 42, 38, 0.08);
+  transition: transform 0.22s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.bnav-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 48px;
+  padding: 5px 4px;
+  border-radius: 12px;
+  color: var(--pt-ink-3);
+  text-decoration: none;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: color 0.12s;
+}
+.bnav-item svg { width: 24px; height: 24px; display: block; }
+.bnav-item.active { color: var(--pt-accent); }
+.bnav-item:active { background: rgba(232, 114, 29, 0.08); }
+.pt-kb-open .bottom-nav { transform: translateY(120%); }
+
+@media (min-width: 560px) {
+  .bottom-nav {
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: 18px 18px 0 0;
+    border: 1px solid rgba(45, 42, 38, 0.08);
+    border-bottom: none;
+    box-shadow: 0 -4px 24px rgba(45, 42, 38, 0.06);
+  }
+}
+
+@media print {
+  .bottom-nav, .pt-endflow, .pt-install { display: none !important; }
+  body { padding-bottom: 0 !important; }
+}
+
+/* ---------- Übungs-Abschluss (wird von app-shell.js nach #results eingehängt) ---------- */
+body.pt-has-endflow #nextBtn,
+body.pt-has-endflow #resetBtn,
+body.pt-has-endflow #dashBtn,
+body.pt-has-endflow .results .reset-btn { display: none !important; }
+
+.pt-endflow {
+  display: none;
+  max-width: 480px;
+  margin: 18px auto 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.pt-endflow.show { display: flex; flex-direction: column; gap: 10px; }
+.pt-endflow-note {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--pt-ink-2);
+  margin-bottom: 2px;
+  line-height: 1.5;
+}
+.pt-endflow-note a { color: var(--pt-accent); font-weight: 600; text-decoration: none; }
+.pt-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  min-height: 54px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.12s;
+}
+.pt-btn:active { transform: scale(0.985); }
+.pt-btn-primary { background: var(--pt-accent); color: #fff; box-shadow: 0 6px 16px rgba(232, 114, 29, 0.28); }
+.pt-btn-primary:active { background: var(--pt-accent-dark); }
+.pt-btn-sub { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.8; }
+.pt-btn-secondary { background: #fff; color: var(--pt-ink); border: 1.5px solid #e8d5c4; }
+.pt-btn-secondary:active { background: #faf8f5; }
+.pt-btn-ghost { background: transparent; color: var(--pt-ink-2); min-height: 44px; font-weight: 600; }
+
+/* ---------- Sanfter Polish für alle Inhaltsseiten ---------- */
+/* Breite Konjugations-Tabellen scrollen in ihrer Karte, statt die Seite seitlich aufzureißen */
+.grammar-box, .rule, .card, .sheet, .exercise-card, .intro-box, .hint-content, .topic-results {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media print { .sheet { overflow: visible; } }
+.exercise-card, .grammar-box, .drill, .ex, .card, .results, .results-card,
+.intro-box, .stats-card, .topic-results, .save-note, .sync-card, .must-read {
+  border-radius: var(--pt-radius);
+}
+.exercise-card, .grammar-box, .drill, .ex, .card, .results, .results-card, .intro-box, .stats-card, .topic-results {
+  box-shadow: var(--pt-shadow);
+}
+.check-btn {
+  border-radius: 14px;
+  min-height: 52px;
+  transition: transform 0.1s, background 0.12s;
+}
+.check-btn:active { transform: scale(0.985); }
+.back-link {
+  min-height: 40px;
+  padding: 6px 10px 6px 4px;
+  margin-left: -4px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.back-link:active { background: rgba(45, 42, 38, 0.06); }
+.choice-btn { min-height: 46px; }
+.hint-btn { min-height: 34px; padding: 6px 12px; font-size: 12px; }
+.answer-input, .translation-input, .drill-input { border-radius: 10px; }

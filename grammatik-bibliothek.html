@@ -2,8 +2,16 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Grammatik-Bibliothek</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5f0eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="icons/icon-apple.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -94,12 +102,25 @@
 
   /* Mobile */
   .mobile-toc-toggle { display: none; }
+  /* Handy: Sidebar wird zur horizontal scrollbaren Chip-Leiste, die oben kleben bleibt */
   @media (max-width: 900px) {
     .layout { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: static; max-height: 280px; }
-    .main { padding: 24px 18px 60px; }
+    .sidebar {
+      width: 100%; height: auto; max-height: none; position: sticky; top: 0; z-index: 20;
+      display: flex; gap: 6px; padding: 10px 12px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .sidebar::-webkit-scrollbar { display: none; }
+    .sidebar h1, .sidebar .subtitle, .sidebar-section { display: none; }
+    .sidebar a {
+      flex-shrink: 0; display: inline-flex; align-items: center; min-height: 36px; margin: 0;
+      padding: 6px 12px; border-radius: 18px; background: rgba(255,255,255,0.08); font-size: 12.5px; white-space: nowrap;
+    }
+    .main { padding: 20px 16px 40px; max-width: none; }
+    .topic { scroll-margin-top: 64px; }
   }
 </style>
+<link rel="stylesheet" href="css/app-shell.css?v=20260819b">
 </head>
 <body>
 
@@ -1239,6 +1260,8 @@
 const links = document.querySelectorAll('.sidebar a');
 const topics = document.querySelectorAll('.topic');
 
+const sidebar = document.querySelector('.sidebar');
+let lastActive = null;
 window.addEventListener('scroll', () => {
   let current = '';
   topics.forEach(topic => {
@@ -1249,8 +1272,16 @@ window.addEventListener('scroll', () => {
     link.classList.remove('active');
     if (link.getAttribute('href') === '#' + current) link.classList.add('active');
   });
-});
+  // Auf dem Handy (Chip-Leiste) den aktiven Chip in die Mitte holen
+  const active = sidebar.querySelector('a.active');
+  if (active && active !== lastActive && window.matchMedia('(max-width: 900px)').matches) {
+    lastActive = active;
+    sidebar.scrollTo({ left: active.offsetLeft - sidebar.clientWidth / 2 + active.clientWidth / 2, behavior: 'smooth' });
+  }
+}, { passive: true });
 </script>
 
+<script src="js/progress.js?v=20260819b"></script>
+<script src="js/app-shell.js?v=20260819b"></script>
 </body>
 </html>

@@ -2,8 +2,16 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Großer Diagnose-Test — Portugiesisch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Einstufungstest — Português</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5f0eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="icons/icon-apple.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,6 +109,7 @@
     .topic-bar { width: 90px; }
   }
 </style>
+<link rel="stylesheet" href="css/app-shell.css?v=20260819b">
 </head>
 <body>
 <div class="page">
@@ -108,16 +117,16 @@
 <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
 
 <div class="header">
-  <div class="lesson-tag">Diagnose-Test &middot; A2/B1</div>
-  <h1>Foundation-Test</h1>
-  <p>Fokus auf das was du wirklich aktiv kannst (Presente, Ser/Estar, Perfeito, Reflexive, Pr&auml;positionen). Imperfeito &amp; Konditional sind optional &mdash; nur wenn du dich sicher f&uuml;hlst.</p>
+  <div class="lesson-tag">Einstufungstest</div>
+  <h1>Wo stehst du gerade?</h1>
+  <p>80 Aufgaben zu den Themen, die du bisher gelernt hast: Gegenwart, ser und estar, Vergangenheit, reflexive Verben, Pr&auml;positionen, Fragew&ouml;rter. Am Ende siehst du pro Thema, was sitzt und was wir noch &uuml;ben sollten. Rechne mit etwa 30 Minuten.</p>
 </div>
 
 <div class="intro-box">
   <h3>So funktioniert&apos;s</h3>
   <ul>
-    <li><strong>Foundation-Test (Sektion 1&ndash;4, 7&ndash;10):</strong> ~66 Aufgaben &mdash; das sollte sitzen</li>
-    <li><strong>Advanced (Sektion 5&ndash;6):</strong> Imperfeito &amp; Konditional &mdash; nur wenn du dich sicher f&uuml;hlst, <strong>sonst leer lassen</strong></li>
+    <li><strong>Grundlagen (Teil 1&ndash;4 und 7&ndash;10):</strong> etwa 66 Aufgaben zu dem, was du schon gelernt hast. Das z&auml;hlt f&uuml;r dein Ergebnis.</li>
+    <li><strong>Fortgeschritten (Teil 5 und 6):</strong> Erz&auml;hlvergangenheit und W&uuml;rde-Form. Nur ausf&uuml;llen, wenn du dich sicher f&uuml;hlst, <strong>sonst leer lassen</strong>. Leere Felder hier z&auml;hlen nicht gegen dich.</li>
     <li>Bei <strong>Tippfehlern</strong> sind wir mild (Akzente werden ignoriert, ein Buchstabe daneben ist okay)</li>
     <li>Am Ende: <strong>Auswertung pro Thema</strong> + Empfehlung, was wir vertiefen sollten</li>
     <li>Wenn du etwas nicht wei&szlig;t: <strong>leer lassen</strong> &mdash; das hilft mehr als raten</li>
@@ -407,18 +416,18 @@ function checkAll() {
 
   // Foundation-Score (Hauptzahl!)
   const fPct = foundationTotal ? Math.round(foundationCorrect / foundationTotal * 100) : 0;
-  document.getElementById('scoreTotal').textContent = 'Foundation: ' + foundationCorrect + ' von ' + foundationTotal + ' richtig';
+  document.getElementById('scoreTotal').textContent = 'Grundlagen: ' + foundationCorrect + ' von ' + foundationTotal + ' richtig';
   document.getElementById('scoreBig').textContent = fPct + '%';
 
   let label = '';
-  if (fPct >= 90) label = 'Grundlagen sitzen fast perfekt. Bereit für die Advanced-Themen (Imperfeito, Konditional).';
-  else if (fPct >= 75) label = 'Solide Foundation. Ein paar Themen brauchen noch Feinschliff, dann geht es an Advanced.';
-  else if (fPct >= 60) label = 'Basis da, aber wir sollten die Foundation-Themen unter 70% gezielt vertiefen bevor Neues kommt.';
+  if (fPct >= 90) label = 'Die Grundlagen sitzen fast perfekt. Du bist bereit für die nächsten Themen (Erzählvergangenheit, Würde-Form).';
+  else if (fPct >= 75) label = 'Solide Grundlagen. Ein paar Themen brauchen noch Feinschliff, dann geht es an die nächsten.';
+  else if (fPct >= 60) label = 'Die Basis ist da. Die Themen unter 70 % üben wir gezielt, bevor Neues dazukommt.';
   else label = 'Wir gehen die Grundlagen nochmal in Ruhe durch — kein Stress, das ist der ganze Sinn des Tests.';
 
   if (advancedAttempted > 0) {
     const aPct = Math.round(advancedCorrect / advancedAttempted * 100);
-    label += ' (Advanced: ' + advancedCorrect + '/' + advancedAttempted + ' = ' + aPct + '%)';
+    label += ' Fortgeschrittene Teile: ' + advancedCorrect + ' von ' + advancedAttempted + ' richtig (' + aPct + ' %).';
   }
   document.getElementById('scoreLabel').textContent = label;
 
@@ -430,7 +439,7 @@ function checkAll() {
     if (data.attempted === 0) {
       rows.innerHTML += `
         <div class="topic-row" style="opacity: 0.5;">
-          <div class="topic-name">${topicNames[key]}${data.advanced ? ' <span style="font-size: 10px; color: #b34700;">(Advanced)</span>' : ''}</div>
+          <div class="topic-name">${topicNames[key]}${data.advanced ? ' <span style="font-size: 10px; color: #b34700;">(fortgeschritten)</span>' : ''}</div>
           <div class="topic-bar"></div>
           <div class="topic-score">nicht bearbeitet</div>
         </div>`;
@@ -439,7 +448,7 @@ function checkAll() {
     const tPct = Math.round(data.correct / data.total * 100);
     const cls = tPct >= 80 ? 'good' : tPct >= 60 ? 'ok' : 'bad';
     if (tPct < 75 && !data.advanced) weakTopics.push({ name: topicNames[key], pct: tPct });
-    const advTag = data.advanced ? ' <span style="font-size: 10px; color: #b34700;">(Advanced)</span>' : '';
+    const advTag = data.advanced ? ' <span style="font-size: 10px; color: #b34700;">(fortgeschritten)</span>' : '';
     rows.innerHTML += `
       <div class="topic-row">
         <div class="topic-name">${topicNames[key]}${advTag}</div>
@@ -452,14 +461,14 @@ function checkAll() {
   const recList = document.getElementById('recList');
   recList.innerHTML = '';
   if (weakTopics.length === 0) {
-    recList.innerHTML = '<li><strong>Foundation sitzt.</strong> Wir können jetzt Advanced-Themen einzeln vertiefen: Imperfeito → Konditional → Bewegungspräpositionen.</li>';
+    recList.innerHTML = '<li><strong>Die Grundlagen sitzen.</strong> Als Nächstes kommen einzeln die fortgeschrittenen Themen dran: Erzählvergangenheit, Würde-Form, Bewegungspräpositionen.</li>';
   } else {
     weakTopics.sort((a, b) => a.pct - b.pct);
-    recList.innerHTML += '<li style="margin-bottom: 8px;"><strong>Erst Foundation festigen</strong> — Advanced kommt später:</li>';
+    recList.innerHTML += '<li style="margin-bottom: 8px;"><strong>Diese Grundlagen üben wir zuerst.</strong> Die fortgeschrittenen Themen kommen danach:</li>';
     weakTopics.forEach(t => {
       recList.innerHTML += `<li>${t.name} (${t.pct}%) — vertiefen</li>`;
     });
-    recList.innerHTML += '<li style="margin-top: 10px;">Schick mir die Prozente pro Thema — ich baue dir gezielte Foundation-Übungen NUR für diese Bereiche.</li>';
+    recList.innerHTML += '<li style="margin-top: 10px;">Geh auf „Fortschritt“, kopiere das Ergebnis und schick es Claude. Daraus entstehen gezielte Übungen nur für diese Bereiche.</li>';
   }
 
   document.getElementById('results').classList.add('show');
@@ -467,5 +476,7 @@ function checkAll() {
 }
 </script>
 
+<script src="js/progress.js?v=20260819b"></script>
+<script src="js/app-shell.js?v=20260819b"></script>
 </body>
 </html>

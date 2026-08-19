@@ -1,3 +1,7 @@
 *.pdf
 pages/
 .claude/
+.DS_Store
+# lokale Hilfsdateien, nicht veroeffentlichen
+_check.html
+CLAUDE.md

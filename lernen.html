@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lernen – Português</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5f0eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="icons/icon-apple.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  .app { max-width: 480px; margin: 0 auto; padding: 18px 18px 24px; }
+
+  .head { margin: 6px 4px 18px; }
+  .head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.4px; color: #1a1715; }
+  .head p { font-size: 13.5px; color: #6b6560; margin-top: 4px; line-height: 1.5; }
+
+  .today {
+    display: flex; align-items: center; gap: 12px; min-height: 68px;
+    background: linear-gradient(145deg, #3a3631, #1a1715); color: #fff;
+    border-radius: 18px; padding: 12px 14px; margin-bottom: 20px;
+    box-shadow: 0 10px 24px rgba(26,23,21,0.18);
+  }
+  .today:active { transform: scale(0.99); }
+  .today .k { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #ffb273; }
+  .today .t { font-size: 15px; font-weight: 700; margin-top: 2px; line-height: 1.25; }
+  .today .m { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .today .go { margin-left: auto; width: 38px; height: 38px; border-radius: 12px; background: #e8721d; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .today .go svg { width: 20px; height: 20px; }
+
+  .sec-h { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 10px; }
+  .sec-h h2 { font-size: 13px; font-weight: 700; color: #2d2a26; }
+  .sec-h span { font-size: 12px; color: #9e9892; font-weight: 500; }
+  .list { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(45,42,38,0.04), 0 6px 18px rgba(45,42,38,0.05); margin-bottom: 22px; }
+  .row { display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 9px 14px; border-bottom: 1px solid #f3eee8; }
+  .row:last-child { border-bottom: none; }
+  .row:active { background: #faf8f5; }
+  .st { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 800; background: #f5f0eb; color: #6b6560; }
+  .st.done { background: #e8f5e9; color: #2e7d32; }
+  .st.current { background: #e8721d; color: #fff; box-shadow: 0 0 0 4px rgba(232,114,29,0.16); border-radius: 50%; }
+  .st.todo { color: #b5ada4; }
+  .st svg { width: 16px; height: 16px; }
+  .st.round { border-radius: 50%; }
+  .row-b { flex: 1; min-width: 0; }
+  .row-t { font-size: 14.5px; font-weight: 600; line-height: 1.25; }
+  .row-m { font-size: 12px; color: #9e9892; margin-top: 2px; line-height: 1.35; }
+  .row-m .ok { color: #2e7d32; font-weight: 600; }
+  .chev { color: #d4c9bc; flex-shrink: 0; width: 18px; height: 18px; }
+
+  .toggle { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 48px; border: 0; background: #fff; color: #e8721d; font: 600 13.5px/1 'Inter', sans-serif; cursor: pointer; border-bottom: 1px solid #f3eee8; }
+  .collapsed .row.extra { display: none; }
+  .toggle svg { width: 16px; height: 16px; transition: transform 0.15s; }
+  .collapsed .toggle svg { transform: rotate(180deg); }
+</style>
+<link rel="stylesheet" href="css/app-shell.css?v=20260819b">
+</head>
+<body>
+<div class="app">
+
+  <div class="head">
+    <h1>Lernen</h1>
+    <p>Hier findest du alle Übungen. Oben stehen deine nächsten Schritte, darunter die Vertiefungen, alle Lektionen und die Wiederholungen. Von oben nach unten ist die empfohlene Reihenfolge.</p>
+  </div>
+
+  <a class="today" id="today" href="#">
+    <div>
+      <div class="k" id="todayK">Heute</div>
+      <div class="t" id="todayT"></div>
+      <div class="m" id="todayM"></div>
+    </div>
+    <div class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  </a>
+
+  <div class="sec-h"><h2>Deine nächsten Schritte</h2><span>aus dem Einstufungstest</span></div>
+  <p style="font-size: 12.5px; color: #9e9892; line-height: 1.5; margin: -4px 4px 10px;">Ein Schritt gilt als sicher, wenn du die Übung zweimal mit mindestens 80 % schaffst. Dann wird der nächste frei.</p>
+  <div class="list" id="pathList"></div>
+
+  <div class="sec-h"><h2>Vertiefungen</h2><span>kurze Aufgaben mit Hilfe-Buttons</span></div>
+  <div class="list" id="tiefenList"></div>
+
+  <div class="sec-h"><h2>Lektionen</h2><span id="lessonsDone"></span></div>
+  <div class="list collapsed" id="lessonList"></div>
+
+  <div class="sec-h"><h2>Wiederholungen</h2><span>Gemischt aus allen Lektionen</span></div>
+  <div class="list" id="wdhList"></div>
+
+  <div class="sec-h"><h2>Messen & Nachschlagen</h2></div>
+  <div class="list" id="refList"></div>
+</div>
+
+<script src="js/progress.js?v=20260819b"></script>
+<script src="js/app-shell.js?v=20260819b"></script>
+<script>
+(function () {
+  const A = window.PTApp;
+  const $ = function (id) { return document.getElementById(id); };
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  const CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+  function row(href, badgeCls, badge, title, meta, extra) {
+    return '<a class="row' + (extra ? ' extra' : '') + '" href="' + href + '">' +
+      '<div class="st ' + badgeCls + '">' + badge + '</div>' +
+      '<div class="row-b"><div class="row-t">' + title + '</div>' + (meta ? '<div class="row-m">' + meta + '</div>' : '') + '</div>' + CHEV + '</a>';
+  }
+  function scoreMeta(entry) {
+    const runs = A.runsFor(entry.id);
+    if (runs.length) {
+      const best = A.bestPct(entry.id);
+      const times = runs.length === 1 ? 'einmal gemacht' : runs.length + '-mal gemacht';
+      return '<span class="' + (best >= A.MASTER_PCT ? 'ok' : '') + '">Bester Durchgang ' + best + ' %</span> · ' + times;
+    }
+    return (A.isDone(entry) ? 'Schon gemacht · ' : '') + entry.meta;
+  }
+  function badgeFor(entry) {
+    const mastered = A.isMastered(entry.id);
+    if (mastered) return { cls: 'done', html: CHECK };
+    return { cls: '', html: entry.label };
+  }
+
+  // Heute
+  const pick = A.pickToday();
+  $('today').href = pick.entry.file;
+  $('todayT').textContent = pick.entry.title;
+  if (pick.pathComplete) {
+    $('todayK').textContent = 'Alle Schritte geschafft';
+    $('todayM').textContent = 'Mach den Test und schick das Ergebnis über „Fortschritt“ an Claude.';
+  } else {
+    $('todayK').textContent = 'Heute dran · Schritt ' + pick.step + ' von ' + pick.total;
+    $('todayM').textContent = pick.entry.meta;
+  }
+
+  // Deine nächsten Schritte
+  A.pathStatus().forEach(function (st) {
+    const en = st.entry;
+    let meta;
+    if (st.state === 'done') meta = '<span class="ok">Sitzt</span> · bester Durchgang ' + st.best + ' %';
+    else if (st.runs) meta = 'Bester Durchgang ' + st.best + ' %' + (st.goodRuns >= 1 ? ' · einmal über ' + A.MASTER_PCT + ' % geschafft' : '');
+    else meta = en.meta;
+    $('pathList').insertAdjacentHTML('beforeend', row(en.file, st.state + ' round', st.state === 'done' ? CHECK : String(st.step), en.title, meta));
+  });
+
+  // Tiefenübungen
+  A.TIEFEN.forEach(function (en) {
+    const b = badgeFor(en);
+    $('tiefenList').insertAdjacentHTML('beforeend', row(en.file, b.cls, b.html, en.title, scoreMeta(en)));
+  });
+
+  // Lektionen (eingeklappt: erst die letzten 6, Rest per Toggle)
+  let done = 0;
+  const SHOW = 6;
+  A.LESSONS.forEach(function (en, i) {
+    const isDone = A.isDone(en);
+    if (isDone) done++;
+    const extra = i < A.LESSONS.length - SHOW;
+    $('lessonList').insertAdjacentHTML('beforeend',
+      row(en.file, isDone ? 'done' : '', isDone ? CHECK : String(en.num), en.title, scoreMeta(en), extra));
+  });
+  $('lessonsDone').textContent = done + ' von ' + A.LESSONS.length + ' gemacht';
+  const toggle = document.createElement('button');
+  toggle.type = 'button'; toggle.className = 'toggle';
+  function setToggle() {
+    const c = $('lessonList').classList.contains('collapsed');
+    toggle.innerHTML = (c ? 'Alle ' + A.LESSONS.length + ' Lektionen zeigen' : 'Weniger zeigen') +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>';
+  }
+  toggle.addEventListener('click', function () { $('lessonList').classList.toggle('collapsed'); setToggle(); });
+  setToggle();
+  $('lessonList').insertBefore(toggle, $('lessonList').firstChild);
+
+  // Wiederholungen
+  A.WIEDERHOLUNGEN.forEach(function (en) {
+    const isDone = A.isDone(en);
+    $('wdhList').insertAdjacentHTML('beforeend', row(en.file, isDone ? 'done' : '', isDone ? CHECK : en.label, en.title, scoreMeta(en)));
+  });
+
+  // Messen & Nachschlagen
+  const d = A.DIAGNOSE;
+  const dRuns = A.runsFor(d.id);
+  $('refList').insertAdjacentHTML('beforeend', row(d.file, dRuns.length ? 'done' : '', dRuns.length ? CHECK : 'T', d.title, dRuns.length ? 'Zuletzt ' + dRuns[dRuns.length - 1].pct + ' % richtig · ' + d.meta : d.meta));
+  $('refList').insertAdjacentHTML('beforeend', row('grammatik-bibliothek.html', '', 'G', 'Grammatik-Bibliothek', '29 Themen, ausführlich erklärt'));
+  $('refList').insertAdjacentHTML('beforeend', row('cheat-sheet.html', '', 'C', 'Cheat Sheet', 'Kurze Tabellen zu 12 Themen'));
+  $('refList').insertAdjacentHTML('beforeend', row('print-sheets.html', '', 'P', 'Druck-Sheets', '14 Blätter zum Ausdrucken'));
+})();
+</script>
+</body>
+</html>

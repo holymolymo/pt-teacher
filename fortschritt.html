@@ -2,184 +2,204 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fortschritt — PT Teacher</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fortschritt – Português</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5f0eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="icons/icon-apple.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
-  .page { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
-  .back-link:hover { color: #2e7d32; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  .app { max-width: 480px; margin: 0 auto; padding: 18px 18px 24px; }
 
-  .header { text-align: center; margin-bottom: 28px; }
-  .tag { display: inline-block; background: #2e7d32; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
-  .header h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
-  .header p { font-size: 14px; color: #6b6560; }
+  .head { margin: 6px 4px 16px; }
+  .head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.4px; color: #1a1715; }
+  .head p { font-size: 13.5px; color: #6b6560; margin-top: 4px; line-height: 1.5; }
 
-  /* Sync-Card: die wichtigste Aktion */
-  .sync-card { background: linear-gradient(135deg, #1a1715, #2d2a26); color: white; border-radius: 14px; padding: 22px 26px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-  .sync-card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.7; margin-bottom: 8px; }
-  .sync-card .title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-  .sync-card .desc { font-size: 13px; line-height: 1.5; margin-bottom: 16px; opacity: 0.9; }
-  .sync-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-  .sync-btn { flex: 1; min-width: 140px; background: #e8721d; color: white; border: none; padding: 12px 18px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
-  .sync-btn:hover { background: #d4650f; }
-  .sync-btn.secondary { background: rgba(255,255,255,0.12); }
-  .sync-btn.secondary:hover { background: rgba(255,255,255,0.2); }
-  .sync-success { background: #2e7d32 !important; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+  .kpi { background: #fff; border-radius: 16px; padding: 14px 10px; text-align: center; box-shadow: 0 1px 2px rgba(45,42,38,0.04), 0 6px 18px rgba(45,42,38,0.05); }
+  .kpi b { display: block; font-size: 22px; font-weight: 800; color: #e8721d; letter-spacing: -0.3px; }
+  .kpi span { font-size: 11px; color: #9e9892; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
 
-  /* Topic-Summary */
-  .card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-  .card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #2d2a26; margin-bottom: 14px; font-weight: 700; }
+  .sync { background: linear-gradient(145deg, #3a3631, #1a1715); color: #fff; border-radius: 20px; padding: 18px 18px 16px; margin-bottom: 20px; box-shadow: 0 10px 24px rgba(26,23,21,0.18); }
+  .sync .k { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #ffb273; margin-bottom: 6px; }
+  .sync .t { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .sync p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.75); margin-bottom: 14px; }
+  .sync-btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 50px; border: 0; border-radius: 14px; background: #e8721d; color: #fff; font: 700 15px/1.2 'Inter', sans-serif; cursor: pointer; transition: transform 0.1s, background 0.15s; }
+  .sync-btn:active { transform: scale(0.985); }
+  .sync-btn.secondary { background: rgba(255,255,255,0.12); margin-top: 8px; min-height: 44px; font-weight: 600; }
+  .sync-btn.ok { background: #2e7d32; }
 
-  .topic-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ede6df; gap: 12px; font-size: 14px; }
+  .sec-h { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 10px; }
+  .sec-h h2 { font-size: 13px; font-weight: 700; }
+  .sec-h span { font-size: 12px; color: #9e9892; }
+  .card { background: #fff; border-radius: 18px; padding: 6px 14px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(45,42,38,0.04), 0 6px 18px rgba(45,42,38,0.05); }
+
+  .topic-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3eee8; }
   .topic-row:last-child { border-bottom: none; }
-  .topic-name { flex: 1; font-weight: 500; }
-  .topic-meta { font-size: 11px; color: #9e9892; }
-  .topic-bar { width: 120px; height: 10px; background: #ede6df; border-radius: 5px; overflow: hidden; }
-  .topic-fill { height: 100%; border-radius: 5px; }
+  .topic-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; }
+  .topic-meta { font-size: 11.5px; color: #9e9892; font-weight: 400; margin-top: 2px; }
+  .topic-bar { width: 84px; height: 8px; background: #ede6df; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+  .topic-fill { height: 100%; border-radius: 4px; }
   .topic-fill.good { background: #2e7d32; }
   .topic-fill.ok { background: #f9a825; }
   .topic-fill.bad { background: #c62828; }
-  .topic-score { font-size: 12px; color: #6b6560; min-width: 70px; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .topic-score { font-size: 13px; font-weight: 700; min-width: 40px; text-align: right; font-variant-numeric: tabular-nums; }
 
-  /* History */
-  .history-item { padding: 12px 0; border-bottom: 1px solid #ede6df; font-size: 13px; }
-  .history-item:last-child { border-bottom: none; }
-  .history-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
-  .history-name { font-weight: 600; }
-  .history-date { color: #9e9892; font-size: 11px; }
-  .history-score { color: #6b6560; }
-  .history-score .good { color: #2e7d32; font-weight: 700; }
-  .history-score .ok { color: #b34700; font-weight: 700; }
-  .history-score .bad { color: #c62828; font-weight: 700; }
+  .day { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #9e9892; padding: 12px 0 4px; }
+  .hist { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f3eee8; }
+  .hist:last-child { border-bottom: none; }
+  .hist .pct { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .pct.good { background: #e8f5e9; color: #2e7d32; }
+  .pct.ok { background: #fff8e1; color: #b34700; }
+  .pct.bad { background: #ffebee; color: #c62828; }
+  .hist .b { flex: 1; min-width: 0; }
+  .hist .n { font-size: 14px; font-weight: 600; line-height: 1.25; }
+  .hist .m { font-size: 12px; color: #9e9892; margin-top: 2px; }
 
-  .empty { text-align: center; padding: 40px 20px; color: #9e9892; font-size: 14px; }
-
-  .clear-btn { display: block; margin: 24px auto 0; background: transparent; color: #c62828; border: 1px solid #c62828; padding: 8px 20px; border-radius: 8px; font-size: 12px; cursor: pointer; font-family: inherit; }
-  .clear-btn:hover { background: #ffebee; }
-
-  @media (max-width: 600px) {
-    .header h1 { font-size: 24px; }
-    .topic-bar { width: 80px; }
-    .sync-buttons { flex-direction: column; }
-  }
+  .empty { text-align: center; padding: 28px 12px; color: #9e9892; font-size: 13.5px; line-height: 1.5; }
+  .empty a { color: #e8721d; font-weight: 600; }
+  .clear-btn { display: block; margin: 4px auto 0; background: transparent; color: #c62828; border: 1px solid #e8b4b4; padding: 10px 18px; border-radius: 12px; font-size: 12.5px; cursor: pointer; font-family: inherit; min-height: 40px; }
 </style>
+<link rel="stylesheet" href="css/app-shell.css?v=20260819b">
 </head>
 <body>
-<div class="page">
+<div class="app">
 
-<a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
-
-<div class="header">
-  <div class="tag">Fortschritt &amp; Sync</div>
-  <h1>Deine &Uuml;bungs-Historie</h1>
-  <p>Alle Ergebnisse werden lokal in deinem Browser gespeichert.</p>
-</div>
-
-<div class="sync-card">
-  <h3>&#128260; Mit Claude synchronisieren</h3>
-  <div class="title">Ergebnisse an Claude schicken</div>
-  <div class="desc">Ein Klick &rarr; alle Ergebnisse werden in deine Zwischenablage kopiert. Danach einfach im n&auml;chsten Chat mit Claude einf&uuml;gen. Er sieht dann automatisch was gut sitzt und wo die L&uuml;cken sind.</div>
-  <div class="sync-buttons">
-    <button class="sync-btn" id="copyBtn">&#128203; In Zwischenablage kopieren</button>
-    <button class="sync-btn secondary" id="downloadBtn">&#128190; Als Datei herunterladen</button>
+  <div class="head">
+    <h1>Fortschritt</h1>
+    <p>Jede Übung landet automatisch hier. Ergebnisse bleiben lokal auf diesem Gerät.</p>
   </div>
+
+  <div class="kpis">
+    <div class="kpi"><b id="kpiStreak">0</b><span>Tage in Folge geübt</span></div>
+    <div class="kpi"><b id="kpiRuns">0</b><span>Übungen gemacht</span></div>
+    <div class="kpi"><b id="kpiAvg">–</b><span>im Schnitt richtig</span></div>
+  </div>
+
+  <div class="sync">
+    <div class="k">Mit Claude synchronisieren</div>
+    <div class="t">Ergebnisse an Claude schicken</div>
+    <p>Ein Tipp kopiert alle Ergebnisse inklusive Fehlern in die Zwischenablage. Im nächsten Chat einfügen – Claude sieht, was sitzt und wo es hakt, und baut die nächsten Übungen daraus.</p>
+    <button class="sync-btn" id="copyBtn">In Zwischenablage kopieren</button>
+    <button class="sync-btn secondary" id="downloadBtn">Als Datei speichern</button>
+  </div>
+
+  <div class="sec-h"><h2>Nach Thema</h2><span>schwächste zuerst</span></div>
+  <div class="card" id="topicSummary"></div>
+
+  <div class="sec-h"><h2>Verlauf</h2><span>neueste zuerst</span></div>
+  <div class="card" id="historyList"></div>
+
+  <button class="clear-btn" onclick="if (PTProgress.clear()) location.reload();">Historie löschen</button>
 </div>
 
-<div class="card">
-  <h2>&#128200; Nach Thema</h2>
-  <div id="topicSummary"></div>
-</div>
-
-<div class="card">
-  <h2>&#128337; Verlauf (neueste zuerst)</h2>
-  <div id="historyList"></div>
-</div>
-
-<button class="clear-btn" onclick="if (PTProgress.clear()) location.reload();">Historie l&ouml;schen</button>
-
-</div>
-
-<script src="js/progress.js"></script>
+<script src="js/progress.js?v=20260819b"></script>
+<script src="js/app-shell.js?v=20260819b"></script>
 <script>
 const topicLabels = {
-  'perfeito':         'Pretérito Perfeito',
-  'imperfeito':       'Pretérito Imperfeito',
-  'konditional':      'Konditional',
-  'presente':         'Presente',
-  'presente-unregel': 'Presente unregelmäßig',
-  'ser-estar':        'Ser vs. Estar',
-  'reflexive':        'Reflexive Verben',
-  'praepositionen':   'Präpositionen',
-  'fragew':           'Fragewörter + Komparativ',
+  'perfeito':         'Vergangenheit (Pretérito Perfeito)',
+  'imperfeito':       'Erzählvergangenheit (Imperfeito)',
+  'konditional':      'Würde-Form (Konditional)',
+  'presente':         'Gegenwart, regelmäßige Verben',
+  'presente-unregel': 'Gegenwart, unregelmäßige Verben',
+  'ser-estar':        'Ser oder estar',
+  'ser-artigos':      'Ser und Artikel',
+  'reflexive':        'Reflexive Verben (me, te, se)',
+  'praepositionen':   'Präpositionen (por, para, no, ao …)',
+  'fragew':           'Fragewörter',
+  'fragew-komp':      'Fragewörter und Vergleiche',
+  'komparativ':       'Vergleichen und Zeitangaben',
+  'possessiv':        'Mein, dein, sein (Possessiv)',
+  'objektpronomen':   'Mich, dich, ihn (Objektpronomen)',
+  'demonstrativ':     'Dieser, jener (Demonstrativ)',
+  'ir-inf':           'Zukunft mit ir + Verb',
+  'estar-a':          'Gerade dabei sein (estar a)',
+  'ter-zahlen':       'Ter und Zahlen',
+  'nacionalidades':   'Nationalitäten und Berufe',
+  'wiederholung':     'Wiederholungen (gemischt)',
+  'diagnose':         'Einstufungstest',
   'vokabeln':         'Vokabeln',
   'general':          'Allgemein'
 };
-
 function labelFor(topic) { return topicLabels[topic] || topic; }
+function cls(pct) { return pct >= 80 ? 'good' : pct >= 60 ? 'ok' : 'bad'; }
 
 function render() {
   const history = PTProgress.getAll();
   const topicSum = PTProgress.summaryByTopic();
 
-  // Topic-Summary
+  document.getElementById('kpiStreak').textContent = PTApp.streak();
+  document.getElementById('kpiRuns').textContent = history.length;
+  if (history.length) {
+    const s = history.reduce((a, h) => a + h.totalScore, 0), t = history.reduce((a, h) => a + h.totalCount, 0);
+    document.getElementById('kpiAvg').textContent = (t ? Math.round(s / t * 100) : 0) + ' %';
+  }
+
   const ts = document.getElementById('topicSummary');
   if (!Object.keys(topicSum).length) {
-    ts.innerHTML = '<div class="empty">Noch keine Übungen absolviert.</div>';
+    ts.innerHTML = '<div class="empty">Noch keine Übung gemacht.<br><a href="index.html">Zur Aufgabe von heute ›</a></div>';
   } else {
     ts.innerHTML = '';
-    Object.entries(topicSum).sort((a,b) => a[1].avgPct - b[1].avgPct).forEach(([topic, data]) => {
-      const cls = data.avgPct >= 80 ? 'good' : data.avgPct >= 60 ? 'ok' : 'bad';
+    Object.entries(topicSum).sort((a, b) => a[1].avgPct - b[1].avgPct).forEach(([topic, data]) => {
       ts.innerHTML += `
         <div class="topic-row">
-          <div>
-            <div class="topic-name">${labelFor(topic)}</div>
-            <div class="topic-meta">${data.exercises} Übungen · letzte: ${new Date(data.latestDate).toLocaleDateString('de-DE')}</div>
+          <div class="topic-name">${labelFor(topic)}
+            <div class="topic-meta">${data.exercises} Übung${data.exercises === 1 ? '' : 'en'} · zuletzt ${new Date(data.latestDate).toLocaleDateString('de-DE')}</div>
           </div>
-          <div class="topic-bar"><div class="topic-fill ${cls}" style="width:${data.avgPct}%"></div></div>
-          <div class="topic-score">${data.avgPct}%</div>
+          <div class="topic-bar"><div class="topic-fill ${cls(data.avgPct)}" style="width:${data.avgPct}%"></div></div>
+          <div class="topic-score">${data.avgPct} %</div>
         </div>`;
     });
   }
 
-  // Verlauf
   const hl = document.getElementById('historyList');
   if (!history.length) {
-    hl.innerHTML = '<div class="empty">Noch keine Übungen absolviert.<br>Fang mit einer Übung vom Dashboard an!</div>';
+    hl.innerHTML = '<div class="empty">Hier erscheint jede Übung mit Datum und Ergebnis.</div>';
   } else {
     hl.innerHTML = '';
-    // Neueste zuerst
+    let lastDay = '';
+    const today = PTApp.localDay(new Date());
+    const yest = new Date(); yest.setDate(yest.getDate() - 1);
+    const yesterday = PTApp.localDay(yest);
     [...history].reverse().forEach(h => {
-      const cls = h.pct >= 80 ? 'good' : h.pct >= 60 ? 'ok' : 'bad';
-      const date = new Date(h.timestamp);
+      const d = new Date(h.timestamp);
+      const day = PTApp.localDay(d);
+      if (day !== lastDay) {
+        lastDay = day;
+        const label = day === today ? 'Heute' : day === yesterday ? 'Gestern' : d.toLocaleDateString('de-DE', { weekday: 'short', day: 'numeric', month: 'short' });
+        hl.innerHTML += `<div class="day">${label}</div>`;
+      }
       hl.innerHTML += `
-        <div class="history-item">
-          <div class="history-header">
-            <div class="history-name">${h.exerciseName}</div>
-            <div class="history-date">${date.toLocaleDateString('de-DE')} ${date.toLocaleTimeString('de-DE', {hour:'2-digit',minute:'2-digit'})}</div>
+        <div class="hist">
+          <div class="pct ${cls(h.pct)}">${h.pct}%</div>
+          <div class="b">
+            <div class="n">${h.exerciseName}</div>
+            <div class="m">${h.totalScore}/${h.totalCount} richtig · ${labelFor(h.topic)} · ${d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}</div>
           </div>
-          <div class="history-score"><span class="${cls}">${h.totalScore}/${h.totalCount} (${h.pct}%)</span> · Topic: ${labelFor(h.topic)}</div>
         </div>`;
     });
   }
 }
 
-document.getElementById('copyBtn').onclick = async function() {
+document.getElementById('copyBtn').onclick = async function () {
   const ok = await PTProgress.copyToClipboard();
   if (ok) {
-    this.textContent = '✓ Kopiert! Jetzt in Claude einfügen';
-    this.classList.add('sync-success');
-    setTimeout(() => { this.textContent = '📋 In Zwischenablage kopieren'; this.classList.remove('sync-success'); }, 3500);
+    this.textContent = 'Kopiert – jetzt bei Claude einfügen';
+    this.classList.add('ok');
+    setTimeout(() => { this.textContent = 'In Zwischenablage kopieren'; this.classList.remove('ok'); }, 3500);
   } else {
-    alert('Kopieren fehlgeschlagen — versuche den Download-Button.');
+    alert('Kopieren fehlgeschlagen – versuche „Als Datei speichern“.');
   }
 };
-
-document.getElementById('downloadBtn').onclick = function() {
-  PTProgress.downloadAsFile();
-};
+document.getElementById('downloadBtn').onclick = function () { PTProgress.downloadAsFile(); };
 
 render();
 </script>

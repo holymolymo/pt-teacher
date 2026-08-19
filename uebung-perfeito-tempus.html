@@ -2,8 +2,16 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pretérito Perfeito — Tempuslücke fixen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Die Vergangenheit: Pretérito Perfeito</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5f0eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="icons/icon-apple.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,18 +86,13 @@
   .results-card { background: white; border-radius: 12px; padding: 26px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 14px; }
   .score-big { font-size: 48px; font-weight: 800; color: #7b1fa2; }
   .score-label { font-size: 14px; color: #4a4540; margin-top: 6px; line-height: 1.5; }
-  .save-note { background: linear-gradient(135deg, #1a1715, #2d2a26); color: white; padding: 20px; border-radius: 12px; margin-bottom: 14px; }
-  .save-note strong { display: block; font-size: 14px; margin-bottom: 4px; }
-  .save-note p { font-size: 12.5px; opacity: 0.9; line-height: 1.5; }
-  .save-note a { color: #ff9800; font-weight: 600; }
-  .again-btn { display: block; width: 100%; max-width: 300px; margin: 16px auto; background: white; color: #7b1fa2; border: 2px solid #7b1fa2; border-radius: 12px; padding: 12px 32px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
-  .again-btn:hover { background: #f3e5f5; }
 
   @media (max-width: 600px) {
     .header h1 { font-size: 22px; }
     .answer-input { width: 150px; font-size: 13.5px; }
   }
 </style>
+<link rel="stylesheet" href="css/app-shell.css?v=20260819b">
 </head>
 <body>
 <div class="page">
@@ -97,21 +100,21 @@
 <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
 
 <div class="header">
-  <div class="tag">Foundation Fix &middot; Tempus</div>
-  <h1>Pret&eacute;rito Perfeito &mdash; Tempusl&uuml;cke fixen</h1>
-  <p>Vergangenheit statt "immer Pr&auml;sens". Erst lernst du WANN Perfeito, dann WIE.</p>
+  <div class="tag">Schritt 1 &middot; Vergangenheit</div>
+  <h1>Die Vergangenheit: Pret&eacute;rito Perfeito</h1>
+  <p>So sagst du, was gestern oder letzte Woche passiert ist. Zuerst lernst du, wann die Vergangenheit dran ist, dann die Formen. Etwa 15 Minuten.</p>
 </div>
 
 <div class="why-box">
-  <strong>&#128296; Warum diese &Uuml;bung?</strong>
-  Im Diagnose-Test hast du bei Vergangenheits-S&auml;tzen fast immer Presente benutzt (z.B. "Eu vou ao supermercado" statt "fui", obwohl "ontem" da stand). Das ist keine Konjugations-, sondern eine <strong>Tempusl&uuml;cke</strong>. Diese &Uuml;bung fixt das in 3 Schichten.
+  <strong>Warum diese &Uuml;bung?</strong>
+  Im Einstufungstest hast du bei S&auml;tzen &uuml;ber die Vergangenheit fast immer die Gegenwartsform benutzt, zum Beispiel &bdquo;Eu vou ao supermercado&ldquo; statt &bdquo;fui&ldquo;, obwohl &bdquo;ontem&ldquo; (gestern) im Satz stand. Die Formen selbst kennst du zum Teil schon. Was noch fehlt, ist der Schalter im Kopf: Sobald ein Satz von gestern handelt, muss das Verb in die Vergangenheit. Genau das &uuml;bst du hier in drei Schritten.
 </div>
 
 <h2 style="font-size: 15px; color: #7b1fa2; margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 1px;">Regeln zum Nachlesen (bevor du anf&auml;ngst)</h2>
 
 <div class="rule">
-  <h3>Regel 1 &mdash; Trigger f&uuml;r Perfeito</h3>
-  <p>Steht eins dieser W&ouml;rter im Satz &rarr; Vergangenheit (Perfeito), NIE Presente:</p>
+  <h3>Regel 1 &mdash; Diese W&ouml;rter zeigen Vergangenheit an</h3>
+  <p>Steht eins dieser W&ouml;rter im Satz, steht das Verb in der Vergangenheit, nie in der Gegenwart:</p>
   <div class="triggers"><b>ontem</b> (gestern) &middot; <b>anteontem</b> (vorgestern) &middot; <b>na semana passada</b> &middot; <b>no m&ecirc;s passado</b> &middot; <b>h&aacute; X dias/anos</b> &middot; <b>em 2020</b> &middot; <b>ontem &agrave; noite</b> &middot; <b>de repente</b></div>
 </div>
 
@@ -155,9 +158,9 @@
 </div>
 
 <!-- ============== SECTION 1: TEMPUS-WAHL ============== -->
-<div class="section" data-section-name="Tempus-Wahl (Presente oder Perfeito?)">
-  <div class="section-title"><span>1. Tempus-Wahl</span><span class="count">10 Aufgaben</span></div>
-  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Klick auf die richtige Form. Achte auf die <span class="trigger-hi">Zeit-W&ouml;rter</span>.</p>
+<div class="section" data-section-name="Gegenwart oder Vergangenheit?">
+  <div class="section-title"><span>1. Gegenwart oder Vergangenheit?</span><span class="count">10 Aufgaben</span></div>
+  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Tippe auf die richtige Form. Das <span class="trigger-hi">Zeitwort</span> verr&auml;t dir, ob der Satz von heute oder von fr&uuml;her handelt.</p>
 
   <div class="ex" data-type="choice" data-correct="fui">
     <div class="ex-label">1.1</div>
@@ -222,9 +225,9 @@
 </div>
 
 <!-- ============== SECTION 2: KONJUGATION UNREGELMÄSSIG ============== -->
-<div class="section" data-section-name="Unregelmäßige Konjugation">
-  <div class="section-title"><span>2. Konjugation &mdash; Unregelm&auml;&szlig;ige</span><span class="count">15 Aufgaben</span></div>
-  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Schreib die Perfeito-Form. Alle S&auml;tze sind Vergangenheit &mdash; die Trigger sind extra hervorgehoben.</p>
+<div class="section" data-section-name="Die unregelmäßigen Formen">
+  <div class="section-title"><span>2. Die unregelm&auml;&szlig;igen Formen</span><span class="count">15 Aufgaben</span></div>
+  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Schreib die Vergangenheitsform. Alle S&auml;tze handeln von gestern oder fr&uuml;her; das Zeitwort ist jeweils rot markiert.</p>
 
   <div class="ex" data-type="fill" data-correct="fui"><div class="ex-label">2.1 &mdash; ir (eu)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> eu</span><input class="answer-input" type="text"><span>ao cinema.</span></div><div class="feedback"></div></div>
   <div class="ex" data-type="fill" data-correct="fizemos"><div class="ex-label">2.2 &mdash; fazer (nós)</div><div class="input-row"><span><span class="trigger-hi">Na semana passada</span> n&oacute;s</span><input class="answer-input" type="text"><span>uma festa.</span></div><div class="feedback"></div></div>
@@ -244,9 +247,9 @@
 </div>
 
 <!-- ============== SECTION 3: FREIE SATZBILDUNG ============== -->
-<div class="section" data-section-name="Freie Satzbildung">
-  <div class="section-title"><span>3. Freie Satzbildung</span><span class="count">5 Aufgaben</span></div>
-  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">&Uuml;bersetze den ganzen Satz. Achte auf Trigger und die richtige Perfeito-Form.</p>
+<div class="section" data-section-name="Ganze Sätze">
+  <div class="section-title"><span>3. Ganze S&auml;tze</span><span class="count">5 Aufgaben</span></div>
+  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">&Uuml;bersetze den ganzen Satz ins Portugiesische. Achte auf das Zeitwort und die richtige Vergangenheitsform.</p>
 
   <div class="ex" data-type="translate" data-correct="ontem falei com o meu irm&atilde;o|ontem eu falei com o meu irm&atilde;o">
     <div class="ex-label">3.1</div>
@@ -288,19 +291,11 @@
     <div id="scoreDetail" style="font-size: 15px; color: #6b6560; margin-top: 4px;"></div>
     <div class="score-label" id="scoreLabel"></div>
   </div>
-
-  <div class="save-note">
-    <strong>&#128190; Gespeichert!</strong>
-    <p>Dein Ergebnis ist automatisch in der Historie. &Uuml;ber <a href="fortschritt.html">Fortschritt</a> kopierst du alle Ergebnisse mit einem Klick f&uuml;r Claude.</p>
-  </div>
-
-  <button class="again-btn" onclick="location.reload()">Nochmal machen</button>
-  <a class="again-btn" href="fortschritt.html" style="text-decoration: none; text-align: center; display: block;">&rarr; Zur Fortschritt-Seite</a>
 </div>
 
 </div>
 
-<script src="js/progress.js"></script>
+<script src="js/progress.js?v=20260819b"></script>
 <script>
 function normalize(s) {
   return (s || '').toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ');
@@ -414,18 +409,18 @@ function checkAll() {
   // Feedback nach Score
   let label = '';
   const sec1 = sectionData[0], sec2 = sectionData[1], sec3 = sectionData[2];
-  if (pct >= 85) label = 'Perfeito sitzt! Der Tempus-Wechsel ist drin.';
-  else if (pct >= 70) label = 'Solide! Kleine Feinheiten bei den unregelmäßigen Formen. Nochmal wiederholen macht Sinn.';
-  else if (pct >= 50) label = 'Wackelig — vor allem die unregelmäßigen Formen. Regel 3+4 oben nochmal genau anschauen und diese Übung morgen nochmal.';
-  else label = 'Grundregel noch nicht gefestigt. Regeln oben in Ruhe lesen, dann nochmal.';
+  if (pct >= 85) label = 'Sehr gut. Der Wechsel in die Vergangenheit sitzt.';
+  else if (pct >= 70) label = 'Solide. Bei den unregelmäßigen Formen fehlt noch ein bisschen. Einmal wiederholen lohnt sich.';
+  else if (pct >= 50) label = 'Noch wackelig, vor allem bei den unregelmäßigen Formen. Lies die Regeln 3 und 4 oben noch einmal und mach die Übung morgen erneut.';
+  else label = 'Die Grundregel sitzt noch nicht. Lies die Regeln oben in Ruhe durch und versuche es dann noch einmal.';
 
-  if (sec1 && sec1.score < 8) label += ' → Sektion 1 (Tempus-Wahl) ist die Basis, die MUSS zuerst sitzen.';
+  if (sec1 && sec1.score < 8) label += ' Der erste Teil (Gegenwart oder Vergangenheit?) ist die Basis, der muss zuerst sitzen.';
   document.getElementById('scoreLabel').textContent = label;
 
   // In Historie speichern
   PTProgress.save({
     exerciseId: 'perfeito-tempus-v1',
-    exerciseName: 'Perfeito Tempuslücke — V1',
+    exerciseName: 'Ü1 · Die Vergangenheit: Pretérito Perfeito',
     topic: 'perfeito',
     sections: sectionData
   });
@@ -434,5 +429,6 @@ function checkAll() {
   document.getElementById('results').scrollIntoView({behavior: 'smooth'});
 }
 </script>
+<script src="js/app-shell.js?v=20260819b"></script>
 </body>
 </html>
