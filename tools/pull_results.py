@@ -15,8 +15,8 @@ Der Schlüssel ist der öffentliche "publishable key" (steht auch in js/progress
 import argparse, json, sys, urllib.request, urllib.parse
 from datetime import datetime, timedelta, timezone
 
-URL   = "https://hbidncsgqxucqmubjdjq.supabase.co"
-KEY   = "sb_publishable_7EqzzoyFyfvjHzLmvMOcTQ_-x1KqeFW"
+URL   = "https://zhddqcgvrfhajbgpekon.supabase.co"
+KEY   = "sb_publishable_FuqpDPiql_-yAbBauzq06Q_of3BWnMd"
 TABLE = "pt_results"
 
 def fetch(since=None, limit=1000):

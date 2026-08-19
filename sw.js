@@ -3,7 +3,7 @@
 // Alles andere (CSS/JS/Icons/Fonts): Cache zuerst, im Hintergrund aktualisieren.
 // Bei Änderungen an der Liste oder Strategie: CACHE-Version hochzählen.
 
-const CACHE = 'pt-teacher-v4';
+const CACHE = 'pt-teacher-v5';
 const CORE = [
   './', './index.html', './lernen.html', './fortschritt.html', './vokabeln.html',
   './diagnose-test.html', './print-sheets.html', './grammatik-bibliothek.html', './cheat-sheet.html',
@@ -18,7 +18,7 @@ const CORE = [
   './lektion-19-reflexive-stellung.html', './lektion-20-konditional.html', './lektion-21-por-vs-para.html',
   './wiederholung-01.html', './wiederholung-02.html', './wiederholung-03.html', './wiederholung-04.html',
   './wiederholung-05.html', './wiederholung-komplett.html',
-  './css/app-shell.css?v=20260819c', './js/progress.js?v=20260819c', './js/app-shell.js?v=20260819c',
+  './css/app-shell.css?v=20260819d', './js/progress.js?v=20260819d', './js/app-shell.js?v=20260819d',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-apple.png', './manifest.json'
 ];
 

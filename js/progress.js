@@ -26,8 +26,8 @@
 
   // ---- Supabase ----
   const SB = {
-    url: 'https://hbidncsgqxucqmubjdjq.supabase.co',
-    key: 'sb_publishable_7EqzzoyFyfvjHzLmvMOcTQ_-x1KqeFW',
+    url: 'https://zhddqcgvrfhajbgpekon.supabase.co',
+    key: 'sb_publishable_FuqpDPiql_-yAbBauzq06Q_of3BWnMd',
     table: 'pt_results'
   };
   const SB_HEADERS = { 'apikey': SB.key, 'Authorization': 'Bearer ' + SB.key, 'Content-Type': 'application/json' };
