@@ -1,0 +1,698 @@
+[
+ {
+  "pt": "dormir",
+  "de": "schlafen",
+  "notiz": "Unregelmäßig in der Ich-Form: eu durmo. Vergangenheit aus der Klasse: \"Acho que dormi mal.\"",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "acordar",
+  "de": "aufwachen",
+  "notiz": "Präsens: eu acordo. Vergangenheit: eu acordei. Nicht verwechseln mit \"estava acordado\" (ich war wach).",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "relaxar",
+  "de": "entspannen, sich lockern",
+  "notiz": "Aus der Klasse: \"Leva muito tempo para o corpo relaxar.\"",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "baixar",
+  "de": "senken, herunterfahren",
+  "notiz": "\"baixar o nível de stress\" — den Stresspegel senken.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "treinar",
+  "de": "trainieren",
+  "notiz": "\"O relógio sabe quando estou a treinar.\" Nomen dazu: o treino.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "correr",
+  "de": "laufen, rennen",
+  "notiz": "Präsens: eu corro. Aus der Klasse: \"Não sabe quando corro.\"",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "dizer",
+  "de": "sagen",
+  "notiz": "Sehr unregelmäßig: eu digo, eu disse, tu disseste. \"Disse que...\" = er/sie sagte, dass...",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "começar",
+  "de": "anfangen, beginnen",
+  "notiz": "Vergangenheit: eu comecei. \"Ainda não comecei.\" Vor einem Infinitiv immer mit a: começar a trabalhar.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "mudar de",
+  "de": "wechseln",
+  "notiz": "Das \"de\" gehört dazu: \"mudar de fornecedor\". Ohne de heißt mudar verändern, mudar-se heißt umziehen.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "comprar",
+  "de": "kaufen",
+  "notiz": "\"Onde vais comprar carne?\" — mit ir + Infinitiv als Zukunft.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "vender",
+  "de": "verkaufen",
+  "notiz": "\"Vender o teu primeiro hambúrguer.\" Regelmäßig auf -er.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "focar em",
+  "de": "sich konzentrieren auf",
+  "notiz": "Immer mit em: \"Devias focar no negócio\" (em + o = no).",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "pedir",
+  "de": "um etwas bitten, bestellen",
+  "notiz": "Unregelmäßig: eu peço, eu pedi. Nicht verwechseln: perguntar = eine Frage stellen, pedir = um etwas bitten.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "reservar",
+  "de": "reservieren, buchen",
+  "notiz": "Vergangenheit: eu reservei. \"Reservei a minha casa através do Airbnb.\"",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "querer",
+  "de": "wollen",
+  "notiz": "Präsens: eu quero. Perfeito: eu quis. Imperfeito: eu queria. \"quis\" = ich wollte und habe es getan, \"queria\" = ich hätte gern.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "procurar",
+  "de": "suchen",
+  "notiz": "\"Vou continuar a procurar outras opções.\" Für Google-Suche nimmt man procurar, nicht olhar.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "acontecer",
+  "de": "passieren, geschehen",
+  "notiz": "Meist nur 3. Person: acontece, aconteceu. \"Às vezes acontece.\"",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "desistir",
+  "de": "aufgeben, hinschmeißen",
+  "notiz": "Präsens: eu desisto. Vergangenheit: ele desistiu. \"Eu nunca desisto.\"",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "sair",
+  "de": "weggehen, aussteigen, ausgehen",
+  "notiz": "Unregelmäßig: eu saio, eu saí, ela saiu. In der Klasse im Sinn von: aus dem Geschäft aussteigen.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "perder",
+  "de": "verlieren",
+  "notiz": "Unregelmäßige Ich-Form: eu perco. \"Eu não perco.\" Wir-Form Vergangenheit: perdemos.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "levar",
+  "de": "dauern, brauchen (Zeit)",
+  "notiz": "\"Leva muito tempo.\" levar heißt außerdem mitnehmen, wegbringen.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "usar",
+  "de": "tragen, benutzen",
+  "notiz": "\"Uso uma pulseira preta.\" Für Kleidung und Geräte gleichermaßen.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "pôr",
+  "de": "setzen, legen, hineinstecken",
+  "notiz": "Unregelmäßig: eu ponho, tu pões, eu pus. \"quando pões energia\" = wenn du Energie reinsteckst.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "produzir",
+  "de": "produzieren, herstellen",
+  "notiz": "\"Os meus produtos estão a ser produzidos.\" Präsens: eu produzo.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "achar",
+  "de": "glauben, finden (Meinung)",
+  "notiz": "Sein häufigster Satzanfang: \"Acho que...\". Unterschied zu saber: achar = vermuten, saber = sicher wissen.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "a aula",
+  "de": "der Unterricht, die Stunde",
+  "notiz": "\"a aula de Hyrox\", \"as nossas aulas\". Plural: as aulas.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a mistura",
+  "de": "die Mischung",
+  "notiz": "\"É uma mistura de corrida e treino de força.\"",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o treino de força",
+  "de": "das Krafttraining",
+  "notiz": "Gegenstück: o treino de resistência = Ausdauertraining.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "os batimentos cardíacos",
+  "de": "der Herzschlag, der Puls",
+  "notiz": "Fast immer im Plural. Besser mit estar: \"Os batimentos cardíacos estão muito altos.\"",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o nível",
+  "de": "das Niveau, der Pegel",
+  "notiz": "Plural: os níveis. \"baixar o nível de stress\".",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o stress",
+  "de": "der Stress",
+  "notiz": "In Portugal schreibt man stress, in Brasilien estresse. Er sagte \"estresse\" — das ist die brasilianische Form.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o rastreador",
+  "de": "der Tracker, das Messgerät",
+  "notiz": "Für Fitness: o rastreador de atividade.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o relógio inteligente",
+  "de": "die Smartwatch",
+  "notiz": "Wörtlich: intelligente Uhr. Kurzform im Alltag oft einfach: o relógio.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a pulseira",
+  "de": "das Armband",
+  "notiz": "\"uma pulseira preta\", \"pulseira inteligente\" = Fitness-Armband.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o sono",
+  "de": "der Schlaf",
+  "notiz": "sono profundo = Tiefschlaf, sono leve = leichter Schlaf. Nicht verwechseln: \"estou com sono\" = ich bin müde.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "as novidades",
+  "de": "die Neuigkeiten",
+  "notiz": "Fast immer Plural. \"Quais são as novidades?\"",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o comissionista",
+  "de": "der Zwischenhändler, Provisionsverkäufer",
+  "notiz": "So sagt man es in Mosambik. In Portugal eher: o intermediário.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o congelador",
+  "de": "die Gefriertruhe, das Gefrierfach",
+  "notiz": "Nicht verwechseln mit o frigorífico (Kühlschrank).",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o frigorífico",
+  "de": "der Kühlschrank",
+  "notiz": "pt-PT sagt frigorífico, Brasilien sagt geladeira. Akzent auf dem zweiten i.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a opção",
+  "de": "die Option, die Möglichkeit",
+  "notiz": "Plural: as opções. \"procurar outras opções\".",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o vencedor / a vencedora",
+  "de": "der Gewinner / die Gewinnerin",
+  "notiz": "Plural: vencedores. Verb dazu: vencer = gewinnen, siegen.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "acordado / acordada",
+  "de": "wach",
+  "notiz": "\"Eu estava acordado 55% da noite.\" Nicht verwechseln mit acordei (ich bin aufgewacht).",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "profundo / profunda",
+  "de": "tief",
+  "notiz": "\"sono profundo\" = Tiefschlaf. Auch übertragen: uma conversa profunda.",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "leve",
+  "de": "leicht",
+  "notiz": "Nur eine Form für beide Geschlechter. \"sono leve\" = leichter Schlaf. Gegenteil: pesado.",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "stressante",
+  "de": "stressig, anstrengend",
+  "notiz": "Er sagte \"estressante\" — das ist brasilianisch. In Portugal: stressante, oder cansativo (ermüdend).",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "necessário / necessária",
+  "de": "nötig, notwendig",
+  "notiz": "\"Faço tudo o que for necessário.\"",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "Acho que dormi mal.",
+  "de": "Ich glaube, ich habe schlecht geschlafen.",
+  "notiz": "Sehr nützlicher Baustein: \"Acho que\" plus Vergangenheit.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "hoje de manhã",
+  "de": "heute Morgen",
+  "notiz": "Gleiches Muster: ontem à noite = gestern Abend, amanhã de manhã = morgen früh.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Ainda não comecei.",
+  "de": "Ich habe noch nicht angefangen.",
+  "notiz": "Seine Standardantwort auf Fragen zum Burger-Geschäft.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Vai correr tudo bem.",
+  "de": "Alles wird gut.",
+  "notiz": "Das ist die portugiesische Form. \"Tudo vai dar certo\" sagt man in Brasilien.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Tudo vai ficar bem.",
+  "de": "Alles wird gut werden.",
+  "notiz": "Funktioniert auch in Portugal. ficar = werden, bleiben.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Às vezes acontece.",
+  "de": "Das passiert eben manchmal.",
+  "notiz": "Achtung Akzent: às (a + as), nicht \"as vezes\". Er hat den Akzent weggelassen.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Tudo bem.",
+  "de": "Alles gut. / Passt schon.",
+  "notiz": "Als Frage auch: \"Tudo bem?\" = Alles okay?",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Eu nunca desisto.",
+  "de": "Ich gebe nie auf.",
+  "notiz": "nunca allein reicht, kein zusätzliches não nötig.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Faço tudo o que for necessário.",
+  "de": "Ich tue alles, was nötig ist.",
+  "notiz": "In Portugal heißt es \"tudo o que\", nicht \"tudo que\" wie in Brasilien.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Eu não perco.",
+  "de": "Ich verliere nicht.",
+  "notiz": "Unregelmäßige Ich-Form: perco, nicht perdo.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Vou continuar a procurar outras opções.",
+  "de": "Ich suche weiter nach anderen Möglichkeiten.",
+  "notiz": "Muster: continuar a + Infinitiv = etwas weiterhin tun.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Nós somos vencedores.",
+  "de": "Wir sind Gewinner.",
+  "notiz": "Mit ser, weil es eine Eigenschaft ist, nicht ein Zustand.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Como vai o negócio?",
+  "de": "Wie läuft das Geschäft?",
+  "notiz": "Antwort aus der Klasse: \"Ainda não começou.\"",
+  "kategorie": "fragen"
+ },
+ {
+  "pt": "Quais são as novidades sobre o negócio?",
+  "de": "Was gibt es Neues zum Geschäft?",
+  "notiz": "quais = welche (Plural). Bei Einzahl: qual é a novidade?",
+  "kategorie": "fragen"
+ },
+ {
+  "pt": "Onde vais comprar?",
+  "de": "Wo wirst du kaufen?",
+  "notiz": "Zukunft mit ir + Infinitiv, im Alltag üblicher als das echte Futur.",
+  "kategorie": "fragen"
+ },
+ {
+  "pt": "ainda / ainda não",
+  "de": "noch / noch nicht",
+  "notiz": "\"Ainda não comecei.\" Gegenstück: já = schon, \"já comecei\".",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "precisar de + Infinitiv",
+  "de": "etwas tun müssen",
+  "notiz": "In Portugal gehört das de dazu: \"Precisas de comprar carne.\" Ohne de klingt es brasilianisch.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "estar a ser + Partizip",
+  "de": "gerade getan werden (Passiv im Verlauf)",
+  "notiz": "\"Os meus produtos estão a ser produzidos.\" In Brasilien: estão sendo produzidos.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "quis / queria",
+  "de": "ich wollte (und tat es) / ich hätte gern",
+  "notiz": "\"Eu quis reservar\" = ich wollte und habe reserviert. \"Eu queria ter uma casa\" = ich hätte gern ein Haus gehabt.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "há + Zeitangabe",
+  "de": "vor ... (Zeit)",
+  "notiz": "\"Ela saiu há dois meses.\" Entweder \"há dois meses\" oder \"dois meses atrás\", nie beides zusammen.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "através de",
+  "de": "über, mittels, durch",
+  "notiz": "Verschmilzt mit dem Artikel: através do Airbnb, através da internet.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "o meu / a minha + Nomen",
+  "de": "mein / meine",
+  "notiz": "Portugal setzt den Artikel vor das Possessiv: \"o meu rastreador\". Brasilien lässt ihn weg. Er lässt ihn oft weg.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "por cento",
+  "de": "Prozent",
+  "notiz": "Zwei Wörter: \"90 por cento\". \"porcento\" gibt es nicht.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "tudo o que",
+  "de": "alles, was",
+  "notiz": "pt-PT: \"tudo o que é necessário\". Brasilien lässt das o weg.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "levar tempo para + Infinitiv",
+  "de": "Zeit brauchen, um zu ...",
+  "notiz": "\"Leva muito tempo para o corpo relaxar.\" Sehr brauchbares Satzmuster.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "correr",
+  "de": "laufen, rennen",
+  "notiz": "Perfeito: corri, correste, correu. Aus der Klasse: Na quarta-feira corri 15 km.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "chegar",
+  "de": "ankommen",
+  "notiz": "Perfeito-Ich-Form wird mit u geschrieben: cheguei. Klasse: Os meus produtos vão chegar em setembro.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "acontecer",
+  "de": "passieren, geschehen",
+  "notiz": "Klasse: Os problemas vão acontecer com mais frequência. Nach se steht die Form acontecer (Futuro do Conjuntivo).",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "piorar",
+  "de": "schlimmer werden, verschlechtern",
+  "notiz": "Kommt von pior. In der Klasse als para piorar = und was es noch schlimmer macht.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "fazer",
+  "de": "machen, tun",
+  "notiz": "Perfeito unregelmäßig: fiz, fizeste, fez. Klasse: Fiz uma vez na terça-feira.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "ver",
+  "de": "sehen, anschauen (Filme, Serien)",
+  "notiz": "Perfeito: vi, viste, viu. Für Serien sagt man in Portugal ver, nicht assistir: Vou ver One Piece.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "assistir a",
+  "de": "zuschauen, sich etwas ansehen",
+  "notiz": "In pt-PT immer mit a: assistir ao jogo. Ohne a (assistir One Piece) ist brasilianisch, deshalb lieber ver benutzen.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "acertar",
+  "de": "sich einigen, etwas abmachen; auch: treffen, richtig liegen",
+  "notiz": "Lehrer: Desde que eu acertei. In Portugal sagt man für abmachen normalerweise combinar.",
+  "kategorie": "verben"
+ },
+ {
+  "pt": "o talho",
+  "de": "die Metzgerei, der Fleischladen",
+  "notiz": "In der Klasse hieß es loja de carne. In Portugal sagt man o talho, der Metzger ist o talhante.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a empresa",
+  "de": "die Firma, das Unternehmen",
+  "notiz": "Klasse: Vais ser dependente de outras empresas.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o problema",
+  "de": "das Problem",
+  "notiz": "Endet auf -a, ist aber männlich: o problema, os problemas.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a forma",
+  "de": "die Art und Weise, der Weg",
+  "notiz": "uma forma de fazer isso = eine Möglichkeit, das zu machen. Gleichbedeutend: a maneira.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "o atum",
+  "de": "der Thunfisch",
+  "notiz": "Klasse: uma pizza de atum e cebola.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a montanha",
+  "de": "der Berg",
+  "notiz": "fazer uma caminhada na montanha = eine Bergwanderung machen.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a sandes",
+  "de": "das belegte Brötchen, Sandwich",
+  "notiz": "Plural bleibt gleich: as sandes. In der Klasse fiel bocadillo, das ist Spanisch. Brasilien sagt sanduíche.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "a feira",
+  "de": "der Markt, die Messe",
+  "notiz": "Steckt auch in den Wochentagen: segunda-feira, terça-feira.",
+  "kategorie": "nomen"
+ },
+ {
+  "pt": "pior",
+  "de": "schlechter, schlimmer",
+  "notiz": "Komparativ von mau/mal, nie mit mais. o pior = der oder das schlimmste.",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "próprio / própria",
+  "de": "eigen",
+  "notiz": "Klasse: fazer a tua própria carne = dein eigenes Fleisch machen.",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "possível",
+  "de": "möglich, machbar",
+  "notiz": "Nur eine Form für männlich und weiblich. Klasse: É muito trabalho, mas é possível.",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "dependente",
+  "de": "abhängig",
+  "notiz": "ser dependente de alguém. Das Verb dazu ist depender de.",
+  "kategorie": "adjektive"
+ },
+ {
+  "pt": "Foi uma semana muito boa.",
+  "de": "Es war eine sehr gute Woche.",
+  "notiz": "Moritz sagte nur Semana muito boa. Im ganzen Satz braucht es Foi uma.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Parece bom.",
+  "de": "Klingt gut.",
+  "notiz": "Antwort auf einen Vorschlag. Genauso üblich: Parece-me bem.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Para piorar, ...",
+  "de": "Und was es noch schlimmer macht, ...",
+  "notiz": "In der Klasse als pra piorar. Pra ist gesprochene brasilianische Kurzform, geschrieben und in Portugal para. Voll: para piorar as coisas.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "É muito trabalho, mas é possível.",
+  "de": "Das ist viel Arbeit, aber machbar.",
+  "notiz": "Fertiger Baustein, wenn du etwas abwägst.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "Não é grave.",
+  "de": "Das ist nicht schlimm.",
+  "notiz": "In der Klasse fiel Não é sério. In Portugal heißt sério eher seriös oder ernst gemeint, für halb so wild sagt man não é grave.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "fazer uma caminhada na montanha",
+  "de": "eine Bergwanderung machen",
+  "notiz": "Wandern gehen heißt fazer uma caminhada. Klasse: vamos a uma cidade fazer uma caminhada na montanha.",
+  "kategorie": "redewendungen"
+ },
+ {
+  "pt": "os meus produtos / os meus amigos",
+  "de": "meine Produkte / meine Freunde",
+  "notiz": "Portugal setzt den Artikel vor das Possessivpronomen: o meu carro, a minha casa. Ohne Artikel (meus produtos) klingt es brasilianisch.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "até à praia",
+  "de": "bis zum Strand",
+  "notiz": "Präposition a plus Artikel a wird à, a plus o wird ao: até à praia, até ao ginásio. Moritz sagte até a praia.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "ir a / ir para",
+  "de": "kurz hinfahren / hingehen und bleiben",
+  "notiz": "Kurzer Ausflug: vamos a uma cidade. Längerer Aufenthalt oder Umzug: vou para o Brasil.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "ainda não + Perfeito",
+  "de": "noch nicht",
+  "notiz": "O negócio ainda não começou = Das Geschäft hat noch nicht angefangen.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "depois de + Infinitiv",
+  "de": "nach dem ...",
+  "notiz": "Depois de trabalhar, vou cozinhar = Nach der Arbeit koche ich.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "se + Futuro do Conjuntivo",
+  "de": "wenn (in der Zukunft) ...",
+  "notiz": "Se alguma coisa acontecer, estás fudido. Nach se steht nie Präsens. Bei regelmäßigen Verben sieht die Form aus wie der Infinitiv, unregelmäßig: for (ser/ir), tiver (ter), fizer (fazer), puder (poder).",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "será",
+  "de": "es wird sein",
+  "notiz": "Futuro Simples von ser. Im Alltag sagt man meistens vai ser.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "um pouco mais caro",
+  "de": "ein bisschen teurer",
+  "notiz": "Muster: um pouco mais plus Adjektiv. Gegenteil: um pouco menos caro.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "com mais frequência",
+  "de": "häufiger, öfter",
+  "notiz": "Gleichbedeutend: mais vezes. Klasse: Os problemas vão acontecer com mais frequência.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "sobre isso",
+  "de": "darüber, dazu",
+  "notiz": "Não sei nada sobre isso = Darüber weiß ich nichts.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "na quarta-feira / à quarta-feira",
+  "de": "am Mittwoch / mittwochs",
+  "notiz": "na plus Wochentag meint diesen einen Tag, à plus Wochentag meint jede Woche.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "bom → melhor, mau → pior",
+  "de": "gut → besser, schlecht → schlechter",
+  "notiz": "Diese beiden werden nie mit mais gesteigert. Falsch wäre mais bom oder mais mau.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "todas as lojas",
+  "de": "alle Läden",
+  "notiz": "Nach todo, toda, todos, todas kommt der Artikel: todo o dia, todas as lojas. In der Klasse fiel todas lojas, da fehlt das as.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "noutras empresas",
+  "de": "in anderen Firmen",
+  "notiz": "em plus outras wird noutras, em plus outro wird noutro. Portugal zieht zusammen, Brasilien schreibt em outras.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "alguma coisa",
+  "de": "etwas, irgendetwas",
+  "notiz": "Se alguma coisa acontecer = Wenn irgendetwas passiert. Verneint mit não ... nada.",
+  "kategorie": "grammatik"
+ },
+ {
+  "pt": "Como foi?",
+  "de": "Wie war es?",
+  "notiz": "Vollständig: Como foi a tua semana? Die Antwort steht im Perfeito: Foi muito boa.",
+  "kategorie": "fragen"
+ },
+ {
+  "pt": "Como vai o teu negócio?",
+  "de": "Wie läuft dein Geschäft?",
+  "notiz": "Der Lehrer sagte o seu. Unter Freunden benutzt man in Portugal o teu.",
+  "kategorie": "fragen"
+ },
+ {
+  "pt": "o gajo",
+  "de": "der Typ, der Kerl",
+  "notiz": "Este gajo = dieser Typ. Typisch portugiesisch, Brasilien sagt o cara. Weiblich a gaja, das kann abwertend klingen.",
+  "kategorie": "umgangssprache"
+ },
+ {
+  "pt": "estar fudido",
+  "de": "am Arsch sein, in der Klemme stecken",
+  "notiz": "Sehr vulgär, nur unter Freunden. Klasse: Se alguma coisa acontecer, estás fudido.",
+  "kategorie": "umgangssprache"
+ }
+]

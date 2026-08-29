@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Vokabeln — Kategorisiert für Lengo</title>
+<title>Vokabeln — Português</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5f0eb">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,9 +23,8 @@
   .header { text-align: center; margin-bottom: 24px; }
   .lesson-tag { display: inline-block; background: #2e7d32; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
   .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
-  .header p { font-size: 14px; color: #6b6560; line-height: 1.5; max-width: 500px; margin: 0 auto; }
+  .header p { font-size: 14px; color: #6b6560; line-height: 1.55; max-width: 520px; margin: 0 auto; }
 
-  /* WICHTIG-Box */
   .must-read { background: linear-gradient(135deg, #c62828, #b71c1c); color: white; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px; }
   .must-read h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.9; margin-bottom: 10px; font-weight: 700; }
   .must-read .title { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
@@ -33,13 +32,11 @@
   .must-read li { margin-bottom: 4px; }
   .must-read strong { background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 4px; }
 
-  /* Stats */
   .stats-card { background: white; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; justify-content: space-around; gap: 12px; flex-wrap: wrap; }
   .stat { text-align: center; flex: 1; min-width: 80px; }
   .stat-num { font-size: 22px; font-weight: 800; color: #2e7d32; }
   .stat-label { font-size: 11px; color: #6b6560; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
 
-  /* Packs */
   h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #2d2a26; margin: 22px 0 10px; font-weight: 700; }
 
   .pack {
@@ -57,14 +54,17 @@
   .pack .info { flex: 1; min-width: 200px; }
   .pack .icon { font-size: 24px; margin-right: 8px; vertical-align: middle; }
   .pack .name { font-size: 15px; font-weight: 700; display: inline-block; vertical-align: middle; }
-  .pack .desc { font-size: 12px; color: #6b6560; margin-top: 4px; line-height: 1.4; }
+  .pack .desc { font-size: 12px; color: #6b6560; margin-top: 4px; line-height: 1.5; }
+  .pack .desc em { color: #2d2a26; font-style: normal; font-weight: 600; }
   .pack .count { font-size: 11px; color: #9e9892; font-weight: 600; margin-top: 4px; }
   .pack .dl-btn { background: #2e7d32; color: white; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
   .pack .dl-btn:hover { background: #1b5e20; }
 
-  /* Farb-Akzente pro Pack */
-  .pack.verben        { border-left-color: #7b1fa2; }
-  .pack.verben .dl-btn { background: #7b1fa2; }
+  .pack.konjugation   { border-left-color: #7b1fa2; background: linear-gradient(135deg, #faf5fc, white); }
+  .pack.konjugation .dl-btn { background: #7b1fa2; }
+  .pack.konjugation .name { font-size: 17px; }
+  .pack.verben        { border-left-color: #6a1b9a; }
+  .pack.verben .dl-btn { background: #6a1b9a; }
   .pack.adjektive     { border-left-color: #f57c00; }
   .pack.adjektive .dl-btn { background: #f57c00; }
   .pack.nomen         { border-left-color: #1976d2; }
@@ -78,14 +78,13 @@
   .pack.grammatik     { border-left-color: #5d4037; }
   .pack.grammatik .dl-btn { background: #5d4037; }
 
-  /* Master separat */
   .master-pack { background: linear-gradient(135deg, #f5f0eb, white); border: 2px dashed #9e9892; border-radius: 12px; padding: 16px 20px; margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   .master-pack .info { flex: 1; }
   .master-pack .name { font-size: 14px; font-weight: 700; color: #2d2a26; }
-  .master-pack .desc { font-size: 12px; color: #6b6560; margin-top: 3px; }
-  .master-pack .dl-btn { background: #6b6560; color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; text-decoration: none; }
+  .master-pack .desc { font-size: 12px; color: #6b6560; margin-top: 3px; line-height: 1.5; }
+  .master-pack .dl-btn { background: #6b6560; color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; text-decoration: none; white-space: nowrap; }
 
-  .footer-note { font-size: 11px; color: #9e9892; text-align: center; margin-top: 20px; padding: 12px; background: white; border-radius: 8px; line-height: 1.5; }
+  .footer-note { font-size: 11px; color: #9e9892; text-align: center; margin-top: 20px; padding: 12px; background: white; border-radius: 8px; line-height: 1.6; }
 
   @media (max-width: 600px) {
     .header h1 { font-size: 22px; }
@@ -94,7 +93,7 @@
     .pack .dl-btn { width: 100%; text-align: center; }
   }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20260819d">
+<link rel="stylesheet" href="css/app-shell.css?v=20260829a">
 </head>
 <body>
 <div class="page">
@@ -102,36 +101,47 @@
 <a href="index.html" class="back-link">&larr; Zur&uuml;ck zum Dashboard</a>
 
 <div class="header">
-  <div class="lesson-tag">Vokabel-Packs (kategorisiert)</div>
-  <h1>Deine Vokabeln f&uuml;r Lengo</h1>
-  <p>Statt einem gro&szlig;en Pack mit Duplikaten &mdash; jetzt 7 thematische Packs. Lerne fokussiert nach Wortart.</p>
+  <div class="lesson-tag">Vokabel-Packs f&uuml;r Lengo</div>
+  <h1>Deine Vokabeln</h1>
+  <p>Acht Packs, sortiert nach Wortart. Neu dabei ist ein Pack f&uuml;r die Konjugationen: Damit lernst du <em>fa&ccedil;o</em>, <em>fiz</em> und <em>fizemos</em>, nicht nur die Bedeutung von <em>fazer</em>.</p>
 </div>
 
 <div class="must-read">
-  <h3>&#128721; Wichtig: Erst alte Packs l&ouml;schen!</h3>
-  <div class="title">So machst du sauberen Tisch in Lengo</div>
+  <h3>Wichtig: erst die alten Packs l&ouml;schen</h3>
+  <div class="title">So machst du in Lengo sauberen Tisch</div>
   <ol>
-    <li>&Ouml;ffne <strong>Lengo</strong> auf dem Handy &rarr; "Meine Packs"</li>
-    <li>L&ouml;sche ALLE alten Puranails-/PT-Teacher-/Vokabel-Packs</li>
-    <li>Komm hierher zur&uuml;ck und lade die neuen 7 Packs unten runter</li>
-    <li>Importiere jedes in Lengo als <strong>eigenes Pack</strong> (nicht ins gleiche mergen!)</li>
+    <li>&Ouml;ffne Lengo auf dem Handy und geh auf &bdquo;Meine Packs&ldquo;</li>
+    <li>L&ouml;sche alle alten Packs von hier. Sie sind vollst&auml;ndig neu aufgebaut, alte und neue nebeneinander w&uuml;rden dir dieselben W&ouml;rter doppelt vorlegen.</li>
+    <li>Lade unten die acht neuen Packs herunter</li>
+    <li>Importiere jedes als <strong>eigenes Pack</strong>, nicht alle zusammen in eines</li>
   </ol>
-  <p style="margin-top: 10px; font-size: 12px; opacity: 0.9;">Bei Updates: nur das jeweilige Pack in Lengo l&ouml;schen und neu importieren &mdash; nicht alles auf einmal.</p>
+  <p style="margin-top: 10px; font-size: 12px; opacity: 0.9;">Sp&auml;ter bei Updates reicht es, nur das betroffene Pack zu l&ouml;schen und neu zu laden.</p>
 </div>
 
 <div class="stats-card">
-  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Packs</div></div>
-  <div class="stat"><div class="stat-num">778</div><div class="stat-label">Karten total</div></div>
-  <div class="stat"><div class="stat-num">17</div><div class="stat-label">Klassen</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">Packs</div></div>
+  <div class="stat"><div class="stat-num">877</div><div class="stat-label">Karten</div></div>
+  <div class="stat"><div class="stat-num">20</div><div class="stat-label">Klassen</div></div>
 </div>
 
-<h2>&#128218; Die 7 Packs</h2>
+<h2>Fang hiermit an</h2>
+
+<a class="pack konjugation" href="vokabeln/vokabeln-konjugation.csv" download>
+  <div class="info">
+    <span class="icon">&#127919;</span><span class="name">Konjugation</span>
+    <div class="desc">Die Verbformen selbst. Ganze Reihen wie <em>fiz, fizeste, fez, fizemos, fizeram</em>, dazu S&auml;tze mit einem Zeitwort darin (&bdquo;Ontem fui ao gin&aacute;sio&ldquo;) und die Regeln zu den Zeitformen. Zugeschnitten auf die L&uuml;cken aus deinem Einstufungstest.</div>
+    <div class="count">96 Karten &middot; neu</div>
+  </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
+
+<h2>Wortschatz</h2>
 
 <a class="pack verben" href="vokabeln/vokabeln-verben.csv" download>
   <div class="info">
     <span class="icon">&#128170;</span><span class="name">Verben</span>
-    <div class="desc">Alle Verben mit Konjugationen &mdash; falar, comer, ir, ser/estar, fazer, dizer, unregelm&auml;&szlig;ige Formen, Perfeito, Imperfeito, Konditional</div>
-    <div class="count">166 Karten</div>
+    <div class="desc">Die Grundformen mit ihrer Bedeutung. Die gebeugten Formen stehen jetzt geschlossen im Konjugations-Pack.</div>
+    <div class="count">143 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
@@ -139,8 +149,8 @@
 <a class="pack nomen" href="vokabeln/vokabeln-nomen.csv" download>
   <div class="info">
     <span class="icon">&#128100;</span><span class="name">Nomen</span>
-    <div class="desc">Familie, Berufe, K&ouml;rper, Essen, Fr&uuml;chte, Orte, Sport, Business, Zuhause, Natur, Kleidung, Farben</div>
-    <div class="count">196 Karten</div>
+    <div class="desc">Ab jetzt mit Artikel, also <em>o carro</em> statt nur <em>carro</em>. So lernst du das Geschlecht gleich mit. Familie, Berufe, K&ouml;rper, Essen, Orte, Sport, Business.</div>
+    <div class="count">251 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
@@ -148,17 +158,17 @@
 <a class="pack adjektive" href="vokabeln/vokabeln-adjektive.csv" download>
   <div class="info">
     <span class="icon">&#127752;</span><span class="name">Adjektive</span>
-    <div class="desc">Beschreibungen, Gef&uuml;hle, Zust&auml;nde &mdash; groß/klein, gut/schlecht, m&uuml;de/fit, sch&ouml;n/h&auml;sslich, seltsam/tranquilo</div>
-    <div class="count">69 Karten</div>
+    <div class="desc">Beschreibungen und Zust&auml;nde, jeweils in m&auml;nnlicher und weiblicher Form.</div>
+    <div class="count">73 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
 
 <a class="pack redewendungen" href="vokabeln/vokabeln-redewendungen.csv" download>
   <div class="info">
-    <span class="icon">&#128172;</span><span class="name">Redewendungen &amp; Alltag</span>
-    <div class="desc">Feste Phrasen, Begr&uuml;&szlig;ung, sich vorstellen, estar com Hunger/Angst, Konversation, Spr&uuml;che, Wetter, Uhrzeit</div>
-    <div class="count">229 Karten</div>
+    <span class="icon">&#128172;</span><span class="name">Redewendungen</span>
+    <div class="desc">Feste Wendungen und ganze S&auml;tze zum direkt Benutzen: Begr&uuml;&szlig;ung, sich vorstellen, <em>estar com fome</em>, Smalltalk.</div>
+    <div class="count">130 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
@@ -166,45 +176,46 @@
 <a class="pack grammatik" href="vokabeln/vokabeln-grammatik.csv" download>
   <div class="info">
     <span class="icon">&#128295;</span><span class="name">Grammatik-Bausteine</span>
-    <div class="desc">Pronomen, Kontraktionen (no/na/do/ao), Pr&auml;positionen, Konjunktionen (enquanto, do que), Modal-Ausdr&uuml;cke</div>
-    <div class="count">96 Karten</div>
+    <div class="desc">Pronomen, Verschmelzungen wie <em>no, na, ao, pelo</em>, Pr&auml;positionen, Bindew&ouml;rter und Baumuster wie <em>come&ccedil;ar a</em> plus Grundform.</div>
+    <div class="count">146 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
 
 <a class="pack fragen" href="vokabeln/vokabeln-fragen.csv" download>
   <div class="info">
-    <span class="icon">&#10067;</span><span class="name">Fragew&ouml;rter &amp; Fragen</span>
-    <div class="desc">Quem, Como, Qual, Onde, Quando, Porqu&ecirc; und typische Fragekonstruktionen (&quot;&eacute; que&quot;)</div>
-    <div class="count">18 Karten</div>
+    <span class="icon">&#10067;</span><span class="name">Fragen</span>
+    <div class="desc">Fragew&ouml;rter und die Konstruktion mit <em>&eacute; que</em>, die in Portugal der Normalfall ist.</div>
+    <div class="count">31 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
 
 <a class="pack umgangssprache" href="vokabeln/vokabeln-umgangssprache.csv" download>
   <div class="info">
-    <span class="icon">&#129324;</span><span class="name">Umgangssprache &amp; Slang</span>
-    <div class="desc">Foda-se, merda, que porra... &mdash; damit du verstehst, was Portugiesen wirklich sagen (Vorsicht: vulg&auml;r!)</div>
-    <div class="count">5 Karten</div>
+    <span class="icon">&#129324;</span><span class="name">Umgangssprache</span>
+    <div class="desc">Damit du verstehst, was wirklich gesagt wird. Teils derb.</div>
+    <div class="count">7 Karten</div>
   </div>
   <span class="dl-btn">&darr; Download</span>
 </a>
 
 <div class="master-pack">
   <div class="info">
-    <div class="name">&#128193; Master-Liste (alle 778 Karten)</div>
-    <div class="desc">Falls du lieber ein einzelnes Pack magst &mdash; alles zusammen, ohne Duplikate.</div>
+    <div class="name">Alles in einer Datei</div>
+    <div class="desc">Falls du lieber ein einziges gro&szlig;es Pack magst. Ohne Doppelte, aber auch ohne die Sortierung nach Wortart.</div>
   </div>
-  <a class="dl-btn" href="vokabeln/vokabeln-master.csv" download>Master &darr;</a>
+  <a class="dl-btn" href="vokabeln/vokabeln-master.csv" download>876 Karten &darr;</a>
 </div>
 
 <div class="footer-note">
-  Format: <strong>UTF-8 mit BOM</strong>, Trennzeichen <strong>Semikolon (;)</strong> &middot; Spalten: PT / DE / Notiz<br>
-  Letzte Aktualisierung: 24.07.2026 (nach Klassen 15.07, 17.07, 24.07 &mdash; Business, Kampfsport, Slang, Sport)
+  Format: UTF-8 mit BOM, Trennzeichen Semikolon. Spalten: Portugiesisch, Deutsch, Notiz.<br>
+  Letzte Aktualisierung: 29.08.2026. Alle Packs neu aufgebaut, Konjugations-Pack neu dazu,
+  Substantive mit Artikel. Enth&auml;lt die Klassen vom 12.08., 21.08. und 27.08.
 </div>
 
 </div>
-<script src="js/progress.js?v=20260819d"></script>
-<script src="js/app-shell.js?v=20260819d"></script>
+<script src="js/progress.js?v=20260829a"></script>
+<script src="js/app-shell.js?v=20260829a"></script>
 </body>
 </html>

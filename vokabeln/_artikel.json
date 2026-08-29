@@ -1,0 +1,1487 @@
+{
+ "karten": [
+  {
+   "alt": "a aula",
+   "neu": "a aula",
+   "sicher": true
+  },
+  {
+   "alt": "a empresa",
+   "neu": "a empresa",
+   "sicher": true
+  },
+  {
+   "alt": "a feira",
+   "neu": "a feira",
+   "sicher": true
+  },
+  {
+   "alt": "a forma",
+   "neu": "a forma",
+   "sicher": true
+  },
+  {
+   "alt": "a mistura",
+   "neu": "a mistura",
+   "sicher": true
+  },
+  {
+   "alt": "a montanha",
+   "neu": "a montanha",
+   "sicher": true
+  },
+  {
+   "alt": "a opção",
+   "neu": "a opção",
+   "sicher": true,
+   "notiz": "Alle Wörter auf -ção sind weiblich. Plural: as opções."
+  },
+  {
+   "alt": "a pulseira",
+   "neu": "a pulseira",
+   "sicher": true
+  },
+  {
+   "alt": "a sandes",
+   "neu": "a sandes",
+   "sicher": true,
+   "notiz": "Der Plural bleibt gleich: as sandes. In Brasilien sagt man o sanduíche."
+  },
+  {
+   "alt": "Advogado / Advogada",
+   "neu": "o advogado / a advogada",
+   "sicher": true
+  },
+  {
+   "alt": "Agência imobiliária",
+   "neu": "a agência imobiliária",
+   "sicher": true
+  },
+  {
+   "alt": "Agulha / Agulhas",
+   "neu": "a agulha / as agulhas",
+   "sicher": true
+  },
+  {
+   "alt": "Alho",
+   "neu": "o alho",
+   "sicher": true
+  },
+  {
+   "alt": "Almoço / Jantar",
+   "neu": "o almoço / o jantar",
+   "sicher": true
+  },
+  {
+   "alt": "Ananás",
+   "neu": "o ananás",
+   "sicher": true,
+   "notiz": "Das ist die portugiesische Form. In Brasilien heißt die Frucht o abacaxi. Plural: os ananases."
+  },
+  {
+   "alt": "Apa",
+   "neu": "o apa",
+   "sicher": false,
+   "notiz": "Das ist kein portugiesisches Wort, sondern ein afrikanischer Brotname. Das Geschlecht ist nicht belegt, deshalb unsicher."
+  },
+  {
+   "alt": "Aplicação / App",
+   "neu": "a aplicação / a app",
+   "sicher": true,
+   "notiz": "Beide Formen sind weiblich, weil app die Kurzform von aplicação ist."
+  },
+  {
+   "alt": "Aprendizagem",
+   "neu": "a aprendizagem",
+   "sicher": true,
+   "notiz": "Wörter auf -agem sind weiblich, genau wie a viagem und a imagem."
+  },
+  {
+   "alt": "Arco-íris",
+   "neu": "o arco-íris",
+   "sicher": true,
+   "notiz": "Der Plural bleibt gleich: os arco-íris."
+  },
+  {
+   "alt": "Arroz",
+   "neu": "o arroz",
+   "sicher": true
+  },
+  {
+   "alt": "as novidades",
+   "neu": "as novidades",
+   "sicher": true
+  },
+  {
+   "alt": "Atraso",
+   "neu": "o atraso",
+   "sicher": true
+  },
+  {
+   "alt": "Aveia",
+   "neu": "a aveia",
+   "sicher": true
+  },
+  {
+   "alt": "Avião",
+   "neu": "o avião",
+   "sicher": true,
+   "notiz": "Plural: os aviões. In Portugal sagt man apanhar o avião, nicht pegar."
+  },
+  {
+   "alt": "Avó / Avô",
+   "neu": "a avó / o avô",
+   "sicher": true,
+   "notiz": "Leicht zu verwechseln: a avó ist die Großmutter, o avô der Großvater."
+  },
+  {
+   "alt": "Basquetebol",
+   "neu": "o basquetebol",
+   "sicher": true,
+   "notiz": "In Portugal heißt es basquetebol, in Brasilien basquete."
+  },
+  {
+   "alt": "Batata / Batatas",
+   "neu": "a batata / as batatas",
+   "sicher": true
+  },
+  {
+   "alt": "Bitoque",
+   "neu": "o bitoque",
+   "sicher": true
+  },
+  {
+   "alt": "Bolo",
+   "neu": "o bolo",
+   "sicher": true
+  },
+  {
+   "alt": "Cabeça",
+   "neu": "a cabeça",
+   "sicher": true
+  },
+  {
+   "alt": "Cabeleireiro / Cabeleireira",
+   "neu": "o cabeleireiro / a cabeleireira",
+   "sicher": true
+  },
+  {
+   "alt": "Cabelo",
+   "neu": "o cabelo",
+   "sicher": true
+  },
+  {
+   "alt": "Cachoeira",
+   "neu": "a cascata",
+   "sicher": true,
+   "notiz": "Cachoeira ist brasilianisch. In Portugal sagt man a cascata oder a queda de água."
+  },
+  {
+   "alt": "Café",
+   "neu": "o café",
+   "sicher": true
+  },
+  {
+   "alt": "Calças",
+   "neu": "as calças",
+   "sicher": true,
+   "notiz": "Das Wort steht immer im Plural, so wie im Deutschen die Jeans."
+  },
+  {
+   "alt": "Calças de natação",
+   "neu": "os calções de banho",
+   "sicher": true,
+   "notiz": "Für Badehose sagt man in Portugal os calções de banho. Calças de natação ist ungebräuchlich.",
+   "de_neu": "die Badehose"
+  },
+  {
+   "alt": "Calções",
+   "neu": "os calções",
+   "sicher": true
+  },
+  {
+   "alt": "Caminhada",
+   "neu": "a caminhada",
+   "sicher": true
+  },
+  {
+   "alt": "Camisa",
+   "neu": "a camisa",
+   "sicher": true
+  },
+  {
+   "alt": "Cantor / Cantora",
+   "neu": "o cantor / a cantora",
+   "sicher": true
+  },
+  {
+   "alt": "Capítulo",
+   "neu": "o capítulo",
+   "sicher": true
+  },
+  {
+   "alt": "Capoeira",
+   "neu": "a capoeira",
+   "sicher": true
+  },
+  {
+   "alt": "Carne",
+   "neu": "a carne",
+   "sicher": true
+  },
+  {
+   "alt": "Carne de cabrito",
+   "neu": "a carne de cabrito",
+   "sicher": true
+  },
+  {
+   "alt": "Carne moída",
+   "neu": "a carne picada",
+   "sicher": true,
+   "notiz": "Carne moída ist brasilianisch. In Portugal heißt Hackfleisch a carne picada."
+  },
+  {
+   "alt": "Carpinteiro / Carpinteira",
+   "neu": "o carpinteiro / a carpinteira",
+   "sicher": true
+  },
+  {
+   "alt": "Casa",
+   "neu": "a casa",
+   "sicher": true
+  },
+  {
+   "alt": "Casa de banho",
+   "neu": "a casa de banho",
+   "sicher": true,
+   "notiz": "Das ist die portugiesische Form. In Brasilien sagt man o banheiro."
+  },
+  {
+   "alt": "Casaco",
+   "neu": "o casaco",
+   "sicher": true
+  },
+  {
+   "alt": "Cebola",
+   "neu": "a cebola",
+   "sicher": true
+  },
+  {
+   "alt": "Cenário",
+   "neu": "o cenário",
+   "sicher": true
+  },
+  {
+   "alt": "Cenoura",
+   "neu": "a cenoura",
+   "sicher": true
+  },
+  {
+   "alt": "Chapa",
+   "neu": "a chapa",
+   "sicher": true
+  },
+  {
+   "alt": "Cidade / Cidade natal",
+   "neu": "a cidade / a cidade natal",
+   "sicher": true
+  },
+  {
+   "alt": "Cinema",
+   "neu": "o cinema",
+   "sicher": true,
+   "notiz": "Endet auf -a, ist aber männlich. Solche Wörter aus dem Griechischen sind eine häufige Falle."
+  },
+  {
+   "alt": "Cliente",
+   "neu": "o cliente / a cliente",
+   "sicher": true,
+   "notiz": "Das Wort bleibt gleich, nur der Artikel zeigt, ob ein Mann oder eine Frau gemeint ist."
+  },
+  {
+   "alt": "Clube de corrida",
+   "neu": "o clube de corrida",
+   "sicher": true
+  },
+  {
+   "alt": "Coisa / Coisinhas",
+   "neu": "a coisa / as coisinhas",
+   "sicher": true
+  },
+  {
+   "alt": "Colega",
+   "neu": "o colega / a colega",
+   "sicher": true,
+   "notiz": "Trotz der Endung auf -a kann das Wort männlich sein. Der Artikel entscheidet.",
+   "de_neu": "der Kollege / die Kollegin"
+  },
+  {
+   "alt": "Colega de quarto",
+   "neu": "o colega de quarto / a colega de quarto",
+   "sicher": true,
+   "de_neu": "der Mitbewohner / die Mitbewohnerin"
+  },
+  {
+   "alt": "Comida",
+   "neu": "a comida",
+   "sicher": true
+  },
+  {
+   "alt": "Complicação / Complicações",
+   "neu": "a complicação / as complicações",
+   "sicher": true
+  },
+  {
+   "alt": "Confiança",
+   "neu": "a confiança",
+   "sicher": true
+  },
+  {
+   "alt": "Confronto",
+   "neu": "o confronto",
+   "sicher": true
+  },
+  {
+   "alt": "Congelador",
+   "neu": "o congelador",
+   "sicher": true,
+   "notiz": "Nicht verwechseln mit o frigorífico, dem Kühlschrank."
+  },
+  {
+   "alt": "Consistência",
+   "neu": "a consistência",
+   "sicher": true
+  },
+  {
+   "alt": "Console / Consolas",
+   "neu": "a consola / as consolas",
+   "sicher": true,
+   "notiz": "In Portugal heißt die Spielkonsole a consola. Console ist die brasilianische Form."
+  },
+  {
+   "alt": "Convenção / Conferência",
+   "neu": "a convenção / a conferência",
+   "sicher": true
+  },
+  {
+   "alt": "Conversação",
+   "neu": "a conversação",
+   "sicher": true,
+   "notiz": "Für ein alltägliches Gespräch sagt man eher a conversa."
+  },
+  {
+   "alt": "Coração",
+   "neu": "o coração",
+   "sicher": true,
+   "notiz": "Ausnahme: Das Wort endet zwar auf -ção, ist aber männlich. Plural: os corações."
+  },
+  {
+   "alt": "Coragem",
+   "neu": "a coragem",
+   "sicher": true,
+   "notiz": "Wörter auf -agem sind weiblich, wie a viagem und a imagem."
+  },
+  {
+   "alt": "Corpo",
+   "neu": "o corpo",
+   "sicher": true
+  },
+  {
+   "alt": "Corrida",
+   "neu": "a corrida",
+   "sicher": true
+  },
+  {
+   "alt": "Corte elétrico / Cortes eléctricos",
+   "neu": "o corte elétrico / os cortes elétricos",
+   "sicher": true,
+   "notiz": "Nach der heutigen Rechtschreibung ohne c: elétrico, nicht eléctrico."
+  },
+  {
+   "alt": "Cotovelo / Cotovelos",
+   "neu": "o cotovelo / os cotovelos",
+   "sicher": true
+  },
+  {
+   "alt": "Coworking",
+   "neu": "o coworking",
+   "sicher": false,
+   "notiz": "Englisches Lehnwort, das Geschlecht ist nicht fest. Gebräuchlicher ist o espaço de coworking."
+  },
+  {
+   "alt": "Cultura de comer fora",
+   "neu": "a cultura de comer fora",
+   "sicher": true,
+   "notiz": "Das ist keine feste Wendung, sondern eine freie Umschreibung. Der Artikel richtet sich nach a cultura."
+  },
+  {
+   "alt": "Dedo / Dedos",
+   "neu": "o dedo / os dedos",
+   "de_neu": "der Finger / die Finger",
+   "notiz": "Der Plural von dedo heißt einfach Finger. Zehen sind os dedos dos pés.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Dentes",
+   "neu": "os dentes",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Dentista",
+   "neu": "o dentista / a dentista",
+   "notiz": "Das Wort bleibt gleich, nur der Artikel zeigt das Geschlecht an.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Desporto de combate",
+   "neu": "o desporto de combate",
+   "notiz": "Desporto ist die portugiesische Form. In Brasilien sagt man esporte.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Dia de descanso",
+   "neu": "o dia de descanso",
+   "notiz": "Dia ist trotz der Endung auf -a männlich. Bedeutet dasselbe wie dia de folga.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Dia de folga",
+   "neu": "o dia de folga",
+   "notiz": "Dia ist trotz der Endung auf -a männlich.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Diretor de cinema",
+   "neu": "o diretor de cinema",
+   "notiz": "Weibliche Form: a diretora de cinema.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Distância",
+   "neu": "a distância",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Doce de mandioca",
+   "neu": "o doce de mandioca",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Dor / Dores",
+   "neu": "a dor / as dores",
+   "notiz": "Dor ist weiblich, obwohl es auf -or endet. Das rät man leicht falsch.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Empreendedor / Empreendedora",
+   "neu": "o empreendedor / a empreendedora",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Energia",
+   "neu": "a energia",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Engenheiro / Engenheira",
+   "neu": "o engenheiro / a engenheira",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Estação do comboio",
+   "neu": "a estação do comboio",
+   "notiz": "Alle Wörter auf -ção sind weiblich. In Portugal heißt der Zug comboio, in Brasilien trem.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Estresse",
+   "neu": "o stress",
+   "notiz": "Estresse ist brasilianisch. In Portugal schreibt und sagt man o stress, seltener auch o stresse.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Estudante",
+   "neu": "o estudante / a estudante",
+   "notiz": "Das Wort bleibt gleich, nur der Artikel zeigt das Geschlecht an.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Faculdade / Universidade",
+   "neu": "a faculdade / a universidade",
+   "notiz": "Alle Wörter auf -dade sind weiblich.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Falha humana / Falhas humanas",
+   "neu": "a falha humana / as falhas humanas",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fato",
+   "neu": "o fato",
+   "notiz": "In Portugal ist o fato der Anzug. In Brasilien heißt der Anzug terno und fato bedeutet dort Tatsache.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Feijão",
+   "neu": "o feijão",
+   "de_neu": "die Bohne",
+   "notiz": "Der Plural ist unregelmäßig: os feijões.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Festas",
+   "neu": "as festas",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fígado",
+   "neu": "o fígado",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Filho / Filha",
+   "neu": "o filho / a filha",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Filme / Filmes",
+   "neu": "o filme / os filmes",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fim de semana",
+   "neu": "o fim de semana",
+   "notiz": "Im Plural wird der erste Teil verändert: os fins de semana.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fisio",
+   "neu": "a fisio",
+   "notiz": "Umgangssprachliche Kurzform von a fisioterapia, deshalb weiblich. Im Satz steht sie meist ohne Artikel: vou ter fisio.",
+   "sicher": false,
+   "loeschen": false
+  },
+  {
+   "alt": "Flores / Árvores",
+   "neu": "as flores / as árvores",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Floresta",
+   "neu": "a floresta",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Folga / Descanso",
+   "neu": "a folga / o descanso",
+   "notiz": "Achtung, die beiden haben verschiedene Geschlechter: a folga, aber o descanso.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fornecedor / Fornecedores",
+   "neu": "o fornecedor / os fornecedores",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Forno",
+   "neu": "o forno",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Frango / Peito de frango",
+   "neu": "o frango / o peito de frango",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Frio / Calor",
+   "neu": "o frio / o calor",
+   "de_neu": "die Kälte / die Hitze",
+   "notiz": "Beide sind männlich. Im Satz está frio oder está calor stehen sie ohne Artikel.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fritadeira",
+   "neu": "a fritadeira",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fritadeira dupla",
+   "neu": "a fritadeira dupla",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Fruta",
+   "neu": "a fruta",
+   "notiz": "A fruta ist Obst zum Essen. O fruto ist die Frucht einer Pflanze im botanischen Sinn.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Furo",
+   "neu": "o furo",
+   "notiz": "Furo ist jedes Loch, auch die Reifenpanne: um furo no pneu. Das Piercing selbst heißt o piercing.",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Futebol",
+   "neu": "o futebol",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Futuro",
+   "neu": "o futuro",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Ginásio",
+   "neu": "o ginásio",
+   "sicher": true
+  },
+  {
+   "alt": "Gíria / Gírias",
+   "neu": "a gíria / as gírias",
+   "sicher": true,
+   "notiz": "Beispielsatz aus der Datei: aprender gírias em português."
+  },
+  {
+   "alt": "Grande fã",
+   "neu": "o grande fã / a grande fã",
+   "sicher": true,
+   "notiz": "Das Wort fã bleibt in beiden Geschlechtern gleich, nur der Artikel wechselt. Plural: os fãs."
+  },
+  {
+   "alt": "Graviola",
+   "neu": "a graviola",
+   "sicher": true,
+   "notiz": "Tropische Frucht."
+  },
+  {
+   "alt": "Habitantes",
+   "neu": "os habitantes",
+   "sicher": true,
+   "notiz": "Die Karte steht im Plural. Einzahl: o habitante. Beispiel: mais de 300 mil habitantes."
+  },
+  {
+   "alt": "Hamburguer",
+   "neu": "o hambúrguer",
+   "sicher": true,
+   "notiz": "In der Datei fehlte der Akzent. Richtig geschrieben ist hambúrguer, Plural os hambúrgueres."
+  },
+  {
+   "alt": "Infância",
+   "neu": "a infância",
+   "sicher": true
+  },
+  {
+   "alt": "Inteligência artificial",
+   "neu": "a inteligência artificial",
+   "sicher": true
+  },
+  {
+   "alt": "Inverno / Verão / Primavera / Outono",
+   "neu": "o inverno / o verão / a primavera / o outono",
+   "sicher": true,
+   "notiz": "Nur die primavera ist weiblich, die anderen drei Jahreszeiten sind männlich."
+  },
+  {
+   "alt": "Irmão / Irmã",
+   "neu": "o irmão / a irmã",
+   "sicher": true,
+   "notiz": "Plural: os irmãos und as irmãs. Os irmãos meint auch Geschwister gemischt."
+  },
+  {
+   "alt": "Joelho / Joelhos",
+   "neu": "o joelho / os joelhos",
+   "sicher": true
+  },
+  {
+   "alt": "Jogo / Partida",
+   "neu": "o jogo / a partida",
+   "sicher": true
+  },
+  {
+   "alt": "Jornalista",
+   "neu": "o jornalista / a jornalista",
+   "de_neu": "der Journalist / die Journalistin",
+   "sicher": true,
+   "notiz": "Das Wort endet auf -a, ist aber für beide Geschlechter gleich. Nur der Artikel zeigt, wer gemeint ist."
+  },
+  {
+   "alt": "Karaté",
+   "neu": "o karaté",
+   "sicher": true,
+   "notiz": "In Portugal schreibt man auch caraté, in Brasilien caratê."
+  },
+  {
+   "alt": "Lei / Leis",
+   "neu": "a lei / as leis",
+   "sicher": true
+  },
+  {
+   "alt": "Limão",
+   "neu": "o limão",
+   "sicher": true,
+   "notiz": "Plural: os limões."
+  },
+  {
+   "alt": "Lista",
+   "neu": "a lista",
+   "sicher": true
+  },
+  {
+   "alt": "Localização",
+   "neu": "a localização",
+   "sicher": true,
+   "notiz": "Alle Wörter auf -ção sind weiblich. Beispiel: Estou numa boa localização."
+  },
+  {
+   "alt": "Lugar",
+   "neu": "o lugar",
+   "sicher": true
+  },
+  {
+   "alt": "Lugares lotados",
+   "neu": "os lugares lotados",
+   "sicher": true,
+   "notiz": "In Portugal sagt man im Alltag eher os lugares cheios. Lotado versteht man, klingt aber brasilianisch."
+  },
+  {
+   "alt": "Luta",
+   "neu": "a luta",
+   "sicher": true
+  },
+  {
+   "alt": "Maçã / Banana / Laranja",
+   "neu": "a maçã / a banana / a laranja",
+   "sicher": true
+  },
+  {
+   "alt": "Mãe",
+   "neu": "a mãe",
+   "sicher": true
+  },
+  {
+   "alt": "Manteiga",
+   "neu": "a manteiga",
+   "sicher": true
+  },
+  {
+   "alt": "Mão / Mãos",
+   "neu": "a mão / as mãos",
+   "sicher": true,
+   "notiz": "Endet auf -o und ist trotzdem weiblich. Das rät man leicht falsch."
+  },
+  {
+   "alt": "Massa",
+   "neu": "a massa",
+   "sicher": true
+  },
+  {
+   "alt": "Massaroca",
+   "neu": "a maçaroca",
+   "de_neu": "der Maiskolben (gegrillter Mais)",
+   "sicher": true,
+   "notiz": "In der Datei war das Wort falsch geschrieben. Richtig ist maçaroca mit ç."
+  },
+  {
+   "alt": "Materiais para cozinha",
+   "neu": "os materiais para cozinha",
+   "sicher": true,
+   "notiz": "Einzahl: o material. Natürlicher klingt os materiais de cozinha."
+  },
+  {
+   "alt": "Matraquilhos",
+   "neu": "os matraquilhos",
+   "sicher": true,
+   "notiz": "Steht immer im Plural. Typisches Wort aus Portugal, Brasilien sagt pebolim."
+  },
+  {
+   "alt": "Médico / Médica",
+   "neu": "o médico / a médica",
+   "sicher": true,
+   "notiz": "Beim Beruf nennen lässt man den Artikel weg: Sou médico."
+  },
+  {
+   "alt": "Meio-dia / Meia-noite",
+   "neu": "o meio-dia / a meia-noite",
+   "sicher": true
+  },
+  {
+   "alt": "Mensagem / Mensagens",
+   "neu": "a mensagem / as mensagens",
+   "sicher": true,
+   "notiz": "Alle Wörter auf -agem sind weiblich, genauso a viagem und a imagem."
+  },
+  {
+   "alt": "Mesa",
+   "neu": "a mesa",
+   "sicher": true,
+   "notiz": "Auch im Coworking gebräuchlich."
+  },
+  {
+   "alt": "Mesa fixa",
+   "neu": "a mesa fixa",
+   "sicher": true,
+   "notiz": "Im Coworking der feste Arbeitsplatz."
+  },
+  {
+   "alt": "Metade",
+   "neu": "a metade",
+   "sicher": true
+  },
+  {
+   "alt": "Mistura",
+   "neu": "a mistura",
+   "sicher": true,
+   "notiz": "Diese Karte gibt es in der Datei schon einmal als a mistura. Eine der beiden kann weg."
+  },
+  {
+   "alt": "Molho",
+   "neu": "o molho",
+   "sicher": true,
+   "notiz": "Es gibt ein zweites molho mit der Bedeutung Bund oder Bündel. Man unterscheidet sie an der Aussprache des o."
+  },
+  {
+   "alt": "Molho de alho",
+   "neu": "o molho de alho",
+   "sicher": true
+  },
+  {
+   "alt": "Morango",
+   "neu": "o morango",
+   "sicher": true,
+   "notiz": "Beispiel: Época de morango heißt Erdbeerzeit."
+  },
+  {
+   "alt": "Motorista",
+   "neu": "o motorista / a motorista",
+   "de_neu": "der Fahrer / die Fahrerin",
+   "sicher": true,
+   "notiz": "Endet auf -a und ist trotzdem für beide Geschlechter gleich. Nur der Artikel wechselt."
+  },
+  {
+   "alt": "Mundo real",
+   "neu": "o mundo real",
+   "sicher": true
+  },
+  {
+   "alt": "Namorado / Namorada",
+   "neu": "o namorado / a namorada",
+   "sicher": true
+  },
+  {
+   "alt": "Namoro",
+   "neu": "o namoro",
+   "sicher": true
+  },
+  {
+   "alt": "Natureza",
+   "neu": "a natureza",
+   "sicher": true
+  },
+  {
+   "alt": "Negócio",
+   "neu": "o negócio",
+   "sicher": true
+  },
+  {
+   "alt": "No restaurante",
+   "neu": "o restaurante",
+   "loeschen": true,
+   "sicher": true,
+   "notiz": "Das ist kein Substantiv, sondern eine Ortsangabe aus \"em\" und \"o\". Wenn überhaupt, gehört \"o restaurante\" als Karte hinein."
+  },
+  {
+   "alt": "Nuvens / Céu",
+   "neu": "as nuvens / o céu",
+   "sicher": true,
+   "notiz": "Einzahl: a nuvem. Wörter auf -m bilden den Plural auf -ns."
+  },
+  {
+   "alt": "o atum",
+   "neu": "o atum",
+   "sicher": true
+  },
+  {
+   "alt": "o comissionista",
+   "neu": "o comissionista",
+   "sicher": true,
+   "notiz": "Die Endung -a bleibt bei beiden Geschlechtern gleich. Für eine Frau sagt man a comissionista."
+  },
+  {
+   "alt": "o congelador",
+   "neu": "o congelador",
+   "sicher": true
+  },
+  {
+   "alt": "o frigorífico",
+   "neu": "o frigorífico",
+   "sicher": true
+  },
+  {
+   "alt": "o nível",
+   "neu": "o nível",
+   "sicher": true
+  },
+  {
+   "alt": "o problema",
+   "neu": "o problema",
+   "sicher": true
+  },
+  {
+   "alt": "o rastreador",
+   "neu": "o rastreador",
+   "sicher": true
+  },
+  {
+   "alt": "o relógio inteligente",
+   "neu": "o relógio inteligente",
+   "sicher": true
+  },
+  {
+   "alt": "o sono",
+   "neu": "o sono",
+   "sicher": true
+  },
+  {
+   "alt": "o stress",
+   "neu": "o stress",
+   "sicher": true
+  },
+  {
+   "alt": "o talho",
+   "neu": "o talho",
+   "sicher": true
+  },
+  {
+   "alt": "o treino de força",
+   "neu": "o treino de força",
+   "sicher": true
+  },
+  {
+   "alt": "o vencedor / a vencedora",
+   "neu": "o vencedor / a vencedora",
+   "sicher": true
+  },
+  {
+   "alt": "Olhos",
+   "neu": "os olhos",
+   "sicher": true,
+   "notiz": "Einzahl: o olho."
+  },
+  {
+   "alt": "os batimentos cardíacos",
+   "neu": "os batimentos cardíacos",
+   "sicher": true
+  },
+  {
+   "alt": "Ovos",
+   "neu": "os ovos",
+   "sicher": true,
+   "notiz": "Einzahl: o ovo."
+  },
+  {
+   "alt": "Pai",
+   "neu": "o pai",
+   "sicher": true,
+   "notiz": "Im Plural heißt os pais nicht nur die Väter, sondern normalerweise die Eltern."
+  },
+  {
+   "alt": "País",
+   "neu": "o país",
+   "sicher": true,
+   "notiz": "Plural: os países. Nicht verwechseln mit os pais, das die Eltern sind."
+  },
+  {
+   "alt": "Palavrão / Palavrões",
+   "neu": "o palavrão / os palavrões",
+   "sicher": true,
+   "notiz": "Wörter auf -ão bilden den Plural hier auf -ões."
+  },
+  {
+   "alt": "Pão",
+   "neu": "o pão",
+   "sicher": true,
+   "notiz": "Unregelmäßiger Plural: os pães."
+  },
+  {
+   "alt": "Papaia",
+   "neu": "a papaia",
+   "sicher": true
+  },
+  {
+   "alt": "Parceiro / Parceira de negócios",
+   "neu": "o parceiro / a parceira de negócios",
+   "sicher": true
+  },
+  {
+   "alt": "Parque",
+   "neu": "o parque",
+   "sicher": true
+  },
+  {
+   "alt": "Parte do corpo",
+   "neu": "a parte do corpo",
+   "sicher": true
+  },
+  {
+   "alt": "Pedaço / Pedaços",
+   "neu": "o pedaço / os pedaços",
+   "sicher": true
+  },
+  {
+   "alt": "Peixe",
+   "neu": "o peixe",
+   "sicher": true
+  },
+  {
+   "alt": "Pele",
+   "neu": "a pele",
+   "sicher": true,
+   "notiz": "Wörter auf -e sind oft männlich, a pele ist aber weiblich."
+  },
+  {
+   "alt": "Pepino",
+   "neu": "o pepino",
+   "sicher": true
+  },
+  {
+   "alt": "Pequeno-almoço",
+   "neu": "o pequeno-almoço",
+   "sicher": true,
+   "notiz": "Das ist die portugiesische Form. In Brasilien sagt man café da manhã."
+  },
+  {
+   "alt": "Pergunta / Perguntas",
+   "neu": "a pergunta / as perguntas",
+   "sicher": true
+  },
+  {
+   "alt": "Pesquisa",
+   "neu": "a pesquisa",
+   "sicher": true
+  },
+  {
+   "alt": "Pintor / Pintora",
+   "neu": "o pintor / a pintora",
+   "sicher": true
+  },
+  {
+   "alt": "Plano",
+   "neu": "o plano",
+   "sicher": true
+  },
+  {
+   "alt": "Pontapé / Pontapés",
+   "neu": "o pontapé / os pontapés",
+   "sicher": true
+  },
+  {
+   "alt": "Professor / Professora",
+   "neu": "o professor / a professora",
+   "sicher": true
+  },
+  {
+   "alt": "Progresso",
+   "neu": "o progresso",
+   "sicher": true
+  },
+  {
+   "alt": "Projecto",
+   "neu": "o projeto",
+   "sicher": true,
+   "notiz": "Seit der Rechtschreibreform schreibt man auch in Portugal projeto ohne c. Die Notiz auf der Karte ist überholt."
+  },
+  {
+   "alt": "Punho / Punhos",
+   "neu": "o punho / os punhos",
+   "sicher": true
+  },
+  {
+   "alt": "Qualidade",
+   "neu": "a qualidade",
+   "sicher": true,
+   "notiz": "Alle Wörter auf -dade sind weiblich."
+  },
+  {
+   "alt": "Quantidade",
+   "neu": "a quantidade",
+   "sicher": true
+  },
+  {
+   "alt": "Quarta-feira",
+   "neu": "a quarta-feira",
+   "sicher": true
+  },
+  {
+   "alt": "Quarto",
+   "neu": "o quarto",
+   "sicher": true,
+   "notiz": "Meint nur das Schlafzimmer. Das Wohnzimmer ist a sala."
+  },
+  {
+   "alt": "Quarto vs. Sala",
+   "neu": "o quarto",
+   "loeschen": true,
+   "sicher": true,
+   "notiz": "Das ist ein Vergleich zweier Wörter, keine Vokabelkarte. Der Hinweis steht jetzt in der Notiz von o quarto."
+  },
+  {
+   "alt": "Queijo / Queijos",
+   "neu": "o queijo / os queijos",
+   "sicher": true
+  },
+  {
+   "alt": "Quilómetros",
+   "neu": "os quilómetros",
+   "sicher": true,
+   "notiz": "Einzahl: o quilómetro."
+  },
+  {
+   "alt": "Quinta-feira",
+   "neu": "a quinta-feira",
+   "sicher": true
+  },
+  {
+   "alt": "Regulamentos",
+   "neu": "os regulamentos",
+   "sicher": true,
+   "notiz": "Einzahl: o regulamento."
+  },
+  {
+   "alt": "Relatório",
+   "neu": "o relatório",
+   "sicher": true
+  },
+  {
+   "alt": "Restaurante de fast food",
+   "neu": "o restaurante de fast food",
+   "sicher": true
+  },
+  {
+   "alt": "Restaurante tradicional",
+   "neu": "o restaurante tradicional",
+   "sicher": true
+  },
+  {
+   "alt": "Restaurantes Árabes",
+   "neu": "os restaurantes árabes",
+   "sicher": true,
+   "notiz": "Adjektive schreibt man im Portugiesischen klein, deshalb árabes."
+  },
+  {
+   "alt": "Riscos",
+   "neu": "os riscos",
+   "sicher": true,
+   "notiz": "Einzahl: o risco."
+  },
+  {
+   "alt": "Rotina semanal",
+   "neu": "a rotina semanal",
+   "sicher": true
+  },
+  {
+   "alt": "Sábado / Domingo",
+   "neu": "o sábado / o domingo",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Wochentage und Wochenendtage schreibt man im Portugiesischen klein."
+  },
+  {
+   "alt": "Sabor",
+   "neu": "o sabor",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Sabor forte",
+   "neu": "o sabor forte",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Saia",
+   "neu": "a saia",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Achtung, saia ist auch eine Form des Verbs sair. Als Substantiv heisst es immer der Rock."
+  },
+  {
+   "alt": "Saída",
+   "neu": "a saída",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Sala",
+   "neu": "a sala",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "A sala ist der Wohnraum, o quarto dagegen das Schlafzimmer."
+  },
+  {
+   "alt": "Sala de conferências",
+   "neu": "a sala de conferências",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Sapatos",
+   "neu": "os sapatos",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Einzahl: o sapato."
+  },
+  {
+   "alt": "Sauna",
+   "neu": "a sauna",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Segunda-feira",
+   "neu": "a segunda-feira",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Wochentage schreibt man klein. Mehrzahl: as segundas-feiras."
+  },
+  {
+   "alt": "Série / Séries",
+   "neu": "a série / as séries",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Serralheiro",
+   "neu": "o serralheiro / a serralheira",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Serviço",
+   "neu": "o serviço",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Sessão de fotos",
+   "neu": "a sessão de fotos",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "In Portugal sagt man meistens a sessão fotográfica. Alle Woerter auf -ão aus -ssão sind weiblich."
+  },
+  {
+   "alt": "Sexta-feira",
+   "neu": "a sexta-feira",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Wochentage schreibt man klein."
+  },
+  {
+   "alt": "Shawarma",
+   "neu": "o shawarma",
+   "sicher": false,
+   "loeschen": false,
+   "notiz": "Fremdwort ohne feste Regel. Im Alltag hoert man in Portugal haeufiger o kebab."
+  },
+  {
+   "alt": "Sopa",
+   "neu": "a sopa",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Subscrição",
+   "neu": "a subscrição",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Alle Woerter auf -ção sind weiblich. In Brasilien sagt man dafuer a assinatura."
+  },
+  {
+   "alt": "Sucesso",
+   "neu": "o sucesso",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Sushi",
+   "neu": "o sushi",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Tarefa",
+   "neu": "a tarefa",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Der Beispielsatz ist brasilianisch. In Portugal heisst es: não tive tempo para fazer a minha tarefa."
+  },
+  {
+   "alt": "Telefone",
+   "neu": "o telefone",
+   "de_neu": "Telefon",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "O telefone ist das feste Telefon. Fuer das Handy sagt man in Portugal o telemóvel, in Brasilien o celular."
+  },
+  {
+   "alt": "Temperatura",
+   "neu": "a temperatura",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Temperos",
+   "neu": "os temperos",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Einzahl: o tempero."
+  },
+  {
+   "alt": "Tempo / Clima",
+   "neu": "o tempo / o clima",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "O clima endet auf -a und ist trotzdem maennlich."
+  },
+  {
+   "alt": "Terça-feira",
+   "neu": "a terça-feira",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Wochentage schreibt man klein."
+  },
+  {
+   "alt": "Terraço",
+   "neu": "o terraço",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Tradutor / Tradutora",
+   "neu": "o tradutor / a tradutora",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Treino",
+   "neu": "o treino",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "In Portugal steht vor dem Possessivpronomen der Artikel: o teu treino."
+  },
+  {
+   "alt": "Velocidade",
+   "neu": "a velocidade",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Alle Woerter auf -dade sind weiblich."
+  },
+  {
+   "alt": "Vídeos",
+   "neu": "os vídeos",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "Einzahl: o vídeo."
+  },
+  {
+   "alt": "Vila",
+   "neu": "a vila",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Vila sede",
+   "neu": "a vila-sede",
+   "sicher": false,
+   "loeschen": false,
+   "notiz": "Verwaltungsbegriff fuer den Hauptort einer Gemeinde. Im Alltag selten, die Schreibweise schwankt zwischen vila sede und vila-sede."
+  },
+  {
+   "alt": "Vocabulário",
+   "neu": "o vocabulário",
+   "sicher": true,
+   "loeschen": false
+  },
+  {
+   "alt": "Website",
+   "neu": "o website",
+   "sicher": true,
+   "loeschen": false,
+   "notiz": "In Portugal sagt man im Alltag eher o site oder a página web."
+  },
+  {
+   "alt": "Zona",
+   "neu": "a zona",
+   "sicher": true,
+   "loeschen": false
+  }
+ ],
+ "geklaert": [
+  {
+   "alt": "Apa",
+   "neu": "a apa",
+   "artikel": "a"
+  },
+  {
+   "alt": "Coworking",
+   "neu": "o coworking",
+   "artikel": "o"
+  },
+  {
+   "alt": "Fisio",
+   "neu": "a fisio",
+   "artikel": "a"
+  },
+  {
+   "alt": "Shawarma",
+   "neu": "o shawarma",
+   "artikel": "o"
+  },
+  {
+   "alt": "Vila sede",
+   "neu": "a vila sede",
+   "artikel": "a"
+  }
+ ],
+ "offen": [],
+ "fazit": "252 Substantive bearbeitet, 5 unsichere geklärt, 0 bleiben offen."
+}

@@ -1,97 +1,147 @@
 ﻿Portugiesisch;Deutsch;Notiz
-Eu;ich;
-Tu;du (informell);in Brasilien selten, in Portugal Standard
-Você;Sie / du (BR);formell PT, informell BR
-Ele / Ela;er / sie;
-Nós;wir;
-Vocês;ihr / Sie (Plural);
-Eles / Elas;sie (m+gemischt / nur w);
-Meu / Minha;mein/e;passt zum BESITZ, nicht Besitzer
-Teu / Tua;dein/e;informell
-Seu / Sua;sein / ihr / Ihr (formell);ggf. mit dele/dela präzisieren
-Nosso / Nossa;unser/e;
-Vosso / Vossa;euer/e;selten in PT-PT
-Dele / Dela;von ihm / von ihr;de + ele/ela
-no / na / nos / nas;in/im (em + Artikel);em+o=no, em+a=na
-do / da / dos / das;vom/von (de + Artikel);de+o=do
-ao / à / aos / às;zum/zur (a + Artikel);a+o=ao
-num / numa;in einem/einer;em+um, em+uma
-Sempre;immer;
-Nunca;nie;
-Às vezes;manchmal;
-Com frequência;oft;
-Quase;fast / beinahe;
-Poucas vezes;selten;
-Uma vez por semana;einmal pro Woche;
-Duas a três vezes por semana;zwei bis drei Mal pro Woche;
-Todos os dias;jeden Tag;
-Hoje / Ontem / Amanhã;heute / gestern / morgen;
-De manhã / De tarde / De noite;morgens / nachmittags / abends;
-Cedo / Tarde;früh / spät;
-Depois;danach / später / dann;
-Depois de;nach (zeitlich);+ Substantiv/Infinitiv
-Antes / Antes de;vorher / vor;
-Agora;jetzt;
-Até agora;bis jetzt;
-De novo / Novamente;wieder / nochmal;
-Logo / Mais tarde;gleich / später;
-Última / Último;letzte/r;No último fim de semana
-Direito / À direita;geradeaus / rechts;
 À esquerda;links;
-Diretamente;direkt;
-Longe;weit (weg);
-Perto;nah / in der Nähe;
-Aqui / Lá;hier / dort;
-Fora;draußen;
-Dentro;drinnen;
-Estou a + Inf;Ich bin gerade dabei zu...;PT-PT (BR: -ndo Form)
-Estou a trabalhar;Ich arbeite gerade;
-Está a funcionar;Es funktioniert (gerade);
-Está a chover;Es regnet (gerade);
-O que estás a fazer agora?;Was machst du gerade?;
-Vou cozinhar;Ich werde kochen;ir + Inf
-Vou viajar amanhã;Ich werde morgen reisen;
-O que vais fazer?;Was wirst du machen?;
-Fazer a mala;den Koffer packen;
-Eu sei + Inf;Ich kann + Inf (gelernt);Sei nadar = Ich kann schwimmen
-Posso + Inf;Ich darf / kann + Inf;Erlaubnis/Möglichkeit
-Eu tento + Inf;Ich versuche + Inf;
-Tenho que + Inf;Ich muss + Inf;
-Comecei a + Inf;Ich habe angefangen zu...;começar a
-Continuar a + Inf;weiter machen;
-Mas;aber;
-Também;auch;
-Então;also / dann;Füllwort
-Por exemplo;zum Beispiel;
-Principalmente;vor allem;
-Infelizmente;leider;
-Felizmente;zum Glück;
-Assim;so / auf diese Weise;
-Quase;fast;
-Só / Apenas;nur;
-Já;schon;
-Ainda;noch;
-Para / Por;für / durch;Faustregel: para=Ziel, por=Grund
-Comigo;mit mir;
-Contigo;mit dir;
-Connosco / Conosco;mit uns;PT-PT: connosco
-Convosco;mit euch;
-Para ti / Para si;für dich / für Sie;
-Levantar-se;aufstehen;reflexiv
-Levanto-me cedo;Ich stehe früh auf;nach Verb
-Sentar-se;sich (hin)setzen;reflexiv
-Sentamo-nos à mesa;Wir setzen uns an den Tisch;Achtung: s entfällt vor -nos!
-Deitar-se;sich hinlegen / schlafen gehen;reflexiv
-Deito-me tarde;Ich gehe spät schlafen;
-Lavar-se;sich waschen;reflexiv
-Nunca me deito cedo;Ich gehe nie früh schlafen;Pronomen vor Verb wegen 'nunca'
-Também nos levantamos cedo;Wir stehen auch früh auf;Pronomen vor Verb wegen 'também'
-Enquanto;während;enquanto corres
-É permitido + Inf;es ist erlaubt zu ...;é permitido usar punhos
-Do que;als (Vergleich);mais X do que Y
-Já + Perfeito;schon einmal;eu já tentei
-Nunca + Perfeito;nie;eu nunca estive
 Abaixo de;unterhalb von;
-Em menos de;in weniger als;
+Agora;jetzt;
+Ainda;noch / immer noch;Ainda não fiz isso
+ainda / ainda não;noch / noch nicht;"""Ainda não comecei."" Gegenstück: já = schon, ""já comecei""."
+ainda não + Perfeito;noch nicht;O negócio ainda não começou = Das Geschäft hat noch nicht angefangen.
+Ajuda a aprender;hilft beim Lernen;ouvir espanhol ajuda a aprender português
+Alguém / Uma pessoa;jemand / eine Person;
+alguma coisa;etwas, irgendetwas;Se alguma coisa acontecer = Wenn irgendetwas passiert. Verneint mit não ... nada.
+Algumas / Alguns;einige;Algumas pessoas
+Ambos / Ambas;beide;
+Antes / Antes de;vorher / vor;
+Antes de + Inf;vor (zeitlich) + Verb;z.B. antes de comer
+Antes de me mudar;bevor ich umzog;antes de + Inf
+Antes de vir;bevor (ich) kam;antes de + Inf
+ao / à / aos / às;zum/zur (a + Artikel);a+o=ao
+Ao invés de;anstatt / anstelle von;
+Aqui / Lá;hier / dort;
+Às vezes;manchmal;
+Assim;so / auf diese Weise;
+até à praia;bis zum Strand;Präposition a plus Artikel a wird à, a plus o wird ao: até à praia, até ao ginásio. Moritz sagte até a praia.
+Até agora;bis jetzt;
+através de;über, mittels, durch;Verschmilzt mit dem Artikel: através do Airbnb, através da internet.
+bom → melhor, mau → pior;gut → besser, schlecht → schlechter;Diese beiden werden nie mit mais gesteigert. Falsch wäre mais bom oder mais mau.
+Cedo / Tarde;früh / spät;
+Chove / Está a chover;Es regnet;
+Com frequência;oft;
+com mais frequência;häufiger, öfter;Gleichbedeutend: mais vezes. Klasse: Os problemas vão acontecer com mais frequência.
+Comecei a + Inf;Ich habe angefangen zu...;começar a
+Comigo;mit mir;
+Comparado com;verglichen mit;
+Connosco / Conosco;mit uns;PT-PT: connosco
+Contigo;mit dir;
+Continuar a + Inf;weiter machen;
+Convosco;mit euch;
+De manhã / De tarde / De noite;morgens / nachmittags / abends;
+De novo / Novamente;wieder / nochmal;
+Deito-me tarde;Ich gehe spät schlafen;
+Dele / Dela;von ihm / von ihr;de + ele/ela
+Dentro;drinnen;
+Depois;danach / später / dann;
+Depois da nossa aula;nach unserer Stunde;
+Depois de;nach (zeitlich);+ Substantiv/Infinitiv
+depois de + Infinitiv;nach dem ...;Depois de trabalhar, vou cozinhar = Nach der Arbeit koche ich.
 Devias + Inf;du solltest ...;Konditional, sehr häufig!
+Direito / À direita;geradeaus / rechts;
+Diretamente;direkt;
+do / da / dos / das;vom/von (de + Artikel);de+o=do
+Do que;als (Vergleich);mais X do que Y
+Durante o dia / a semana;während des Tages / der Woche;
+É permitido + Inf;es ist erlaubt zu ...;é permitido usar punhos
+Em casa;zu Hause;
+Em menos de;in weniger als;
+Enquanto;während;enquanto corres
+Então;also / dann;Füllwort
+estar a ser + Partizip;gerade getan werden (Passiv im Verlauf);"""Os meus produtos estão a ser produzidos."" In Brasilien: estão sendo produzidos."
+Estou a + Inf;Ich bin gerade dabei zu...;PT-PT (BR: -ndo Form)
+Eu;ich;
+Eu sei + Inf;Ich kann + Inf (gelernt);Sei nadar = Ich kann schwimmen
+Eu tento + Inf;Ich versuche + Inf;
+Felizmente;zum Glück;
+Ficar surpreso;überrascht sein/werden;ficar + Adj
+Fora;draußen;
+Fora + Nomen;außer / außerhalb;fora os negócios (außer dem Geschäft)
+Gostaria de...;Ich würde gerne...;Konditional - höflich
+há + Zeitangabe;vor ... (Zeit);"""Ela saiu há dois meses."" Entweder ""há dois meses"" oder ""dois meses atrás"", nie beides zusammen."
+Há muito tempo;schon lange;
+Há uma semana;vor einer Woche / seit einer Woche;PT-PT-Standard
+Hoje / Ontem / Amanhã;heute / gestern / morgen;
+Infelizmente;leider;
+ir a / ir para;kurz hinfahren / hingehen und bleiben;Kurzer Ausflug: vamos a uma cidade. Längerer Aufenthalt oder Umzug: vou para o Brasil.
+Já;schon;
+Já + Perfeito;schon einmal;eu já tentei
+Levanto-me cedo;Ich stehe früh auf;nach Verb
+levar tempo para + Infinitiv;Zeit brauchen, um zu ...;"""Leva muito tempo para o corpo relaxar."" Sehr brauchbares Satzmuster."
+Logo / Mais tarde;gleich / später;
+Longe;weit (weg);
+Mais caro do que Lisboa;teurer als Lissabon;
+Mais X do que Y;mehr X als Y;Komparativ-Standard
+Mas;aber;
+Mesma língua;gleiche Sprache;mesmo/mesma
+Meu / Minha;mein/e;passt zum BESITZ, nicht Besitzer
+Muitas vezes;oft (viele Male);
+Na praia;am Strand;
+Na próxima semana;nächste Woche;
+na quarta-feira / à quarta-feira;am Mittwoch / mittwochs;na plus Wochentag meint diesen einen Tag, à plus Wochentag meint jede Woche.
+Na rua;auf der Straße;
+Na semana passada;letzte Woche;
+Ninguém;niemand;Não conheço ninguém
+No escritório;im Büro;
+No início / No começo;am Anfang;
+no / na / nos / nas;in/im (em + Artikel);em+o=no, em+a=na
+Nós;wir;
+Nosso / Nossa;unser/e;
+noutras empresas;in anderen Firmen;em plus outras wird noutras, em plus outro wird noutro. Portugal zieht zusammen, Brasilien schreibt em outras.
+num / numa;in einem/einer;em+um, em+uma
+Nunca + Perfeito;nie;eu nunca estive
+Nunca me deito cedo;Ich gehe nie früh schlafen;Pronomen vor Verb wegen 'nunca'
+o meu / a minha + Nomen;mein / meine;"Portugal setzt den Artikel vor das Possessiv: ""o meu rastreador"". Brasilien lässt ihn weg. Er lässt ihn oft weg."
+os meus produtos / os meus amigos;meine Produkte / meine Freunde;Portugal setzt den Artikel vor das Possessivpronomen: o meu carro, a minha casa. Ohne Artikel (meus produtos) klingt es brasilianisch.
+Para ambos;für beide;
+Para / Por;für / durch;Faustregel: para=Ziel, por=Grund
+Para ti / Para si;für dich / für Sie;
+Parecido com;ähnlich wie;Komparativ-Konstruktion
+Pelo menos;wenigstens / mindestens;
+Perto;nah / in der Nähe;
+por cento;Prozent;"Zwei Wörter: ""90 por cento"". ""porcento"" gibt es nicht."
+Por enquanto;vorerst / im Moment;
+Por exemplo;zum Beispiel;
+Por isso;deshalb;
+Por mês / Por semana / Por ano;pro Monat / Woche / Jahr;Zeit-Distribution
+Porque;weil;Antwort
+Posso + Inf;Ich darf / kann + Inf;Erlaubnis/Möglichkeit
+Poucas vezes;selten;
+precisar de + Infinitiv;etwas tun müssen;"In Portugal gehört das de dazu: ""Precisas de comprar carne."" Ohne de klingt es brasilianisch."
+Primeiro... depois...;zuerst... dann...;Sequenz
+Principalmente;vor allem;
+Quase;fast / beinahe;
+Quase todo o dia;fast den ganzen Tag;
+quis / queria;ich wollte (und tat es) / ich hätte gern;"""Eu quis reservar"" = ich wollte und habe reserviert. ""Eu queria ter uma casa"" = ich hätte gern ein Haus gehabt."
+Se;wenn / falls;Konjunktion
+se + Futuro do Conjuntivo;wenn (in der Zukunft) ...;Se alguma coisa acontecer, estás fudido. Nach se steht nie Präsens. Bei regelmäßigen Verben sieht die Form aus wie der Infinitiv, unregelmäßig: for (ser/ir), tiver (ter), fizer (fazer), puder (poder).
+Se eu comprar...;Wenn ich kaufe...;Konjunktiv Futur
+Sempre;immer;
+Sentamo-nos à mesa;Wir setzen uns an den Tisch;Achtung: s entfällt vor -nos!
+será;es wird sein;Futuro Simples von ser. Im Alltag sagt man meistens vai ser.
+Seu / Sua;sein / ihr / Ihr (formell);ggf. mit dele/dela präzisieren
+Só / Apenas;nur;
+sobre isso;darüber, dazu;Não sei nada sobre isso = Darüber weiß ich nichts.
+Também;auch;
+Também nos levantamos cedo;Wir stehen auch früh auf;Pronomen vor Verb wegen 'também'
+Tenho que + Inf;Ich muss + Inf;
 Tenho trabalhado muito;ich habe viel gearbeitet;Pretérito Perfeito Composto
+Teu / Tua;dein/e;informell
+todas as lojas;alle Läden;Nach todo, toda, todos, todas kommt der Artikel: todo o dia, todas as lojas. In der Klasse fiel todas lojas, da fehlt das as.
+Todos eles / Todas elas;alle (von ihnen);
+Todos os dias;jeden Tag;
+Trabalho com / como;Ich arbeite mit / als;com=Bereich, como=Rolle
+tudo o que;alles, was;"pt-PT: ""tudo o que é necessário"". Brasilien lässt das o weg."
+Ultimamente;kürzlich / in letzter Zeit;eu treino muito ultimamente
+um pouco mais caro;ein bisschen teurer;Muster: um pouco mais plus Adjektiv. Gegenteil: um pouco menos caro.
+Uma semana atrás;vor einer Woche;Vergangenheit
+Uma vez por semana;einmal pro Woche;
+Você;Sie / du (BR);formell PT, informell BR
+Vocês;ihr / Sie (Plural);
+Vosso / Vossa;euer/e;selten in PT-PT

@@ -1,0 +1,1444 @@
+[
+ {
+  "pt": "Sabor",
+  "de": "Geschmack",
+  "ist": "verben",
+  "soll": "nomen",
+  "grund": "Das ist ein reines Substantiv, die eigene Notiz schreibt sogar den Artikel dazu (o sabor), ein Verb steht auf der Karte nicht."
+ },
+ {
+  "pt": "Hamburguer",
+  "de": "Burger",
+  "ist": "verben",
+  "soll": "nomen",
+  "grund": "Ein Substantiv im Verben-Pack, zusaetzlich falsch geschrieben (richtig: hambúrguer), die Notiz gibt die korrekte Schreibung an, gelernt wird trotzdem die falsche."
+ },
+ {
+  "pt": "Como foi o teu fim de semana?",
+  "de": "Wie war dein Wochenende?",
+  "ist": "verben",
+  "soll": "fragen",
+  "grund": "Eine vollstaendige Frage und typischer Gespraechsoeffner, kein Verb, das man konjugieren lernt."
+ },
+ {
+  "pt": "O que fizeste?",
+  "de": "Was hast du gemacht?",
+  "ist": "verben",
+  "soll": "fragen",
+  "grund": "Fertige Fragekonstruktion mit Fragewort, gehoert zu den Fragen und nicht zum Verben-Wortschatz."
+ },
+ {
+  "pt": "O que tens feito?",
+  "de": "Was hast du so gemacht?",
+  "ist": "verben",
+  "soll": "fragen",
+  "grund": "Ebenfalls eine komplette Frage, sie zeigt zwar das Pretérito Perfeito Composto, ist als Karte aber ein Fragebaustein."
+ },
+ {
+  "pt": "Quando era criança",
+  "de": "als ich Kind war",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Feste Wendung als Erzaehl-Einstieg, kein Verb und auch keine Verbform, die fuer sich steht."
+ },
+ {
+  "pt": "Tinha sol",
+  "de": "Es war sonnig",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz statt Verb, zusaetzlich in pt-PT unueblich formuliert (natuerlich waere Estava sol oder Fazia sol)."
+ },
+ {
+  "pt": "Estava ensolarado",
+  "de": "Es war sonnig",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz statt Verb, und ensolarado klingt brasilianisch, in Portugal sagt man Estava sol oder Estava um dia soalheiro."
+ },
+ {
+  "pt": "Vivia em Portugal",
+  "de": "Ich lebte in Portugal",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Das ist ein Beispielsatz zum Imperfeito, das Verb viver steht schon auf einer eigenen Karte."
+ },
+ {
+  "pt": "Eu gostaria",
+  "de": "Ich würde gerne",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Hoeflichkeitsformel, die nur mit Fortsetzung funktioniert (Eu gostaria de...), als nackte Verbform ist sie kein Vokabeleintrag."
+ },
+ {
+  "pt": "Queria",
+  "de": "Ich hätte gerne",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Feste Bestellformel im Restaurant, die eigene Notiz sagt das auch so, mit dem Verb querer als Vokabel hat die Karte nichts zu tun."
+ },
+ {
+  "pt": "Ficar em forma",
+  "de": "in Form bleiben",
+  "ist": "verben",
+  "soll": "redewendungen",
+  "grund": "Feste Wendung aus Verb plus Ergaenzung, ausserdem falsch uebersetzt: ficar em forma heisst in Form kommen, in Form bleiben waere manter-se em forma."
+ },
+ {
+  "pt": "Casado / Casada",
+  "de": "verheiratet",
+  "ist": "nomen",
+  "soll": "adjektive",
+  "grund": "Das ist kein Substantiv, sondern ein Eigenschaftswort, das den Familienstand beschreibt (sou casado)."
+ },
+ {
+  "pt": "Solteiro / Solteira",
+  "de": "ledig / single",
+  "ist": "nomen",
+  "soll": "adjektive",
+  "grund": "Eigenschaftswort für einen Zustand, kein Substantiv."
+ },
+ {
+  "pt": "Divorciado / Divorciada",
+  "de": "geschieden",
+  "ist": "nomen",
+  "soll": "adjektive",
+  "grund": "Partizip, das als Eigenschaftswort benutzt wird, genau wie casado und solteiro."
+ },
+ {
+  "pt": "Viúvo / Viúva",
+  "de": "verwitwet",
+  "ist": "nomen",
+  "soll": "adjektive",
+  "grund": "Die deutsche Seite gibt ein Adjektiv an (verwitwet), damit gehört die Karte zu den Eigenschaftswörtern."
+ },
+ {
+  "pt": "Em casa",
+  "de": "zu Hause",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Das gelernte Element ist die Präposition em vor casa, nicht das Substantiv. Das Substantiv casa steht ohnehin schon als eigene Karte in der Datei."
+ },
+ {
+  "pt": "No escritório",
+  "de": "im Büro",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Die Karte übt die Kontraktion em + o = no. Als Nomen-Karte müsste sie schlicht escritório heißen."
+ },
+ {
+  "pt": "Na rua",
+  "de": "auf der Straße",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Übt die Kontraktion em + a = na. Das Nomen selbst wäre rua."
+ },
+ {
+  "pt": "Na praia",
+  "de": "am Strand",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Wieder die Kontraktion na, nicht das Substantiv praia."
+ },
+ {
+  "pt": "No restaurante",
+  "de": "im Restaurante",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Wieder die Kontraktion no. Als Vokabel fehlt das nackte Substantiv restaurante."
+ },
+ {
+  "pt": "Trabalho com / como",
+  "de": "Ich arbeite mit / als",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Das ist eine konjugierte Verbform plus der Unterschied zwischen zwei Präpositionen, also ein Baumuster und kein Substantiv."
+ },
+ {
+  "pt": "Resolver",
+  "de": "lösen",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Reiner Infinitiv, gehört unverändert ins Verben-Pack."
+ },
+ {
+  "pt": "Fazer desporto",
+  "de": "Sport machen",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Feste Verbindung aus Verb und Objekt, das gelernte Element ist fazer. Das Substantiv desporto fehlt dagegen als eigene Karte."
+ },
+ {
+  "pt": "Conversar por mensagem",
+  "de": "per Nachricht chatten",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Infinitiv mit Ergänzung, kein Substantiv. Das Nomen mensagem steht bereits als eigene Karte."
+ },
+ {
+  "pt": "Estou satisfeito",
+  "de": "Ich bin zufrieden",
+  "ist": "nomen",
+  "soll": "redewendungen",
+  "grund": "Ein vollständiger Satz mit konjugiertem estar und Adjektiv, also ein Konversationsbaustein."
+ },
+ {
+  "pt": "Construir uma casa",
+  "de": "ein Haus bauen",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Verbalphrase mit Infinitiv construir. Das Substantiv casa liegt schon als eigene Karte vor."
+ },
+ {
+  "pt": "Visitei",
+  "de": "ich besuchte",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von visitar im Pretérito Perfeito, die Notiz sagt es selbst."
+ },
+ {
+  "pt": "Parece",
+  "de": "es scheint / sieht aus",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Präsensform von parecer, kein Substantiv."
+ },
+ {
+  "pt": "Ninguém",
+  "de": "niemand",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Unbestimmtes Pronomen, das zusätzlich die doppelte Verneinung mit não verlangt. Das ist ein Funktionswort."
+ },
+ {
+  "pt": "Ainda",
+  "de": "noch / immer noch",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Adverb, kein Substantiv."
+ },
+ {
+  "pt": "Esperei",
+  "de": "ich wartete",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von esperar im Pretérito Perfeito."
+ },
+ {
+  "pt": "Estavas",
+  "de": "du warst",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von estar im Imperfeito."
+ },
+ {
+  "pt": "Preparei",
+  "de": "ich bereitete zu",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von preparar im Pretérito Perfeito."
+ },
+ {
+  "pt": "Se",
+  "de": "wenn / falls",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Konjunktion, die Notiz sagt es selbst. Funktionswörter gehören ins Grammatik-Pack."
+ },
+ {
+  "pt": "Doeu",
+  "de": "es tat weh",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von doer im Pretérito Perfeito."
+ },
+ {
+  "pt": "Paguei",
+  "de": "ich bezahlte",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von pagar im Pretérito Perfeito."
+ },
+ {
+  "pt": "Tentaste",
+  "de": "du hast versucht",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte tu-Form von tentar."
+ },
+ {
+  "pt": "Disse-me",
+  "de": "(er/sie) sagte mir",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von dizer mit angehängtem Pronomen. Alternativ passt sie ins Grammatik-Pack, weil sie die Pronomen-Anhängung übt, ins Nomen-Pack passt sie auf keinen Fall."
+ },
+ {
+  "pt": "Reservei",
+  "de": "ich habe reserviert",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Konjugierte Form von reservar im Pretérito Perfeito."
+ },
+ {
+  "pt": "Alguém / Uma pessoa",
+  "de": "jemand / eine Person",
+  "ist": "nomen",
+  "soll": "grammatik",
+  "grund": "Alguém ist ein unbestimmtes Pronomen und gehört zu den Funktionswörtern. Die Karte mischt es mit dem echten Substantiv uma pessoa und muss geteilt werden."
+ },
+ {
+  "pt": "Treino / Treinar",
+  "de": "Training / trainieren",
+  "ist": "nomen",
+  "soll": "verben",
+  "grund": "Die Karte mischt zwei Wortarten. Treinar gehört ins Verben-Pack, Treino bleibt im Nomen-Pack, steht dort aber ohnehin schon ein zweites Mal als eigene Karte."
+ },
+ {
+  "pt": "Quarto",
+  "de": "Zimmer",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Das ist ein reines Substantiv (o quarto) und kein Eigenschaftswort."
+ },
+ {
+  "pt": "Mesa",
+  "de": "Tisch",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (a mesa), gehört zu Einrichtung und Orten ins Nomen-Pack."
+ },
+ {
+  "pt": "Plano",
+  "de": "Plan",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Übersetzt wird hier das Substantiv \"der Plan\", nicht das gleichlautende Adjektiv \"flach\"."
+ },
+ {
+  "pt": "Projecto",
+  "de": "Projekt",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (o projeto), gehört ins Nomen-Pack und nicht zu den Eigenschaftswörtern."
+ },
+ {
+  "pt": "Atraso",
+  "de": "Verspätung",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Die Karte trägt in der Notiz selbst das Wort \"Substantiv\" und liegt trotzdem im Adjektiv-Pack."
+ },
+ {
+  "pt": "Subscrição",
+  "de": "Abonnement",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (a subscrição), typisches Business-Vokabular für das Nomen-Pack."
+ },
+ {
+  "pt": "Fritadeira",
+  "de": "Fritteuse",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (a fritadeira), gehört zum Bereich Küche und Essen im Nomen-Pack."
+ },
+ {
+  "pt": "Shawarma",
+  "de": "Shawarma",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv aus dem Essensbereich, steht außerdem bereits wortgleich in vokabeln-nomen.csv."
+ },
+ {
+  "pt": "Cachoeira",
+  "de": "Wasserfall",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv aus dem Bereich Natur, gehört ins Nomen-Pack (und ist zusätzlich brasilianisch, siehe Strukturprobleme)."
+ },
+ {
+  "pt": "Molho",
+  "de": "Sauce",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (o molho), Essensvokabel für das Nomen-Pack."
+ },
+ {
+  "pt": "Sala",
+  "de": "Raum / Saal",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (a sala), gehört zu den Orten ins Nomen-Pack."
+ },
+ {
+  "pt": "Lista",
+  "de": "Liste",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (a lista), kein Eigenschaftswort."
+ },
+ {
+  "pt": "Apa",
+  "de": "Fladenbrot",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv aus dem Essensbereich, gehört ins Nomen-Pack (Brauchbarkeit der Karte siehe Strukturprobleme)."
+ },
+ {
+  "pt": "Cinema",
+  "de": "Kino",
+  "ist": "adjektive",
+  "soll": "nomen",
+  "grund": "Substantiv (o cinema), gehört zu den Orten ins Nomen-Pack."
+ },
+ {
+  "pt": "Estou bem",
+  "de": "Es geht mir gut",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz mit konjugiertem Verb, ein klassischer Konversationsbaustein und kein Adjektiv."
+ },
+ {
+  "pt": "Estou cheio",
+  "de": "Ich bin satt",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz; das Adjektiv wäre \"cheio / cheia\", die Karte lehrt aber die fertige Wendung."
+ },
+ {
+  "pt": "Estou cansado",
+  "de": "Ich bin müde",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz; das zugehörige Adjektiv steht bereits als eigene Karte \"Cansado / Cansada\" in derselben Datei."
+ },
+ {
+  "pt": "Estou feliz",
+  "de": "Ich bin glücklich",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz; das Adjektiv steht bereits als \"Feliz / Triste\" in derselben Datei."
+ },
+ {
+  "pt": "Me sinto muito bem",
+  "de": "Ich fühle mich sehr gut",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Ganzer Satz mit reflexivem Verb, kein Adjektiv (zusätzlich in brasilianischer Wortstellung, siehe Strukturprobleme)."
+ },
+ {
+  "pt": "Muito bem disposto",
+  "de": "sehr gut gelaunt",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Feste Wendung mit vorangestelltem \"muito\"; als reine Adjektivkarte müsste sie \"bem-disposto / bem-disposta\" heißen."
+ },
+ {
+  "pt": "Foi divertido / Foi fixe",
+  "de": "Es hat Spaß gemacht / Es war cool",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Zwei ganze Sätze mit konjugiertem Verb in einer Karte, klare Konversationsbausteine."
+ },
+ {
+  "pt": "Em forma",
+  "de": "in Form / fit",
+  "ist": "adjektive",
+  "soll": "redewendungen",
+  "grund": "Grenzfall: Präpositionalphrase, die nur als \"estar/ficar em forma\" vorkommt; das Verben-Pack führt bereits \"Ficar em forma\"."
+ },
+ {
+  "pt": "Seria",
+  "de": "es wäre",
+  "ist": "adjektive",
+  "soll": "verben",
+  "grund": "Konjugierte Einzelform (Konditional von ser), laut Notiz selbst so gekennzeichnet, und definitiv kein Adjektiv."
+ },
+ {
+  "pt": "Diverti-me",
+  "de": "Ich hatte Spaß",
+  "ist": "adjektive",
+  "soll": "verben",
+  "grund": "Konjugierte Verbform im Pretérito Perfeito (divertir-se), gehört zur Konjugation und nicht zu den Eigenschaftswörtern."
+ },
+ {
+  "pt": "Última / Último",
+  "de": "letzte/r",
+  "ist": "grammatik",
+  "soll": "adjektive",
+  "grund": "\"último\" ist ein ganz normales Eigenschaftswort, das sich in Geschlecht und Zahl an das Substantiv anpasst, und kein Funktionswort und kein Baumuster."
+ },
+ {
+  "pt": "Estou a trabalhar",
+  "de": "Ich arbeite gerade",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Das ist ein fertig konjugierter Beispielsatz zum Muster \"Estou a + Inf\", das eine Zeile darüber schon als eigene Karte steht, und bringt keine neue Regel dazu."
+ },
+ {
+  "pt": "Está a funcionar",
+  "de": "Es funktioniert (gerade)",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Auch hier ist nur ein Verb in das bereits gelernte Muster \"estar a + Infinitiv\" eingesetzt, gelernt wird also die Wendung, nicht die Grammatik."
+ },
+ {
+  "pt": "Está a chover",
+  "de": "Es regnet (gerade)",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Eine feste Wetter-Wendung, die man im Alltag als Ganzes abruft, nicht als Grammatikregel."
+ },
+ {
+  "pt": "O que estás a fazer agora?",
+  "de": "Was machst du gerade?",
+  "ist": "grammatik",
+  "soll": "fragen",
+  "grund": "Das ist eine vollständige Frage mit Fragewort \"o que\" und gehört damit eindeutig ins Fragen-Pack."
+ },
+ {
+  "pt": "O que vais fazer?",
+  "de": "Was wirst du machen?",
+  "ist": "grammatik",
+  "soll": "fragen",
+  "grund": "Ebenfalls eine komplette Frage mit \"o que\", also eine Fragekonstruktion und kein Grammatik-Baumuster."
+ },
+ {
+  "pt": "Vou cozinhar",
+  "de": "Ich werde kochen",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Ein konjugierter Beispielsatz für \"ir + Infinitiv\"; das Muster selbst steht nur in der Notiz und müsste als eigene Karte existieren."
+ },
+ {
+  "pt": "Vou viajar amanhã",
+  "de": "Ich werde morgen reisen",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Wieder nur ein Anwendungssatz desselben Musters, mit ausgetauschtem Verb und angehängter Zeitangabe."
+ },
+ {
+  "pt": "Fazer a mala",
+  "de": "den Koffer packen",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Eine feste Verbalwendung aus Verb und Substantiv, die man als Ganzes lernt; grammatisch steckt darin nichts, was man ableiten könnte."
+ },
+ {
+  "pt": "Duas a três vezes por semana",
+  "de": "zwei bis drei Mal pro Woche",
+  "ist": "grammatik",
+  "soll": "redewendungen",
+  "grund": "Eine sehr lange und sehr spezifische Häufigkeitsangabe, die als Konversationsbaustein funktioniert, aber kein Funktionswort ist."
+ },
+ {
+  "pt": "Levantar-se",
+  "de": "aufstehen",
+  "ist": "grammatik",
+  "soll": "verben",
+  "grund": "Ein Infinitiv mit Bedeutung ist die klassische Verbkarte; dass das Verb reflexiv ist, macht es noch nicht zu einer Grammatikkarte."
+ },
+ {
+  "pt": "Sentar-se",
+  "de": "sich (hin)setzen",
+  "ist": "grammatik",
+  "soll": "verben",
+  "grund": "Auch hier wird reines Vokabelwissen abgefragt, nämlich die Bedeutung des Infinitivs, nicht die Stellung des Pronomens."
+ },
+ {
+  "pt": "Deitar-se",
+  "de": "sich hinlegen / schlafen gehen",
+  "ist": "grammatik",
+  "soll": "verben",
+  "grund": "Infinitiv plus Bedeutung, also eine Verbkarte; die Reflexivpronomen-Regel wird erst in den Beispielsätzen sichtbar."
+ },
+ {
+  "pt": "Lavar-se",
+  "de": "sich waschen",
+  "ist": "grammatik",
+  "soll": "verben",
+  "grund": "Gleicher Fall wie bei den anderen drei reflexiven Infinitiven, hier fehlt sogar der zugehörige Beispielsatz."
+ },
+ {
+  "pt": "Porque",
+  "de": "weil",
+  "ist": "fragen",
+  "soll": "grammatik",
+  "grund": "Das ist kein Fragewort, sondern die Konjunktion \"weil\" und gehoert damit zu den Konjunktionen im Grammatik-Pack, wo \"enquanto\" und \"do que\" bereits liegen."
+ },
+ {
+  "pt": "Tu assistes?",
+  "de": "Schaust du?",
+  "ist": "fragen",
+  "soll": "verben",
+  "grund": "Die Karte enthaelt kein Fragewort, sondern nur die konjugierte Du-Form von \"assistir\", die allein durch das Fragezeichen zur Frage wird; die Grundform \"Assistir\" liegt bereits im Verben-Pack."
+ },
+ {
+  "pt": "Como vai?",
+  "de": "Wie geht es?",
+  "ist": "fragen",
+  "soll": "redewendungen",
+  "grund": "Das ist eine feste Begruessungsfloskel und kein uebertragbares Fragemuster; das direkte Gegenstueck \"Como te chamas?\" liegt schon bei den Redewendungen."
+ },
+ {
+  "pt": "Como vão as coisas?",
+  "de": "Wie laufen die Dinge?",
+  "ist": "fragen",
+  "soll": "redewendungen",
+  "grund": "Ein reiner Small-Talk-Baustein, den man als Ganzes auswendig lernt; an der Frageform selbst gibt es nichts zu lernen, was \"Como\" nicht schon abdeckt."
+ },
+ {
+  "pt": "Que comida vais vender?",
+  "de": "Welches Essen wirst du verkaufen?",
+  "ist": "fragen",
+  "soll": "redewendungen",
+  "grund": "Ein situativer Einzelsatz aus einer Unterrichtsstunde statt eines Fragemusters; sein eigentlicher Lernwert ist das Futur mit \"ir + Infinitiv\", weshalb auch das Grammatik-Pack passen wuerde, wo \"O que vais fazer?\" bereits steht."
+ },
+ {
+  "pt": "Como te chamas?",
+  "de": "Wie heißt du? (informell)",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Vollständiger Fragesatz, und im fragen-Pack stehen bereits genau solche Konversationsfragen wie \"Como vai?\"."
+ },
+ {
+  "pt": "Qual é o seu nome?",
+  "de": "Wie heißen Sie? (formell)",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Fragekonstruktion mit Fragewort \"qual\", gehört zur selben Gruppe wie \"Qual é o preço?\" im fragen-Pack."
+ },
+ {
+  "pt": "Quantos anos tens?",
+  "de": "Wie alt bist du?",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Fragekonstruktion mit \"quantos\", das als Fragewort schon im fragen-Pack steht."
+ },
+ {
+  "pt": "Que horas são?",
+  "de": "Wie spät ist es?",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Standard-Fragesatz, gehört zu den Fragekonstruktionen."
+ },
+ {
+  "pt": "A que horas?",
+  "de": "Um wie viel Uhr?",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Reine Fragekonstruktion mit Präposition plus Fragewort."
+ },
+ {
+  "pt": "O que achas?",
+  "de": "Was hältst du davon?",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Fragesatz mit \"o que\", parallel zum bereits einsortierten \"Tu assistes?\"."
+ },
+ {
+  "pt": "O que mais?",
+  "de": "Was noch?",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Kurze Fragekonstruktion, kein feststehender Ausdruck."
+ },
+ {
+  "pt": "Quão grande?",
+  "de": "Wie groß?",
+  "ist": "redewendungen",
+  "soll": "fragen",
+  "grund": "Fragekonstruktion; zusätzlich ist \"quão\" im gesprochenen PT-PT selten, üblich wäre \"Qual é o tamanho?\"."
+ },
+ {
+  "pt": "Meio-dia / Meia-noite",
+  "de": "Mittag / Mitternacht",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei Substantive ohne jede Wendung drumherum."
+ },
+ {
+  "pt": "Cultura de comer fora",
+  "de": "Restaurantkultur",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantivische Fügung, keine feste Wendung."
+ },
+ {
+  "pt": "Restaurante tradicional",
+  "de": "traditionelles Restaurant",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv, reine Nominalphrase."
+ },
+ {
+  "pt": "Doce de mandioca",
+  "de": "Maniok-Süßspeise",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Gerichtbezeichnung, gehört zum Essens-Wortschatz im Nomen-Pack."
+ },
+ {
+  "pt": "Matraquilhos",
+  "de": "Tischkicker",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Einzelnes Substantiv, das nur zufällig hier gelandet ist."
+ },
+ {
+  "pt": "Tempo / Clima",
+  "de": "Wetter / Klima",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei nackte Substantive aus dem Wetter-Wortfeld."
+ },
+ {
+  "pt": "Temperatura",
+  "de": "Temperatur",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Einzelnes Substantiv."
+ },
+ {
+  "pt": "Frio / Calor",
+  "de": "Kalt / Hitze",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "In der Notiz \"Está frio / Está calor\" sind es Substantive nach estar, die deutsche Seite mischt Adjektiv und Substantiv."
+ },
+ {
+  "pt": "Nuvens / Céu",
+  "de": "Wolken / Himmel",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei Substantive aus dem Wetter-Wortfeld."
+ },
+ {
+  "pt": "Inverno / Verão / Primavera / Outono",
+  "de": "Winter / Sommer / Frühling / Herbst",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Jahreszeiten sind Substantive und gehören als Vierer-Set ins Nomen-Pack."
+ },
+ {
+  "pt": "22 graus",
+  "de": "22 Grad",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zahl plus Substantiv aus einem Unterrichtsbeispiel, keine Wendung."
+ },
+ {
+  "pt": "Coisa / Coisinhas",
+  "de": "Sache / Kleinigkeiten",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv plus Verkleinerungsform, gehört zum Nomen-Pack."
+ },
+ {
+  "pt": "Mistura",
+  "de": "Mischung",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Einzelnes Substantiv."
+ },
+ {
+  "pt": "Energia",
+  "de": "Energie",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Einzelnes Substantiv, der Beispielsatz steht nur in der Notiz."
+ },
+ {
+  "pt": "Rotina semanal",
+  "de": "Wochenroutine",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv, keine Wendung."
+ },
+ {
+  "pt": "Infância",
+  "de": "Kindheit",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Einzelnes Substantiv."
+ },
+ {
+  "pt": "Colega de quarto",
+  "de": "Mitbewohner/in",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Personenbezeichnung, gehört zum Nomen-Pack (dort steht \"Colega\" bereits)."
+ },
+ {
+  "pt": "Área aberta",
+  "de": "offener Bereich",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv, Ortsbezeichnung."
+ },
+ {
+  "pt": "Convenção / Conferência",
+  "de": "Konvention / Konferenz",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei Substantive."
+ },
+ {
+  "pt": "Clube de corrida",
+  "de": "Lauftreff",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; \"Corrida\" steht schon im Nomen-Pack."
+ },
+ {
+  "pt": "Carpinteiro / Carpinteira",
+  "de": "Zimmermann / Zimmerin",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Berufsbezeichnung, genau die Kategorie Berufe im Nomen-Pack."
+ },
+ {
+  "pt": "Carne de cabrito",
+  "de": "Ziegenfleisch",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Lebensmittel-Substantiv; \"Carne\" liegt bereits im Nomen-Pack."
+ },
+ {
+  "pt": "Sabor forte",
+  "de": "starker Geschmack",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv; \"Sabor\" steht sogar schon im Verben-Pack (dort ebenfalls falsch)."
+ },
+ {
+  "pt": "Calças de natação",
+  "de": "Badehose",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Kleidungsstück; zusätzlich heißt die Badehose in PT-PT \"calções de banho\"."
+ },
+ {
+  "pt": "Agulha / Agulhas",
+  "de": "Nadel/n",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv im Singular und Plural."
+ },
+ {
+  "pt": "Parte do corpo",
+  "de": "Körperteil",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase aus dem Körper-Wortfeld, das im Nomen-Pack liegt."
+ },
+ {
+  "pt": "Mundo real",
+  "de": "reale Welt",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv."
+ },
+ {
+  "pt": "Restaurante de fast food",
+  "de": "Fast-Food-Restaurant",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase, keine Wendung."
+ },
+ {
+  "pt": "Materiais para cozinha",
+  "de": "Küchenausstattung / Material",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; die deutsche Seite ist zudem unscharf."
+ },
+ {
+  "pt": "Fornecedor / Fornecedores",
+  "de": "Lieferant/en",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv im Singular und Plural."
+ },
+ {
+  "pt": "Fritadeira dupla",
+  "de": "Doppelfritteuse",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; \"Fritadeira\" liegt bereits im Adjektiv-Pack (dort ebenfalls falsch)."
+ },
+ {
+  "pt": "Pedaço / Pedaços",
+  "de": "Stück / Stücke",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv im Singular und Plural."
+ },
+ {
+  "pt": "Dia de folga",
+  "de": "Ruhetag / freier Tag",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase, und dreifach mit den beiden folgenden Karten belegt."
+ },
+ {
+  "pt": "Dia de descanso",
+  "de": "Ruhetag",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase und inhaltlich dasselbe wie \"Dia de folga\"."
+ },
+ {
+  "pt": "Folga / Descanso",
+  "de": "Pause / Erholung",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei Substantive, die dritte Karte zum selben Begriff."
+ },
+ {
+  "pt": "Corte elétrico / Cortes eléctricos",
+  "de": "Stromausfall / -ausfälle",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; zusätzlich stehen in einer Karte zwei verschiedene Rechtschreibungen (elétrico neu, eléctricos alt)."
+ },
+ {
+  "pt": "Agência imobiliária",
+  "de": "Immobilienbüro",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase aus dem Wortfeld Orte."
+ },
+ {
+  "pt": "Lugares lotados",
+  "de": "überfüllte Orte",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv; \"Lugar\" steht schon im Nomen-Pack, \"Lotado\" direkt eine Zeile weiter."
+ },
+ {
+  "pt": "Vila sede",
+  "de": "Hauptdorf / Gemeindesitz",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Verwaltungsbegriff als Substantiv, für A2/B1 zudem ohne praktischen Nutzen."
+ },
+ {
+  "pt": "Molho de alho",
+  "de": "Knoblauchsauce",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; \"Molho\" und \"Alho\" liegen beide bereits in anderen Packs."
+ },
+ {
+  "pt": "Restaurantes Árabes",
+  "de": "arabische Restaurants",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; außerdem werden Herkunftsadjektive im Portugiesischen kleingeschrieben, also \"restaurantes árabes\"."
+ },
+ {
+  "pt": "Sala de conferências",
+  "de": "Konferenzraum",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Raumbezeichnung als Nominalphrase."
+ },
+ {
+  "pt": "Quarto vs. Sala",
+  "de": "Schlafzimmer vs. Raum/Wohnzimmer",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei Substantive; als Karte außerdem unbrauchbar, weil \"vs.\" keine abfragbare Antwort ergibt."
+ },
+ {
+  "pt": "Mesa fixa",
+  "de": "fester Arbeitsplatz",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Nominalphrase; \"Mesa\" liegt bereits im Adjektiv-Pack (dort falsch)."
+ },
+ {
+  "pt": "Carne moída",
+  "de": "Hackfleisch",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Lebensmittel-Substantiv; zusätzlich brasilianisch, in PT-PT heißt es \"carne picada\"."
+ },
+ {
+  "pt": "Filme / Filmes",
+  "de": "Film / Filme",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv im Singular und Plural."
+ },
+ {
+  "pt": "Série / Séries",
+  "de": "Serie / Serien",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv im Singular und Plural."
+ },
+ {
+  "pt": "Diretor de cinema",
+  "de": "Filmregisseur",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Berufsbezeichnung; zusätzlich heißt der Filmregisseur in PT-PT \"realizador\", \"diretor\" ist die brasilianische Wahl."
+ },
+ {
+  "pt": "Jogo / Partida",
+  "de": "Spiel / Match",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Zwei Substantive."
+ },
+ {
+  "pt": "Grande fã",
+  "de": "großer Fan",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv mit Adjektiv, keine feste Wendung."
+ },
+ {
+  "pt": "Pergunta / Perguntas",
+  "de": "Frage/n",
+  "ist": "redewendungen",
+  "soll": "nomen",
+  "grund": "Substantiv im Singular und Plural, trotz des Themas Fragen kein Fragewort."
+ },
+ {
+  "pt": "Atrasado / Atrasada",
+  "de": "verspätet",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in männlicher und weiblicher Form, exakt das Muster des Adjektiv-Packs."
+ },
+ {
+  "pt": "Sozinho / Sozinha",
+  "de": "allein",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv; steht als \"Sozinho\" bereits im Adjektiv-Pack, also zusätzlich eine echte Dublette."
+ },
+ {
+  "pt": "Estressado / Estressada",
+  "de": "gestresst",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Die Notiz sagt selbst \"Adjektiv\"; außerdem brasilianisch, PT-PT schreibt \"stressado / stressada\"."
+ },
+ {
+  "pt": "Corajoso / Corajosa",
+  "de": "mutig",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in beiden Genusformen."
+ },
+ {
+  "pt": "Louco / Louca",
+  "de": "verrückt",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in beiden Genusformen."
+ },
+ {
+  "pt": "Doloroso / Dolorosa",
+  "de": "schmerzhaft",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in beiden Genusformen."
+ },
+ {
+  "pt": "Perigoso / Perigosa",
+  "de": "gefährlich",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in beiden Genusformen."
+ },
+ {
+  "pt": "Surpreso / Surpresa",
+  "de": "überrascht",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv beziehungsweise Zustand, wie \"Cansado\" im Adjektiv-Pack."
+ },
+ {
+  "pt": "Lotado / Lotada",
+  "de": "überfüllt",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in beiden Genusformen."
+ },
+ {
+  "pt": "Disponível / Disponíveis",
+  "de": "verfügbar / frei",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in Singular und Plural."
+ },
+ {
+  "pt": "Melhor / Melhores",
+  "de": "besser / der/die/das beste",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Unregelmäßige Steigerungsform eines Adjektivs."
+ },
+ {
+  "pt": "O melhor",
+  "de": "der/das beste",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Superlativ des Adjektivs, dazu fast identisch mit der Karte davor."
+ },
+ {
+  "pt": "Mau / Má",
+  "de": "schlecht (m/w)",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Die Notiz sagt selbst \"Adjektiv\"."
+ },
+ {
+  "pt": "Aleatório / Aleatória",
+  "de": "zufällig",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Adjektiv in beiden Genusformen."
+ },
+ {
+  "pt": "Sem sentido",
+  "de": "sinnlos",
+  "ist": "redewendungen",
+  "soll": "adjektive",
+  "grund": "Beschreibt eine Eigenschaft und wird wie ein Adjektiv verwendet (coisas sem sentido)."
+ },
+ {
+  "pt": "Mudar-se",
+  "de": "umziehen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Reflexiver Infinitiv, genau die Form der Karten \"Levantar-se\" und \"Inscrever-se\" in den anderen Packs."
+ },
+ {
+  "pt": "Levar",
+  "de": "mitnehmen / bringen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Nackter Infinitiv mit Bedeutung, das ist die Definition des Verben-Packs."
+ },
+ {
+  "pt": "Colocar / Pôr",
+  "de": "setzen / legen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Zwei Infinitive als Synonympaar."
+ },
+ {
+  "pt": "Focar",
+  "de": "sich konzentrieren",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Infinitiv; steht als \"Focar (em)\" bereits im Verben-Pack, also eine echte Dublette."
+ },
+ {
+  "pt": "Planear / Planejar",
+  "de": "planen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Infinitiv-Paar; im Verben-Pack gehört es zu den Varianten-Karten wie \"regressar / voltar / retornar\"."
+ },
+ {
+  "pt": "Precisar de",
+  "de": "brauchen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Infinitiv mit Rektion, wie \"Focar (em)\" oder \"Olhar para\" im Verben-Pack."
+ },
+ {
+  "pt": "Preparar comida",
+  "de": "Essen zubereiten",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Verb plus Objekt ohne idiomatischen Mehrwert; \"Preparar\" und \"Comida\" liegen einzeln schon in anderen Packs."
+ },
+ {
+  "pt": "Abrir um restaurante",
+  "de": "ein Restaurant eröffnen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Verb plus Objekt aus einem Unterrichtsgespräch, keine feste Wendung."
+ },
+ {
+  "pt": "Pagar um serviço",
+  "de": "einen Service bezahlen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Verb plus Objekt; \"Pagar\" und \"Serviço\" stehen bereits einzeln in Verben und Nomen."
+ },
+ {
+  "pt": "Fazer perguntas",
+  "de": "Fragen stellen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Verb-Objekt-Kollokation zu \"fazer\", das im Verben-Pack liegt."
+ },
+ {
+  "pt": "Continuar sozinho",
+  "de": "alleine weitermachen",
+  "ist": "redewendungen",
+  "soll": "verben",
+  "grund": "Verb plus Adjektiv aus einem Einzelgespräch, keine feststehende Wendung."
+ },
+ {
+  "pt": "Durante o dia / a semana",
+  "de": "während des Tages / der Woche",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Präposition mit Zeitangabe, dieselbe Sorte wie \"De manhã / De tarde\" im Grammatik-Pack."
+ },
+ {
+  "pt": "Parecido com",
+  "de": "ähnlich wie",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Vergleichskonstruktion mit Präposition; \"Parecido / Parecida\" liegt zudem schon im Adjektiv-Pack."
+ },
+ {
+  "pt": "Comparado com",
+  "de": "verglichen mit",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Vergleichskonstruktion mit Präposition."
+ },
+ {
+  "pt": "Mesma língua",
+  "de": "gleiche Sprache",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Die Notiz zielt auf mesmo/mesma, also auf ein Funktionswort; als Wendung existiert der Ausdruck nicht."
+ },
+ {
+  "pt": "Por isso",
+  "de": "deshalb",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Konnektor wie \"Mas\", \"Então\" und \"Por exemplo\", die alle im Grammatik-Pack liegen."
+ },
+ {
+  "pt": "Primeiro... depois...",
+  "de": "zuerst... dann...",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Baumuster für Reihenfolge; \"Depois\" steht bereits im Grammatik-Pack."
+ },
+ {
+  "pt": "Mais X do que Y",
+  "de": "mehr X als Y",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Reines Baumuster mit Platzhaltern; im Grammatik-Pack steht die Karte \"Do que\" mit exakt derselben Notiz."
+ },
+ {
+  "pt": "Mais caro do que Lisboa",
+  "de": "teurer als Lissabon",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Existiert nur als Beispielsatz zum Komparativ-Baumuster der Karte davor."
+ },
+ {
+  "pt": "Gostaria de...",
+  "de": "Ich würde gerne...",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Baumuster wie \"Posso + Inf\" oder \"Tenho que + Inf\"; als \"Eu gostaria\" steht es zusätzlich schon im Verben-Pack."
+ },
+ {
+  "pt": "Algumas / Alguns",
+  "de": "einige",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Indefinitpronomen, also ein Funktionswort."
+ },
+ {
+  "pt": "Ainda não",
+  "de": "noch nicht",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Adverbverbindung; \"Ainda\" liegt bereits im Grammatik-Pack (und nochmal im Nomen-Pack)."
+ },
+ {
+  "pt": "Na próxima semana",
+  "de": "nächste Woche",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitangabe mit Kontraktion na, dieselbe Gruppe wie \"Hoje / Ontem / Amanhã\"."
+ },
+ {
+  "pt": "Na semana passada",
+  "de": "letzte Woche",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitangabe; im Grammatik-Pack steht \"Última / Último\" mit dem Beispiel \"No último fim de semana\"."
+ },
+ {
+  "pt": "Se eu comprar...",
+  "de": "Wenn ich kaufe...",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Die Notiz nennt es selbst Konjunktiv Futur, das ist ein Baumuster und keine Wendung."
+ },
+ {
+  "pt": "Por mês / Por semana / Por ano",
+  "de": "pro Monat / Woche / Jahr",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Präposition mit Zeitangabe, wie \"Uma vez por semana\" im Grammatik-Pack."
+ },
+ {
+  "pt": "Há muito tempo",
+  "de": "schon lange",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitausdruck mit há; die passende Frage \"Há quanto tempo?\" liegt bereits im fragen-Pack."
+ },
+ {
+  "pt": "Depois da nossa aula",
+  "de": "nach unserer Stunde",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Beispiel für depois de plus Substantiv, das als Regel schon im Grammatik-Pack steht."
+ },
+ {
+  "pt": "Quase todo o dia",
+  "de": "fast den ganzen Tag",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitangabe mit quase, das im Grammatik-Pack sogar doppelt vorkommt."
+ },
+ {
+  "pt": "Antes de + Inf",
+  "de": "vor (zeitlich) + Verb",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Baumuster in Plus-Notation; \"Antes / Antes de\" steht bereits im Grammatik-Pack."
+ },
+ {
+  "pt": "Antes de me mudar",
+  "de": "bevor ich umzog",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Nur ein Beispielsatz zum Baumuster antes de plus Infinitiv."
+ },
+ {
+  "pt": "Antes de vir",
+  "de": "bevor (ich) kam",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Dritter Beleg für dasselbe Baumuster antes de plus Infinitiv."
+ },
+ {
+  "pt": "Uma semana atrás",
+  "de": "vor einer Woche",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitangabe; zusätzlich ist die Nachstellung mit atrás brasilianisch, PT-PT sagt \"há uma semana\"."
+ },
+ {
+  "pt": "Há uma semana",
+  "de": "vor einer Woche / seit einer Woche",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitangabe mit há, gehört zu den Zeitausdrücken im Grammatik-Pack."
+ },
+ {
+  "pt": "Pelo menos",
+  "de": "wenigstens / mindestens",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Adverbiale Fügung wie \"Só / Apenas\" oder \"Quase\" im Grammatik-Pack."
+ },
+ {
+  "pt": "Ficar surpreso",
+  "de": "überrascht sein/werden",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Die Notiz nennt es selbst \"ficar + Adj\", also ein Baumuster."
+ },
+ {
+  "pt": "Por enquanto",
+  "de": "vorerst / im Moment",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitadverb; \"Enquanto\" steht bereits im Grammatik-Pack."
+ },
+ {
+  "pt": "Para ambos",
+  "de": "für beide",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Präposition plus Quantifikator, dazu fast identisch mit der Karte danach."
+ },
+ {
+  "pt": "Ambos / Ambas",
+  "de": "beide",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Quantifikator, also ein Funktionswort."
+ },
+ {
+  "pt": "Ao invés de",
+  "de": "anstatt / anstelle von",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Präpositionale Fügung; in PT-PT ist zudem \"em vez de\" die übliche Form."
+ },
+ {
+  "pt": "Todos eles / Todas elas",
+  "de": "alle (von ihnen)",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Pronomen mit Quantifikator, gehört zu den Pronomen-Karten."
+ },
+ {
+  "pt": "Fora + Nomen",
+  "de": "außer / außerhalb",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Baumuster in Plus-Notation; \"Fora\" liegt bereits im Grammatik-Pack."
+ },
+ {
+  "pt": "Ultimamente",
+  "de": "kürzlich / in letzter Zeit",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Einzelnes Zeitadverb, wie \"Sempre\", \"Nunca\", \"Às vezes\" im Grammatik-Pack."
+ },
+ {
+  "pt": "No início / No começo",
+  "de": "am Anfang",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Zeitangabe mit Kontraktion no, gehört zu den Zeit-Karten."
+ },
+ {
+  "pt": "Muitas vezes",
+  "de": "oft (viele Male)",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Häufigkeitsangabe; im Grammatik-Pack stehen \"Às vezes\", \"Poucas vezes\" und \"Com frequência\" bereits als Reihe."
+ },
+ {
+  "pt": "Chove / Está a chover",
+  "de": "Es regnet",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Beispiel für estar a plus Infinitiv; \"Está a chover\" steht wortgleich im Grammatik-Pack."
+ },
+ {
+  "pt": "Ajuda a aprender",
+  "de": "hilft beim Lernen",
+  "ist": "redewendungen",
+  "soll": "grammatik",
+  "grund": "Satzfragment als Beleg für ajudar a plus Infinitiv, kein eigenständiger Ausdruck."
+ }
+]

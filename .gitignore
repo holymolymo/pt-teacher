@@ -5,3 +5,8 @@ pages/
 # lokale Hilfsdateien, nicht veroeffentlichen
 _check.html
 CLAUDE.md
+# Zwischenstaende aus der Vokabel-Ueberarbeitung
+vokabeln/_backup/
+vokabeln/_workflow_result.json
+vokabeln/_konj_funde.json
+vokabeln/_konj_pruefung.json
