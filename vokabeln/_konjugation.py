@@ -64,7 +64,7 @@ ANKER = [
 # Größte Lücke, deshalb der dickste Block.
 # ============================================================================
 PERF_REIHEN = [
-    ('ser', 'ser / ir', 'Beide Verben haben dieselbe Vergangenheit. Was gemeint ist, sagt der Satz: fui médico heißt ich war Arzt, fui ao cinema heißt ich ging ins Kino.'),
+    ('ser', 'ser / ir', 'Beide Verben haben dieselbe Vergangenheit. Was gemeint ist, sagt der Satz: fui médico heißt ich war Arzt, fui ao cinema heißt ich ging ins Kino. Nur diese eine Zeit ist gleich: in der Erzählvergangenheit heißt ser era und ir heißt ia.'),
     ('estar', None, 'Im Test hast du "estou doente na semana passada" geschrieben. Estou ist jetzt, estive war letzte Woche.'),
     ('ter', None, 'Im Test hast du temos gesagt, wo tivemos hingehörte. Temos ist die Gegenwart, tivemos ist gestern.'),
     ('vir', None, 'vim heißt ich kam. Achtung bei vimos: das ist die Gegenwart von vir (wir kommen) und zugleich die Vergangenheit von ver (wir sahen). Wir kamen heißt viemos.'),
@@ -77,7 +77,7 @@ PERF_REIHEN = [
     ('saber', None, 'soube ist der Moment, in dem du etwas erfahren hast. Für den Zustand ich wusste nimmst du sabia. Verneint dreht es sich um: não soube heißt ich wusste nicht.'),
     ('pôr', None, 'pus, pôs. Sehr kurz, sehr unregelmäßig.'),
     ('trazer', None, 'trouxe wird trosse gesprochen. Ich und er sind gleich.'),
-    ('falar', None, 'So geht jedes regelmäßige Verb auf -ar. In Portugal trägt die Wir-Form den Akzent: falámos. Ohne Akzent wäre es die Gegenwart.'),
+    ('falar', None, 'So geht jedes regelmäßige Verb auf -ar. Schreib die Wir-Form in Portugal mit Akzent: falámos. Pflicht ist der Akzent seit der Rechtschreibreform aber nicht, in Texten siehst du auch falamos für gestern. Dann entscheidet der Satz.'),
     ('comer', None, 'So geht jedes regelmäßige Verb auf -er. comemos ist Gegenwart und Vergangenheit zugleich, der Satz entscheidet.'),
     ('partir', None, 'So geht jedes regelmäßige Verb auf -ir. partimos ist Gegenwart und Vergangenheit zugleich.'),
 ]
@@ -173,8 +173,11 @@ KIPP_SAETZE = [
 # Die regelmäßige Gegenwart sitzt zu 100 Prozent und bekommt keine Karte.
 # ============================================================================
 PRES_REIHEN = [
-    ('ser', None, None), ('estar', None, None), ('ter', None, None),
-    ('ir', None, None), ('vir', None, None),
+    ('ser', None, 'Für dauerhafte Eigenschaften: sou alemão, é médico. Die Vergangenheit ist dieselbe wie bei ir.'),
+    ('estar', None, 'Für den Moment und den Ort: estou cansado, está em casa. Die Erzählvergangenheit ist regelmäßig (estava), die normale Vergangenheit nicht (estive).'),
+    ('ter', None, 'tem für er hat und têm für sie haben unterscheiden sich nur durch den Akzent. Für das Alter nimmt man ter: tenho 28 anos.'),
+    ('ir', None, 'ir plus Grundform ist die normale Zukunft: vou comer heißt ich esse gleich. Die Vergangenheit ist dieselbe wie bei ser.'),
+    ('vir', None, 'vimos heißt hier wir kommen. Dieselbe Form ist bei ver die Vergangenheit wir sahen. Wir kamen heißt viemos.'),
     ('fazer', None, 'Nur die Ich-Form bricht aus, der Rest läuft normal. Das ç muss sein, sonst spricht man fako.'),
     ('dizer', None, 'Ich-Form digo, danach normal.'),
     ('ver', None, 'vês und vê mit Dach, veem mit zwei e.'),
@@ -273,7 +276,7 @@ IMP_REIHEN = [
 IMP_REGEL = [
     ('Wie bildest du die Erzählvergangenheit?',
      'Bei -ar: -ava, -avas, -ava, -ávamos, -avam. Bei -er und -ir: -ia, -ias, -ia, -íamos, -iam.',
-     'Nur vier Verben der ganzen Sprache fallen aus der Reihe: ser, ter, vir und pôr. Sogar estar ist hier regelmäßig: estava.'),
+     'Nur vier Verben fallen aus der Reihe: ser, ter, vir und pôr. Ihre Zusammensetzungen folgen dem Grundverb: obter wird obtinha, manter wird mantinha, compor wird compunha. Sogar estar ist hier regelmäßig: estava.'),
     ('Wann nimmst du die Erzählvergangenheit statt der normalen Vergangenheit?',
      'Für Zustände, Gewohnheiten und Beschreibungen. Für ein einzelnes abgeschlossenes Ereignis nimmst du die normale Vergangenheit.',
      'Ontem fui ao cinema ist ein Ereignis. Quando era pequeno, ia ao cinema aos domingos beschreibt eine Gewohnheit.'),
