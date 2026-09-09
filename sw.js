@@ -3,7 +3,7 @@
 // Alles andere (CSS/JS/Icons/Fonts): Cache zuerst, im Hintergrund aktualisieren.
 // Bei Änderungen an der Liste oder Strategie: CACHE-Version hochzählen.
 
-const CACHE = 'pt-teacher-v6';
+const CACHE = 'pt-teacher-v7';
 const CORE = [
   './', './index.html', './lernen.html', './fortschritt.html', './vokabeln.html',
   './diagnose-test.html', './print-sheets.html', './grammatik-bibliothek.html', './cheat-sheet.html',
