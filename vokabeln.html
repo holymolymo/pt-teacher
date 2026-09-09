@@ -60,6 +60,9 @@
   .pack .dl-btn { background: #2e7d32; color: white; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
   .pack .dl-btn:hover { background: #1b5e20; }
 
+  .pack.scharniere    { border-left-color: #c2185b; background: linear-gradient(135deg, #fdf3f7, white); }
+  .pack.scharniere .dl-btn { background: #c2185b; }
+  .pack.scharniere .name { font-size: 17px; }
   .pack.konjugation   { border-left-color: #7b1fa2; background: linear-gradient(135deg, #faf5fc, white); }
   .pack.konjugation .dl-btn { background: #7b1fa2; }
   .pack.konjugation .name { font-size: 17px; }
@@ -93,7 +96,7 @@
     .pack .dl-btn { width: 100%; text-align: center; }
   }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20260909a">
+<link rel="stylesheet" href="css/app-shell.css?v=20260909b">
 </head>
 <body>
 <div class="page">
@@ -119,12 +122,21 @@
 </div>
 
 <div class="stats-card">
-  <div class="stat"><div class="stat-num">8</div><div class="stat-label">Packs</div></div>
-  <div class="stat"><div class="stat-num">908</div><div class="stat-label">Karten</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Packs</div></div>
+  <div class="stat"><div class="stat-num">1024</div><div class="stat-label">Karten</div></div>
   <div class="stat"><div class="stat-num">21</div><div class="stat-label">Klassen</div></div>
 </div>
 
 <h2>Fang hiermit an</h2>
+
+<a class="pack scharniere" href="vokabeln/vokabeln-scharniere.csv" download>
+  <div class="info">
+    <span class="icon">&#128279;</span><span class="name">Scharniere</span>
+    <div class="desc">Die kleinen W&ouml;rter, mit denen Portugiesen S&auml;tze aneinanderh&auml;ngen: <em>pronto, se calhar, pois &eacute;, sei l&aacute;, vale a pena, l&aacute; est&aacute;</em>. Dazu, welches kleine Wort an welchem Verb klebt (<em>gostar de, pensar em, ter a ver com</em>) und S&auml;tze zu deinen zwei h&auml;ufigsten Fehlern. Genau das Material, das bisher gefehlt hat.</div>
+    <div class="count">116 Karten &middot; neu</div>
+  </div>
+  <span class="dl-btn">&darr; Download</span>
+</a>
 
 <a class="pack konjugation" href="vokabeln/vokabeln-konjugation.csv" download>
   <div class="info">
@@ -205,16 +217,16 @@
     <div class="name">Alles in einer Datei</div>
     <div class="desc">Falls du lieber ein einziges gro&szlig;es Pack magst. Ohne Doppelte, aber auch ohne die Sortierung nach Wortart.</div>
   </div>
-  <a class="dl-btn" href="vokabeln/vokabeln-master.csv" download>908 Karten &darr;</a>
+  <a class="dl-btn" href="vokabeln/vokabeln-master.csv" download>1024 Karten &darr;</a>
 </div>
 
 <div class="footer-note">
   Format: UTF-8 mit BOM, Trennzeichen Semikolon. Spalten: Portugiesisch, Deutsch, Notiz.<br>
-  Letzte Aktualisierung: 09.09.2026. Neu dazu sind 39 Karten aus der Klasse vom 09.09., darunter der Konjunktiv (embora, mesmo que) und der pers&ouml;nliche Infinitiv. Sieben &auml;ltere Karten wurden korrigiert. Enth&auml;lt die Klassen bis 09.09.
+  Letzte Aktualisierung: 09.09.2026. Neu ist das Pack <strong>Scharniere</strong> mit 116 Karten. Eine Durchsicht aller bisherigen Karten hat gezeigt, dass genau diese Sorte Wort komplett fehlte: von 37 typischen portugiesischen Verbindungsw&ouml;rtern war kein einziges als eigene Karte vorhanden. Enth&auml;lt die Klassen bis 09.09.
 </div>
 
 </div>
-<script src="js/progress.js?v=20260909a"></script>
-<script src="js/app-shell.js?v=20260909a"></script>
+<script src="js/progress.js?v=20260909b"></script>
+<script src="js/app-shell.js?v=20260909b"></script>
 </body>
 </html>
