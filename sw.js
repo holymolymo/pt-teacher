@@ -3,11 +3,11 @@
 // Alles andere (CSS/JS/Icons/Fonts): Cache zuerst, im Hintergrund aktualisieren.
 // Bei Änderungen an der Liste oder Strategie: CACHE-Version hochzählen.
 
-const CACHE = 'pt-teacher-v8';
+const CACHE = 'pt-teacher-v9';
 const CORE = [
   './', './index.html', './lernen.html', './fortschritt.html', './vokabeln.html',
   './diagnose-test.html', './print-sheets.html', './grammatik-bibliothek.html', './cheat-sheet.html',
-  './uebung-perfeito-tempus.html',
+  './uebung-perfeito-tempus.html', './vokabeltrainer.html',
   './tiefenuebung-01-unregelmaessige.html', './tiefenuebung-02-preterito-perfeito.html', './tiefenuebung-03-imperfeito.html',
   './lektion-01-chamar-se.html', './lektion-02-ser-artigos.html', './lektion-03-nacionalidades-profissoes.html',
   './lektion-04-ter-numeros.html', './lektion-05-ar-verben.html', './lektion-06-kontraktionen.html',
@@ -18,7 +18,9 @@ const CORE = [
   './lektion-19-reflexive-stellung.html', './lektion-20-konditional.html', './lektion-21-por-vs-para.html',
   './wiederholung-01.html', './wiederholung-02.html', './wiederholung-03.html', './wiederholung-04.html',
   './wiederholung-05.html', './wiederholung-komplett.html',
-  './css/app-shell.css?v=20260829a', './js/progress.js?v=20260829a', './js/app-shell.js?v=20260829a',
+  './css/app-shell.css?v=20260929a', './js/progress.js?v=20260929a', './js/app-shell.js?v=20260929a',
+  './js/srs.js?v=20260929a', './js/vokabel-sync.js?v=20260929a', './js/vokabeltrainer.js?v=20260929a',
+  './daten/trainer.json?v=20260929a',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-apple.png', './manifest.json'
 ];
 
@@ -42,6 +44,10 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
+  // Fremde Adressen gehen den Service Worker nichts an. Ohne diese Zeile
+  // würden auch die Supabase-Abrufe cache-first laufen und der Trainer
+  // bekäme veraltete Stände serviert.
+  try { if (new URL(req.url).origin !== location.origin) return; } catch (x) { return; }
   const isHTML = req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html');
 
   if (isHTML) {

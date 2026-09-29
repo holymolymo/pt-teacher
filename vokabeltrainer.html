@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vokabeln üben – Português</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5f0eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="icons/icon-apple.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  .app { max-width: 480px; margin: 0 auto; padding: 18px 18px 24px; }
+
+  .kopf { display: flex; align-items: center; gap: 10px; margin: 2px 2px 16px; }
+  .kopf .zurueck { font-size: 22px; line-height: 1; color: #6b6560; padding: 4px 8px 4px 0; }
+  .kopf h1 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; flex: 1; }
+  .kopf .zaehler { font-size: 13px; font-weight: 600; color: #6b6560; font-variant-numeric: tabular-nums; }
+
+  .balken { height: 4px; background: #e4ddd4; border-radius: 4px; overflow: hidden; margin-bottom: 18px; }
+  .balken i { display: block; height: 100%; background: #2e7d32; border-radius: 4px; transition: width .25s ease; }
+
+  /* ---------- Startbildschirm ---------- */
+  .start h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 6px; }
+  .start p.lead { font-size: 14px; color: #55504b; line-height: 1.6; margin-bottom: 18px; }
+  .kacheln { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+  .kachel { background: #fff; border-radius: 14px; padding: 12px 8px; text-align: center; border: 1px solid #ece5dc; }
+  .kachel b { display: block; font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .kachel span { display: block; font-size: 11px; color: #6b6560; margin-top: 2px; line-height: 1.3; }
+  .kachel.gut b { color: #2e7d32; } .kachel.mittel b { color: #b8860b; } .kachel.schwach b { color: #c0392b; }
+
+  .knopf { display: block; width: 100%; border: 0; border-radius: 16px; padding: 16px; font: inherit;
+           font-size: 16px; font-weight: 700; cursor: pointer; text-align: center; }
+  .knopf.haupt { background: linear-gradient(145deg, #3a3631, #1a1715); color: #fff; box-shadow: 0 8px 20px rgba(26,23,21,.18); }
+  .knopf.neben { background: #fff; color: #2d2a26; border: 1px solid #e4ddd4; margin-top: 10px; font-weight: 600; font-size: 15px; }
+
+  .wahl { margin: 18px 0 6px; }
+  .wahl label { display: block; font-size: 12px; font-weight: 700; color: #6b6560; text-transform: uppercase;
+                letter-spacing: .5px; margin-bottom: 8px; }
+  .wahl select { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px;
+                 border: 1px solid #e4ddd4; background: #fff; -webkit-appearance: none; appearance: none; }
+  .wahl .reihe { display: flex; gap: 8px; }
+  .wahl .reihe select { flex: 1; }
+
+  /* ---------- Karte ---------- */
+  .karte { background: #fff; border-radius: 20px; padding: 26px 20px; min-height: 210px;
+           display: flex; flex-direction: column; justify-content: center; align-items: center;
+           text-align: center; border: 1px solid #ece5dc; box-shadow: 0 4px 16px rgba(26,23,21,.05); }
+  .karte .marke { font-size: 11px; font-weight: 700; color: #8a837c; text-transform: uppercase;
+                  letter-spacing: .6px; margin-bottom: 14px; }
+  .karte .frage { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -0.4px; }
+  .karte .frage.klein { font-size: 20px; line-height: 1.4; }
+  .karte .hilf { font-size: 13.5px; color: #6b6560; margin-top: 10px; line-height: 1.5; }
+  .karte .antwort { font-size: 24px; font-weight: 700; color: #2e7d32; margin-top: 16px; line-height: 1.3; }
+  .karte .antwort.falsch { color: #c0392b; }
+  .karte hr { border: 0; border-top: 1px solid #ece5dc; width: 60%; margin: 16px 0 0; }
+  .notiz { background: #fffaf2; border: 1px solid #f0e4d0; border-radius: 14px; padding: 13px 15px;
+           font-size: 13.5px; line-height: 1.6; color: #55504b; margin-top: 12px; }
+
+  .eingabe { width: 100%; font: inherit; font-size: 17px; padding: 14px 16px; border-radius: 14px;
+             border: 2px solid #e4ddd4; background: #fff; margin-top: 16px; text-align: center; }
+  .eingabe:focus { outline: none; border-color: #3a3631; }
+
+  .noten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+  .note { border: 0; border-radius: 14px; padding: 15px 6px; font: inherit; font-size: 14px; font-weight: 700;
+          cursor: pointer; color: #fff; line-height: 1.25; }
+  .note small { display: block; font-size: 11px; font-weight: 500; opacity: .85; margin-top: 3px; }
+  .note.n0 { background: #c0392b; } .note.n1 { background: #b8860b; } .note.n2 { background: #2e7d32; }
+
+  .zeigen { margin-top: 14px; }
+  .tipp { text-align: center; font-size: 12.5px; color: #8a837c; margin-top: 12px; line-height: 1.5; }
+  .tippfehler { display: block; width: 100%; margin-top: 10px; background: #fff; border: 1px solid #e4ddd4;
+                border-radius: 12px; padding: 11px; font: inherit; font-size: 13.5px; color: #6b6560; cursor: pointer; }
+
+  /* ---------- Schluss ---------- */
+  .schluss { text-align: center; padding: 10px 0; }
+  .schluss .gross { font-size: 44px; font-weight: 800; letter-spacing: -1px; }
+  .schluss h2 { font-size: 20px; font-weight: 800; margin: 8px 0 6px; }
+  .schluss p { font-size: 14px; color: #55504b; line-height: 1.6; margin-bottom: 18px; }
+
+  .hinweis { background: #fff3e0; border: 1px solid #ffe0b2; border-radius: 12px; padding: 11px 14px;
+             font-size: 12.5px; line-height: 1.55; color: #7a5c1e; margin-top: 14px; }
+  .versteckt { display: none !important; }
+</style>
+<link rel="stylesheet" href="css/app-shell.css?v=20260929a">
+</head>
+<body>
+<div class="app">
+
+  <div class="kopf">
+    <a class="zurueck" href="lernen.html" id="zurueck" aria-label="Zurück">&#8249;</a>
+    <h1 id="titel">Vokabeln üben</h1>
+    <span class="zaehler versteckt" id="zaehler"></span>
+  </div>
+  <div class="balken versteckt" id="balken"><i style="width:0%"></i></div>
+
+  <!-- ============ Start ============ -->
+  <section class="start" id="start">
+    <h2 id="startTitel">Los geht's</h2>
+    <p class="lead" id="startText">Einen Moment, die Aufgaben werden geladen.</p>
+
+    <div class="kacheln" id="kacheln"></div>
+
+    <button class="knopf haupt" id="losKnopf">Üben</button>
+    <button class="knopf neben versteckt" id="nurNeuKnopf">Nur neue Wörter ansehen</button>
+
+    <div class="wahl">
+      <label for="paketWahl">Woraus</label>
+      <div class="reihe">
+        <select id="paketWahl"></select>
+        <select id="zielWahl">
+          <option value="10">10 Stück</option>
+          <option value="20" selected>20 Stück</option>
+          <option value="40">40 Stück</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hinweis versteckt" id="startHinweis"></div>
+  </section>
+
+  <!-- ============ Übung ============ -->
+  <section class="versteckt" id="uebung">
+    <div class="karte" id="karte">
+      <div class="marke" id="marke"></div>
+      <div class="frage" id="frage"></div>
+      <div class="hilf versteckt" id="hilf"></div>
+      <div class="antwort versteckt" id="antwort"></div>
+    </div>
+
+    <input class="eingabe versteckt" id="eingabe" type="text" autocomplete="off" autocorrect="off"
+           autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Form eintippen">
+
+    <div class="notiz versteckt" id="notiz"></div>
+
+    <button class="knopf haupt zeigen" id="zeigenKnopf">Antwort zeigen</button>
+    <button class="tippfehler versteckt" id="tippfehlerKnopf">Das war nur ein Tippfehler</button>
+
+    <div class="noten versteckt" id="noten">
+      <button class="note n0" data-note="0">Nicht gut<small>bald wieder</small></button>
+      <button class="note n1" data-note="1">Geht so<small>in ein paar Tagen</small></button>
+      <button class="note n2" data-note="2">Sitzt<small>länger Ruhe</small></button>
+    </div>
+
+    <p class="tipp" id="tipp"></p>
+    <button class="tippfehler" id="genugKnopf" style="margin-top:16px">Genug für heute</button>
+  </section>
+
+  <!-- ============ Schluss ============ -->
+  <section class="schluss versteckt" id="schluss">
+    <div class="gross" id="schlussZahl">0</div>
+    <h2 id="schlussTitel">Fertig</h2>
+    <p id="schlussText"></p>
+    <button class="knopf haupt" id="weiterKnopf">Weiter</button>
+    <a class="knopf neben" href="lernen.html">Für heute reicht's</a>
+  </section>
+
+</div>
+
+<script src="js/progress.js?v=20260929a"></script>
+<script src="js/srs.js?v=20260929a"></script>
+<script src="js/vokabel-sync.js?v=20260929a"></script>
+<script src="js/vokabeltrainer.js?v=20260929a"></script>
+<script src="js/app-shell.js?v=20260929a"></script>
+</body>
+</html>

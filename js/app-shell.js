@@ -68,6 +68,12 @@
       label: 'W★', title: 'Komplett-Wiederholung', meta: '17 Themen · 67 Aufgaben · ca. 60 Min', topic: 'wiederholung', doneKey: 'pt-wiederholung-komplett' }
   ];
   const TRAINING = [
+    // Der Vokabeltrainer führt Buch selbst (js/srs.js), die Shell hängt ihm
+    // keinen Abschluss-Block an.
+    { id: 'vokabeltrainer', group: 'training', num: 0, file: 'vokabeltrainer.html',
+      label: 'V', title: 'Vokabeln üben', meta: 'so lange du willst · merkt sich, was sitzt',
+      desc: 'Karteikarten und Verbformen in einem. Die App entscheidet, was du heute siehst: was am häufigsten vorkommt, und was bei dir wackelt. Was sitzt, kommt lange nicht wieder.',
+      topic: 'vokabeln', selfTracking: true },
     // Speichert sich selbst über PTProgress.save (eigene Sektionen) → selfTracking
     { id: 'perfeito-tempus-v1', group: 'training', num: 1, file: 'uebung-perfeito-tempus.html',
       label: 'Ü1', title: 'Die Vergangenheit: Pretérito Perfeito', meta: '30 Aufgaben · etwa 15 Minuten',
@@ -172,13 +178,13 @@
   const NAV = [
     { id: 'home',        icon: ICONS.home,     label: 'Home',        href: 'index.html' },
     { id: 'learn',       icon: ICONS.learn,    label: 'Lernen',      href: 'lernen.html' },
-    { id: 'vokabeln',    icon: ICONS.vocab,    label: 'Vokabeln',    href: 'vokabeln.html' },
+    { id: 'vokabeln',    icon: ICONS.vocab,    label: 'Vokabeln',    href: 'vokabeltrainer.html' },
     { id: 'fortschritt', icon: ICONS.progress, label: 'Fortschritt', href: 'fortschritt.html' }
   ];
   function activeNavId() {
     if (page === 'index.html' || page === '') return 'home';
+    if (page === 'vokabeltrainer.html' || page === 'vokabeln.html') return 'vokabeln';
     if (page === 'lernen.html' || byFile[page]) return 'learn';
-    if (page === 'vokabeln.html') return 'vokabeln';
     if (page === 'fortschritt.html') return 'fortschritt';
     return null; // Grammatik, Cheat Sheet, Druck-Sheets: kein Tab aktiv
   }
