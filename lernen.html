@@ -185,6 +185,8 @@
   const d = A.DIAGNOSE;
   const dRuns = A.runsFor(d.id);
   $('refList').insertAdjacentHTML('beforeend', row(d.file, dRuns.length ? 'done' : '', dRuns.length ? CHECK : 'T', d.title, dRuns.length ? 'Zuletzt ' + dRuns[dRuns.length - 1].pct + ' % richtig · ' + d.meta : d.meta));
+  $('refList').insertAdjacentHTML('beforeend', row('vokabeltrainer.html', '', 'V', 'Vokabeln üben', '1435 Aufgaben · merkt sich, was sitzt'));
+  $('refList').insertAdjacentHTML('beforeend', row('vokabeln.html', '', 'L', 'Vokabellisten für Lengo', '9 Pakete zum Herunterladen'));
   $('refList').insertAdjacentHTML('beforeend', row('grammatik-bibliothek.html', '', 'G', 'Grammatik-Bibliothek', '29 Themen, ausführlich erklärt'));
   $('refList').insertAdjacentHTML('beforeend', row('cheat-sheet.html', '', 'C', 'Cheat Sheet', 'Kurze Tabellen zu 12 Themen'));
   $('refList').insertAdjacentHTML('beforeend', row('print-sheets.html', '', 'P', 'Druck-Sheets', '14 Blätter zum Ausdrucken'));
