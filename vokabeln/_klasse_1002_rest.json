@@ -1,0 +1,134 @@
+[
+ {
+  "pt": "de vez em quando",
+  "de": "ab und zu, also seltener als manchmal",
+  "notiz": "Damit sagst du, dass etwas unregelmäßig vorkommt, hier und da. Es liegt nah bei às vezes, das im Gespräch häufiger fällt, ein echter Unterschied in der Häufigkeit steckt nicht darin. Deutlich mehr wird es erst mit muitas vezes für oft. Beispiel aus der Klasse: De vez em quando ponho um flyer na encomenda. Also: Ab und zu lege ich einen Flyer in die Bestellung.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "daqui a",
+  "de": "in, von jetzt an gerechnet (bei Zeitangaben in der Zukunft)",
+  "notiz": "Das ist das Gegenstück zu há. Mit há sagst du, wie lange etwas her ist, mit daqui a sagst du, wie lange es noch dauert. Beides steht vor der Zeitangabe. Beispiel aus der Klasse: Daqui a duas semanas vou terminar tudo. Also: In zwei Wochen mache ich alles fertig. Im Gegensatz dazu: Há duas semanas terminei tudo. Also: Vor zwei Wochen habe ich alles fertig gemacht.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "em breve",
+  "de": "bald, in naher Zukunft, ohne dass du ein Datum nennst",
+  "notiz": "Damit sagst du, dass etwas in naher Zukunft passiert, ohne dass du ein Datum nennst. Es steht meist am Satzanfang oder am Satzende. Beispiel aus der Klasse, korrigiert: Em breve vou finalmente começar a vender. Also: Bald fange ich endlich an zu verkaufen. Das Wort brevemente bedeutet in Portugal übrigens dasselbe, du siehst es dort auf Schaufenstern im Sinne von demnächst. Dein Fehler in der Klasse war deshalb nicht das Wort, sondern dass finalmente und brevemente zusammen dieselbe Aussage zweimal machen.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "por causa de",
+  "de": "wegen, vor einem Hauptwort mit Artikel",
+  "notiz": "Damit nennst du den Grund für etwas. Nach de kommt ein Substantiv, und de verschmilzt mit dem Artikel, also por causa da boa comida und por causa do mau tempo. Beispiel aus der Klasse: Vais caminhar até lá por causa da boa comida. Also: Du wirst bis dorthin laufen wegen des guten Essens.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "para não ter de",
+  "de": "um etwas nicht tun zu müssen",
+  "notiz": "Damit begründest du, was du dir ersparen willst. Danach kommt die Grundform des Verbs. In Portugal sagt man ter de, nicht ter que, auch wenn du ter que ständig in brasilianischen Videos hörst. Beispiel aus der Klasse: Põe o desconto no flyer para não ter de explicar tudo outra vez. Also: Schreib den Rabatt auf den Flyer, um nicht alles noch einmal erklären zu müssen.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "mesmo quando",
+  "de": "auch dann, wenn es tatsächlich so ist",
+  "notiz": "Damit sagst du, dass etwas gilt, obwohl eine bestimmte Lage wirklich eintritt. Danach kommt die normale Gegenwart, kein Konjunktiv, weil es um etwas Tatsächliches geht. Beispiel: Mesmo quando o gráfico está baixo, continuo a trabalhar. Also: Auch dann, wenn die Kurve niedrig ist, arbeite ich weiter. Unterscheide es von mesmo que, das für etwas Gedachtes steht und den Konjunktiv verlangt.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "pela segunda vez",
+  "de": "zum zweiten Mal",
+  "notiz": "Das Muster ist pela plus Zahl plus vez. Es wird mit por und a gebildet, die zu pela verschmelzen, weil vez weiblich ist. Nach demselben Muster gehen pela primeira vez für zum ersten Mal und pela última vez für zum letzten Mal. Beispiel aus der Klasse: Estou doente pela segunda vez este mês. Also: Ich bin diesen Monat zum zweiten Mal krank.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "provavelmente",
+  "de": "wahrscheinlich",
+  "notiz": "Damit sagst du, dass du etwas für ziemlich sicher hältst, ohne es zu wissen. Es steht meist am Satzanfang oder direkt vor dem Verb. Beispiel: Provavelmente vou vender o telemóvel. Also: Wahrscheinlich verkaufe ich das Handy. Schwächer ist talvez für vielleicht, und nach talvez kommt der Konjunktiv.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "de 60% a 65%",
+  "de": "von 60 bis 65 Prozent",
+  "notiz": "Für eine Spanne sagt das Portugiesische de und dann a, nicht de und até. Es steht nach dem Verb ser mit einem zusätzlichen de: A minha margem é de 60% a 65%. Wenn du das Prozentzeichen schreibst, lass por cento weg, sonst sagst du es doppelt.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "até às onze horas",
+  "de": "bis elf Uhr",
+  "notiz": "Bei Uhrzeiten steht às, weil horas weiblich und Mehrzahl ist, also a plus as wird às. Du hast gesagt Dormimos até às onze horas. Bei einem Datum heißt es dagegen até ao dia 3, mit ao statt às.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "no dia 3 de outubro",
+  "de": "am 3. Oktober",
+  "notiz": "Das Portugiesische stellt no dia vor die Zahl, wörtlich am Tag 3. Der Monatsname wird kleingeschrieben, also outubro und nicht Outubro. Die Zahl bleibt eine normale Zahl ohne Punkt. Für den ersten Tag des Monats sagst du in Portugal no dia um, also gesprochen wie die Zahl eins. Die Form primeiro de outubro ist brasilianisch und fällt in Portugal auf.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "por atividade suspeita",
+  "de": "wegen verdächtiger Aktivität",
+  "notiz": "Für einen Grund nimmt das Portugiesische hier por allein, ohne causa. Du hast es von Amazon übernommen: cancelou a encomenda por atividade suspeita. Mit por causa de wird es länger aber genauso richtig, das brauchst du vor allem vor einem Hauptwort mit Artikel.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "daqui a dez dias",
+  "de": "in zehn Tagen, also zehn Tage ab jetzt",
+  "notiz": "daqui a zeigt immer nach vorne in die Zukunft, wörtlich von hier an. Du hattest zuerst em 10 dias gesagt, das versteht man, klingt aber nicht portugiesisch. Das Gegenstück für die Vergangenheit ist há dez dias, also vor zehn Tagen.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "em comparação com a Alemanha",
+  "de": "im Vergleich zu Deutschland",
+  "notiz": "Moritz hat se comparar com Alemanha gesagt, also eine Verbform, wo ein Ausdruck hingehört, und außerdem ohne Artikel. Vor Ländernamen steht im Portugiesischen meist der Artikel, also a Alemanha, a Espanha, o Brasil. Portugal ist eine der wenigen Ausnahmen ohne Artikel.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "uma coisa assim",
+  "de": "so etwas in der Art",
+  "notiz": "Moritz hat alguma coisa como isso gesagt, und das ist Wort für Wort aus dem Englischen übersetzt. Portugiesen sagen uma coisa assim oder algo deste género. Das assim trägt dabei die Bedeutung von so.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "através da janela",
+  "de": "durch das Fenster hindurch",
+  "notiz": "Das através de betont, dass etwas einen Durchgang nimmt, anders als por, das nur eine Richtung angibt. Mit dem Artikel verschmilzt es zu através da bei weiblichen und através do bei männlichen Wörtern. Moritz hat in der Klasse auch através do teto gesagt.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "em volta da cidade",
+  "de": "rund um die Stadt herum",
+  "notiz": "Das beschreibt eine Bewegung oder Lage im Kreis um etwas. Moritz hat es in der Klasse benutzt, allerdings für Wasser, das eher aus der Stadt heraus als um sie herum geleitet wird. Verwandt ist à volta de mit derselben Bedeutung.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "Nada mais.",
+  "de": "Nichts weiter.",
+  "notiz": "Das sagst du, wenn du eine Aufzählung oder eine Bestellung abschließt, etwa an der Kasse oder im Restaurant. Moritz hat es in der Klasse beim Einkauf benutzt. Du kannst auch Mais nada sagen, das ist dasselbe.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "quase um mês",
+  "de": "fast einen Monat",
+  "notiz": "Das quase steht immer direkt vor dem, was es abschwächt. Moritz hat es in der Klasse für die Länge seines Aufenthalts benutzt. Beachte, dass mês den Akzent auf dem e trägt und im Plural meses heißt.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "eu mesmo",
+  "de": "ich selbst, also persönlich und nicht jemand anderes",
+  "notiz": "Damit betonst du, dass du es selbst machst. Die Form passt sich an, also eu mesmo bei einem Mann und eu mesma bei einer Frau. Moritz hat es benutzt, um zu sagen, dass er selbst vor der Kamera stehen will.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "no próximo ano",
+  "de": "im nächsten Jahr",
+  "notiz": "Das próximo steht hier vor dem Hauptwort und meint das kommende Jahr. Stünde es dahinter, also no ano próximo, klänge es förmlich. Moritz hat die geläufige Reihenfolge benutzt.",
+  "kategorie": "scharniere"
+ },
+ {
+  "pt": "por causa desses pequenos problemas",
+  "de": "wegen dieser kleinen Probleme",
+  "notiz": "Das por causa de ist der feste Ausdruck für wegen, und mit esses verschmilzt das de zu desses. Moritz hat die Wendung in der Klasse genau so gebraucht. Für eine positive Begründung nimmst du graças a.",
+  "kategorie": "scharniere"
+ }
+]

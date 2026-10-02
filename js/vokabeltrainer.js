@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var DATEN = 'daten/trainer.json?v=20260929a';
+  var DATEN = 'daten/trainer.json?v=20261002a';
   var CACHE = 'pt_trainer_daten';        // damit die Übung auch ohne Netz startet
 
   var el = {}, daten = null, liste = [], pos = 0, aktuell = null, gezeigt = false;
@@ -198,7 +198,18 @@
     var marke = neu ? 'neu' : PTSrs.fach(aktuell.stand);
     if (a.paket === 'konjugation' && ri === 'tippen') marke = neu ? 'neue Form' : 'Form';
 
-    if (ri === 'tippen') {
+    if (ri === 'luecke') {
+      // Grammatikübung: ein Satz mit einer Lücke. Hier ist ein Lückentext
+      // erlaubt, weil getippt wird und es keine Rückrichtung gibt.
+      text(el.marke, marke + ' · Lücke füllen');
+      el.frage.className = 'frage klein';
+      text(el.frage, a.satz.replace('___', '＿＿＿'));
+      text(el.hilf, a.de); zeig(el.hilf, true);
+      zeig(el.eingabe, true); el.eingabe.value = ''; el.eingabe.disabled = false;
+      el.eingabe.placeholder = a.platzhalter || 'fehlendes Wort';
+      setTimeout(function () { try { el.eingabe.focus(); } catch (e) {} }, 60);
+      el.zeigenKnopf.textContent = 'Prüfen';
+    } else if (ri === 'tippen') {
       text(el.marke, marke + ' · tippen');
       el.frage.className = 'frage klein';
       text(el.frage, a.verb + ' — ' + a.zeit_de);
@@ -232,7 +243,16 @@
     gezeigt = true;
     var a = aktuell.aufgabe, ri = aktuell.richtung;
 
-    if (ri === 'tippen') {
+    if (ri === 'luecke') {
+      var richtig = pruefeLuecke(el.eingabe.value, a);
+      aktuell.urteil = { richtig: richtig, art: richtig ? 'exakt' : 'falsch' };
+      el.eingabe.disabled = true;
+      text(el.antwort, a.satz.replace('___', a.pt));
+      el.antwort.classList.toggle('falsch', !richtig);
+      zeig(el.antwort, true); zeig(el.noten, true);
+      markiereVorschlag(richtig ? 2 : 0);
+      if (!richtig && el.eingabe.value.trim()) text(el.tipp, 'Du hattest ' + el.eingabe.value.trim() + ' getippt, richtig ist ' + a.pt + '.');
+    } else if (ri === 'tippen') {
       var urteil = pruefeForm(el.eingabe.value, a);
       aktuell.urteil = urteil;
       el.eingabe.disabled = true;
@@ -279,7 +299,7 @@
     if (!gezeigt) return;
     var a = aktuell.aufgabe;
     var extra = { ms: Date.now() - begonnen };
-    if (aktuell.richtung === 'tippen') {
+    if (aktuell.richtung === 'tippen' || aktuell.richtung === 'luecke') {
       extra.antwort = el.eingabe.value.trim();
       extra.richtig = !!(aktuell.urteil && aktuell.urteil.richtig);
     }
@@ -333,6 +353,19 @@
       return { richtig: false, art: 'tippfehler' };
     }
     return { richtig: false, art: 'falsch' };
+  }
+
+  /**
+   * Lückenaufgabe prüfen. Mehrere richtige Lösungen sind erlaubt, sie stehen
+   * in a.auch. Akzente müssen stimmen, Groß- und Kleinschreibung nicht,
+   * außer die Lücke steht am Satzanfang und es geht gerade um den Artikel.
+   */
+  function pruefeLuecke(eingabe, a) {
+    var u = norm(eingabe);
+    if (!u) return false;
+    var richtig = [a.pt].concat(a.auch || []);
+    for (var i = 0; i < richtig.length; i++) if (norm(richtig[i]) === u) return true;
+    return false;
   }
 
   function irgendeineForm(u) {

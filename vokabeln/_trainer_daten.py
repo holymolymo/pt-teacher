@@ -226,13 +226,31 @@ def lies_pakete(h):
 
 # ------------------------------------------------------------------ Konjugation
 
-def baue_konjugation(h):
+def alle_verben():
+    """
+    Die von Hand geprüften aus _verben.py plus die gerechneten aus _verben_neu.py.
+    Beide zusammen, damit jedes Verb aus den Klassen seine Formen hat, so wie
+    Moritz es wollte: nicht nur das Wort, sondern auch seine Konjugation.
+    """
     sys.path.insert(0, HIER)
     import _verben as V
-    V.selbsttest()          # bricht ab, wenn eine Form nicht stimmt
+    V.selbsttest()          # bricht ab, wenn eine Form von Hand falsch eingetippt wurde
+    verben = dict(V.VERBEN)
+    reflexive = dict(V.REFLEXIVE)
+    try:
+        import _verben_neu as N
+        verben.update(N.VERBEN_NEU)
+        reflexive.update(N.REFLEXIVE_NEU)
+    except ImportError:
+        pass
+    return V, verben, reflexive
+
+
+def baue_konjugation(h):
+    V, VERBEN, REFLEXIVE = alle_verben()
 
     raus = []
-    for inf, v in V.VERBEN.items():
+    for inf, v in VERBEN.items():
         gruppe = v.get('gruppe', 'muster')
         erlaubt = ZELLEN.get(gruppe, None)
         for zeit in ('pres', 'perf', 'imp', 'cond'):
@@ -256,7 +274,7 @@ def baue_konjugation(h):
                 })
 
     # Reflexive: beide Stellungen. Genau hier macht er seinen zweithäufigsten Fehler.
-    for inf, v in V.REFLEXIVE.items():
+    for inf, v in REFLEXIVE.items():
         for i, person in enumerate(V.PERSONEN):
             form, vorne = v['nach'][i], v['vor'][i]
             z = h.zipf(form)
@@ -274,7 +292,7 @@ def baue_konjugation(h):
 
     # Ganze Reihe als Merkhilfe, eine je Verb und Zeit. Die Reihe hält die Form
     # zusammen, die Einzelzellen trainieren den Abruf.
-    for inf, v in V.VERBEN.items():
+    for inf, v in VERBEN.items():
         if v.get('gruppe') not in ('top', 'unreg'):
             continue
         for zeit in ('pres', 'perf', 'imp', 'cond'):
@@ -299,17 +317,90 @@ def sammle_formtabellen():
     NACHBARFORMEN prüfen kann. Nur so lässt sich "comem" statt "comeram" als
     falsche Person melden, statt es als Tippfehler durchzuwinken.
     """
-    sys.path.insert(0, HIER)
-    import _verben as V
+    V, VERBEN, REFLEXIVE = alle_verben()
     t = {}
-    for inf, v in V.VERBEN.items():
+    for inf, v in VERBEN.items():
         formen = []
         for zeit in ('pres', 'perf', 'imp', 'cond'):
             formen += v.get(zeit, [])
         t[inf] = sorted(set(formen))
-    for inf, v in V.REFLEXIVE.items():
+    for inf, v in REFLEXIVE.items():
         t[inf] = sorted(set(v['nach'] + v['vor']))
     return t
+
+
+# ------------------------------------------------------------------ Grammatikübungen
+
+# Die Lückenaufgaben greifen genau die Fehler an, die in zehn Klassen hintereinander
+# belegt sind. Sie werden aus den vorhandenen Sätzen erzeugt, nicht von Hand geschrieben,
+# damit jede neue Klasse automatisch neue Übungen mitbringt.
+L_POSSESSIV = re.compile(r'\b(o|a|os|as)\s+(meu|minha|meus|minhas|teu|tua|teus|tuas|seu|sua|seus|suas|nosso|nossa|nossos|nossas)\b', re.I)
+L_ENKLISE   = re.compile(r'\b(\w+)-(me|te|lhe|se|nos|lhes)\b')
+L_PROKLISE  = re.compile(r'\b(não|nunca|já|também|que|quando|porque|onde|quem|só|sempre)\s+(me|te|lhe|se|nos|lhes)\s+(\w+)', re.I)
+
+
+def baue_luecken(karten, h):
+    """
+    Erzeugt Grammatikübungen mit Eingabefeld aus den vorhandenen Sätzen.
+
+    Anders als bei Karteikarten ist eine Lücke hier erlaubt, weil getippt wird
+    und es keine Rückrichtung gibt, die daran zerbrechen könnte.
+    """
+    raus = []
+
+    for k in karten:
+        pt, de = k['pt'], k['de']
+        if len(pt.split()) < 3:
+            continue
+
+        # 1. Der Artikel vor dem Possessiv. Sein häufigster Fehler überhaupt,
+        #    belegt in zehn Klassen hintereinander.
+        m = L_POSSESSIV.search(pt)
+        if m:
+            satz = pt[:m.start(1)] + '___' + pt[m.end(1):]
+            raus.append({
+                'typ': 'luecke', 'thema': 'artikel-possessiv',
+                'satz': satz, 'pt': m.group(1), 'de': de,
+                'platzhalter': 'ein kleines Wort',
+                'notiz': 'In Portugal steht vor meu, minha, teu und seu immer der Artikel. '
+                         'Ohne ihn klingt der Satz brasilianisch. Das ist dein häufigster Fehler, '
+                         'er kam in zehn Klassen hintereinander vor.',
+                'paket': 'grammatik', 'F': h.punkte(6.0), 'G': 1.0, 'A': 0.0,
+                'fehler': ['artikel-possessiv'], 'richtungen': ['luecke'],
+            })
+            continue
+
+        # 2. Pronomen hinten am Verb, solange kein Auslöserwort davorsteht.
+        m = L_ENKLISE.search(pt)
+        if m and not L_PROKLISE.search(pt):
+            satz = pt[:m.start(2)] + '___' + pt[m.end(2):]
+            raus.append({
+                'typ': 'luecke', 'thema': 'pronomen-hinten',
+                'satz': satz, 'pt': m.group(2), 'de': de,
+                'platzhalter': 'me, te, lhe, se, nos',
+                'notiz': 'Steht kein Auslöserwort davor, hängt das Pronomen mit Bindestrich '
+                         'hinten am Verb. Vorangestellt wäre es brasilianisch.',
+                'paket': 'grammatik', 'F': h.punkte(6.0), 'G': 1.0, 'A': 0.0,
+                'fehler': ['pronomen-hinten'], 'richtungen': ['luecke'],
+            })
+            continue
+
+        # 3. Pronomen nach vorn, sobald ein Auslöserwort davorsteht. Genau das
+        #    hat er am 02.10. falsch gemacht: "Quando mudei-me" statt "Quando me mudei".
+        m = L_PROKLISE.search(pt)
+        if m:
+            satz = pt[:m.start(2)] + '___' + pt[m.end(2):]
+            raus.append({
+                'typ': 'luecke', 'thema': 'pronomen-vorn',
+                'satz': satz, 'pt': m.group(2), 'de': de,
+                'platzhalter': 'me, te, lhe, se, nos',
+                'notiz': f'Nach einem Wort wie {m.group(1).lower()} rutscht das Pronomen vor das Verb. '
+                         'Angehängt wäre hier falsch.',
+                'paket': 'grammatik', 'F': h.punkte(6.0), 'G': 1.0, 'A': 0.0,
+                'fehler': ['pronomen-vorn'], 'richtungen': ['luecke'],
+            })
+
+    return raus
 
 
 # ------------------------------------------------------------------ Gewichten
@@ -330,6 +421,10 @@ def dauerhafte_kennung(a):
         return f"form|{a['verb']}|{a['zeit']}|{a['person']}"
     if a['typ'] == 'reihe':
         return f"reihe|{a['verb']}|{a['zeit']}"
+    if a['typ'] == 'luecke':
+        # Der Satz MIT der Lücke identifiziert die Übung, nicht das Lückenwort.
+        # Sonst heißen alle Artikel-Übungen gleich, weil dort immer nur "o" steht.
+        return f"luecke|{a['thema']}|{a['satz']}"
     return f"karte|{a['paket']}|{a['pt']}"
 
 
@@ -378,7 +473,8 @@ def main():
         print(f'Zipf-Konstante {h.konstante:.4f}  ·  Kontrolle: que {h.zipf("que"):.2f}, '
               f'ontem {h.zipf("ontem"):.2f}, congelador {h.zipf("congelador"):.2f}')
 
-    alle = gewichte(lies_pakete(h) + baue_konjugation(h))
+    karten = lies_pakete(h)
+    alle = gewichte(karten + baue_konjugation(h) + baue_luecken(karten, h))
     formtabellen = sammle_formtabellen()
 
     os.makedirs(os.path.dirname(ZIEL), exist_ok=True)

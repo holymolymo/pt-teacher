@@ -12,7 +12,7 @@ neue werden angehängt. Danach wird die Master-Datei neu gebaut.
 import csv, json, os, re, sys, unicodedata
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-KATEGORIEN = ['verben', 'nomen', 'adjektive', 'redewendungen', 'grammatik', 'fragen', 'umgangssprache']
+KATEGORIEN = ['scharniere', 'verben', 'nomen', 'adjektive', 'redewendungen', 'grammatik', 'fragen', 'umgangssprache']
 
 def norm(s):
     s = (s or '').strip().lower()
