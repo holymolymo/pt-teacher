@@ -5,102 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Einstufungstest — Português</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5f0eb">
+<meta name="theme-color" content="#0d1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Português">
 <link rel="apple-touch-icon" href="icons/icon-apple.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  body { font-family: 'Poppins', -apple-system, sans-serif; background: #0d1410; color: #ecefea; min-height: 100vh; }
   .page { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 24px; }
-  .back-link:hover { color: #c62828; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #9da89f; text-decoration: none; margin-bottom: 24px; }
+  .back-link:hover { color: #e2695f; }
 
   .header { text-align: center; margin-bottom: 24px; }
-  .lesson-tag { display: inline-block; background: #c62828; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
-  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: #1a1715; }
-  .header p { font-size: 15px; color: #6b6560; line-height: 1.5; max-width: 540px; margin: 0 auto; }
+  .lesson-tag { display: inline-block; background: #e2695f; color: #0d1410; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 10px; margin-bottom: 16px; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: #ecefea; }
+  .header p { font-size: 15px; color: #9da89f; line-height: 1.5; max-width: 540px; margin: 0 auto; }
 
-  .intro-box { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-  .intro-box h3 { font-size: 14px; font-weight: 700; color: #c62828; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-  .intro-box ul { padding-left: 18px; font-size: 13.5px; line-height: 1.7; color: #4a4540; }
+  .intro-box { background: #16221a; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .intro-box h3 { font-size: 14px; font-weight: 700; color: #e2695f; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .intro-box ul { padding-left: 18px; font-size: 13.5px; line-height: 1.7; color: #c2ccc4; }
   .intro-box li { margin-bottom: 4px; }
-  .intro-box strong { color: #1a1715; }
+  .intro-box strong { color: #ecefea; }
 
   /* Sticky progress */
-  .progress-bar-sticky { position: sticky; top: 0; background: #f5f0eb; padding: 12px 0; z-index: 50; margin-bottom: 16px; }
-  .progress-bar { height: 8px; background: #ede6df; border-radius: 4px; overflow: hidden; }
-  .progress-fill { height: 100%; background: #c62828; transition: width 0.3s; width: 0%; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #6b6560; margin-top: 6px; }
+  .progress-bar-sticky { position: sticky; top: 0; background: #0d1410; padding: 12px 0; z-index: 50; margin-bottom: 16px; }
+  .progress-bar { height: 8px; background: #26382b; border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #e2695f; transition: width 0.3s; width: 0%;  color: #0d1410; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #9da89f; margin-top: 6px; }
 
   .section { margin-bottom: 32px; }
-  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #c62828; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #ffcdd2; display: flex; justify-content: space-between; align-items: center; }
-  .section-title .count { font-size: 11px; color: #9e9892; font-weight: 500; letter-spacing: 0.5px; }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #e2695f; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #3d201c; display: flex; justify-content: space-between; align-items: center; }
+  .section-title .count { font-size: 11px; color: #8c988f; font-weight: 500; letter-spacing: 0.5px; }
 
-  .exercise-card { background: white; border-radius: 12px; padding: 22px 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-  .exercise-label { font-size: 12px; font-weight: 600; color: #9e9892; margin-bottom: 8px; }
-  .exercise-prompt { font-size: 15px; line-height: 1.55; margin-bottom: 12px; color: #2d2a26; }
-  .exercise-prompt em { color: #6b6560; font-style: italic; }
+  .exercise-card { background: #16221a; border-radius: 8px; padding: 22px 24px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .exercise-label { font-size: 12px; font-weight: 600; color: #8c988f; margin-bottom: 8px; }
+  .exercise-prompt { font-size: 15px; line-height: 1.55; margin-bottom: 12px; color: #ecefea; }
+  .exercise-prompt em { color: #9da89f; font-style: italic; }
 
   .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .input-row span { font-size: 15px; }
   .answer-input {
-    border: 2px solid #e8d5c4; border-radius: 8px; padding: 9px 12px;
-    font-size: 15px; font-family: inherit; background: #faf8f5; color: #2d2a26;
+    border: 2px solid #26382b; border-radius: 8px; padding: 9px 12px;
+    font-size: 15px; font-family: inherit; background: #16221a; color: #ecefea;
     width: 200px; outline: none; transition: border-color 0.15s;
   }
-  .answer-input:focus { border-color: #c62828; background: white; }
-  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
-  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .answer-input:focus { border-color: #e2695f; background: #16221a; }
+  .answer-input.correct { border-color: #5fa86b; background: #15291a; }
+  .answer-input.incorrect { border-color: #e2695f; background: #2b1715; }
   .translation-input { width: 100%; }
 
   .feedback { margin-top: 10px; padding: 9px 13px; border-radius: 8px; font-size: 13.5px; display: none; line-height: 1.5; }
   .feedback.show { display: block; }
-  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
-  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .feedback.correct { background: #15291a; color: #4e9159; }
+  .feedback.incorrect { background: #2b1715; color: #c9564c; }
   .feedback strong { font-weight: 700; }
 
   .check-btn {
     display: block; width: 100%; max-width: 320px; margin: 32px auto 0;
-    background: #c62828; color: white; border: none; border-radius: 12px;
+    background: #e2695f; color: #0d1410; border: none; border-radius: 8px;
     padding: 18px 32px; font-size: 17px; font-weight: 700; font-family: inherit;
     cursor: pointer; letter-spacing: 0.3px;
   }
-  .check-btn:hover { background: #b71c1c; }
+  .check-btn:hover { background: #c9564c;  color: #0d1410; }
 
   /* Results */
   .results { display: none; margin-top: 32px; }
   .results.show { display: block; }
 
-  .results-summary { background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-align: center; margin-bottom: 16px; }
-  .score-big { font-size: 56px; font-weight: 800; color: #c62828; }
-  .score-total { font-size: 16px; color: #6b6560; margin-bottom: 6px; }
-  .score-label { font-size: 14px; color: #4a4540; line-height: 1.5; max-width: 480px; margin: 8px auto 0; }
+  .results-summary { background: #16221a; border-radius: 8px; padding: 28px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-align: center; margin-bottom: 16px; }
+  .score-big { font-size: 56px; font-weight: 800; color: #e2695f; }
+  .score-total { font-size: 16px; color: #9da89f; margin-bottom: 6px; }
+  .score-label { font-size: 14px; color: #c2ccc4; line-height: 1.5; max-width: 480px; margin: 8px auto 0; }
 
-  .topic-results { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 16px; }
-  .topic-results h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #2d2a26; margin-bottom: 16px; }
-  .topic-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ede6df; font-size: 14px; gap: 12px; }
+  .topic-results { background: #16221a; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 16px; }
+  .topic-results h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #ecefea; margin-bottom: 16px; }
+  .topic-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #26382b; font-size: 14px; gap: 12px; }
   .topic-row:last-child { border-bottom: none; }
-  .topic-name { flex: 1; font-weight: 500; color: #2d2a26; }
-  .topic-bar { width: 140px; height: 10px; background: #ede6df; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
+  .topic-name { flex: 1; font-weight: 500; color: #ecefea; }
+  .topic-bar { width: 140px; height: 10px; background: #26382b; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
   .topic-fill { height: 100%; border-radius: 5px; transition: width 0.6s; }
-  .topic-fill.good { background: #2e7d32; }
-  .topic-fill.ok   { background: #f9a825; }
-  .topic-fill.bad  { background: #c62828; }
-  .topic-score { font-size: 13px; color: #6b6560; min-width: 56px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .topic-fill.good { background: #5fa86b;  color: #0d1410; }
+  .topic-fill.ok   { background: #d9a648;  color: #0d1410; }
+  .topic-fill.bad  { background: #e2695f;  color: #0d1410; }
+  .topic-score { font-size: 13px; color: #9da89f; min-width: 56px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 
-  .recommendations { background: linear-gradient(135deg, #fff8e1, white); border-left: 4px solid #f9a825; border-radius: 0 12px 12px 0; padding: 20px 24px; margin-bottom: 16px; }
-  .recommendations h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #795600; margin-bottom: 12px; }
-  .recommendations ul { padding-left: 20px; font-size: 14px; line-height: 1.7; color: #4a4540; }
+  .recommendations { background: linear-gradient(135deg, #2a2113, #1d1810); border-left: 4px solid #d9a648; border-radius: 0 12px 12px 0; padding: 20px 24px; margin-bottom: 16px; }
+  .recommendations h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #d9a648; margin-bottom: 12px; }
+  .recommendations ul { padding-left: 20px; font-size: 14px; line-height: 1.7; color: #c2ccc4; }
   .recommendations li { margin-bottom: 6px; }
-  .recommendations strong { color: #c62828; }
+  .recommendations strong { color: #e2695f; }
 
-  .reset-btn { display: block; width: 100%; max-width: 320px; margin: 16px auto; background: white; color: #c62828; border: 2px solid #c62828; border-radius: 12px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
-  .reset-btn:hover { background: #ffebee; }
+  .reset-btn { display: block; width: 100%; max-width: 320px; margin: 16px auto; background: #16221a; color: #e2695f; border: 2px solid #e2695f; border-radius: 8px; padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .reset-btn:hover { background: #2b1715; }
 
   @media (max-width: 600px) {
     .header h1 { font-size: 24px; }
@@ -109,7 +109,7 @@
     .topic-bar { width: 90px; }
   }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002b">
+<link rel="stylesheet" href="css/app-shell.css?v=20261002d">
 </head>
 <body>
 <div class="page">
@@ -200,8 +200,8 @@
 
 <!-- ====================== 5. IMPERFEITO (ADVANCED, OPTIONAL) ====================== -->
 <div class="section" data-topic="imperfeito" data-advanced="1" style="opacity: 0.75;">
-  <div class="section-title" style="color: #9e9892; border-bottom-color: #ede6df;"><span>5. Pret&eacute;rito Imperfeito <span style="background: #ffe0b2; color: #b34700; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; letter-spacing: 0.5px;">ADVANCED &middot; optional</span></span><span class="count">8 Aufgaben</span></div>
-  <div style="background: #fff8e1; border-left: 3px solid #f9a825; padding: 10px 14px; margin-bottom: 12px; font-size: 12px; color: #795600; border-radius: 0 6px 6px 0;">Nur ausf&uuml;llen wenn du dich sicher f&uuml;hlst. Sonst <strong>leer lassen</strong> &mdash; z&auml;hlt dann nicht negativ.</div>
+  <div class="section-title" style="color: #8c988f; border-bottom-color: #26382b;"><span>5. Pret&eacute;rito Imperfeito <span style="background: #3a2e18; color: #3f7a49; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; letter-spacing: 0.5px;">ADVANCED &middot; optional</span></span><span class="count">8 Aufgaben</span></div>
+  <div style="background: #2a2113; border-left: 3px solid #d9a648; padding: 10px 14px; margin-bottom: 12px; font-size: 12px; color: #d9a648; border-radius: 0 6px 6px 0;">Nur ausf&uuml;llen wenn du dich sicher f&uuml;hlst. Sonst <strong>leer lassen</strong> &mdash; z&auml;hlt dann nicht negativ.</div>
 
   <div class="exercise-card"><div class="exercise-label">5.1 &mdash; ser (eu) &mdash; "Als ich klein war..."</div><div class="input-row"><span>Quando eu</span><input type="text" class="answer-input" data-answers="era"><span>pequeno...</span></div><div class="feedback"></div></div>
   <div class="exercise-card"><div class="exercise-label">5.2 &mdash; ter (n&oacute;s)</div><div class="input-row"><span>N&oacute;s</span><input type="text" class="answer-input" data-answers="t&iacute;nhamos|tinhamos"><span>um c&atilde;o.</span></div><div class="feedback"></div></div>
@@ -215,8 +215,8 @@
 
 <!-- ====================== 6. KONDITIONAL (ADVANCED, OPTIONAL) ====================== -->
 <div class="section" data-topic="konditional" data-advanced="1" style="opacity: 0.75;">
-  <div class="section-title" style="color: #9e9892; border-bottom-color: #ede6df;"><span>6. Konditional (&quot;w&uuml;rde&quot;) <span style="background: #ffe0b2; color: #b34700; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; letter-spacing: 0.5px;">ADVANCED &middot; optional</span></span><span class="count">6 Aufgaben</span></div>
-  <div style="background: #fff8e1; border-left: 3px solid #f9a825; padding: 10px 14px; margin-bottom: 12px; font-size: 12px; color: #795600; border-radius: 0 6px 6px 0;">Hast du gerade erst angerissen. Nur ausf&uuml;llen wenn du "queria/gostaria" schon aktiv nutzt.</div>
+  <div class="section-title" style="color: #8c988f; border-bottom-color: #26382b;"><span>6. Konditional (&quot;w&uuml;rde&quot;) <span style="background: #3a2e18; color: #3f7a49; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; letter-spacing: 0.5px;">ADVANCED &middot; optional</span></span><span class="count">6 Aufgaben</span></div>
+  <div style="background: #2a2113; border-left: 3px solid #d9a648; padding: 10px 14px; margin-bottom: 12px; font-size: 12px; color: #d9a648; border-radius: 0 6px 6px 0;">Hast du gerade erst angerissen. Nur ausf&uuml;llen wenn du "queria/gostaria" schon aktiv nutzt.</div>
 
   <div class="exercise-card"><div class="exercise-label">6.1 &mdash; gostar (eu) &mdash; w&uuml;rde m&ouml;gen</div><div class="input-row"><span>Eu</span><input type="text" class="answer-input" data-answers="gostaria"><span>de viajar.</span></div><div class="feedback"></div></div>
   <div class="exercise-card"><div class="exercise-label">6.2 &mdash; comer (tu)</div><div class="input-row"><span>Tu</span><input type="text" class="answer-input" data-answers="comerias"><span>esse bolo?</span></div><div class="feedback"></div></div>
@@ -439,7 +439,7 @@ function checkAll() {
     if (data.attempted === 0) {
       rows.innerHTML += `
         <div class="topic-row" style="opacity: 0.5;">
-          <div class="topic-name">${topicNames[key]}${data.advanced ? ' <span style="font-size: 10px; color: #b34700;">(fortgeschritten)</span>' : ''}</div>
+          <div class="topic-name">${topicNames[key]}${data.advanced ? ' <span style="font-size: 10px; color: #3f7a49;">(fortgeschritten)</span>' : ''}</div>
           <div class="topic-bar"></div>
           <div class="topic-score">nicht bearbeitet</div>
         </div>`;
@@ -448,7 +448,7 @@ function checkAll() {
     const tPct = Math.round(data.correct / data.total * 100);
     const cls = tPct >= 80 ? 'good' : tPct >= 60 ? 'ok' : 'bad';
     if (tPct < 75 && !data.advanced) weakTopics.push({ name: topicNames[key], pct: tPct });
-    const advTag = data.advanced ? ' <span style="font-size: 10px; color: #b34700;">(fortgeschritten)</span>' : '';
+    const advTag = data.advanced ? ' <span style="font-size: 10px; color: #3f7a49;">(fortgeschritten)</span>' : '';
     rows.innerHTML += `
       <div class="topic-row">
         <div class="topic-name">${topicNames[key]}${advTag}</div>
@@ -476,7 +476,7 @@ function checkAll() {
 }
 </script>
 
-<script src="js/progress.js?v=20261002b"></script>
-<script src="js/app-shell.js?v=20261002b"></script>
+<script src="js/progress.js?v=20261002d"></script>
+<script src="js/app-shell.js?v=20261002d"></script>
 </body>
 </html>

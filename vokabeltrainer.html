@@ -5,91 +5,91 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Vokabeln üben – Português</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5f0eb">
+<meta name="theme-color" content="#0d1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Português">
 <link rel="apple-touch-icon" href="icons/icon-apple.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; background: #0d1410; color: #ecefea; min-height: 100vh; }
   a { color: inherit; text-decoration: none; }
   .app { max-width: 480px; margin: 0 auto; padding: 18px 18px 24px; }
 
   .kopf { display: flex; align-items: center; gap: 10px; margin: 2px 2px 16px; }
-  .kopf .zurueck { font-size: 22px; line-height: 1; color: #6b6560; padding: 4px 8px 4px 0; }
+  .kopf .zurueck { font-size: 22px; line-height: 1; color: #9da89f; padding: 4px 8px 4px 0; }
   .kopf h1 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; flex: 1; }
-  .kopf .zaehler { font-size: 13px; font-weight: 600; color: #6b6560; font-variant-numeric: tabular-nums; }
+  .kopf .zaehler { font-size: 13px; font-weight: 600; color: #9da89f; font-variant-numeric: tabular-nums; }
 
-  .balken { height: 4px; background: #e4ddd4; border-radius: 4px; overflow: hidden; margin-bottom: 18px; }
-  .balken i { display: block; height: 100%; background: #2e7d32; border-radius: 4px; transition: width .25s ease; }
+  .balken { height: 4px; background: #26382b; border-radius: 4px; overflow: hidden; margin-bottom: 18px; }
+  .balken i { display: block; height: 100%; background: #5fa86b; border-radius: 4px; transition: width .25s ease;  color: #0d1410; }
 
   /* ---------- Startbildschirm ---------- */
   .start h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 6px; }
-  .start p.lead { font-size: 14px; color: #55504b; line-height: 1.6; margin-bottom: 18px; }
+  .start p.lead { font-size: 14px; color: #b4bfb7; line-height: 1.6; margin-bottom: 18px; }
   .kacheln { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
-  .kachel { background: #fff; border-radius: 14px; padding: 12px 8px; text-align: center; border: 1px solid #ece5dc; }
+  .kachel { background: #16221a; border-radius: 8px; padding: 12px 8px; text-align: center; border: 1px solid #26382b; }
   .kachel b { display: block; font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; }
-  .kachel span { display: block; font-size: 11px; color: #6b6560; margin-top: 2px; line-height: 1.3; }
-  .kachel.gut b { color: #2e7d32; } .kachel.mittel b { color: #b8860b; } .kachel.schwach b { color: #c0392b; }
+  .kachel span { display: block; font-size: 11px; color: #9da89f; margin-top: 2px; line-height: 1.3; }
+  .kachel.gut b { color: #5fa86b; } .kachel.mittel b { color: #d9a648; } .kachel.schwach b { color: #e2695f; }
 
-  .knopf { display: block; width: 100%; border: 0; border-radius: 16px; padding: 16px; font: inherit;
+  .knopf { display: block; width: 100%; border: 0; border-radius: 8px; padding: 16px; font: inherit;
            font-size: 16px; font-weight: 700; cursor: pointer; text-align: center; }
-  .knopf.haupt { background: linear-gradient(145deg, #3a3631, #1a1715); color: #fff; box-shadow: 0 8px 20px rgba(26,23,21,.18); }
-  .knopf.neben { background: #fff; color: #2d2a26; border: 1px solid #e4ddd4; margin-top: 10px; font-weight: 600; font-size: 15px; }
+  .knopf.haupt { background: linear-gradient(145deg, #23402a, #16221a); color: #ecefea; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+  .knopf.neben { background: #16221a; color: #ecefea; border: 1px solid #26382b; margin-top: 10px; font-weight: 600; font-size: 15px; }
 
   .wahl { margin: 18px 0 6px; }
-  .wahl label { display: block; font-size: 12px; font-weight: 700; color: #6b6560; text-transform: uppercase;
+  .wahl label { display: block; font-size: 12px; font-weight: 700; color: #9da89f; text-transform: uppercase;
                 letter-spacing: .5px; margin-bottom: 8px; }
-  .wahl select { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px;
-                 border: 1px solid #e4ddd4; background: #fff; -webkit-appearance: none; appearance: none; }
+  .wahl select { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 8px;
+                 border: 1px solid #26382b; background: #16221a; -webkit-appearance: none; appearance: none; }
   .wahl .reihe { display: flex; gap: 8px; }
   .wahl .reihe select { flex: 1; }
 
   /* ---------- Karte ---------- */
-  .karte { background: #fff; border-radius: 20px; padding: 26px 20px; min-height: 210px;
+  .karte { background: #16221a; border-radius: 10px; padding: 26px 20px; min-height: 210px;
            display: flex; flex-direction: column; justify-content: center; align-items: center;
-           text-align: center; border: 1px solid #ece5dc; box-shadow: 0 4px 16px rgba(26,23,21,.05); }
-  .karte .marke { font-size: 11px; font-weight: 700; color: #8a837c; text-transform: uppercase;
+           text-align: center; border: 1px solid #26382b; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+  .karte .marke { font-size: 11px; font-weight: 700; color: #8c988f; text-transform: uppercase;
                   letter-spacing: .6px; margin-bottom: 14px; }
   .karte .frage { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -0.4px; }
   .karte .frage.klein { font-size: 20px; line-height: 1.4; }
-  .karte .hilf { font-size: 13.5px; color: #6b6560; margin-top: 10px; line-height: 1.5; }
-  .karte .antwort { font-size: 24px; font-weight: 700; color: #2e7d32; margin-top: 16px; line-height: 1.3; }
-  .karte .antwort.falsch { color: #c0392b; }
-  .karte hr { border: 0; border-top: 1px solid #ece5dc; width: 60%; margin: 16px 0 0; }
-  .notiz { background: #fffaf2; border: 1px solid #f0e4d0; border-radius: 14px; padding: 13px 15px;
-           font-size: 13.5px; line-height: 1.6; color: #55504b; margin-top: 12px; }
+  .karte .hilf { font-size: 13.5px; color: #9da89f; margin-top: 10px; line-height: 1.5; }
+  .karte .antwort { font-size: 24px; font-weight: 700; color: #5fa86b; margin-top: 16px; line-height: 1.3; }
+  .karte .antwort.falsch { color: #e2695f; }
+  .karte hr { border: 0; border-top: 1px solid #26382b; width: 60%; margin: 16px 0 0; }
+  .notiz { background: #2a2113; border: 1px solid #3a2e18; border-radius: 8px; padding: 13px 15px;
+           font-size: 13.5px; line-height: 1.6; color: #b4bfb7; margin-top: 12px; }
 
-  .eingabe { width: 100%; font: inherit; font-size: 17px; padding: 14px 16px; border-radius: 14px;
-             border: 2px solid #e4ddd4; background: #fff; margin-top: 16px; text-align: center; }
-  .eingabe:focus { outline: none; border-color: #3a3631; }
+  .eingabe { width: 100%; font: inherit; font-size: 17px; padding: 14px 16px; border-radius: 8px;
+             border: 2px solid #26382b; background: #16221a; margin-top: 16px; text-align: center; }
+  .eingabe:focus { outline: none; border-color: #1b371f; }
 
   .noten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
-  .note { border: 0; border-radius: 14px; padding: 15px 6px; font: inherit; font-size: 14px; font-weight: 700;
-          cursor: pointer; color: #fff; line-height: 1.25; }
-  .note small { display: block; font-size: 11px; font-weight: 500; opacity: .85; margin-top: 3px; }
-  .note.n0 { background: #c0392b; } .note.n1 { background: #b8860b; } .note.n2 { background: #2e7d32; }
+  .note { border: 0; border-radius: 8px; padding: 15px 6px; font: inherit; font-size: 14px; font-weight: 700;
+          cursor: pointer; color: #0d1410; line-height: 1.25; }
+  .note small { display: block; font-size: 11px; font-weight: 500; opacity: .7; margin-top: 3px; }
+  .note.n0 { background: #e2695f;  color: #0d1410; } .note.n1 { background: #d9a648;  color: #0d1410; } .note.n2 { background: #5fa86b;  color: #0d1410; }
 
   .zeigen { margin-top: 14px; }
-  .tipp { text-align: center; font-size: 12.5px; color: #8a837c; margin-top: 12px; line-height: 1.5; }
-  .tippfehler { display: block; width: 100%; margin-top: 10px; background: #fff; border: 1px solid #e4ddd4;
-                border-radius: 12px; padding: 11px; font: inherit; font-size: 13.5px; color: #6b6560; cursor: pointer; }
+  .tipp { text-align: center; font-size: 12.5px; color: #8c988f; margin-top: 12px; line-height: 1.5; }
+  .tippfehler { display: block; width: 100%; margin-top: 10px; background: #16221a; border: 1px solid #26382b;
+                border-radius: 8px; padding: 11px; font: inherit; font-size: 13.5px; color: #9da89f; cursor: pointer; }
 
   /* ---------- Schluss ---------- */
   .schluss { text-align: center; padding: 10px 0; }
   .schluss .gross { font-size: 44px; font-weight: 800; letter-spacing: -1px; }
   .schluss h2 { font-size: 20px; font-weight: 800; margin: 8px 0 6px; }
-  .schluss p { font-size: 14px; color: #55504b; line-height: 1.6; margin-bottom: 18px; }
+  .schluss p { font-size: 14px; color: #b4bfb7; line-height: 1.6; margin-bottom: 18px; }
 
-  .hinweis { background: #fff3e0; border: 1px solid #ffe0b2; border-radius: 12px; padding: 11px 14px;
-             font-size: 12.5px; line-height: 1.55; color: #7a5c1e; margin-top: 14px; }
+  .hinweis { background: #2a2113; border: 1px solid #3a2e18; border-radius: 8px; padding: 11px 14px;
+             font-size: 12.5px; line-height: 1.55; color: #d9a648; margin-top: 14px; }
   .versteckt { display: none !important; }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002b">
+<link rel="stylesheet" href="css/app-shell.css?v=20261002d">
 </head>
 <body>
 <div class="app">
@@ -164,11 +164,11 @@
 
 </div>
 
-<script src="js/progress.js?v=20261002b"></script>
-<script src="js/vorlesen.js?v=20261002b"></script>
-<script src="js/srs.js?v=20261002b"></script>
-<script src="js/vokabel-sync.js?v=20261002b"></script>
-<script src="js/vokabeltrainer.js?v=20261002b"></script>
-<script src="js/app-shell.js?v=20261002b"></script>
+<script src="js/progress.js?v=20261002d"></script>
+<script src="js/vorlesen.js?v=20261002d"></script>
+<script src="js/srs.js?v=20261002d"></script>
+<script src="js/vokabel-sync.js?v=20261002d"></script>
+<script src="js/vokabeltrainer.js?v=20261002d"></script>
+<script src="js/app-shell.js?v=20261002d"></script>
 </body>
 </html>

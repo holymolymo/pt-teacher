@@ -5,94 +5,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Die Vergangenheit: Pretérito Perfeito</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5f0eb">
+<meta name="theme-color" content="#0d1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Português">
 <link rel="apple-touch-icon" href="icons/icon-apple.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  body { font-family: 'Poppins', -apple-system, sans-serif; background: #0d1410; color: #ecefea; min-height: 100vh; }
   .page { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
-  .back-link:hover { color: #7b1fa2; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #9da89f; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #a672c0; }
 
   .header { text-align: center; margin-bottom: 24px; }
-  .tag { display: inline-block; background: #7b1fa2; color: white; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
-  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
-  .header p { font-size: 14px; color: #6b6560; line-height: 1.5; max-width: 520px; margin: 0 auto; }
+  .tag { display: inline-block; background: #a672c0; color: #0d1410; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 10px; margin-bottom: 14px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #ecefea; }
+  .header p { font-size: 14px; color: #9da89f; line-height: 1.5; max-width: 520px; margin: 0 auto; }
 
   /* Warum-Box */
-  .why-box { background: #fff8e1; border-left: 4px solid #f9a825; padding: 16px 20px; margin-bottom: 24px; border-radius: 0 10px 10px 0; font-size: 13.5px; line-height: 1.6; color: #5d3a0a; }
-  .why-box strong { color: #795600; display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .why-box { background: #2a2113; border-left: 4px solid #d9a648; padding: 16px 20px; margin-bottom: 24px; border-radius: 0 10px 10px 0; font-size: 13.5px; line-height: 1.6; color: #5d3a0a; }
+  .why-box strong { color: #d9a648; display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; }
 
   /* Regel-Boxen */
-  .rule { background: white; border-left: 4px solid #7b1fa2; padding: 16px 20px; margin-bottom: 18px; border-radius: 0 10px 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-  .rule h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #7b1fa2; margin-bottom: 8px; }
-  .rule p { font-size: 14px; line-height: 1.6; color: #4a4540; margin-bottom: 6px; }
-  .rule .triggers { font-size: 12px; color: #6b6560; margin-top: 6px; }
-  .rule .triggers b { color: #c62828; font-weight: 700; }
+  .rule { background: #16221a; border-left: 4px solid #a672c0; padding: 16px 20px; margin-bottom: 18px; border-radius: 0 10px 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .rule h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #a672c0; margin-bottom: 8px; }
+  .rule p { font-size: 14px; line-height: 1.6; color: #c2ccc4; margin-bottom: 6px; }
+  .rule .triggers { font-size: 12px; color: #9da89f; margin-top: 6px; }
+  .rule .triggers b { color: #e2695f; font-weight: 700; }
   .rule table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 12px; }
-  .rule th { background: #2d2a26; color: white; padding: 5px 8px; text-align: left; font-weight: 500; }
-  .rule td { padding: 4px 8px; border-bottom: 1px solid #ede6df; }
+  .rule th { background: #1b371f; color: #ecefea; padding: 5px 8px; text-align: left; font-weight: 500; }
+  .rule td { padding: 4px 8px; border-bottom: 1px solid #26382b; }
   .rule tr:last-child td { border-bottom: none; }
-  .rule .eu { color: #c62828; font-weight: 700; }
+  .rule .eu { color: #e2695f; font-weight: 700; }
 
   /* Sticky progress */
-  .progress-bar-sticky { position: sticky; top: 0; background: #f5f0eb; padding: 10px 0; z-index: 50; margin-bottom: 14px; }
-  .progress-bar { height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; }
-  .progress-fill { height: 100%; background: #7b1fa2; transition: width 0.3s; width: 0%; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: #6b6560; margin-top: 5px; }
+  .progress-bar-sticky { position: sticky; top: 0; background: #0d1410; padding: 10px 0; z-index: 50; margin-bottom: 14px; }
+  .progress-bar { height: 6px; background: #26382b; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #a672c0; transition: width 0.3s; width: 0%; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: #9da89f; margin-top: 5px; }
 
   /* Section */
   .section { margin-bottom: 28px; }
-  .section-title { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #7b1fa2; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #e1bee7; display: flex; justify-content: space-between; align-items: center; }
-  .section-title .count { font-size: 10px; color: #9e9892; font-weight: 500; }
+  .section-title { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #a672c0; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #e1bee7; display: flex; justify-content: space-between; align-items: center; }
+  .section-title .count { font-size: 10px; color: #8c988f; font-weight: 500; }
 
   /* Exercise */
-  .ex { background: white; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-  .ex-label { font-size: 11px; font-weight: 600; color: #9e9892; margin-bottom: 6px; }
+  .ex { background: #16221a; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .ex-label { font-size: 11px; font-weight: 600; color: #8c988f; margin-bottom: 6px; }
   .ex-prompt { font-size: 14.5px; line-height: 1.5; margin-bottom: 10px; }
-  .trigger-hi { background: #ffebee; color: #c62828; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+  .trigger-hi { background: #2b1715; color: #e2695f; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
 
   .input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .input-row span { font-size: 14.5px; }
-  .answer-input { border: 2px solid #e8d5c4; border-radius: 8px; padding: 8px 12px; font-size: 14.5px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 180px; outline: none; }
-  .answer-input:focus { border-color: #7b1fa2; background: white; }
-  .answer-input.correct { border-color: #2e7d32; background: #e8f5e9; }
-  .answer-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .answer-input { border: 2px solid #26382b; border-radius: 8px; padding: 8px 12px; font-size: 14.5px; font-family: inherit; background: #16221a; color: #ecefea; width: 180px; outline: none; }
+  .answer-input:focus { border-color: #a672c0; background: #16221a; }
+  .answer-input.correct { border-color: #5fa86b; background: #15291a; }
+  .answer-input.incorrect { border-color: #e2695f; background: #2b1715; }
 
   /* Radio-buttons für Tempus-Wahl */
   .choice-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
-  .choice-btn { flex: 1; min-width: 100px; padding: 10px 14px; border: 2px solid #e8d5c4; border-radius: 8px; background: white; font-size: 14px; font-family: inherit; cursor: pointer; text-align: center; transition: all 0.1s; }
-  .choice-btn:hover { border-color: #7b1fa2; }
-  .choice-btn.selected { border-color: #7b1fa2; background: #f3e5f5; font-weight: 600; }
-  .choice-btn.correct { border-color: #2e7d32; background: #e8f5e9; }
-  .choice-btn.incorrect { border-color: #c62828; background: #ffebee; }
+  .choice-btn { flex: 1; min-width: 100px; padding: 10px 14px; border: 2px solid #26382b; border-radius: 8px; background: #16221a; font-size: 14px; font-family: inherit; cursor: pointer; text-align: center; transition: all 0.1s; }
+  .choice-btn:hover { border-color: #a672c0; }
+  .choice-btn.selected { border-color: #a672c0; background: #f3e5f5; font-weight: 600; }
+  .choice-btn.correct { border-color: #5fa86b; background: #15291a; }
+  .choice-btn.incorrect { border-color: #e2695f; background: #2b1715; }
 
   .feedback { margin-top: 8px; padding: 8px 12px; border-radius: 6px; font-size: 12.5px; display: none; line-height: 1.4; }
   .feedback.show { display: block; }
-  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
-  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
+  .feedback.correct { background: #15291a; color: #4e9159; }
+  .feedback.incorrect { background: #2b1715; color: #c9564c; }
 
-  .check-btn { display: block; width: 100%; max-width: 300px; margin: 32px auto 0; background: #7b1fa2; color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
-  .check-btn:hover { background: #6a1b9a; }
+  .check-btn { display: block; width: 100%; max-width: 300px; margin: 32px auto 0; background: #a672c0; color: #0d1410; border: none; border-radius: 8px; padding: 16px 32px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .check-btn:hover { background: #9664b0; }
 
   .results { display: none; margin-top: 28px; }
   .results.show { display: block; }
-  .results-card { background: white; border-radius: 12px; padding: 26px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 14px; }
-  .score-big { font-size: 48px; font-weight: 800; color: #7b1fa2; }
-  .score-label { font-size: 14px; color: #4a4540; margin-top: 6px; line-height: 1.5; }
+  .results-card { background: #16221a; border-radius: 8px; padding: 26px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 14px; }
+  .score-big { font-size: 48px; font-weight: 800; color: #a672c0; }
+  .score-label { font-size: 14px; color: #c2ccc4; margin-top: 6px; line-height: 1.5; }
 
   @media (max-width: 600px) {
     .header h1 { font-size: 22px; }
     .answer-input { width: 150px; font-size: 13.5px; }
   }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002b">
+<link rel="stylesheet" href="css/app-shell.css?v=20261002d">
 </head>
 <body>
 <div class="page">
@@ -110,7 +110,7 @@
   Im Einstufungstest hast du bei S&auml;tzen &uuml;ber die Vergangenheit fast immer die Gegenwartsform benutzt, zum Beispiel &bdquo;Eu vou ao supermercado&ldquo; statt &bdquo;fui&ldquo;, obwohl &bdquo;ontem&ldquo; (gestern) im Satz stand. Die Formen selbst kennst du zum Teil schon. Was noch fehlt, ist der Schalter im Kopf: Sobald ein Satz von gestern handelt, muss das Verb in die Vergangenheit. Genau das &uuml;bst du hier in drei Schritten.
 </div>
 
-<h2 style="font-size: 15px; color: #7b1fa2; margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 1px;">Regeln zum Nachlesen (bevor du anf&auml;ngst)</h2>
+<h2 style="font-size: 15px; color: #a672c0; margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 1px;">Regeln zum Nachlesen (bevor du anf&auml;ngst)</h2>
 
 <div class="rule">
   <h3>Regel 1 &mdash; Diese W&ouml;rter zeigen Vergangenheit an</h3>
@@ -160,7 +160,7 @@
 <!-- ============== SECTION 1: TEMPUS-WAHL ============== -->
 <div class="section" data-section-name="Gegenwart oder Vergangenheit?">
   <div class="section-title"><span>1. Gegenwart oder Vergangenheit?</span><span class="count">10 Aufgaben</span></div>
-  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Tippe auf die richtige Form. Das <span class="trigger-hi">Zeitwort</span> verr&auml;t dir, ob der Satz von heute oder von fr&uuml;her handelt.</p>
+  <p style="font-size: 12px; color: #9da89f; margin-bottom: 12px;">Tippe auf die richtige Form. Das <span class="trigger-hi">Zeitwort</span> verr&auml;t dir, ob der Satz von heute oder von fr&uuml;her handelt.</p>
 
   <div class="ex" data-type="choice" data-correct="fui">
     <div class="ex-label">1.1</div>
@@ -227,7 +227,7 @@
 <!-- ============== SECTION 2: KONJUGATION UNREGELMÄSSIG ============== -->
 <div class="section" data-section-name="Die unregelmäßigen Formen">
   <div class="section-title"><span>2. Die unregelm&auml;&szlig;igen Formen</span><span class="count">15 Aufgaben</span></div>
-  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">Schreib die Vergangenheitsform. Alle S&auml;tze handeln von gestern oder fr&uuml;her; das Zeitwort ist jeweils rot markiert.</p>
+  <p style="font-size: 12px; color: #9da89f; margin-bottom: 12px;">Schreib die Vergangenheitsform. Alle S&auml;tze handeln von gestern oder fr&uuml;her; das Zeitwort ist jeweils rot markiert.</p>
 
   <div class="ex" data-type="fill" data-correct="fui"><div class="ex-label">2.1 &mdash; ir (eu)</div><div class="input-row"><span><span class="trigger-hi">Ontem</span> eu</span><input class="answer-input" type="text"><span>ao cinema.</span></div><div class="feedback"></div></div>
   <div class="ex" data-type="fill" data-correct="fizemos"><div class="ex-label">2.2 &mdash; fazer (nós)</div><div class="input-row"><span><span class="trigger-hi">Na semana passada</span> n&oacute;s</span><input class="answer-input" type="text"><span>uma festa.</span></div><div class="feedback"></div></div>
@@ -249,7 +249,7 @@
 <!-- ============== SECTION 3: FREIE SATZBILDUNG ============== -->
 <div class="section" data-section-name="Ganze Sätze">
   <div class="section-title"><span>3. Ganze S&auml;tze</span><span class="count">5 Aufgaben</span></div>
-  <p style="font-size: 12px; color: #6b6560; margin-bottom: 12px;">&Uuml;bersetze den ganzen Satz ins Portugiesische. Achte auf das Zeitwort und die richtige Vergangenheitsform.</p>
+  <p style="font-size: 12px; color: #9da89f; margin-bottom: 12px;">&Uuml;bersetze den ganzen Satz ins Portugiesische. Achte auf das Zeitwort und die richtige Vergangenheitsform.</p>
 
   <div class="ex" data-type="translate" data-correct="ontem falei com o meu irm&atilde;o|ontem eu falei com o meu irm&atilde;o">
     <div class="ex-label">3.1</div>
@@ -288,14 +288,14 @@
 <div class="results" id="results">
   <div class="results-card">
     <div class="score-big" id="scoreBig">0%</div>
-    <div id="scoreDetail" style="font-size: 15px; color: #6b6560; margin-top: 4px;"></div>
+    <div id="scoreDetail" style="font-size: 15px; color: #9da89f; margin-top: 4px;"></div>
     <div class="score-label" id="scoreLabel"></div>
   </div>
 </div>
 
 </div>
 
-<script src="js/progress.js?v=20261002b"></script>
+<script src="js/progress.js?v=20261002d"></script>
 <script>
 function normalize(s) {
   return (s || '').toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ');
@@ -429,6 +429,6 @@ function checkAll() {
   document.getElementById('results').scrollIntoView({behavior: 'smooth'});
 }
 </script>
-<script src="js/app-shell.js?v=20261002b"></script>
+<script src="js/app-shell.js?v=20261002d"></script>
 </body>
 </html>

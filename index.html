@@ -5,46 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Português</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5f0eb">
+<meta name="theme-color" content="#0d1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Português">
 <link rel="apple-touch-icon" href="icons/icon-apple.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; background: #0d1410; color: #ecefea; min-height: 100vh; }
   a { color: inherit; text-decoration: none; }
 
   .app { max-width: 480px; margin: 0 auto; padding: 18px 18px 24px; }
 
   /* Kopf: Gruß + Streak */
   .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding-top: 6px; }
-  .hi { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; color: #1a1715; line-height: 1.15; }
-  .date { font-size: 13px; color: #9e9892; margin-top: 3px; font-weight: 500; }
+  .hi { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; color: #ecefea; line-height: 1.15; }
+  .date { font-size: 13px; color: #8c988f; margin-top: 3px; font-weight: 500; }
   .streak {
     display: inline-flex; align-items: center; gap: 6px;
-    min-height: 38px; padding: 6px 14px 6px 10px; border-radius: 20px;
-    background: #fff; color: #9e9892; font-size: 13px; font-weight: 700;
-    box-shadow: 0 1px 2px rgba(45,42,38,0.04), 0 4px 12px rgba(45,42,38,0.05);
+    min-height: 38px; padding: 6px 14px 6px 10px; border-radius: 10px;
+    background: #16221a; color: #8c988f; font-size: 13px; font-weight: 700;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.35);
     white-space: nowrap; flex-shrink: 0;
   }
   .streak svg { width: 18px; height: 18px; }
   .streak b { font-size: 16px; font-weight: 800; }
-  .streak.on { background: linear-gradient(135deg, #ff9a3c, #e8721d); color: #fff; box-shadow: 0 6px 16px rgba(232,114,29,0.28); }
+  .streak.on { background: linear-gradient(135deg, #5fa86b, #3f7a49); color: #0d1410; box-shadow: 0 6px 16px rgba(95, 168, 107, 0.28); }
 
   /* Hero: die eine Aufgabe */
   .hero {
     position: relative; overflow: hidden;
-    background: linear-gradient(145deg, #3a3631 0%, #1a1715 100%);
-    color: #fff; border-radius: 24px; padding: 22px 22px 20px; margin-bottom: 14px;
-    box-shadow: 0 14px 32px rgba(26,23,21,0.22);
+    background: linear-gradient(145deg, #23402a 0%, #16221a 100%);
+    color: #ecefea; border-radius: 12px; padding: 22px 22px 20px; margin-bottom: 14px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
   }
   .hero::after {
     content: ''; position: absolute; right: -60px; top: -70px; width: 200px; height: 200px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(232,114,29,0.35), rgba(232,114,29,0) 70%);
+    background: radial-gradient(circle, rgba(95, 168, 107, 0.35), rgba(95, 168, 107, 0) 70%);
   }
   .hero > * { position: relative; }
   .kicker { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #ffb273; margin-bottom: 10px; }
@@ -52,71 +52,71 @@
   .hero h1 { font-size: 25px; font-weight: 800; line-height: 1.18; letter-spacing: -0.4px; margin-bottom: 8px; }
   .hero p { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.74); margin-bottom: 14px; }
   .hero-stats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-  .chip { font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 10px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.88); }
+  .chip { font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); color: rgba(255,255,255,0.88); }
   .chip.good { background: rgba(102,187,106,0.22); color: #b9f6ca; }
   .chip.warn { background: rgba(255,178,115,0.2); color: #ffd3ad; }
   .hero-btn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    min-height: 54px; border-radius: 14px; background: #e8721d; color: #fff;
+    min-height: 54px; border-radius: 8px; background: #5fa86b; color: #0d1410;
     font-size: 16px; font-weight: 800; letter-spacing: -0.1px;
-    box-shadow: 0 8px 20px rgba(232,114,29,0.35);
+    box-shadow: 0 8px 20px rgba(95, 168, 107, 0.35);
     transition: transform 0.1s, background 0.12s;
   }
   .hero-btn svg { width: 20px; height: 20px; }
-  .hero-btn:active { transform: scale(0.98); background: #d4650f; }
-  .hero.done-today .hero-btn { background: rgba(255,255,255,0.14); box-shadow: none; }
-  .hero.done-today .hero-btn:active { background: rgba(255,255,255,0.22); }
+  .hero-btn:active { transform: scale(0.98); background: #4e9159;  color: #0d1410; }
+  .hero.done-today .hero-btn { background: rgba(255, 255, 255, 0.06); box-shadow: none; }
+  .hero.done-today .hero-btn:active { background: rgba(255, 255, 255, 0.06); }
 
   /* Kacheln */
   .tiles { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-bottom: 22px; }
   .tile {
     display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 98px;
-    background: #fff; border-radius: 18px; padding: 14px 14px 12px;
-    box-shadow: 0 1px 2px rgba(45,42,38,0.04), 0 6px 18px rgba(45,42,38,0.05);
+    background: #16221a; border-radius: 10px; padding: 14px 14px 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 18px rgba(0, 0, 0, 0.35);
     transition: transform 0.1s;
   }
   .tile:active { transform: scale(0.97); }
-  .tile-ic { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .tile-ic { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .tile-ic svg { width: 21px; height: 21px; }
-  .tile-ic.green { background: #e8f5e9; color: #2e7d32; }
+  .tile-ic.green { background: #15291a; color: #5fa86b; }
   .tile-ic.brown { background: #efebe9; color: #5d4037; }
-  .tile-ic.orange { background: #fff3e0; color: #e8721d; }
-  .tile-ic.red { background: #ffebee; color: #c62828; }
+  .tile-ic.orange { background: #2a2113; color: #5fa86b; }
+  .tile-ic.red { background: #2b1715; color: #e2695f; }
   .tile-b { margin-top: auto; }
-  .tile-t { font-size: 14.5px; font-weight: 700; color: #1a1715; line-height: 1.2; }
-  .tile-m { font-size: 11.5px; color: #9e9892; margin-top: 3px; line-height: 1.35; }
+  .tile-t { font-size: 14.5px; font-weight: 700; color: #ecefea; line-height: 1.2; }
+  .tile-m { font-size: 11.5px; color: #8c988f; margin-top: 3px; line-height: 1.35; }
 
   /* Sektionen + Listen */
   .sec-h { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 10px; }
-  .sec-h h2 { font-size: 13px; font-weight: 700; letter-spacing: 0.2px; color: #2d2a26; }
-  .sec-h a { font-size: 13px; font-weight: 600; color: #e8721d; }
-  .list { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(45,42,38,0.04), 0 6px 18px rgba(45,42,38,0.05); margin-bottom: 18px; }
+  .sec-h h2 { font-size: 13px; font-weight: 700; letter-spacing: 0.2px; color: #ecefea; }
+  .sec-h a { font-size: 13px; font-weight: 600; color: #5fa86b; }
+  .list { background: #16221a; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 18px rgba(0, 0, 0, 0.35); margin-bottom: 18px; }
   .row { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 10px 14px 10px 14px; border-bottom: 1px solid #f3eee8; }
   .row:last-child { border-bottom: none; }
-  .row:active { background: #faf8f5; }
+  .row:active { background: #16221a; }
   .st { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 800; }
-  .st.done { background: #e8f5e9; color: #2e7d32; }
-  .st.current { background: #e8721d; color: #fff; box-shadow: 0 0 0 4px rgba(232,114,29,0.16); }
-  .st.todo { background: #f5f0eb; color: #b5ada4; }
+  .st.done { background: #15291a; color: #5fa86b; }
+  .st.current { background: #5fa86b; color: #0d1410; box-shadow: 0 0 0 4px rgba(95, 168, 107, 0.16); }
+  .st.todo { background: #0d1410; color: #b5ada4; }
   .st svg { width: 16px; height: 16px; }
   .row-b { flex: 1; min-width: 0; }
-  .row-t { font-size: 14.5px; font-weight: 600; color: #2d2a26; line-height: 1.25; }
-  .row.todo .row-t { color: #8a837b; font-weight: 500; }
-  .row-m { font-size: 12px; color: #9e9892; margin-top: 2px; line-height: 1.35; }
-  .row-m .ok { color: #2e7d32; font-weight: 600; }
+  .row-t { font-size: 14.5px; font-weight: 600; color: #ecefea; line-height: 1.25; }
+  .row.todo .row-t { color: #9da89f; font-weight: 500; }
+  .row-m { font-size: 12px; color: #8c988f; margin-top: 2px; line-height: 1.35; }
+  .row-m .ok { color: #5fa86b; font-weight: 600; }
   .chev { color: #d4c9bc; flex-shrink: 0; width: 18px; height: 18px; }
   .row.all { min-height: 52px; }
-  .row.all .row-t { color: #e8721d; }
+  .row.all .row-t { color: #5fa86b; }
 
   /* Install-Hinweis (nur iOS Safari, nicht installiert) */
-  .pt-install { display: none; position: relative; background: #fff; border: 1.5px dashed #e8d5c4; border-radius: 16px; padding: 14px 40px 14px 16px; margin-bottom: 16px; }
+  .pt-install { display: none; position: relative; background: #16221a; border: 1.5px dashed #26382b; border-radius: 8px; padding: 14px 40px 14px 16px; margin-bottom: 16px; }
   .pt-install.show { display: block; }
   .pt-install b { display: block; font-size: 13.5px; margin-bottom: 3px; }
-  .pt-install p { font-size: 12.5px; color: #6b6560; line-height: 1.5; }
-  .pt-install button { position: absolute; right: 6px; top: 6px; width: 32px; height: 32px; border: 0; background: transparent; color: #9e9892; font-size: 20px; border-radius: 50%; cursor: pointer; font-family: inherit; }
+  .pt-install p { font-size: 12.5px; color: #9da89f; line-height: 1.5; }
+  .pt-install button { position: absolute; right: 6px; top: 6px; width: 32px; height: 32px; border: 0; background: transparent; color: #8c988f; font-size: 20px; border-radius: 50%; cursor: pointer; font-family: inherit; }
 
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002b">
+<link rel="stylesheet" href="css/app-shell.css?v=20261002d">
 </head>
 <body>
 <div class="app">
@@ -152,7 +152,7 @@
   <section class="tiles">
     <a class="tile" href="vokabeltrainer.html">
       <div class="tile-ic green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7 4h11.5A2.5 2.5 0 0 1 21 6.5V16"/><path d="M7 12h6M7 15.5h4"/></svg></div>
-      <div class="tile-b"><div class="tile-t">Vokabeln üben</div><div class="tile-m">1435 Aufgaben, merkt sich was sitzt</div></div>
+      <div class="tile-b"><div class="tile-t">Vokabeln üben</div><div class="tile-m">2050 Aufgaben, merkt sich was sitzt</div></div>
     </a>
     <a class="tile" href="grammatik-bibliothek.html">
       <div class="tile-ic brown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5h5.5A2.5 2.5 0 0 1 12 7v13a2 2 0 0 0-2-2H4z"/><path d="M20 4.5h-5.5A2.5 2.5 0 0 0 12 7v13a2 2 0 0 1 2-2h6z"/></svg></div>
@@ -172,8 +172,8 @@
   <div class="list" id="pathList"></div>
 </div>
 
-<script src="js/progress.js?v=20261002b"></script>
-<script src="js/app-shell.js?v=20261002b"></script>
+<script src="js/progress.js?v=20261002d"></script>
+<script src="js/app-shell.js?v=20261002d"></script>
 <script>
 (function () {
   const A = window.PTApp;

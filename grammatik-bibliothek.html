@@ -5,100 +5,100 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Grammatik-Bibliothek</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5f0eb">
+<meta name="theme-color" content="#0d1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Português">
 <link rel="apple-touch-icon" href="icons/icon-apple.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  body { font-family: 'Poppins', -apple-system, sans-serif; background: #0d1410; color: #ecefea; min-height: 100vh; }
 
   /* Layout */
   .layout { display: flex; min-height: 100vh; }
   .sidebar {
-    width: 260px; background: #2d2a26; color: #c9c4be;
+    width: 260px; background: #1b371f; color: #9da89f;
     padding: 24px 16px; position: sticky; top: 0; height: 100vh;
     overflow-y: auto; flex-shrink: 0;
   }
   .sidebar h1 {
-    font-size: 16px; font-weight: 700; color: white; margin-bottom: 4px;
+    font-size: 16px; font-weight: 700; color: #ecefea; margin-bottom: 4px;
   }
   .sidebar .subtitle {
-    font-size: 11px; color: #9e9892; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px;
+    font-size: 11px; color: #8c988f; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px;
   }
   .sidebar-section {
-    font-size: 10px; font-weight: 700; color: #9e9892; text-transform: uppercase;
+    font-size: 10px; font-weight: 700; color: #8c988f; text-transform: uppercase;
     letter-spacing: 1.5px; margin-top: 18px; margin-bottom: 6px; padding-left: 8px;
   }
   .sidebar a {
-    display: block; padding: 7px 12px; color: #c9c4be; text-decoration: none;
+    display: block; padding: 7px 12px; color: #9da89f; text-decoration: none;
     font-size: 13px; border-radius: 6px; margin-bottom: 1px; transition: all 0.15s;
   }
-  .sidebar a:hover, .sidebar a.active { background: #e8721d; color: white; }
+  .sidebar a:hover, .sidebar a.active { background: #5fa86b; color: #0d1410; }
 
   .main {
     flex: 1; padding: 32px 40px 80px; max-width: 760px;
   }
 
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 16px; }
-  .back-link:hover { color: #e8721d; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #9da89f; text-decoration: none; margin-bottom: 16px; }
+  .back-link:hover { color: #5fa86b; }
 
   .header { margin-bottom: 32px; }
-  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
-  .header .lead { font-size: 15px; color: #6b6560; line-height: 1.6; }
+  .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; color: #ecefea; }
+  .header .lead { font-size: 15px; color: #9da89f; line-height: 1.6; }
 
   /* Topic cards */
   .topic { margin-bottom: 56px; scroll-margin-top: 16px; }
-  .topic-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #e8d5c4; }
-  .topic-num { background: #e8721d; color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
-  .topic-title { font-size: 22px; font-weight: 700; color: #1a1715; }
-  .topic-tag { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: white; padding: 3px 8px; border-radius: 4px; }
-  .topic-tag.basic { background: #2e7d32; }
-  .topic-tag.intermediate { background: #f9a825; }
-  .topic-tag.advanced { background: #c62828; }
+  .topic-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #26382b; }
+  .topic-num { background: #5fa86b; color: #0d1410; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  .topic-title { font-size: 22px; font-weight: 700; color: #ecefea; }
+  .topic-tag { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #ecefea; padding: 3px 8px; border-radius: 4px; }
+  .topic-tag.basic { background: #5fa86b;  color: #0d1410; }
+  .topic-tag.intermediate { background: #d9a648;  color: #0d1410; }
+  .topic-tag.advanced { background: #e2695f;  color: #0d1410; }
 
   /* Subsections */
-  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; color: #2d2a26; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; color: #ecefea; }
   h3:first-child { margin-top: 0; }
-  p { font-size: 14px; line-height: 1.7; color: #4a4540; margin-bottom: 10px; }
-  ul, ol { padding-left: 22px; margin: 8px 0; font-size: 14px; line-height: 1.7; color: #4a4540; }
+  p { font-size: 14px; line-height: 1.7; color: #c2ccc4; margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin: 8px 0; font-size: 14px; line-height: 1.7; color: #c2ccc4; }
   li { margin-bottom: 4px; }
 
-  .highlight { background: #fff3e0; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
-  strong { color: #2d2a26; }
-  .v { color: #e8721d; font-weight: 600; }
-  .r { color: #c62828; font-weight: 600; }
-  .g { color: #2e7d32; font-weight: 600; }
+  .highlight { background: #2a2113; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+  strong { color: #ecefea; }
+  .v { color: #5fa86b; font-weight: 600; }
+  .r { color: #e2695f; font-weight: 600; }
+  .g { color: #5fa86b; font-weight: 600; }
 
   /* Tables */
-  .card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .card { background: #16221a; border-radius: 8px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 8px 0; font-size: 13px; }
-  th { background: #2d2a26; color: white; padding: 8px 12px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
+  th { background: #1b371f; color: #ecefea; padding: 8px 12px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
   th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
-  td { padding: 7px 12px; border-bottom: 1px solid #ede6df; vertical-align: top; }
+  td { padding: 7px 12px; border-bottom: 1px solid #26382b; vertical-align: top; }
   tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background: #faf8f5; }
+  tr:nth-child(even) td { background: #16221a; }
 
   /* Boxen */
-  .rule { background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #1b5e20; }
-  .rule strong { display: block; margin-bottom: 3px; color: #1b5e20; }
-  .warning { background: #ffebee; border-left: 4px solid #c62828; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #b71c1c; }
-  .warning strong { display: block; margin-bottom: 3px; color: #b71c1c; }
-  .example { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.7; color: #795600; }
-  .example strong { display: block; margin-bottom: 3px; color: #795600; }
-  .deep { background: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #0d47a1; }
+  .rule { background: #15291a; border-left: 4px solid #5fa86b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #4e9159; }
+  .rule strong { display: block; margin-bottom: 3px; color: #4e9159; }
+  .warning { background: #2b1715; border-left: 4px solid #e2695f; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #c9564c; }
+  .warning strong { display: block; margin-bottom: 3px; color: #c9564c; }
+  .example { background: #2a2113; border-left: 4px solid #d9a648; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.7; color: #d9a648; }
+  .example strong { display: block; margin-bottom: 3px; color: #d9a648; }
+  .deep { background: #e3f2fd; border-left: 4px solid #6fa8dc; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 12px 0; font-size: 13px; line-height: 1.6; color: #0d47a1; }
   .deep strong { display: block; margin-bottom: 3px; color: #0d47a1; }
 
   .practice-link {
     display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
-    background: #e8721d; color: white; border-radius: 6px; font-size: 12px;
+    background: #5fa86b; color: #0d1410; border-radius: 6px; font-size: 12px;
     font-weight: 600; text-decoration: none; margin-top: 8px;
   }
-  .practice-link:hover { background: #d4650f; }
+  .practice-link:hover { background: #4e9159;  color: #0d1410; }
 
   /* Mobile */
   .mobile-toc-toggle { display: none; }
@@ -114,13 +114,13 @@
     .sidebar h1, .sidebar .subtitle, .sidebar-section { display: none; }
     .sidebar a {
       flex-shrink: 0; display: inline-flex; align-items: center; min-height: 36px; margin: 0;
-      padding: 6px 12px; border-radius: 18px; background: rgba(255,255,255,0.08); font-size: 12.5px; white-space: nowrap;
+      padding: 6px 12px; border-radius: 10px; background: rgba(255,255,255,0.08); font-size: 12.5px; white-space: nowrap;
     }
     .main { padding: 20px 16px 40px; max-width: none; }
     .topic { scroll-margin-top: 64px; }
   }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002b">
+<link rel="stylesheet" href="css/app-shell.css?v=20261002d">
 </head>
 <body>
 
@@ -1281,7 +1281,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 </script>
 
-<script src="js/progress.js?v=20261002b"></script>
-<script src="js/app-shell.js?v=20261002b"></script>
+<script src="js/progress.js?v=20261002d"></script>
+<script src="js/app-shell.js?v=20261002d"></script>
 </body>
 </html>

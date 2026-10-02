@@ -5,74 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Tiefenübung 3 - Pretérito Imperfeito</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5f0eb">
+<meta name="theme-color" content="#0d1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Português">
 <link rel="apple-touch-icon" href="icons/icon-apple.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; min-height: 100vh; }
+  body { font-family: 'Poppins', -apple-system, sans-serif; background: #0d1410; color: #ecefea; min-height: 100vh; }
   .page { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #6b6560; text-decoration: none; margin-bottom: 20px; }
-  .back-link:hover { color: #c62828; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #9da89f; text-decoration: none; margin-bottom: 20px; }
+  .back-link:hover { color: #e2695f; }
   .header { text-align: center; margin-bottom: 28px; }
-  .lesson-tag { display: inline-block; background: linear-gradient(135deg, #c62828, #b71c1c); color: white; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 16px; margin-bottom: 12px; }
-  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #1a1715; }
-  .header p { font-size: 14px; color: #6b6560; }
-  .progress-bar-sticky { position: sticky; top: 0; z-index: 20; background: rgba(245,240,235,0.95); backdrop-filter: blur(10px); margin: 0 -20px 24px; padding: 12px 20px; border-bottom: 1px solid #ffcdd2; }
+  .lesson-tag { display: inline-block; background: linear-gradient(135deg, #e2695f, #c9564c); color: #0d1410; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 8px; margin-bottom: 12px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #ecefea; }
+  .header p { font-size: 14px; color: #9da89f; }
+  .progress-bar-sticky { position: sticky; top: 0; z-index: 20; background: rgba(245,240,235,0.95); backdrop-filter: blur(10px); margin: 0 -20px 24px; padding: 12px 20px; border-bottom: 1px solid #3d201c; }
   .progress-row { display: flex; align-items: center; gap: 12px; font-size: 12px; }
-  .progress-bar { flex: 1; height: 6px; background: #ede6df; border-radius: 3px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, #c62828, #ef5350); width: 0%; transition: width 0.3s; }
-  .score-display { font-weight: 700; color: #c62828; }
-  .drill { background: white; border-radius: 10px; padding: 16px 18px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-  .drill.correct { background: linear-gradient(135deg, white, #e8f5e9); border-left: 3px solid #2e7d32; }
-  .drill.incorrect { background: linear-gradient(135deg, white, #ffebee); border-left: 3px solid #c62828; }
+  .progress-bar { flex: 1; height: 6px; background: #26382b; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #e2695f, #ef5350); width: 0%; transition: width 0.3s;  color: #0d1410; }
+  .score-display { font-weight: 700; color: #e2695f; }
+  .drill { background: #16221a; border-radius: 10px; padding: 16px 18px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .drill.correct { background: linear-gradient(135deg, #16281b, #101f14); border-left: 3px solid #5fa86b; }
+  .drill.incorrect { background: linear-gradient(135deg, #241614, #1b100f); border-left: 3px solid #e2695f; }
   .drill-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-  .drill-num { font-size: 11px; font-weight: 700; color: #9e9892; }
-  .drill-task { font-size: 14px; font-weight: 500; color: #2d2a26; margin-bottom: 10px; line-height: 1.4; }
-  .drill-task strong { color: #c62828; }
-  .drill-task .verb { background: #ffcdd2; padding: 1px 6px; border-radius: 4px; font-weight: 700; }
+  .drill-num { font-size: 11px; font-weight: 700; color: #8c988f; }
+  .drill-task { font-size: 14px; font-weight: 500; color: #ecefea; margin-bottom: 10px; line-height: 1.4; }
+  .drill-task strong { color: #e2695f; }
+  .drill-task .verb { background: #3d201c; padding: 1px 6px; border-radius: 4px; font-weight: 700; }
   .drill-input-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .drill-input { border: 2px solid #ffcdd2; border-radius: 6px; padding: 7px 11px; font-size: 14px; font-family: inherit; background: #faf8f5; color: #2d2a26; width: 160px; outline: none; }
-  .drill-input:focus { border-color: #c62828; background: white; }
-  .drill-input.correct { border-color: #2e7d32; background: #e8f5e9; }
-  .drill-input.incorrect { border-color: #c62828; background: #ffebee; }
+  .drill-input { border: 2px solid #3d201c; border-radius: 6px; padding: 7px 11px; font-size: 14px; font-family: inherit; background: #16221a; color: #ecefea; width: 160px; outline: none; }
+  .drill-input:focus { border-color: #e2695f; background: #16221a; }
+  .drill-input.correct { border-color: #5fa86b; background: #15291a; }
+  .drill-input.incorrect { border-color: #e2695f; background: #2b1715; }
   .hint-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-  .hint-btn { background: white; border: 1.5px solid #e8d5c4; color: #6b6560; padding: 5px 10px; border-radius: 14px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: inherit; }
-  .hint-btn:hover { background: #fff8e1; border-color: #f9a825; color: #795600; }
-  .hint-btn.used { background: #fff8e1; border-color: #f9a825; color: #795600; }
+  .hint-btn { background: #16221a; border: 1.5px solid #26382b; color: #9da89f; padding: 5px 10px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .hint-btn:hover { background: #2a2113; border-color: #d9a648; color: #d9a648; }
+  .hint-btn.used { background: #2a2113; border-color: #d9a648; color: #d9a648; }
   .hint-content { display: none; margin-top: 8px; padding: 10px 12px; border-radius: 6px; font-size: 12px; line-height: 1.5; }
   .hint-content.show { display: block; }
-  .hint-content.tip { background: #fff8e1; border-left: 3px solid #f9a825; color: #795600; }
-  .hint-content.row { background: #e3f2fd; border-left: 3px solid #1976d2; color: #0d47a1; font-family: 'SF Mono', Menlo, monospace; }
-  .hint-content.table { background: #f5f0eb; border-left: 3px solid #6b6560; color: #2d2a26; }
+  .hint-content.tip { background: #2a2113; border-left: 3px solid #d9a648; color: #d9a648; }
+  .hint-content.row { background: #e3f2fd; border-left: 3px solid #6fa8dc; color: #0d47a1; font-family: 'SF Mono', Menlo, monospace; }
+  .hint-content.table { background: #0d1410; border-left: 3px solid #9da89f; color: #ecefea; }
   .hint-content table { width: 100%; margin-top: 6px; font-size: 11px; }
-  .hint-content th, .hint-content td { padding: 3px 6px; border-bottom: 1px solid #ede6df; text-align: left; }
-  .hint-content th { background: #2d2a26; color: white; font-weight: 500; }
-  .hint-content .eu { color: #c62828; font-weight: 700; }
+  .hint-content th, .hint-content td { padding: 3px 6px; border-bottom: 1px solid #26382b; text-align: left; }
+  .hint-content th { background: #1b371f; color: #ecefea; font-weight: 500; }
+  .hint-content .eu { color: #e2695f; font-weight: 700; }
   .feedback { margin-top: 8px; padding: 7px 10px; border-radius: 6px; font-size: 12px; display: none; }
   .feedback.show { display: block; }
-  .feedback.correct { background: #e8f5e9; color: #1b5e20; }
-  .feedback.incorrect { background: #ffebee; color: #b71c1c; }
-  .block-header { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #c62828; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #ffcdd2; display: flex; justify-content: space-between; }
-  .block-header .count { background: #c62828; color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; }
-  .check-btn { display: block; width: 100%; max-width: 320px; margin: 32px auto 0; background: linear-gradient(135deg, #c62828, #b71c1c); color: white; border: none; border-radius: 12px; padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; }
-  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: white; border-radius: 12px; }
+  .feedback.correct { background: #15291a; color: #4e9159; }
+  .feedback.incorrect { background: #2b1715; color: #c9564c; }
+  .block-header { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #e2695f; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #3d201c; display: flex; justify-content: space-between; }
+  .block-header .count { background: #e2695f; color: #0d1410; padding: 2px 8px; border-radius: 10px; font-size: 10px; }
+  .check-btn { display: block; width: 100%; max-width: 320px; margin: 32px auto 0; background: linear-gradient(135deg, #e2695f, #c9564c); color: #0d1410; border: none; border-radius: 8px; padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .results { display: none; text-align: center; margin-top: 28px; padding: 28px; background: #16221a; border-radius: 8px; }
   .results.show { display: block; }
-  .score { font-size: 44px; font-weight: 800; color: #c62828; }
-  .score-label { font-size: 13px; color: #6b6560; margin-bottom: 12px; }
-  .score-message { font-size: 14px; color: #4a4540; line-height: 1.5; }
-  .reset-btn { display: none; margin: 16px auto 0; background: white; color: #c62828; border: 2px solid #c62828; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  .score { font-size: 44px; font-weight: 800; color: #e2695f; }
+  .score-label { font-size: 13px; color: #9da89f; margin-bottom: 12px; }
+  .score-message { font-size: 14px; color: #c2ccc4; line-height: 1.5; }
+  .reset-btn { display: none; margin: 16px auto 0; background: #16221a; color: #e2695f; border: 2px solid #e2695f; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
   .reset-btn.show { display: block; }
-  .next-btn { display: none; margin: 10px auto 0; background: #2e7d32; color: white; border: none; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; text-decoration: none; }
+  .next-btn { display: none; margin: 10px auto 0; background: #5fa86b; color: #0d1410; border: none; border-radius: 10px; padding: 10px 24px; font-size: 13px; font-weight: 600; font-family: inherit; text-decoration: none; }
   .next-btn.show { display: inline-block; }
   @media (max-width: 600px) { .progress-bar-sticky { margin: 0 -14px 20px; } .page { padding: 20px 14px 60px; } .drill-input { width: 140px; } }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002b">
+<link rel="stylesheet" href="css/app-shell.css?v=20261002d">
 </head>
 <body>
 <div class="page">
@@ -320,7 +320,7 @@
     <div class="score" id="score"></div>
     <div class="score-label">richtige Antworten</div>
     <div class="score-message" id="scoreMessage"></div>
-    <div id="hintStats" style="margin-top: 12px; font-size: 12px; color: #6b6560;"></div>
+    <div id="hintStats" style="margin-top: 12px; font-size: 12px; color: #9da89f;"></div>
   </div>
 
   <a class="next-btn" id="nextBtn" href="index.html">Zum Dashboard</a>
@@ -396,7 +396,7 @@ function resetAll() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
-<script src="js/progress.js?v=20261002b"></script>
-<script src="js/app-shell.js?v=20261002b"></script>
+<script src="js/progress.js?v=20261002d"></script>
+<script src="js/app-shell.js?v=20261002d"></script>
 </body>
 </html>

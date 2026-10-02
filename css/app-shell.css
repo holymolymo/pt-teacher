@@ -2,19 +2,19 @@
    Polish-Regeln unten (Radien, Schatten, Touch-Targets) greifen. */
 
 :root {
-  --pt-bg: #f5f0eb;
-  --pt-card: #ffffff;
-  --pt-ink: #2d2a26;
-  --pt-ink-2: #6b6560;
-  --pt-ink-3: #9e9892;
-  --pt-line: #ede6df;
-  --pt-accent: #e8721d;
-  --pt-accent-dark: #d4650f;
-  --pt-ok: #2e7d32;
-  --pt-warn: #f9a825;
-  --pt-bad: #c62828;
-  --pt-radius: 16px;
-  --pt-shadow: 0 1px 2px rgba(45, 42, 38, 0.04), 0 6px 18px rgba(45, 42, 38, 0.06);
+  --pt-bg: #0d1410;
+  --pt-card: #16221a;
+  --pt-ink: #ecefea;
+  --pt-ink-2: #9da89f;
+  --pt-ink-3: #8c988f;
+  --pt-line: #26382b;
+  --pt-accent: #5fa86b;
+  --pt-accent-dark: #4e9159;
+  --pt-ok: #5fa86b;
+  --pt-warn: #d9a648;
+  --pt-bad: #e2695f;
+  --pt-radius: 8px;
+  --pt-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
   --pt-nav-h: 60px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
@@ -47,12 +47,12 @@ button, [role="button"] { -webkit-user-select: none; user-select: none; }
   display: flex;
   align-items: stretch;
   padding: 6px 8px calc(6px + var(--safe-bottom));
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(18, 28, 21, 0.94);
   -webkit-backdrop-filter: saturate(180%) blur(18px);
   backdrop-filter: saturate(180%) blur(18px);
-  border-top: 1px solid rgba(45, 42, 38, 0.08);
+  border-top: 1px solid rgba(236, 239, 234, 0.08);
   transition: transform 0.22s ease;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .bnav-item {
   flex: 1 1 0;
@@ -63,7 +63,7 @@ button, [role="button"] { -webkit-user-select: none; user-select: none; }
   gap: 3px;
   min-height: 48px;
   padding: 5px 4px;
-  border-radius: 12px;
+  border-radius: 8px;
   color: var(--pt-ink-3);
   text-decoration: none;
   font-size: 10.5px;
@@ -73,17 +73,17 @@ button, [role="button"] { -webkit-user-select: none; user-select: none; }
 }
 .bnav-item svg { width: 24px; height: 24px; display: block; }
 .bnav-item.active { color: var(--pt-accent); }
-.bnav-item:active { background: rgba(232, 114, 29, 0.08); }
+.bnav-item:active { background: rgba(95, 168, 107, 0.12); }
 .pt-kb-open .bottom-nav { transform: translateY(120%); }
 
 @media (min-width: 560px) {
   .bottom-nav {
     max-width: 520px;
     margin: 0 auto;
-    border-radius: 18px 18px 0 0;
-    border: 1px solid rgba(45, 42, 38, 0.08);
+    border-radius: 10px 18px 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.35);
     border-bottom: none;
-    box-shadow: 0 -4px 24px rgba(45, 42, 38, 0.06);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -102,7 +102,7 @@ body.pt-has-endflow .results .reset-btn { display: none !important; }
   display: none;
   max-width: 480px;
   margin: 18px auto 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .pt-endflow.show { display: flex; flex-direction: column; gap: 10px; }
 .pt-endflow-note {
@@ -123,7 +123,7 @@ body.pt-has-endflow .results .reset-btn { display: none !important; }
   min-height: 54px;
   padding: 10px 18px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 8px;
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
@@ -134,11 +134,11 @@ body.pt-has-endflow .results .reset-btn { display: none !important; }
   transition: transform 0.1s, background 0.12s;
 }
 .pt-btn:active { transform: scale(0.985); }
-.pt-btn-primary { background: var(--pt-accent); color: #fff; box-shadow: 0 6px 16px rgba(232, 114, 29, 0.28); }
+.pt-btn-primary { background: var(--pt-accent); color: #ecefea; box-shadow: 0 6px 16px rgba(95, 168, 107, 0.28); }
 .pt-btn-primary:active { background: var(--pt-accent-dark); }
 .pt-btn-sub { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.8; }
-.pt-btn-secondary { background: #fff; color: var(--pt-ink); border: 1.5px solid #e8d5c4; }
-.pt-btn-secondary:active { background: #faf8f5; }
+.pt-btn-secondary { background: #16221a; color: var(--pt-ink); border: 1.5px solid #26382b; }
+.pt-btn-secondary:active { background: #16221a; }
 .pt-btn-ghost { background: transparent; color: var(--pt-ink-2); min-height: 44px; font-weight: 600; }
 
 /* ---------- Sanfter Polish für alle Inhaltsseiten ---------- */
@@ -156,7 +156,7 @@ body.pt-has-endflow .results .reset-btn { display: none !important; }
   box-shadow: var(--pt-shadow);
 }
 .check-btn {
-  border-radius: 14px;
+  border-radius: 8px;
   min-height: 52px;
   transition: transform 0.1s, background 0.12s;
 }
@@ -169,7 +169,7 @@ body.pt-has-endflow .results .reset-btn { display: none !important; }
   font-size: 14px;
   font-weight: 600;
 }
-.back-link:active { background: rgba(45, 42, 38, 0.06); }
+.back-link:active { background: rgba(0, 0, 0, 0.35); }
 .choice-btn { min-height: 46px; }
 .hint-btn { min-height: 34px; padding: 6px 12px; font-size: 12px; }
 .answer-input, .translation-input, .drill-input { border-radius: 10px; }
@@ -177,21 +177,35 @@ body.pt-has-endflow .results .reset-btn { display: none !important; }
 /* Hinweis, wenn eine angefangene Übung wiederhergestellt wurde */
 .pt-zs-hinweis {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  background: #fff8e8; border: 1px solid #f0e0bd; border-radius: 12px;
-  padding: 11px 14px; margin: 0 0 14px; font-size: 13px; line-height: 1.5; color: #6b5a2e;
+  background: #2a2113; border: 1px solid #3a2e18; border-radius: 8px;
+  padding: 11px 14px; margin: 0 0 14px; font-size: 13px; line-height: 1.5; color: #d9a648;
 }
 .pt-zs-hinweis span { flex: 1; min-width: 160px; }
 .pt-zs-hinweis button {
-  border: 1px solid #e0cfa6; background: #fff; color: #6b5a2e; border-radius: 9px;
+  border: 1px solid #3a2e18; background: #16221a; color: #d9a648; border-radius: 9px;
   padding: 7px 12px; font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
 }
 
 /* Vorlesen */
 .pt-ton {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  border: 1px solid #e4ddd4; background: #fff; border-radius: 12px;
-  padding: 9px 14px; font: inherit; font-size: 13.5px; color: #55504b; cursor: pointer;
+  border: 1px solid #26382b; background: #16221a; border-radius: 8px;
+  padding: 9px 14px; font: inherit; font-size: 13.5px; color: #b4bfb7; cursor: pointer;
 }
 .pt-ton:disabled { opacity: .45; cursor: default; }
-.pt-ton.laeuft { background: #eef6ee; border-color: #c8e0c9; color: #2e7d32; }
+.pt-ton.laeuft { background: #eef6ee; border-color: #c8e0c9; color: #5fa86b; }
 .pt-ton svg { width: 17px; height: 17px; flex: none; }
+
+/* ---------------------------------------------------------------------------
+   Lesbarkeit auf farbigen Flächen.
+   Akzentgrün, Gelb und Rot sind auf dunklem Grund die HELLEN Flächen. Darauf
+   gehört dunkler Text, nicht heller. Diese Regel fängt alle Stellen ab, an
+   denen in den 40 Seiten noch helle Schrift auf einer solchen Fläche steht.
+--------------------------------------------------------------------------- */
+[style*="#5fa86b"], [style*="#d9a648"], [style*="#e2695f"] { color: #0d1410; }
+.pt-auf-hell, .pt-auf-hell * { color: #0d1410 !important; }
+
+/* Links ohne eigene Formatierung bekamen das Browser-Blau, das auf Dunkel
+   nicht lesbar ist. Gilt für alle Seiten. */
+a:not([class]) { color: var(--pt-accent); }
+a:not([class]):visited { color: var(--pt-accent); }

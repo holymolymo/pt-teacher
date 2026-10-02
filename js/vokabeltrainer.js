@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var DATEN = 'daten/trainer.json?v=20261002b';
+  var DATEN = 'daten/trainer.json?v=20261002d';
   var CACHE = 'pt_trainer_daten';        // damit die Übung auch ohne Netz startet
 
   var el = {}, daten = null, liste = [], pos = 0, aktuell = null, gezeigt = false;
