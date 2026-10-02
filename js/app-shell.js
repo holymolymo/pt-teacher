@@ -381,13 +381,114 @@
     history: history, runsFor: runsFor, bestPct: bestPct, lastRun: lastRun, isMastered: isMastered,
     todayRuns: todayRuns, isDone: isDone, streak: streak, localDay: localDay,
     pathStatus: pathStatus, pickToday: pickToday, nextInPath: nextInPath, nextSequential: nextSequential,
-    longName: longName
+    longName: longName,
+    zwischenstand: { speichern: zsSpeichern, loeschen: zsLoeschen }
   };
+
+  /* ===========================================================================
+     Zwischenspeicher für die Übungsseiten
+     ===========================================================================
+
+     Moritz wechselt mitten in einer Übung kurz die App und kommt zurück. Bisher
+     waren dann alle getippten Antworten weg, weil die Seiten erst beim Klick auf
+     "Prüfen" am Ende irgendetwas gespeichert haben.
+
+     Der Code hier hängt an JEDER Seite, die Eingabefelder mit data-answers hat.
+     Keine der 39 Übungsseiten musste dafür angefasst werden.
+
+     Wann gespeichert wird:
+       - während des Tippens, aber gedrosselt (nicht bei jedem Buchstaben)
+       - wenn die Seite in den Hintergrund geht (visibilitychange)
+       - wenn sie entladen wird (pagehide)
+     beforeunload fehlt bewusst: auf dem iPhone feuert es unzuverlässig.
+
+     Der Stand verfällt nach sieben Tagen. Wer eine Übung zwei Wochen später
+     wieder aufmacht, soll nicht über halbe alte Antworten stolpern.
+     ========================================================================= */
+
+  var ZS_PRAEFIX = 'pt_zwischenstand_';
+  var ZS_TAGE = 7;
+
+  function zsSchluessel() { return ZS_PRAEFIX + (page || 'start'); }
+
+  function zsFelder() { return Array.prototype.slice.call(document.querySelectorAll('input[data-answers]')); }
+
+  function zsSpeichern() {
+    var felder = zsFelder();
+    if (!felder.length) return;
+    var werte = felder.map(function (i) { return i.value || ''; });
+    if (!werte.some(function (w) { return w.trim(); })) { zsLoeschen(); return; }
+    try {
+      localStorage.setItem(zsSchluessel(), JSON.stringify({
+        zeit: Date.now(), anzahl: felder.length, werte: werte
+      }));
+    } catch (e) {
+      // Speicher voll oder privates Fenster. Die Übung läuft weiter, nur ohne Netz.
+    }
+  }
+
+  function zsLoeschen() { try { localStorage.removeItem(zsSchluessel()); } catch (e) {} }
+
+  function zsWiederherstellen() {
+    var felder = zsFelder();
+    if (!felder.length) return;
+    var roh;
+    try { roh = JSON.parse(localStorage.getItem(zsSchluessel()) || 'null'); } catch (e) { return; }
+    if (!roh || !roh.werte) return;
+    // Hat sich die Übung geändert, passt der alte Stand nicht mehr.
+    if (roh.anzahl !== felder.length) { zsLoeschen(); return; }
+    if (Date.now() - roh.zeit > ZS_TAGE * 86400000) { zsLoeschen(); return; }
+
+    var gefuellt = 0;
+    felder.forEach(function (inp, i) {
+      if (roh.werte[i] && !inp.value) { inp.value = roh.werte[i]; gefuellt++; }
+    });
+    if (gefuellt) zsHinweis(gefuellt, felder.length);
+  }
+
+  function zsHinweis(gefuellt, gesamt) {
+    var b = document.createElement('div');
+    b.className = 'pt-zs-hinweis';
+    b.innerHTML = '<span>Du warst hier schon dran. ' + gefuellt + ' von ' + gesamt +
+                  ' Antworten sind wieder da.</span><button type="button">Neu anfangen</button>';
+    b.querySelector('button').addEventListener('click', function () {
+      zsFelder().forEach(function (i) { i.value = ''; });
+      zsLoeschen(); b.remove();
+    });
+    var ziel = document.querySelector('.app, main, body');
+    ziel.insertBefore(b, ziel.firstChild);
+    // Nach einer halben Minute verschwindet der Hinweis von selbst.
+    setTimeout(function () { if (b.parentNode) b.remove(); }, 30000);
+  }
+
+  function zsStarten() {
+    if (!zsFelder().length) return;
+    zsWiederherstellen();
+    var timer = null;
+    document.addEventListener('input', function (ev) {
+      if (!ev.target || !ev.target.hasAttribute || !ev.target.hasAttribute('data-answers')) return;
+      clearTimeout(timer);
+      timer = setTimeout(zsSpeichern, 600);
+    });
+    // Diese beiden feuern auf dem iPhone verlässlich, beforeunload nicht.
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') zsSpeichern();
+    });
+    window.addEventListener('pagehide', zsSpeichern);
+    // Ist die Übung ausgewertet, braucht niemand mehr den Zwischenstand.
+    var results = document.getElementById('results');
+    if (results) {
+      new MutationObserver(function () {
+        if (results.classList.contains('show')) zsLoeschen();
+      }).observe(results, { attributes: true, attributeFilter: ['class'] });
+    }
+  }
 
   function start() {
     buildNav();
     watchKeyboard();
     setupEndFlow();
+    zsStarten();
     registerSW();
     document.dispatchEvent(new CustomEvent('ptapp:ready'));
   }

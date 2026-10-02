@@ -5,12 +5,12 @@
 (function () {
   'use strict';
 
-  var DATEN = 'daten/trainer.json?v=20261002a';
+  var DATEN = 'daten/trainer.json?v=20261002b';
   var CACHE = 'pt_trainer_daten';        // damit die Übung auch ohne Netz startet
 
   var el = {}, daten = null, liste = [], pos = 0, aktuell = null, gezeigt = false;
   var begonnen = 0, bilanz = { 0: 0, 1: 0, 2: 0 }, nachzuegler = [];
-  var beantwortet = 0, obergrenze = 20;
+  var beantwortet = 0, obergrenze = 20, tonKnopf = null;
 
   function $(id) { return document.getElementById(id); }
   function zeig(e, ja) { if (e) e.classList.toggle('versteckt', !ja); }
@@ -24,7 +24,14 @@
      'eingabe','zeigenKnopf','tippfehlerKnopf','noten','tipp','zaehler','balken','titel',
      'schlussZahl','schlussTitel','schlussText','weiterKnopf','genugKnopf'].forEach(function (id) { el[id] = $(id); });
 
-    el.losKnopf.addEventListener('click', function () { starteRunde({}); });
+    el.losKnopf.addEventListener('click', function () {
+      if (el.losKnopf.dataset.fortsetzen) {
+        var r = offeneRunde();
+        delete el.losKnopf.dataset.fortsetzen;
+        if (r && rundeFortsetzen(r)) return;
+      }
+      starteRunde({});
+    });
     el.nurNeuKnopf.addEventListener('click', function () { starteRunde({ nurNeu: true }); });
     el.zeigenKnopf.addEventListener('click', aufdecken);
     el.tippfehlerKnopf.addEventListener('click', tippfehler);
@@ -49,10 +56,22 @@
       if (gezeigt && e.key >= '1' && e.key <= '3') bewerte(parseInt(e.key, 10) - 1);
     });
 
+    if (window.PTVorlesen) {
+      tonKnopf = PTVorlesen.knopf(function () { return tonText(); }, 'Hören');
+      tonKnopf.id = 'tonKnopf';
+      el.karte.insertAdjacentElement('afterend', tonKnopf);
+      zeig(tonKnopf, false);
+    }
+
     window.PTTrainerWarnung = function (art) {
       if (art === 'speicher') hinweis('Dieses Gerät lässt gerade nichts speichern, etwa weil du im ' +
         'privaten Fenster bist. Du kannst üben, aber der Fortschritt wird nicht gemerkt.');
     };
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') rundeSichern();
+    });
+    window.addEventListener('pagehide', rundeSichern);
 
     lade();
   }
@@ -127,6 +146,18 @@
     zeig(el.nurNeuKnopf, z.gesehen > 0);
     zeig(el.losKnopf, true);
 
+    // Eine angefangene Runde wartet: der Knopf führt dorthin zurück, nicht in eine neue.
+    var offen = offeneRunde();
+    if (offen) {
+      el.losKnopf.textContent = 'Weiter, wo du warst';
+      el.losKnopf.dataset.fortsetzen = '1';
+      text(el.startTitel, 'Du warst mittendrin');
+      text(el.startText, 'Deine angefangene Runde ist noch da, ' + (offen.beantwortet || 0) +
+        ' Karten hast du schon gemacht. Alles ist gespeichert, du kannst einfach weitermachen.');
+    } else {
+      delete el.losKnopf.dataset.fortsetzen;
+    }
+
     var st = window.PTVokabelSync ? PTVokabelSync.status() : null;
     if (st && st.offen > 20 && st.fehler) {
       hinweis('Auf diesem Gerät warten ' + st.offen + ' Antworten darauf, in die Cloud zu kommen. ' +
@@ -138,6 +169,65 @@
     return '<div class="kachel ' + art + '"><b>' + n + '</b><span>' + label + '</span></div>';
   }
   function hinweis(t) { text(el.startHinweis, t); zeig(el.startHinweis, true); }
+
+  // ------------------------------------------------------------------ Laufende Runde sichern
+
+  /*
+     Jede ANTWORT ist schon vorher sofort gespeichert. Hier geht es um die Runde
+     selbst: welche Aufgaben, an welcher Stelle, wie viele schon beantwortet.
+     Ohne das landet er nach einem kurzen App-Wechsel wieder auf dem Startbild
+     und muss von vorne anfangen, obwohl nichts verloren war.
+
+     Gespeichert wird bei jedem Weiterblättern und beim Verschwinden der Seite.
+     Nach sechs Stunden verfällt der Stand, dann ist die Runde kalt.
+  */
+  var RUNDE_KEY = 'pt_vokabel_runde';
+  var RUNDE_FRIST = 6 * 3600 * 1000;
+
+  function rundeSichern() {
+    if (!liste.length || !el.uebung || el.uebung.classList.contains('versteckt')) return;
+    try {
+      localStorage.setItem(RUNDE_KEY, JSON.stringify({
+        zeit: Date.now(), pos: pos, beantwortet: beantwortet, obergrenze: obergrenze,
+        bilanz: bilanz, paket: el.paketWahl.value,
+        aufgaben: liste.map(function (e) { return [e.aufgabe.id, e.richtung]; }),
+        nach: nachzuegler.map(function (e) { return [e.aufgabe.id, e.richtung]; })
+      }));
+    } catch (e) {}
+  }
+
+  function rundeVergessen() { try { localStorage.removeItem(RUNDE_KEY); } catch (e) {} }
+
+  function offeneRunde() {
+    var r;
+    try { r = JSON.parse(localStorage.getItem(RUNDE_KEY) || 'null'); } catch (e) { return null; }
+    if (!r || !r.aufgaben || !r.aufgaben.length) return null;
+    if (Date.now() - r.zeit > RUNDE_FRIST) { rundeVergessen(); return null; }
+    if (r.pos >= r.aufgaben.length && !(r.nach || []).length) { rundeVergessen(); return null; }
+    return r;
+  }
+
+  function rundeFortsetzen(r) {
+    var nachId = {};
+    daten.aufgaben.forEach(function (a) { nachId[a.id] = a; });
+    var staende = PTSrs.staende();
+    function bauen(paar) {
+      var a = nachId[paar[0]];
+      if (!a) return null;
+      return { aufgabe: a, richtung: paar[1], stand: staende[paar[0] + '|' + paar[1]] || null };
+    }
+    liste = r.aufgaben.map(bauen).filter(Boolean);
+    nachzuegler = (r.nach || []).map(bauen).filter(Boolean);
+    if (!liste.length) { rundeVergessen(); return false; }
+    pos = Math.min(r.pos, liste.length);
+    beantwortet = r.beantwortet || 0;
+    obergrenze = r.obergrenze || 20;
+    bilanz = r.bilanz || { 0: 0, 1: 0, 2: 0 };
+    zeig(el.start, false); zeig(el.schluss, false); zeig(el.uebung, true);
+    zeig(el.zaehler, true); zeig(el.balken, true);
+    naechste();
+    return true;
+  }
 
   // ------------------------------------------------------------------ Runde
 
@@ -154,6 +244,7 @@
         'oder ein anderes Paket wählen.');
       return;
     }
+    rundeVergessen();
     pos = 0; bilanz = { 0: 0, 1: 0, 2: 0 }; nachzuegler = [];
     beantwortet = 0;
     obergrenze = Math.max(liste.length, parseInt(el.zielWahl.value, 10) || 20);
@@ -181,6 +272,7 @@
     gezeigt = false;
     begonnen = Date.now();
     zeichne();
+    rundeSichern();
   }
 
   function zeichne() {
@@ -234,6 +326,28 @@
       zeig(el.eingabe, false);
       el.zeigenKnopf.textContent = 'Antwort zeigen';
     }
+    tonAktualisieren();
+  }
+
+  /**
+   * Was vorgelesen wird. Immer die PORTUGIESISCHE Seite, nie die deutsche.
+   * Vor dem Aufdecken wird nur gelesen, was die Lösung nicht verrät: bei einer
+   * Karte Portugiesisch nach Deutsch ist die Vorderseite schon portugiesisch
+   * und darf laut, bei getippten Formen und Lücken wäre es die Antwort.
+   */
+  function tonText() {
+    if (!aktuell) return '';
+    var a = aktuell.aufgabe, ri = aktuell.richtung;
+    if (ri === 'luecke') return gezeigt ? a.satz.replace('___', a.pt) : '';
+    if (ri === 'tippen') return gezeigt ? a.pt : '';
+    if (ri === 'reihe') return gezeigt ? a.formen.join(', ') : '';
+    if (ri === 'pt_de') return a.pt;                 // Vorderseite ist portugiesisch
+    return gezeigt ? a.pt : '';                      // de_pt: erst nach dem Aufdecken
+  }
+
+  function tonAktualisieren() {
+    if (!tonKnopf) return;
+    zeig(tonKnopf, !!tonText());
   }
 
   // ------------------------------------------------------------------ Aufdecken
@@ -276,6 +390,12 @@
 
     if (a.notiz) { text(el.notiz, a.notiz); zeig(el.notiz, true); }
     zeig(el.zeigenKnopf, false);
+    tonAktualisieren();
+    // Nach dem Aufdecken von selbst vorlesen, aber nur wenn er das eingestellt
+    // hat und schon einmal auf den Knopf gedrückt hat (iOS verlangt das).
+    if (window.PTVorlesen && PTVorlesen.optionen().automatisch) {
+      PTVorlesen.sprich(tonText(), { nurNachGeste: true });
+    }
   }
 
   function markiereVorschlag(note) {
@@ -401,6 +521,7 @@
   // ------------------------------------------------------------------ Schluss
 
   function schliesse() {
+    rundeVergessen();
     zeig(el.uebung, false); zeig(el.schluss, true);
     zeig(el.zaehler, false); zeig(el.balken, false);
     var gesamt = bilanz[0] + bilanz[1] + bilanz[2];
