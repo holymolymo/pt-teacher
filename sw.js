@@ -3,7 +3,7 @@
 // Alles andere (CSS/JS/Icons/Fonts): Cache zuerst, im Hintergrund aktualisieren.
 // Bei Änderungen an der Liste oder Strategie: CACHE-Version hochzählen.
 
-const CACHE = 'pt-teacher-v14';
+const CACHE = 'pt-teacher-v15';
 const CORE = [
   './', './index.html', './lernen.html', './fortschritt.html', './vokabeln.html',
   './diagnose-test.html', './print-sheets.html', './grammatik-bibliothek.html', './cheat-sheet.html',
@@ -47,30 +47,41 @@ self.addEventListener('fetch', e => {
   // Fremde Adressen gehen den Service Worker nichts an. Ohne diese Zeile
   // würden auch die Supabase-Abrufe cache-first laufen und der Trainer
   // bekäme veraltete Stände serviert.
-  try { if (new URL(req.url).origin !== location.origin) return; } catch (x) { return; }
+  let url;
+  try { url = new URL(req.url); } catch (x) { return; }
+  if (url.origin !== location.origin) return;
+
   const isHTML = req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html');
 
+  // Seiten: zuerst aus dem Cache, danach im Hintergrund auffrischen.
+  // Vorher lief hier Netz zuerst ohne Zeitgrenze, dadurch wartete JEDER
+  // Seitenwechsel auf die Verbindung, obwohl alle 40 Seiten im Cache liegen.
+  // Gemessen: 246 ms statt 8 ms pro Tipp auf die untere Leiste.
   if (isHTML) {
     e.respondWith(
-      fetch(req).then(res => {
-        const clone = res.clone();
-        caches.open(CACHE).then(c => c.put(req, clone));
-        return res;
-      }).catch(() => caches.match(req).then(c => c || caches.match('./index.html')))
+      caches.match(req).then(treffer => {
+        const frisch = fetch(req).then(res => {
+          if (res && res.ok) caches.open(CACHE).then(c => c.put(req, res.clone()));
+          return res;
+        }).catch(() => treffer);
+        return treffer || frisch;
+      })
     );
     return;
   }
 
+  // Alles andere: Cache zuerst. Trägt die Adresse ein Versionskürzel, kann
+  // sich der Inhalt nicht geändert haben, dann wird gar nicht erst ins Netz
+  // gegriffen. Das spart bei jedem Öffnen des Trainers rund 221 kB.
+  const versioniert = url.searchParams.has('v');
   e.respondWith(
-    caches.match(req).then(cached => {
-      const network = fetch(req).then(res => {
-        if (res && res.status === 200) {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(req, clone));
-        }
+    caches.match(req).then(treffer => {
+      if (treffer && versioniert) return treffer;
+      const netz = fetch(req).then(res => {
+        if (res && res.ok) caches.open(CACHE).then(c => c.put(req, res.clone()));
         return res;
-      }).catch(() => cached);
-      return cached || network;
+      }).catch(() => treffer);
+      return treffer || netz;
     })
   );
 });

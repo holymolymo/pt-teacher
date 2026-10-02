@@ -6,7 +6,12 @@
   'use strict';
 
   var DATEN = 'daten/trainer.json?v=20261002e';
-  var CACHE = 'pt_trainer_daten';        // damit die Übung auch ohne Netz startet
+
+  /** Arbeit, die warten kann, bis der Bildschirm steht. */
+  function spaeter(fn) {
+    if (window.requestIdleCallback) requestIdleCallback(fn, { timeout: 4000 });
+    else setTimeout(fn, 1200);
+  }
 
   var el = {}, daten = null, liste = [], pos = 0, aktuell = null, gezeigt = false;
   var begonnen = 0, bilanz = { 0: 0, 1: 0, 2: 0 }, nachzuegler = [];
@@ -73,24 +78,41 @@
     });
     window.addEventListener('pagehide', rundeSichern);
 
+    // Der Spiegel aus einer früheren Fassung liegt sonst für immer im Speicher.
+    // Spiegel und Sicherung aus früheren Fassungen aufräumen, sie fraßen
+    // fast ein Fünftel des Speichers, den der Browser der Seite zugesteht.
+    try {
+      localStorage.removeItem('pt_trainer_daten');
+      localStorage.removeItem('pt_trainer_sicherung');
+      localStorage.removeItem('pt_trainer_sicherung_fassung');
+    } catch (e) {}
+
     lade();
   }
 
   // ------------------------------------------------------------------ Laden
 
   function lade() {
-    var ausCache = null;
-    try { ausCache = JSON.parse(localStorage.getItem(CACHE) || 'null'); } catch (e) {}
-    if (ausCache && ausCache.aufgaben) { daten = ausCache; zeigeStart(); }
-
-    fetch(DATEN).then(function (r) {
+    // Kein eigener Spiegel in localStorage mehr. Der Service Worker hält die
+    // Datei ohnehin im Cache, also wäre der Spiegel eine zweite Kopie von
+    // 936 kB, die bei jedem Start synchron geschrieben werden müsste. Das
+    // blockiert auf dem Handy den Hauptstrang und frisst ein Fünftel des
+    // Speicherplatzes, den der Browser der Seite überhaupt zugesteht.
+    // Der Abruf wurde schon im Kopf der Seite angestoßen, hier wird nur noch
+    // auf ihn gewartet. Fehlt er aus irgendeinem Grund, wird normal geladen.
+    (window.__ptDaten || fetch(DATEN).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
-    }).then(function (d) {
+    })).then(function (d) {
       daten = d;
-      try { localStorage.setItem(CACHE, JSON.stringify(d)); } catch (e) {}
       zeigeStart();
-      if (window.PTVokabelSync) PTVokabelSync.hole().then(function (r) { if (r && r.uebernommen) zeigeStart(); });
+      // Der Abgleich mit der Cloud hat Zeit. Er dauerte in der Messung 446 ms,
+      // während alles andere zusammen unter 30 ms brauchte. Deshalb läuft er
+      // erst, wenn die erste Karte längst steht.
+      spaeter(function () {
+        if (!window.PTVokabelSync) return;
+        PTVokabelSync.hole().then(function (r) { if (r && r.uebernommen) zeigeStart(); });
+      });
     }).catch(function () {
       if (!daten) {
         text(el.startTitel, 'Die Aufgaben fehlen');

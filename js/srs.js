@@ -278,6 +278,11 @@
       schreib(TAG_KEY, tage);
     }
 
+    // Für den Leistungstest mitzählen, aber nur Antworten aus der normalen Übung.
+    if (window.PTTest && !(extra && extra.quelle === 'test')) {
+      try { PTTest.zaehle(tag); } catch (e) {}
+    }
+
     if (window.PTVokabelSync) {
       window.PTVokabelSync.merke({
         aufgabe_id: aufgabe.id, pt: aufgabe.pt, de: aufgabe.de, paket: aufgabe.paket,

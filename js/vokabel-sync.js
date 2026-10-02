@@ -187,6 +187,11 @@
       navigator.sendBeacon(url, blob);   // best effort, die Warteschlange bleibt trotzdem stehen
     } catch (e) {}
   });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { sende(); });
-  else sende();
+  // Der erste Versand hat Zeit. Beim Start zählt, dass die erste Karte steht.
+  function spaeter(fn) {
+    if (window.requestIdleCallback) requestIdleCallback(fn, { timeout: 5000 });
+    else setTimeout(fn, 2000);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { spaeter(sende); });
+  else spaeter(sende);
 })();
