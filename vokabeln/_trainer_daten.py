@@ -403,6 +403,46 @@ def baue_luecken(karten, h):
     return raus
 
 
+# ------------------------------------------------------------------ Übungsart
+
+ARTIKELWOERTER = {'o', 'a', 'os', 'as', 'um', 'uma'}
+
+
+def uebungsart(a):
+    """
+    In welche Schublade gehört eine Aufgabe, wenn Moritz vorher auswählen soll,
+    was abgefragt wird.
+
+    Der Anlass: Beim ersten echten Versuch bekam er sechzehn ganze Sätze als
+    erste Aufgaben, darunter einen mit zwölf Wörtern, und keine einzige Vokabel.
+    Wer eine Vokabel-App öffnet, will Vokabeln.
+
+    Entscheidend ist das PAKET, nicht die Wortzahl. Eine Vokabel ist ein
+    Inhaltswort: ein Substantiv, ein Verb, ein Adjektiv. "Como" und "Mas" sind
+    zwar einzelne Wörter und sehr häufig, aber niemand lernt sie als Vokabel.
+    Sie gehören zu den Scharnieren und zur Grammatik.
+
+        vokabeln    Substantive, Verben, Adjektive als Einzelwort
+        wendungen   feste Verbindungen, Scharnierwörter, Fragen, Redewendungen
+        saetze      ganze Sätze als Muster
+        grammatik   Regelkarten und Lückenaufgaben mit Eingabefeld
+        formen      Verbformen zum Tippen und ganze Formenreihen
+    """
+    if a['typ'] in ('form', 'reihe'):
+        return 'formen'
+    if a['typ'] in ('regel', 'luecke'):
+        return 'grammatik'
+
+    w = a['pt'].split()
+    kurz = len(w) == 1 or (len(w) == 2 and w[0].lower().strip('„“"') in ARTIKELWOERTER)
+
+    if a['paket'] in ('nomen', 'verben', 'adjektive'):
+        return 'vokabeln' if kurz else 'wendungen' if len(w) <= 3 else 'saetze'
+    if len(w) >= 4 or a['pt'].strip()[-1:] in '.?!':
+        return 'saetze'
+    return 'wendungen'
+
+
 # ------------------------------------------------------------------ Gewichten
 
 KATALOG = os.path.join(HIER, '_katalog.json')
@@ -431,6 +471,7 @@ def dauerhafte_kennung(a):
 def gewichte(aufgaben):
     for a in aufgaben:
         a['W'] = round(0.50 * a['F'] + 0.35 * a['G'] + 0.15 * a['A'], 4)
+        a['art'] = uebungsart(a)
 
     # Kennungen aus dem Katalog holen. Einmal vergeben, bleibt eine Kennung für
     # immer bei ihrer Aufgabe. Verschwindet eine Aufgabe, wird ihre Kennung
@@ -458,6 +499,27 @@ def gewichte(aufgaben):
     aufgaben.sort(key=lambda a: (-a['W'], a.get('verb', ''), a['pt']))
     for i, a in enumerate(aufgaben):
         a['platz'] = i
+
+    # Eigene Reihenfolge je Übungsart. Bei Vokabeln und Wendungen zählt allein
+    # die Häufigkeit: das alltäglichste Wort kommt zuerst, dann wird es Stück
+    # für Stück seltener. Bei Grammatik und Formen bleibt das Gesamtgewicht,
+    # dort ist die Bindung an seine Dauerfehler wichtiger als die Worthäufigkeit.
+    for art in ('vokabeln', 'wendungen', 'saetze', 'grammatik', 'formen'):
+        teil = [a for a in aufgaben if a['art'] == art]
+        if art in ('vokabeln', 'wendungen'):
+            # Häufigkeit entscheidet, ABER reine Funktionswörter wandern ans
+            # Ende. Eu, mas, se und como sind die häufigsten Wörter überhaupt
+            # und stünden sonst ganz vorn, obwohl sie niemand als Vokabel lernt.
+            def schluessel(a):
+                w = [x.lower().strip('„“"?!.,') for x in a['pt'].split()]
+                kern = [x for x in w if x not in ARTIKELWOERTER]
+                nur_funktion = bool(kern) and all(x in FUNKTIONSWOERTER for x in kern)
+                return (1 if nur_funktion else 0, -a['F'], a['pt'])
+            teil.sort(key=schluessel)
+        else:
+            teil.sort(key=lambda a: (-a['W'], a.get('verb', ''), a['pt']))
+        for i, a in enumerate(teil):
+            a['stufe'] = i
     if neu_vergeben:
         print(f'   {neu_vergeben} neue Kennungen vergeben, {naechste} insgesamt')
     return aufgaben
@@ -485,6 +547,7 @@ def main():
                       f'{korpus} Token. Zipf = log10(Vorkommen) + {h.konstante:.4f}.',
             'formel': 'W = 0,50 × Häufigkeit + 0,35 × Diagnosebindung + 0,15 × Aktualität',
             'pakete': PAKETE,
+            'arten': ['vokabeln', 'wendungen', 'saetze', 'grammatik', 'formen'],
             'formtabellen': formtabellen,
             'aufgaben': alle,
         }, fh, ensure_ascii=False, separators=(',', ':'))

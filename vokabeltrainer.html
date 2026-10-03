@@ -47,6 +47,22 @@
   .wahl select { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 8px;
                  border: 1px solid #26382b; background: #16221a; -webkit-appearance: none; appearance: none; }
   .wahl .reihe { display: flex; gap: 8px; }
+
+  .arten { display: grid; gap: 8px; }
+  .art {
+    display: block; width: 100%; text-align: left; cursor: pointer;
+    background: #16221a; border: 1px solid #26382b; border-radius: 8px;
+    padding: 13px 15px; font: inherit; color: #ecefea;
+  }
+  .art b { font-size: 15.5px; font-weight: 700; }
+  .art span { float: right; font-size: 12.5px; color: #8c988f; font-variant-numeric: tabular-nums; }
+  .art small { display: block; font-size: 12.5px; color: #8c988f; line-height: 1.45; margin-top: 3px; }
+  .art.aktiv { border-color: #5fa86b; background: #15291a; }
+  .art.aktiv b { color: #5fa86b; }
+
+  .feinwahl { margin-top: 14px; }
+  .feinwahl summary { font-size: 13px; color: #8c988f; cursor: pointer; padding: 6px 2px; }
+  .feinwahl .reihe { display: flex; gap: 8px; margin-top: 8px; }
   .wahl .reihe select { flex: 1; }
 
   /* ---------- Karte ---------- */
@@ -89,13 +105,13 @@
              font-size: 12.5px; line-height: 1.55; color: #d9a648; margin-top: 14px; }
   .versteckt { display: none !important; }
 </style>
-<link rel="stylesheet" href="css/app-shell.css?v=20261002e">
+<link rel="stylesheet" href="css/app-shell.css?v=20261003a">
 <script>
   /* Die Aufgabendatei braucht keines der Skripte, also wird sie sofort
      angefordert statt erst nach ihnen. Gemessen auf der echten Seite sparte
      das rund 450 Millisekunden beim kalten Start.
      KEIN link rel=preload: das lädt die Datei in Chrome zweimal. */
-  window.__ptDaten = fetch('daten/trainer.json?v=20261002e').then(function (r) {
+  window.__ptDaten = fetch('daten/trainer.json?v=20261003a').then(function (r) {
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return r.json();
   });
@@ -119,11 +135,41 @@
 
     <div class="kacheln" id="kacheln"></div>
 
+    <div class="wahl">
+      <label>Was möchtest du üben?</label>
+      <div class="arten" id="artWahl">
+        <button type="button" class="art" data-art="vokabeln">
+          <b>Vokabeln</b><span id="zVokabeln"></span>
+          <small>Substantive, Verben, Adjektive. Ein Wort, eine Bedeutung.</small>
+        </button>
+        <button type="button" class="art" data-art="wendungen">
+          <b>Wendungen</b><span id="zWendungen"></span>
+          <small>Feste Verbindungen und die kleinen Gesprächswörter.</small>
+        </button>
+        <button type="button" class="art" data-art="formen">
+          <b>Verbformen</b><span id="zFormen"></span>
+          <small>Konjugation. Du tippst die Form selbst.</small>
+        </button>
+        <button type="button" class="art" data-art="grammatik">
+          <b>Grammatik</b><span id="zGrammatik"></span>
+          <small>Regeln und Lückensätze zum Ausfüllen.</small>
+        </button>
+        <button type="button" class="art" data-art="saetze">
+          <b>Ganze Sätze</b><span id="zSaetze"></span>
+          <small>Muster aus deinen Klassen, zum Nachbauen.</small>
+        </button>
+        <button type="button" class="art" data-art="alle">
+          <b>Alles gemischt</b><span id="zAlle"></span>
+          <small>Querbeet, wenn du schon warm bist.</small>
+        </button>
+      </div>
+    </div>
+
     <button class="knopf haupt" id="losKnopf">Üben</button>
     <button class="knopf neben versteckt" id="nurNeuKnopf">Nur neue Wörter ansehen</button>
 
-    <div class="wahl">
-      <label for="paketWahl">Woraus</label>
+    <details class="feinwahl">
+      <summary>Genauer einstellen</summary>
       <div class="reihe">
         <select id="paketWahl"></select>
         <select id="zielWahl">
@@ -132,7 +178,7 @@
           <option value="40">40 Stück</option>
         </select>
       </div>
-    </div>
+    </details>
 
     <div class="hinweis versteckt" id="startHinweis"></div>
   </section>
@@ -175,12 +221,12 @@
 
 </div>
 
-<script src="js/progress.js?v=20261002e"></script>
-<script src="js/vorlesen.js?v=20261002e"></script>
-<script src="js/srs.js?v=20261002e"></script>
-<script src="js/leistungstest.js?v=20261002e"></script>
-<script src="js/vokabel-sync.js?v=20261002e"></script>
-<script src="js/vokabeltrainer.js?v=20261002e"></script>
-<script src="js/app-shell.js?v=20261002e"></script>
+<script src="js/progress.js?v=20261003a"></script>
+<script src="js/vorlesen.js?v=20261003a"></script>
+<script src="js/srs.js?v=20261003a"></script>
+<script src="js/leistungstest.js?v=20261003a"></script>
+<script src="js/vokabel-sync.js?v=20261003a"></script>
+<script src="js/vokabeltrainer.js?v=20261003a"></script>
+<script src="js/app-shell.js?v=20261003a"></script>
 </body>
 </html>

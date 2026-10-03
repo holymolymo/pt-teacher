@@ -197,11 +197,15 @@
     var ziel = opt.ziel || optionen().ziel || ZIEL;
     var staende = alleStaende();
     var nurPaket = opt.paket && opt.paket !== 'alle' ? opt.paket : null;
+    // Moritz wählt vorher aus, was abgefragt wird. Ohne diese Auswahl bekam er
+    // beim ersten Versuch sechzehn ganze Sätze und keine einzige Vokabel.
+    var nurArt = opt.art && opt.art !== 'alle' ? opt.art : null;
 
     var faellig = [], neu = [];
     for (var i = 0; i < aufgaben.length; i++) {
       var a = aufgaben[i];
       if (nurPaket && a.paket !== nurPaket) continue;
+      if (nurArt && a.art !== nurArt) continue;
       var richtungen = a.richtungen || ['pt_de'];
       for (var r = 0; r < richtungen.length; r++) {
         var ri = richtungen[r];
@@ -233,7 +237,15 @@
     var platz = Math.max(0, ziel - liste.length);
     var neuMax = Math.min(platz, Math.max(0, NEU_MAX - heuteNeu));
     if (opt.nurNeu) neuMax = Math.min(platz, ziel);
-    neu.sort(function (x, y) { return (x.aufgabe.platz || 0) - (y.aufgabe.platz || 0); });
+    // Innerhalb einer gewählten Übungsart gilt deren eigene Reihenfolge: bei
+    // Vokabeln das alltäglichste Wort zuerst. Ohne Auswahl die Gesamtreihenfolge.
+    neu.sort(function (x, y) {
+      var a = nurArt ? (x.aufgabe.stufe != null ? x.aufgabe.stufe : x.aufgabe.platz)
+                     : (x.aufgabe.platz || 0);
+      var b = nurArt ? (y.aufgabe.stufe != null ? y.aufgabe.stufe : y.aufgabe.platz)
+                     : (y.aufgabe.platz || 0);
+      return (a || 0) - (b || 0);
+    });
     liste = liste.concat(neu.slice(0, neuMax));
 
     mische(liste);
@@ -327,7 +339,7 @@
   }
 
   function optionen(patch) {
-    var o = lies(OPT_KEY, { ziel: ZIEL, paket: 'alle', tippen: true });
+    var o = lies(OPT_KEY, { ziel: ZIEL, paket: 'alle', art: 'vokabeln', tippen: true });
     if (patch) { for (var k in patch) o[k] = patch[k]; schreib(OPT_KEY, o); }
     return o;
   }

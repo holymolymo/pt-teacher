@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var DATEN = 'daten/trainer.json?v=20261002e';
+  var DATEN = 'daten/trainer.json?v=20261003a';
 
   /** Arbeit, die warten kann, bis der Bildschirm steht. */
   function spaeter(fn) {
@@ -27,7 +27,7 @@
     ['start','uebung','schluss','startTitel','startText','kacheln','losKnopf','nurNeuKnopf',
      'paketWahl','zielWahl','startHinweis','karte','marke','frage','hilf','antwort','notiz',
      'eingabe','zeigenKnopf','tippfehlerKnopf','noten','tipp','zaehler','balken','titel',
-     'schlussZahl','schlussTitel','schlussText','weiterKnopf','genugKnopf'].forEach(function (id) { el[id] = $(id); });
+     'schlussZahl','schlussTitel','schlussText','weiterKnopf','genugKnopf','artWahl'].forEach(function (id) { el[id] = $(id); });
 
     el.losKnopf.addEventListener('click', function () {
       if (el.losKnopf.dataset.fortsetzen) {
@@ -47,6 +47,12 @@
     });
     el.paketWahl.addEventListener('change', function () {
       PTSrs.optionen({ paket: el.paketWahl.value }); zeigeStart();
+    });
+    Array.prototype.forEach.call(el.artWahl.querySelectorAll('.art'), function (b) {
+      b.addEventListener('click', function () {
+        PTSrs.optionen({ art: b.dataset.art });
+        zeigeStart();
+      });
     });
     Array.prototype.forEach.call(el.noten.querySelectorAll('.note'), function (b) {
       b.addEventListener('click', function () { bewerte(parseInt(b.dataset.note, 10)); });
@@ -144,6 +150,7 @@
 
     var u = PTSrs.uebersicht(daten.aufgaben);
     var z = u.zahlen;
+    zeichneArten(o.art || 'vokabeln');
 
     // Die Zahl der fälligen Aufgaben wird bewusst NICHT angezeigt. Wer nach
     // zwei Wochen Pause "je 240 fällig" liest, macht die App nie wieder auf.
@@ -152,18 +159,21 @@
       kachel('mittel', z['geht so'], 'auf dem Weg') +
       kachel('schwach', z['nicht gut'], 'hakt noch');
 
+    var artName = { vokabeln: 'Vokabeln', wendungen: 'Wendungen', formen: 'Verbformen',
+                    grammatik: 'Grammatik', saetze: 'ganze Sätze', alle: 'alles gemischt' };
+    var gewaehlt = o.art || 'vokabeln';
     if (z.gesehen === 0) {
       text(el.startTitel, 'Fang einfach an');
-      text(el.startText, 'Es sind ' + daten.aufgaben.length + ' Aufgaben da, aber die siehst du nie alle auf einmal. ' +
-        'Du bekommst zwanzig Stück, sortiert danach, was im Alltag am häufigsten vorkommt und wo es ' +
-        'bei dir bisher hakt. Das dauert ungefähr fünf Minuten.');
-      el.losKnopf.textContent = 'Die ersten zwanzig';
+      text(el.startText, 'Such dir unten aus, was du üben willst. Gerade stehen ' +
+        (artName[gewaehlt] || gewaehlt) + ' auf dem Plan, und zwar die alltäglichsten zuerst. ' +
+        'Du bekommst zwanzig Stück, das dauert etwa fünf Minuten.');
+      el.losKnopf.textContent = (artName[gewaehlt] || 'Aufgaben') + ' üben';
     } else {
       var s = u.serie;
       text(el.startTitel, s >= 2 ? s + ' Tage am Stück' : 'Weiter geht\'s');
       text(el.startText, z.gesehen + ' Karten hast du schon gesehen. ' +
         (z.faellig > 0 ? 'Ein paar davon sind heute wieder dran.' : 'Heute ist nichts Altes fällig, du bekommst Neues.'));
-      el.losKnopf.textContent = 'Üben';
+      el.losKnopf.textContent = (artName[gewaehlt] || 'Aufgaben') + ' üben';
     }
     zeig(el.nurNeuKnopf, z.gesehen > 0);
     zeig(el.losKnopf, true);
@@ -185,6 +195,37 @@
       hinweis('Auf diesem Gerät warten ' + st.offen + ' Antworten darauf, in die Cloud zu kommen. ' +
         'Das liegt an der Datenbank, nicht an dir. Nichts geht verloren, es wird später nachgeholt.');
     } else { zeig(el.startHinweis, false); }
+  }
+
+  /**
+   * Die Vorauswahl. Je Art steht dabei, wie viel davon noch nicht gesehen ist,
+   * damit er erkennt, wo es noch etwas zu holen gibt.
+   */
+  function zeichneArten(gewaehlt) {
+    var staende = PTSrs.staende();
+    var offen = {};
+    daten.aufgaben.forEach(function (a) {
+      var art = a.art || 'saetze';
+      var rs = a.richtungen || ['pt_de'];
+      var gesehen = rs.some(function (r) {
+        var s = staende[a.id + '|' + r]; return s && s.wdh;
+      });
+      var o = offen[art] || (offen[art] = { gesamt: 0, offen: 0 });
+      o.gesamt++;
+      if (!gesehen) o.offen++;
+      var g = offen.alle || (offen.alle = { gesamt: 0, offen: 0 });
+      g.gesamt++; if (!gesehen) g.offen++;
+    });
+    Array.prototype.forEach.call(el.artWahl.querySelectorAll('.art'), function (b) {
+      var art = b.dataset.art;
+      b.classList.toggle('aktiv', art === gewaehlt);
+      var s = b.querySelector('span');
+      var o = offen[art];
+      if (!s || !o) return;
+      s.textContent = o.offen === 0 ? 'alle gesehen'
+                    : o.offen === o.gesamt ? o.gesamt + ' Stück'
+                    : o.offen + ' von ' + o.gesamt + ' neu';
+    });
   }
 
   function kachel(art, n, label) {
@@ -226,6 +267,10 @@
     if (!r || !r.aufgaben || !r.aufgaben.length) return null;
     if (Date.now() - r.zeit > RUNDE_FRIST) { rundeVergessen(); return null; }
     if (r.pos >= r.aufgaben.length && !(r.nach || []).length) { rundeVergessen(); return null; }
+    // Eine Runde ohne zugehörigen Lernstand ist ein Widerspruch: sie behauptet
+    // "zehn Karten gemacht", während alle Zähler auf null stehen. Das passiert,
+    // wenn der Speicher zwischendurch geleert oder vom Browser verworfen wurde.
+    if (r.beantwortet > 0 && !Object.keys(PTSrs.staende()).length) { rundeVergessen(); return null; }
     return r;
   }
 
@@ -258,12 +303,13 @@
     liste = PTSrs.sitzung(daten.aufgaben, {
       ziel: parseInt(el.zielWahl.value, 10) || o.ziel,
       paket: el.paketWahl.value,
+      art: o.art || 'vokabeln',
       nurNeu: !!opt.nurNeu
     });
     if (!liste.length) {
       text(el.startTitel, 'Für heute durch');
-      text(el.startText, 'Hier ist gerade nichts fällig. Du kannst dir trotzdem Neues ansehen, ' +
-        'oder ein anderes Paket wählen.');
+      text(el.startText, 'Bei ' + (artName[o.art] || o.art) + ' ist gerade nichts fällig und nichts Neues übrig. ' +
+        'Wähl oben etwas anderes aus, dann geht es weiter.');
       return;
     }
     rundeVergessen();

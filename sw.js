@@ -3,7 +3,7 @@
 // Alles andere (CSS/JS/Icons/Fonts): Cache zuerst, im Hintergrund aktualisieren.
 // Bei Änderungen an der Liste oder Strategie: CACHE-Version hochzählen.
 
-const CACHE = 'pt-teacher-v15';
+const CACHE = 'pt-teacher-v16';
 const CORE = [
   './', './index.html', './lernen.html', './fortschritt.html', './vokabeln.html',
   './diagnose-test.html', './print-sheets.html', './grammatik-bibliothek.html', './cheat-sheet.html',
@@ -18,9 +18,9 @@ const CORE = [
   './lektion-19-reflexive-stellung.html', './lektion-20-konditional.html', './lektion-21-por-vs-para.html',
   './wiederholung-01.html', './wiederholung-02.html', './wiederholung-03.html', './wiederholung-04.html',
   './wiederholung-05.html', './wiederholung-komplett.html',
-  './css/app-shell.css?v=20261002e', './js/progress.js?v=20261002e', './js/app-shell.js?v=20261002e',
-  './js/vorlesen.js?v=20261002e', './js/srs.js?v=20261002e', './js/vokabel-sync.js?v=20261002e', './js/vokabeltrainer.js?v=20261002e',
-  './daten/trainer.json?v=20261002e',
+  './css/app-shell.css?v=20261003a', './js/progress.js?v=20261003a', './js/app-shell.js?v=20261003a',
+  './js/vorlesen.js?v=20261003a', './js/srs.js?v=20261003a', './js/vokabel-sync.js?v=20261003a', './js/vokabeltrainer.js?v=20261003a',
+  './daten/trainer.json?v=20261003a',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-apple.png', './manifest.json'
 ];
 
